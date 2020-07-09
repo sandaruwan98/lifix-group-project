@@ -68,7 +68,7 @@ header{
 .lists .list .list-item{
     background-color: rgba(240, 248, 255, 0.815);
     border-radius: 8px;
-    padding: 35px 20px;
+    padding: 15px 10px;
     text-align: center;
     margin: 4px 0px;
     
@@ -83,11 +83,19 @@ header{
     color: aliceblue;
 }
 
-.lists .list::after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: aqua;
-    width: 100px;
+
+.lists .list .list-item .row1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lists .list .list-item .row1 span{
+    background-color: #08ccfd;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.lists .list .list-item .address{
+    margin-bottom: 10px;
+    font-size: small;
 }
