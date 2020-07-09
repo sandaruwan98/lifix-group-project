@@ -38,10 +38,28 @@ for (let i = 0; i < list_items.length; i++) {
 
         list.addEventListener('drop', (e) => {
             list.append(draggedItem);
-            list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'
+            AssignRepairs(draggedItem.getAttribute("id"), list.getAttribute("id"));
+            list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 
         });
 
 
     }
+}
+
+function AssignRepairs(id, st) {
+
+    var xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function() {
+    //     if (xhr.readyState == 4 && xhr.status == 200) {
+    //         console.log("Done. ", xhr.responseText);
+    //     }
+    // }
+    xhr.open("GET", "saveAssignedData.php?st=" + st + "&id=" + id, true);
+    xhr.send();
+
+
+
+
+
 }

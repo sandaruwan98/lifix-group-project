@@ -26,7 +26,7 @@ $list_assign =  $conn->query($q);
 
 ?>
 
-<div class="list">
+<div id="x" class="list">
     <h2>Assigned</h2>
     <?php
     if ($list_assign->num_rows > 0) {
@@ -45,7 +45,7 @@ $list_assign =  $conn->query($q);
     ?>
 
 </div>
-<div class="list">
+<div id="s" class="list">
     <h2>Suggested</h2>
     <?php
     if ($list_suggest->num_rows > 0) {
@@ -64,7 +64,7 @@ $list_assign =  $conn->query($q);
     ?>
 </div>
 
-<div class="list">
+<div id="a" class="list">
     <h2>Other</h2>
     <?php
     if ($list_avail->num_rows > 0) {
