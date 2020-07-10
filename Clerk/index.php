@@ -38,14 +38,15 @@
 
 
             </div>
-            <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button>
+            
+            <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
         </div>
 
         <div id="map" class="map-section">
         </div>
     </div>
-   
-    <!-- 
+
+
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
@@ -60,13 +61,16 @@
         //     .addTo(map);
         var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onreadystatechange = function () {
+        xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 mapdata = JSON.parse(this.responseText);
                 // add markers to the map
                 for (let i = 0; i < mapdata.length; i++) {
                     const mk = mapdata[i];
-                    var marke2 = new mapboxgl.Marker()
+                    var marke2 = new mapboxgl.Marker({
+                            color: "red"
+                            // color: "#3FB1CE"
+                        })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map);
                 }
@@ -75,7 +79,7 @@
         };
         xmlhttp.open("GET", "getMapdata.php", true);
         xmlhttp.send();
-    </script> -->
+    </script>
     <script src="app.js"></script>
 </body>
 

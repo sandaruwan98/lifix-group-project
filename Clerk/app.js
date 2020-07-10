@@ -58,8 +58,4 @@ function AssignRepairs(id, st) {
     xhr.open("GET", "saveAssignedData.php?st=" + st + "&id=" + id, true);
     xhr.send();
 
-
-
-
-
 }
