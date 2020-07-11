@@ -10,12 +10,12 @@ ON lamppost.lpid=repair.lp_id WHERE repair.status='a'";
 $list_avail =  $conn->query($q);
 
 
-$q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-FROM lamppost
-INNER JOIN repair
-ON lamppost.lpid=repair.lp_id WHERE repair.status='s'";
+// $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
+// FROM lamppost
+// INNER JOIN repair
+// ON lamppost.lpid=repair.lp_id WHERE repair.status='s'";
 
-$list_suggest =  $conn->query($q);
+// $list_suggest =  $conn->query($q);
 
 $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
 FROM lamppost
@@ -45,24 +45,7 @@ $list_assign =  $conn->query($q);
     ?>
 
 </div>
-<div id="s" class="list">
-    <h2>Suggested</h2>
-    <?php
-    if ($list_suggest->num_rows > 0) {
-        while ($row = $list_suggest->fetch_assoc()) { ?>
-            <div id="<?php echo $row["repair_id"] ?>" class="list-item" draggable="true">
-                <div class="address"><?php echo $row["division"] ?></div>
-                <div class="row1">
-                    <span>#<?php echo $row["lp_id"] ?></span>
-                    <span><?php echo $row["date"] ?></span>
-                </div>
-            </div>
 
-    <?php
-        }
-    }
-    ?>
-</div>
 
 <div id="a" class="list">
     <h2>Other</h2>

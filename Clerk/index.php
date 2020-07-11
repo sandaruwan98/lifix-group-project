@@ -17,33 +17,15 @@
     </header>
     <div class="main">
 
-
         <div class="list-section">
-
             <div class="lists">
-
                 <?php include "getAvailRepairs.php" ?>
-
-                <!-- <div class="list">
-                    <h2>Assigned</h2>
-                    <div class="list-item" draggable="true">
-                        <div class="address">Ambagagathote Rd - Bandaragama</div>
-                        <div class="row1">
-                            <span>#1000</span>
-                            <span>2012-03-23</span>
-                        </div>
-                    </div> -->
-
-
-
-
             </div>
-            
             <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
         </div>
 
-        <div id="map" class="map-section">
-        </div>
+        <div id="map" class="map-section"></div>
+        
     </div>
 
 
@@ -68,7 +50,7 @@
                 for (let i = 0; i < mapdata.length; i++) {
                     const mk = mapdata[i];
                     var marke2 = new mapboxgl.Marker({
-                            color: "red"
+                            color: "black"
                             // color: "#3FB1CE"
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
