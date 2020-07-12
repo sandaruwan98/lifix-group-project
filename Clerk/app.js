@@ -22,30 +22,38 @@ for (let i = 0; i < list_items.length; i++) {
 
     })
 
-    for (let j = 0; j < lists.length; j++) {
-        const list = lists[j];
-        list.addEventListener('dragover', (e) => {
-            e.preventDefault()
-        });
-        list.addEventListener('dragenter', (e) => {
-            e.preventDefault()
-            list.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'
-        });
-        list.addEventListener('dragleave', () => {
-
-            list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'
-        });
-
-        list.addEventListener('drop', (e) => {
-            list.append(draggedItem);
-            AssignRepairs(draggedItem.getAttribute("id"), list.getAttribute("id"));
-            list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
-
-        });
 
 
-    }
+    item.addEventListener('click', () => {
+        alert("fuck")
+    })
+
 }
+for (let j = 0; j < lists.length; j++) {
+    const list = lists[j];
+    list.addEventListener('dragover', (e) => {
+        e.preventDefault()
+    });
+    list.addEventListener('dragenter', (e) => {
+        e.preventDefault()
+        list.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'
+    });
+    list.addEventListener('dragleave', () => {
+
+        list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'
+    });
+
+    list.addEventListener('drop', (e) => {
+        // console.log("fuck",i);
+        list.append(draggedItem);
+        AssignRepairs(draggedItem.getAttribute("id"), list.getAttribute("id"));
+        list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+
+    });
+
+
+}
+
 
 function AssignRepairs(id, st) {
 
@@ -57,5 +65,8 @@ function AssignRepairs(id, st) {
     // }
     xhr.open("GET", "saveAssignedData.php?st=" + st + "&id=" + id, true);
     xhr.send();
+
+
+
 
 }

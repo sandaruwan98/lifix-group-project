@@ -25,7 +25,7 @@
         </div>
 
         <div id="map" class="map-section"></div>
-        
+
     </div>
 
 
@@ -55,12 +55,15 @@
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map);
+                        
                 }
                 // load list
             }
         };
         xmlhttp.open("GET", "getMapdata.php", true);
         xmlhttp.send();
+
+
     </script>
     <script src="app.js"></script>
 </body>
