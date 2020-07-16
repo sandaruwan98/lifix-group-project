@@ -2,7 +2,7 @@
 include "../connection.php";
 
 
-$q = "SELECT lamppost.lattitude, lamppost.longitude 
+$q = "SELECT repair.repair_id, lamppost.lattitude, lamppost.longitude 
 FROM lamppost
 INNER JOIN repair
 ON lamppost.lpid=repair.lp_id WHERE repair.status!='c'";

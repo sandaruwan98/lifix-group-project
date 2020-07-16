@@ -25,7 +25,20 @@ for (let i = 0; i < list_items.length; i++) {
 
 
     item.addEventListener('click', () => {
-        alert("fuck")
+        // loadMap("blue")
+        var lngLat = markerArr.get(item.getAttribute("id")).getLngLat();
+        markerArr.get(item.getAttribute("id")).remove();
+        var marker = new mapboxgl.Marker({
+            color: "red"
+            // color: "#3FB1CE"
+        })
+        .setLngLat([lngLat.lng, lngLat.lat])
+        .addTo(map);
+
+        markerArr.set(item.getAttribute("id"),marker)
+        // console.log( );
+        
+        // console.log(markerArr);
     })
 
 }

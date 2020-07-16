@@ -30,6 +30,10 @@
 
 
     <script>
+        let markerArr = new Map()
+
+
+
         mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -37,6 +41,8 @@
             center: [79.861489, 6.885039],
             zoom: 14
         });
+
+
 
         // var marke2 = new mapboxgl.Marker()
         //     .setLngLat([79.854770, 6.891551])
@@ -46,22 +52,27 @@
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 mapdata = JSON.parse(this.responseText);
+                // console.log(mapdata);
                 // add markers to the map
-                for (let i = 0; i < mapdata.length; i++) {
-                    const mk = mapdata[i];
-                    var marke2 = new mapboxgl.Marker({
+                mapdata.forEach(mk => {
+
+
+                    var marker = new mapboxgl.Marker({
                             color: "black"
                             // color: "#3FB1CE"
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map);
-                        
-                }
-                // load list
+                    // markerArr['id' + mk.repair_id] = mk;
+                    markerArr.set(mk.repair_id, marker);
+                });
+               
             }
         };
         xmlhttp.open("GET", "getMapdata.php", true);
         xmlhttp.send();
+
+
 
 
     </script>
