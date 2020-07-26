@@ -1,11 +1,12 @@
 <?php
+require "../class/Repair.php";
 
 $st = $_GET["st"];
 $id = $_GET["id"];
-include "../connection.php";
 
-$q = "UPDATE `repair` SET `status`='$st' WHERE `repair_id`= '$id'";
-$conn->query($q);
+$repair = new Repair();
+$repair->changeStatus($id,$st);
+
 
 
 // assign button :-/

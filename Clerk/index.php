@@ -28,7 +28,7 @@
 
     </div>
 
-
+    <!-- load map from mapbox api -->
     <script>
         let markerArr = new Map()
 

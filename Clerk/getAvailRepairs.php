@@ -1,30 +1,40 @@
 <?php
 
-include "../connection.php";
-
-$q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-FROM lamppost
-INNER JOIN repair
-ON lamppost.lpid=repair.lp_id WHERE repair.status='a'";
-
-$list_avail =  $conn->query($q);
+// include "../connection.php";
 
 
 // $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
 // FROM lamppost
 // INNER JOIN repair
-// ON lamppost.lpid=repair.lp_id WHERE repair.status='s'";
+// ON lamppost.lpid=repair.lp_id WHERE repair.status='a'";
 
-// $list_suggest =  $conn->query($q);
+// $list_avail =  $conn->query($q);
 
-$q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-FROM lamppost
-INNER JOIN repair
-ON lamppost.lpid=repair.lp_id WHERE repair.status='x'";
 
-$list_assign =  $conn->query($q);
+// // $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
+// // FROM lamppost
+// // INNER JOIN repair
+// // ON lamppost.lpid=repair.lp_id WHERE repair.status='s'";
+
+// // $list_suggest =  $conn->query($q);
+
+// $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
+// FROM lamppost
+// INNER JOIN repair
+// ON lamppost.lpid=repair.lp_id WHERE repair.status='x'";
+
+// $list_assign =  $conn->query($q);
+
+require "../class/Repair.php";
+
+$repair = new Repair();
+$list_assign = $repair->getRepairs('x');
+$list_avail = $repair->getRepairs('a');
+
+
 
 ?>
+
 
 <div id="x" class="list">
     <h2>Assigned</h2>
