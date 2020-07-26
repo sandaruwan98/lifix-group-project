@@ -27,17 +27,19 @@ for (let i = 0; i < list_items.length; i++) {
     item.addEventListener('click', () => {
         // loadMap("blue")
         var lngLat = markerArr.get(item.getAttribute("id")).getLngLat();
-        markerArr.get(item.getAttribute("id")).remove();
-        var marker = new mapboxgl.Marker({
+        // markerArr.get(item.getAttribute("id")).remove();
+        var tmpmarker = new mapboxgl.Marker({
             color: "red"
             // color: "#3FB1CE"
         })
-        .setLngLat([lngLat.lng, lngLat.lat])
-        .addTo(map);
-
-        markerArr.set(item.getAttribute("id"),marker)
+            .setLngLat([lngLat.lng, lngLat.lat])
+            .addTo(map);
+        setTimeout(() => {
+            tmpmarker.remove()
+        }, 1000);
+        // markerArr.set(item.getAttribute("id"),marker)
         // console.log( );
-        
+
         // console.log(markerArr);
     })
 
