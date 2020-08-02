@@ -3,7 +3,7 @@
 
 class Database {
 
- protected $conn;
+ public $conn;
  
  public function __construct()
  {

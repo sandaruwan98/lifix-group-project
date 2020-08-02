@@ -51,6 +51,7 @@
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+
                 mapdata = JSON.parse(this.responseText);
                 // console.log(mapdata);
                 // add markers to the map

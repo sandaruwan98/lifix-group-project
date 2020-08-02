@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2020 at 06:27 PM
+-- Generation Time: Aug 01, 2020 at 05:23 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -66,7 +66,10 @@ CREATE TABLE `lamppost` (
 INSERT INTO `lamppost` (`lpid`, `division`, `lattitude`, `longitude`) VALUES
 (1000, 'baddegama', 6.887286, 79.86136),
 (1001, 'Gonaduwa, x Rd ', 6.890779, 79.858037),
-(1002, 'Milagiriya', 6.891551, 79.85477);
+(1002, 'Milagiriya', 6.891551, 79.85477),
+(1003, 'Peterson Rd,Pamankada', 6.881167433870161, 79.864157036964),
+(1004, 'Castle Lane,MIlagiriya', 6.881570466305064, 79.85680047538261),
+(1005, 'Amarasekara Rd, Havlock Town', 6.883686767848502, 79.86359102010118);
 
 -- --------------------------------------------------------
 
@@ -88,7 +91,10 @@ CREATE TABLE `repair` (
 INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`) VALUES
 (1, '2020-07-08', 'x', 1000),
 (2, '2020-07-07', 'x', 1001),
-(3, '2020-07-11', 'x', 1002);
+(3, '2020-07-11', 'x', 1002),
+(5, '2020-07-15', 'a', 1003),
+(6, '2020-07-18', 'a', 1004),
+(7, '2020-07-15', 'x', 1005);
 
 --
 -- Indexes for dumped tables
@@ -126,7 +132,7 @@ ALTER TABLE `complaints`
 -- AUTO_INCREMENT for table `repair`
 --
 ALTER TABLE `repair`
-  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
