@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+ .sidebar{
+  width: 50px;
+  height: 100%;
+  background: #214b55;
+  padding: 30px 0px;
+  position: fixed;
+  font-family: 'Josefin Sans', sans-serif;
+
+  transition: all 0.2s;
+}
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }    
+ .sidebar ul .nav-logo{
+    font-size: 40px;
+    color: white;
+    
+ }
+
+ .sidebar ul .nav-logo:hover{
+     color: rgb(240, 218, 20);
+ }
+ .sidebar ul .nav-logo .nav-link{
+    display: flex;
+    margin-bottom: 25px;
+ }
+
+ .sidebar ul .nav-item{
+     width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+ .sidebar ul .nav-item .nav-link{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+.sidebar ul .nav-item:last-child{
+    margin-top: auto;
+}
+ .sidebar ul .nav-item .nav-link .fas{
+  width: 25px;
+  margin-right: 4px;
+}
+
+ .sidebar ul .nav-item:hover{
+  background-color: #142e35;
+  /* color: rgb(240, 218, 20); */
+}
+
+ .sidebar ul .nav-item:hover .nav-link{
+  color: rgb(240, 218, 20);
+}
+
+ .sidebar:hover .link-text{
+  display: inline;
+}
+ 
+.link-text{
+    display: none;
+}
+
+ .main_content{
+  margin-left: 50px;
+}
+
+
+
+
