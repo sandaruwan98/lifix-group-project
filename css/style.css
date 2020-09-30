@@ -13,3 +13,7 @@
 .btn:hover {
     background-color: #27ae60;
 }
+
+.btn:focus {
+    background-color: #27ae60;
+}
