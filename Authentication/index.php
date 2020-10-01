@@ -8,6 +8,11 @@
     <title>Welcome to lifix</title>
 </head>
 <body>
-    <div id="fist_div"></div>
+    <div id="fist_div">
+        <div id="common-div">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 </body>
 </html>
