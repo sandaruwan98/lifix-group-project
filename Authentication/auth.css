@@ -1,0 +1,34 @@
+body{
+    background-color: #161616;
+}
+
+#fist_div{
+    
+    background-image: url("../Complainer/img/2.jpg");
+    object-fit: contain;
+    position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+    background-size: cover;
+    animation-name: custom_animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+
+	/* filter: blur(0px); */
+	/* z-index: -1; */
+
+}
+
+@keyframes custom_animation{
+    0%{ width: 100%; height: 0%; filter: blur(2px);}
+    12.5%{ width: 100%; height: 12.5%; filter: blur(2px);}
+    25%{width: 100%; height: 25%; filter: blur(2px);}
+    37.5%{ width: 100%; height: 37.5%; filter: blur(2px);}
+    50%{width: 100%; height: 50%; filter: blur(2px);}
+    62.5%{ width: 100%; height: 62.5%; filter: blur(2px);}
+    75%{width: 100%; height: 75%; filter: blur(2px);}
+    87.5%{ width: 100%; height: 87.5%; filter: blur(2px);}
+    75%{width: 100%; height: 100%; filter: blur(1px);}
+}
