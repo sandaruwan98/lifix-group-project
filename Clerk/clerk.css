@@ -4,28 +4,36 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     /* background-color: #FFCE00; */
     background-color: #417785;
 
 }
-.main{
+
+header {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.40379901960784315) 0%, rgba(0, 0, 0, 0.5746673669467788) 48%, rgba(0, 0, 0, 0.3981967787114846) 100%);
+    margin-bottom: 10px;
+}
+
+.main {
     display: flex;
-    width: 100vw;
+    width: 100%;
     /* min-width: 800px; */
-    height: 93vh;
+    height: 90vh;
     flex-direction: row;
     /* flex-wrap: wrap; */
 }
-.map-section{
- 
+
+.map-section {
+
     flex: 0.75;
     height: 100%;
     margin: 0 5px;
     border-radius: 5px;
 }
 
-.list-section{
+.list-section {
     display: flex;
     flex: 0.25;
     /* width: 50vw; */
@@ -34,7 +42,7 @@ body{
     flex-flow: column;
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +50,7 @@ header{
     color: azure;
 }
 
-.lists{
+.lists {
     display: flex;
     flex: 1;
     width: 100%;
@@ -66,37 +74,38 @@ header{
 }
 
 
-.lists .list .list-item{
+.lists .list .list-item {
     background-color: rgba(240, 248, 255, 0.815);
     border-radius: 8px;
     padding: 15px 10px;
     text-align: center;
     margin: 4px 0px;
-    
+
     /* transition: all 0.5s linear; */
 }
-.lists .list .list-item:hover{
+
+.lists .list .list-item:hover {
     background-color: rgb(240, 248, 255);
 }
 
-.lists .list h2{
+.lists .list h2 {
     margin: 6px auto;
     color: aliceblue;
 }
 
 
-.lists .list .list-item .row1{
+.lists .list .list-item .row1 {
     display: flex;
     justify-content: space-between;
 }
 
-.lists .list .list-item .row1 span{
+.lists .list .list-item .row1 span {
     background-color: #08ccfd;
     padding: 5px;
     border-radius: 10px;
 }
 
-.lists .list .list-item .address{
+.lists .list .list-item .address {
     margin-bottom: 10px;
     font-size: small;
 }

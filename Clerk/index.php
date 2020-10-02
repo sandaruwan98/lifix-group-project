@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="clerk.css">
+    <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
     <title>Repairs</title>
@@ -12,20 +14,41 @@
 </head>
 
 <body>
-    <header>
-        <h1>Available Repairs</h1>
-    </header>
-    <div class="main">
 
-        <div class="list-section">
-            <div class="lists">
-                <?php include "getAvailRepairs.php" ?>
+    <nav class="sidebar">
+        <!-- <h2 class="link-text">MENU</h2> -->
+        <ul>
+            <li class="nav-logo"><span class="nav-link" href="#"><i class="fas fa-lightbulb"></i><span class="link-text" style="margin-left: 5px;">LiFix</span> </span>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i><span class="link-text">Home</span> </a></li>
+            <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-columns"></i><span class="link-text">DailyRepairs</span> </a></li>
+            <li class="nav-item"><a class="nav-link" href="./repairHistory.html"><i class="fas fa-history"></i><span class="link-text">RepairHistory</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-file-invoice"></i><span class="link-text">Purchases</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-plus-square"></i><span class="link-text">LampPost</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span class="link-text">Settings</span></a></li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <div class="main_content">
+        <header>
+            <h1>Available Repairs</h1>
+        </header>
+        <div class="main">
+
+            <div class="list-section">
+                <div class="lists">
+                    <?php include "getAvailRepairs.php" ?>
+                </div>
+                <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
             </div>
-            <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
+
+            <div id="map" class="map-section"></div>
+
         </div>
-
-        <div id="map" class="map-section"></div>
-
     </div>
 
     <!-- load map from mapbox api -->
@@ -67,15 +90,11 @@
                     // markerArr['id' + mk.repair_id] = mk;
                     markerArr.set(mk.repair_id, marker);
                 });
-               
+
             }
         };
         xmlhttp.open("GET", "getMapdata.php", true);
         xmlhttp.send();
-
-
-
-
     </script>
     <script src="app.js"></script>
 </body>
