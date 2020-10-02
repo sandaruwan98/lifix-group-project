@@ -40,7 +40,7 @@ body{
     width: auto;
     top: 20%;
     bottom: 20%;
-    z-index: 0;
+    /* z-index: -1; */
     /* background-color: aqua; */
     height: auto;
     left: 10%;
@@ -156,7 +156,7 @@ body{
     position: absolute;
     left: 15%;
     right: 15%;
-    font-size: 130%;
+    font-size: 120%;
     text-align: center;
     color: #AA1923;
     font-family: 'Merienda', cursive;
@@ -178,7 +178,7 @@ body{
     bottom: 4%;
     height: auto;
     opacity: 0.15;
-    z-index: -1;
+    /* z-index: -1; */
     width: auto;
 }
 
@@ -266,8 +266,94 @@ body{
 	background-color:#505866;
 }
 #myButton:active {
-	position:relative;
-	top:1px;
+	/* position:relative; */
+    top:75.7%;
+    right: 24.7%;
 }
 
-        
+@media only screen and (max-width: 1024px) {
+    #par_id{
+        left: 5%;
+        right: 5%;
+        font-size: 100%;
+    }
+
+    .field-1{
+        min-width: 100px;
+        margin-left: 10%;
+    }
+    .field-2{
+        min-width: 100px;
+        margin-left: 10%;
+    }
+
+    #myButton{
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    #fist_div{
+        background-image: url("");
+    }
+    
+    #outer-left{
+        width: 100%;
+        position: relative;	
+    }
+    
+    #right-view{
+        position: relative;
+            width: 100%;
+    }
+    
+    .field-1{
+        min-width: 200px;
+        max-width: 300px;
+        width: auto;
+        left: 0;
+        right: 0;
+        margin: 5px;	
+    }
+    
+    .field-2{
+        min-width: 200px;
+        max-width: 300px;
+        width: auto;
+        left: 0;
+        right: 0;
+        margin: 5px;	
+    }
+    
+    #common-div{
+        top: 10px;
+        /* margin-bottom: 150px; */
+        left: 18%;
+        right: 18%;
+    }
+
+    #par_id{
+        left: 15%;
+        right: 15%;
+        font-size: 100%;
+    }
+
+    #left-viwew{
+        background-size: contain;
+    }
+
+  }
+
+  @media only screen and (max-width: 425px){
+    #common-div{
+        left: 0;
+        right: 0;	
+    }
+    
+    #par_id{
+        font-size: 120%;
+    }
+    
+  }
