@@ -31,7 +31,7 @@
 
     </nav>
 
-
+    <script src="../js/slider.js"></script>
 
     <div class="main_content">
         <header>

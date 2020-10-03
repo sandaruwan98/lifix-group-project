@@ -21,7 +21,7 @@
 }
 
 .sidebar:hover {
-  width: 200px;
+  /* width: 200px; */
 }
 
 .sidebar ul {
@@ -81,9 +81,9 @@
   color: rgb(240, 218, 20);
 }
 
-.sidebar:hover .link-text {
+/* .sidebar:hover .link-text {
   display: inline;
-}
+} */
 
 .link-text {
   display: none;

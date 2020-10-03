@@ -114,7 +114,7 @@ button:focus {
 
 .p-list-section .row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .p-list-section .row span {
@@ -163,4 +163,13 @@ button:focus {
 
     background: rgba(255, 255, 255, 0.644);
 
+}
+
+.s {
+    margin-top: 6px;
+}
+
+.fa-times {
+    font-size: large;
+    color: rgba(246, 14, 14, 0.438);
 }
