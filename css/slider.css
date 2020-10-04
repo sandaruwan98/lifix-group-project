@@ -43,6 +43,7 @@
 .sidebar ul .nav-logo .nav-link {
   display: flex;
   margin-bottom: 25px;
+  cursor: pointer;
 }
 
 .sidebar ul .nav-item {
