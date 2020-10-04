@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
-    <link rel="stylesheet" href="clerk.css">
+    <link rel="stylesheet" href="./css/clerk.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+   
     <nav class="sidebar">
         <!-- <h2 class="link-text">MENU</h2> -->
         <ul>
@@ -41,7 +41,8 @@
 
             <div class="list-section">
                 <div class="lists">
-                    <?php include "getAvailRepairs.php" ?>
+                    <!-- load available repairlist from database -->
+                    <?php include "./components/AvailRepairList.php" ?>
                 </div>
                 <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
             </div>
@@ -93,7 +94,7 @@
 
             }
         };
-        xmlhttp.open("GET", "getMapdata.php", true);
+        xmlhttp.open("GET", "./components/getMapdata.php", true);
         xmlhttp.send();
     </script>
     <script src="app.js"></script>

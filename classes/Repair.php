@@ -1,5 +1,6 @@
 <?php
-require "../databaseconn.php";
+require "Database.php";
+
 class Repair extends Database
 {
 

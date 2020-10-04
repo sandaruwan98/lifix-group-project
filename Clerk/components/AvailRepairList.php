@@ -1,31 +1,6 @@
 <?php
 
-// include "../connection.php";
-
-
-// $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-// FROM lamppost
-// INNER JOIN repair
-// ON lamppost.lpid=repair.lp_id WHERE repair.status='a'";
-
-// $list_avail =  $conn->query($q);
-
-
-// // $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-// // FROM lamppost
-// // INNER JOIN repair
-// // ON lamppost.lpid=repair.lp_id WHERE repair.status='s'";
-
-// // $list_suggest =  $conn->query($q);
-
-// $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date
-// FROM lamppost
-// INNER JOIN repair
-// ON lamppost.lpid=repair.lp_id WHERE repair.status='x'";
-
-// $list_assign =  $conn->query($q);
-
-require "../class/Repair.php";
+require __DIR__ . '/../../classes/Repair.php';
 
 $repair = new Repair();
 $list_assign = $repair->getRepairs('x');
