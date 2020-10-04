@@ -29,9 +29,9 @@ for (let i = 0; i < list_items.length; i++) {
         var lngLat = markerArr.get(item.getAttribute("id")).getLngLat();
         // markerArr.get(item.getAttribute("id")).remove();
         var tmpmarker = new mapboxgl.Marker({
-            color: "red"
-            // color: "#3FB1CE"
-        })
+                color: "red"
+                // color: "#3FB1CE"
+            })
             .setLngLat([lngLat.lng, lngLat.lat])
             .addTo(map);
         setTimeout(() => {
@@ -73,12 +73,12 @@ for (let j = 0; j < lists.length; j++) {
 function AssignRepairs(id, st) {
 
     var xhr = new XMLHttpRequest();
-    // xhr.onreadystatechange = function() {
+    // xhr.onreadystatechange = function () {
     //     if (xhr.readyState == 4 && xhr.status == 200) {
     //         console.log("Done. ", xhr.responseText);
     //     }
     // }
-    xhr.open("GET", "saveAssignedData.php?st=" + st + "&id=" + id, true);
+    xhr.open("GET", "./components/saveAssignedData.php?st=" + st + "&id=" + id, true);
     xhr.send();
 
 

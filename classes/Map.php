@@ -1,5 +1,5 @@
 <?php
-require "../databaseconn.php";
+require "Database.php";
 class Map extends Database
 {
 
