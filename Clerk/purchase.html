@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="./css/clerk.css">
     <link rel="stylesheet" href="./css/repairHistory.css">
+    <link rel="stylesheet" href="./css/purchase.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Purchases</title>
 
@@ -30,7 +31,7 @@
                         class="link-text">RepairHistory</span></a></li>
             <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-file-invoice"></i><span
                         class="link-text">Purchases</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-plus-square"></i><span
+            <li class="nav-item"><a class="nav-link" href="./newlamp.html"><i class="fas fa-plus-square"></i><span
                         class="link-text">LampPost</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span
                         class="link-text">Settings</span></a></li>
@@ -48,7 +49,7 @@
         <div class="container">
             <div class="p-list-section">
 
-                <button class="btn">ADD NEW</button>
+                <button id="btnAdd" class="btn">ADD NEW</button>
                 <!-- searchbox -->
                 <div class="searchbox-sm">
                     <input id="search" type="text" placeholder="Search..." name="search" class="search"
@@ -124,8 +125,48 @@
                 </div>
                 <div class="table-section">
 
-                    <div class="add-new">
+                    <div class="add-new" style="display: none;">
+                        <form>
 
+                            <div class="feild-row">
+                                <h2>Add new purchase</h2>
+
+                            </div>
+                            <div class="feild-row">
+
+
+
+                                <label>Bulb</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>Sunbox</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="sunbox" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>Wire</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>Switch</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>Holder</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>Screw holder</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
+                            </div>
+                            <div class="feild-row">
+                                <label>3 Pin holder</label>
+                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
+                            </div>
+                            <div class="feild-row">
+                                <button class="btn" type="submit">SUBMIT</button>
+                            </div>
+                        </form>
                     </div>
 
 
@@ -160,7 +201,7 @@
                             <tr>
                                 <td>3</td>
                                 <td>WIRES</td>
-                                <td>50M</td>
+                                <td>50m</td>
 
                             </tr>
                             <tr>
@@ -205,6 +246,26 @@
             </div>
         </div>
 
+        <script>
+            const btnAdd = document.querySelector('#btnAdd');
+            const table_section = document.querySelector('.content-table');
+            const addnew_section = document.querySelector('.add-new');
+            const list_items = document.querySelectorAll('.repair-item');
+
+            btnAdd.addEventListener('click', () => {
+                table_section.style.display = 'none';
+                addnew_section.style.display = 'block';
+
+            })
+
+            list_items.forEach(item => {
+                item.addEventListener('click', () => {
+                    addnew_section.style.display = 'none';
+                    table_section.style.display = 'table ';
+
+                })
+            })
+        </script>
 </body>
 
 </html>
