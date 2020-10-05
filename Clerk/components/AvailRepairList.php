@@ -16,11 +16,11 @@ $list_avail = $repair->getRepairs('a');
     <?php
     if ($list_assign->num_rows > 0) {
         while ($row = $list_assign->fetch_assoc()) { ?>
-            <div id="<?php echo $row["repair_id"] ?>" class="list-item" draggable="true">
-                <div class="address"><?php echo $row["division"] ?></div>
+            <div id="<?= $row["repair_id"] ?>" class="list-item" draggable="true">
+                <div class="address"><?= $row["division"] ?></div>
                 <div class="row1">
-                    <span>#<?php echo $row["lp_id"] ?></span>
-                    <span><?php echo $row["date"] ?></span>
+                    <span>#<?= $row["lp_id"] ?></span>
+                    <span><?= $row["date"] ?></span>
                 </div>
             </div>
 
