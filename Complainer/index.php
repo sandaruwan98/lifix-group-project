@@ -23,6 +23,7 @@ include "db.php";
 				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="Your NIC" >
 				<div class="error"><?php echo $errors['nic']; ?></div>
 				<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="Lamppost ID" >
+				<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Additional notes about the problem" >
 				<div class="error"><?php echo $errors['lampid']; ?></div>
 
 				<div class="phone-box">

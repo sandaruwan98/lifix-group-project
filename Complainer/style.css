@@ -33,7 +33,7 @@ body{
 	z-index: -1;
 }
 .contact-box{
-	max-width: 850px;
+	max-width: 900px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
@@ -105,6 +105,10 @@ h2:after{
 .field:focus{
     border: 2px solid rgba(30,85,250,0.47);
     background-color: #fff;
+}
+
+.note {
+	height: 100px;
 }
 
 @media screen and (max-width: 880px){
