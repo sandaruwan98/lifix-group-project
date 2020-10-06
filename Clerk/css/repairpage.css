@@ -1,0 +1,16 @@
+.map-section {
+
+    flex: 0.4;
+    height: 100%;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.list-section {
+    display: flex;
+    flex: 0.6;
+    /* width: 50vw; */
+    min-width: 600px;
+    height: 100%;
+    flex-flow: column;
+}
