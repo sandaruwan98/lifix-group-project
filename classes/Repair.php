@@ -24,4 +24,15 @@ class Repair extends Database
         // $q = "UPDATE `repair` SET `status`='$st' WHERE `repair_id`= '$id'";
         // $this->conn->query($q);
     }
+
+    public function getRepairByid($r_id)
+    {
+        $q = "SELECT repair.repair_id, repair.lp_id,repair.status,repair.date  , lamppost.division , lamppost.lattitude,lamppost.longitude
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lpid=repair.lp_id WHERE repair.repair_id='$r_id'";
+
+        $list =   $this->conn->query($q);
+        // echo $list;
+        return $list;
+    }
 }

@@ -39,7 +39,8 @@
 
             while ($row = $list->fetch_assoc()) :
             ?>
-                <div id="<?= $row['repair_id'] ?>" class="repair-item">
+
+                <div id="<?= $row['repair_id'] ?>" class="repair-item" onclick="location.href='<?= "./repairpage.php?id=" . $row['repair_id']  ?>' ;">
 
                     <div class="row1"><span>#<?= $row["lp_id"] ?></span>
                         <div class="address"><?= $row["division"] ?></div><span><?= $row["date"] ?></span>

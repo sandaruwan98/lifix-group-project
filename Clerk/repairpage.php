@@ -1,3 +1,14 @@
+<?php
+if (!isset($_GET["id"]))
+    header('location: ./repairHistory.php');
+
+require __DIR__ . '/../classes/Repair.php';
+$repair = new Repair();
+$id = $_GET["id"];
+$rp = $repair->getRepairByid($id);
+$rp = $rp->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,30 +29,7 @@
 
 <body>
 
-    <!-- <?php include "./components/nav.php" ?> -->
-    <nav class="sidebar">
-        <!-- <h2 class="link-text">MENU</h2> -->
-        <ul>
-            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span> </span>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
-                        class="link-text">Home</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-columns"></i><span
-                        class="link-text">DailyRepairs</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./repairHistory.php"><i class="fas fa-history"></i><span
-                        class="link-text">RepairHistory</span></a></li>
-            <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-file-invoice"></i><span
-                        class="link-text">Purchases</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./newlamp.html"><i class="fas fa-plus-square"></i><span
-                        class="link-text">LampPost</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span
-                        class="link-text">Settings</span></a></li>
-
-        </ul>
-
-    </nav>
-    <script src="../js/slider.js"></script>
+    <?php include "./components/nav.php" ?>
 
 
     <div class="main_content">
@@ -59,7 +47,7 @@
                         <tbody>
                             <tr>
                                 <td>Repair ID</td>
-                                <td>34</td>
+                                <td><?= $rp['repair_id'] ?></td>
                             </tr>
                             <tr>
                                 <td>Status</td>
@@ -67,7 +55,7 @@
                             </tr>
                             <tr>
                                 <td>Date</td>
-                                <td>04/11/2020</td>
+                                <td><?= $rp['date'] ?></td>
                             </tr>
                             <tr>
                                 <td>Is bulb there</td>
@@ -79,11 +67,11 @@
                             </tr>
                             <tr>
                                 <td>Lamppost ID</td>
-                                <td>#1023</td>
+                                <td>#<?= $rp['lp_id'] ?></td>
                             </tr>
                             <tr>
                                 <td>Lamppost Divisoin</td>
-                                <td>Amarasekara Rd, Havlock Town
+                                <td><?= $rp['division'] ?>
                                 </td>
                             </tr>
 
@@ -137,35 +125,16 @@
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [79.861489, 6.885039],
-            zoom: 14
+            center: [<?= $rp['longitude'] . ' , ' . $rp['lattitude']  ?>],
+            zoom: 15
         });
 
-        // var xmlhttp = new XMLHttpRequest();
 
-        // xmlhttp.onreadystatechange = function() {
-        //     if (this.readyState == 4 && this.status == 200) {
-
-        //         mapdata = JSON.parse(this.responseText);
-        //         // console.log(mapdata);
-        //         // add markers to the map
-        //         mapdata.forEach(mk => {
-
-
-        //             var marker = new mapboxgl.Marker({
-        //                     color: "black"
-        //                     // color: "#3FB1CE"
-        //                 })
-        //                 .setLngLat([mk.longitude, mk.lattitude])
-        //                 .addTo(map);
-        //             // markerArr['id' + mk.repair_id] = mk;
-        //             markerArr.set(mk.repair_id, marker);
-        //         });
-
-        //     }
-        // };
-        // xmlhttp.open("GET", "./components/getMapdata.php", true);
-        // xmlhttp.send();
+        var marker = new mapboxgl.Marker({
+                color: "blue"
+            })
+            .setLngLat([<?= $rp['longitude'] . ' , ' . $rp['lattitude']  ?>])
+            .addTo(map);
     </script>
     <script src="app.js"></script>
 </body>
