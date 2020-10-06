@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="./css/clerk.css">
+    <link rel="stylesheet" href="./css/repairpage.css">
+    <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+    <title>Repair</title>
+
+</head>
+
+<body>
+
+    <!-- <?php include "./components/nav.php" ?> -->
+    <nav class="sidebar">
+        <!-- <h2 class="link-text">MENU</h2> -->
+        <ul>
+            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
+                        style="margin-left: 5px;">LiFix</span> </span>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
+                        class="link-text">Home</span> </a></li>
+            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-columns"></i><span
+                        class="link-text">DailyRepairs</span> </a></li>
+            <li class="nav-item"><a class="nav-link" href="./repairHistory.php"><i class="fas fa-history"></i><span
+                        class="link-text">RepairHistory</span></a></li>
+            <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-file-invoice"></i><span
+                        class="link-text">Purchases</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="./newlamp.html"><i class="fas fa-plus-square"></i><span
+                        class="link-text">LampPost</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span
+                        class="link-text">Settings</span></a></li>
+
+        </ul>
+
+    </nav>
+    <script src="../js/slider.js"></script>
+
+
+    <div class="main_content">
+        <header>
+            <h1>Repair - 34</h1>
+        </header>
+        <div class="main">
+
+            <div class="list-section">
+                <div class="details repair-details">
+                    <H2> Repair Details</H2>
+
+                    <table class="content-table">
+
+                        <tbody>
+                            <tr>
+                                <td>Repair ID</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>Completed</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>04/11/2020</td>
+                            </tr>
+                            <tr>
+                                <td>Is bulb there</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Completed by</td>
+                                <td>Technitian</td>
+                            </tr>
+                            <tr>
+                                <td>Lamppost ID</td>
+                                <td>#1023</td>
+                            </tr>
+                            <tr>
+                                <td>Lamppost Divisoin</td>
+                                <td>Amarasekara Rd, Havlock Town
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div class="details complainer-details">
+                    <H2> Complainer Details</H2>
+                    <table class="content-table">
+
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>Jessie Pinkmon</td>
+                            </tr>
+
+                            <tr>
+                                <td>NIC</td>
+                                <td>872173492v</td>
+                            </tr>
+                            <tr>
+                                <td>Phone No</td>
+                                <td>0702346539</td>
+                            </tr>
+
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+
+            <div id="map" class="map-section"></div>
+
+        </div>
+    </div>
+
+    <!-- load map from mapbox api -->
+    <script>
+        let markerArr = new Map()
+
+
+
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [79.861489, 6.885039],
+            zoom: 14
+        });
+
+        // var xmlhttp = new XMLHttpRequest();
+
+        // xmlhttp.onreadystatechange = function() {
+        //     if (this.readyState == 4 && this.status == 200) {
+
+        //         mapdata = JSON.parse(this.responseText);
+        //         // console.log(mapdata);
+        //         // add markers to the map
+        //         mapdata.forEach(mk => {
+
+
+        //             var marker = new mapboxgl.Marker({
+        //                     color: "black"
+        //                     // color: "#3FB1CE"
+        //                 })
+        //                 .setLngLat([mk.longitude, mk.lattitude])
+        //                 .addTo(map);
+        //             // markerArr['id' + mk.repair_id] = mk;
+        //             markerArr.set(mk.repair_id, marker);
+        //         });
+
+        //     }
+        // };
+        // xmlhttp.open("GET", "./components/getMapdata.php", true);
+        // xmlhttp.send();
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
