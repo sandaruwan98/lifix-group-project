@@ -1,7 +1,7 @@
 <?php 
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
-    $name = $nic = $lampId = $phoneNo = $otpCode = "";
+    $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
 
 	if(isset($_POST['submit'])) {
         $name = $_POST['name'];
@@ -9,6 +9,7 @@
         $lampId = $_POST['lampid'];
         $phoneNo = $_POST['phone'];
         $otpCode = $_POST['otp'];
+        $note = $_POST['note'];
 
         if(empty($name) || !preg_match('/^[a-zA-Z\s]+$/', $name)) {
             $errors['name'] = 'Name must be a valid name';
