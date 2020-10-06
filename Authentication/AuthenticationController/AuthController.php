@@ -11,7 +11,7 @@ class AuthController{
         if(preg_match('/\\s+/',$username) || empty($username)){
             return 1;
         }else{
-            return o;
+            return 0;
         }
     }
 
@@ -19,7 +19,7 @@ class AuthController{
         if(preg_match('/\\s+/',$password) || empty($password)){
             return 1;
         }else{
-            return o;
+            return 0;
         }
     }
 

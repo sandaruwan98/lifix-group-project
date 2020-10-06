@@ -3,7 +3,7 @@
     include './AuthenticationController/AuthController.php';
     $a_con=new AuthController();
     // $dat=$_POST['userName'];
-    if($_POST['loginBtn']){
+    if(isset($_POST['loginBtn'])){
         $a_con->loginUser($_POST['userName'],$_POST['password']);
     }
     
