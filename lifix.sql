@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 05:23 PM
+-- Generation Time: Oct 07, 2020 at 02:28 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -25,26 +25,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `complaints`
+-- Table structure for table `complainer`
 --
 
-CREATE TABLE `complaints` (
-  `complaint_id` int(255) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `phoneno` varchar(10) NOT NULL,
-  `nic` varchar(12) NOT NULL,
-  `lp_id` varchar(6) NOT NULL
+CREATE TABLE `complainer` (
+  `complainer_id` int(255) NOT NULL,
+  `NIC` varchar(20) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `phone_no` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `complaints`
+-- Dumping data for table `complainer`
 --
 
-INSERT INTO `complaints` (`complaint_id`, `name`, `phoneno`, `nic`, `lp_id`) VALUES
-(4, 'lakshan sandaruwan', '0701549223', '982171750v', '4563'),
-(5, 'lakshan sandaruwan', '0716610762', '982171750v', '2632'),
-(6, 'jon poal', '0701549225', '982171750v', '5632'),
-(7, 'lkkkkkkkk', '0701549225', 'u09807', '808008');
+INSERT INTO `complainer` (`complainer_id`, `NIC`, `Name`, `phone_no`) VALUES
+(1, '982171750v', 'Lakshan Sandaruwan', '0702347654'),
+(2, '862171670v', 'Mr. Perera', '0714570342');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint`
+--
+
+CREATE TABLE `complaint` (
+  `complaint_id` int(255) NOT NULL,
+  `is_bulb_there` tinyint(1) NOT NULL,
+  `Notes` varchar(500) NOT NULL,
+  `lp_id` int(255) NOT NULL,
+  `repair_id` int(255) NOT NULL,
+  `complainer_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `complaint`
+--
+
+INSERT INTO `complaint` (`complaint_id`, `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`) VALUES
+(1, 1, 'Bla bla bla bla XD', 1001, 2, 1),
+(2, 0, 'Bla bla bla ', 1000, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -53,7 +73,7 @@ INSERT INTO `complaints` (`complaint_id`, `name`, `phoneno`, `nic`, `lp_id`) VAL
 --
 
 CREATE TABLE `lamppost` (
-  `lpid` int(255) NOT NULL,
+  `lp_id` int(255) NOT NULL,
   `division` varchar(40) NOT NULL,
   `lattitude` double NOT NULL,
   `longitude` double NOT NULL
@@ -63,7 +83,7 @@ CREATE TABLE `lamppost` (
 -- Dumping data for table `lamppost`
 --
 
-INSERT INTO `lamppost` (`lpid`, `division`, `lattitude`, `longitude`) VALUES
+INSERT INTO `lamppost` (`lp_id`, `division`, `lattitude`, `longitude`) VALUES
 (1000, 'baddegama', 6.887286, 79.86136),
 (1001, 'Gonaduwa, x Rd ', 6.890779, 79.858037),
 (1002, 'Milagiriya', 6.891551, 79.85477),
@@ -89,28 +109,35 @@ CREATE TABLE `repair` (
 --
 
 INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`) VALUES
-(1, '2020-07-08', 'x', 1000),
-(2, '2020-07-07', 'x', 1001),
-(3, '2020-07-11', 'x', 1002),
+(1, '2020-07-08', 'a', 1000),
+(2, '2020-07-07', 'a', 1001),
+(3, '2020-07-11', 'a', 1002),
 (5, '2020-07-15', 'a', 1003),
 (6, '2020-07-18', 'a', 1004),
-(7, '2020-07-15', 'x', 1005);
+(7, '2020-07-15', 'a', 1005);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `complaints`
+-- Indexes for table `complainer`
 --
-ALTER TABLE `complaints`
-  ADD PRIMARY KEY (`complaint_id`);
+ALTER TABLE `complainer`
+  ADD PRIMARY KEY (`complainer_id`);
+
+--
+-- Indexes for table `complaint`
+--
+ALTER TABLE `complaint`
+  ADD PRIMARY KEY (`complaint_id`),
+  ADD UNIQUE KEY `repair_id` (`repair_id`);
 
 --
 -- Indexes for table `lamppost`
 --
 ALTER TABLE `lamppost`
-  ADD PRIMARY KEY (`lpid`);
+  ADD PRIMARY KEY (`lp_id`);
 
 --
 -- Indexes for table `repair`
@@ -123,10 +150,16 @@ ALTER TABLE `repair`
 --
 
 --
--- AUTO_INCREMENT for table `complaints`
+-- AUTO_INCREMENT for table `complainer`
 --
-ALTER TABLE `complaints`
-  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `complainer`
+  MODIFY `complainer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `complaint`
+--
+ALTER TABLE `complaint`
+  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `repair`
