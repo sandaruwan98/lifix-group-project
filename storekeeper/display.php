@@ -14,9 +14,13 @@
 <th>lamppost Id</th>
 <th>Date</th>
 <th>Bulb</th>
-<th>Switch</th>
+<th>sunbox</th>
 <th>Wires</th>
+<th>Switch</th>
 <th>Holders</th>
+<th>Screw holder</th>
+<th>3 Pin holder</th>
+
 
 </tr>
 <?php
@@ -35,9 +39,12 @@ while($row=mysqli_fetch_assoc($result)){
     echo "<td>".$row['lp_id']."</td>";
     echo "<td>".$row['date']."</td>";
     echo "<td>".$row['bulb']."</td>";
-    echo "<td>".$row['switch']."</td>";
+    echo "<td>".$row['sunbox']."</td>";
     echo "<td>".$row['wires']."</td>";
+    echo "<td>".$row['switch']."</td>";
     echo "<td>".$row['Holder']."</td>";
+    echo "<td>".$row['Screw_holder']."</td>";
+    echo "<td>".$row['3_pin_holder']."</td>";
     echo"</tr>";
 }
 }
