@@ -3,7 +3,7 @@
 
 class Database {
 
- public $conn;
+ protected $conn;
  
  public function __construct()
  {
@@ -19,7 +19,9 @@ class Database {
  
  }
  
-
+ public function getConnn(){
+   return $this->conn;
+ }
  public function __destruct()  {
   $this->conn->close();
  }
