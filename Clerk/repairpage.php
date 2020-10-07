@@ -3,10 +3,14 @@ if (!isset($_GET["id"]))
     header('location: ./repairHistory.php');
 
 require __DIR__ . '/../classes/Repair.php';
+require __DIR__ . '/../classes/Complaint.php';
+
 $repair = new Repair();
-$id = $_GET["id"];
-$rp = $repair->getRepairByid($id);
-$rp = $rp->fetch_assoc();
+$complaint = new Complaint();
+$repair_id = $_GET["id"];
+$rp = $repair->getRepairByid($repair_id);
+$cp = $complaint->getCompliant_by_repair_id($repair_id);
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +38,7 @@ $rp = $rp->fetch_assoc();
 
     <div class="main_content">
         <header>
-            <h1>Repair - 34</h1>
+            <h1>Repair - <?= $rp['repair_id'] ?></h1>
         </header>
         <div class="main">
 
@@ -59,8 +63,13 @@ $rp = $rp->fetch_assoc();
                             </tr>
                             <tr>
                                 <td>Is bulb there</td>
-                                <td>Yes</td>
+                                <td><?= $cp['is_bulb_there'] ?></td>
                             </tr>
+                            <tr>
+                                <td>Notes</td>
+                                <td><?= $cp['Notes'] ?></td>
+                            </tr>
+
                             <tr>
                                 <td>Completed by</td>
                                 <td>Technitian</td>
@@ -88,16 +97,16 @@ $rp = $rp->fetch_assoc();
                         <tbody>
                             <tr>
                                 <td>Name</td>
-                                <td>Jessie Pinkmon</td>
+                                <td><?= $cp['Name'] ?></td>
                             </tr>
 
                             <tr>
                                 <td>NIC</td>
-                                <td>872173492v</td>
+                                <td><?= $cp['NIC'] ?></td>
                             </tr>
                             <tr>
                                 <td>Phone No</td>
-                                <td>0702346539</td>
+                                <td><?= $cp['phone_no'] ?></td>
                             </tr>
 
 
