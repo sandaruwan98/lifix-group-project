@@ -1,5 +1,9 @@
-.main {
+body {
     background-color: #417785;
+
+}
+
+.main {
     display: flex;
     width: 100%;
     padding: 5px;
