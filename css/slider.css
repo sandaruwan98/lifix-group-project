@@ -10,6 +10,7 @@
 
 
 .sidebar {
+  z-index: 5;
   width: 50px;
   height: 100%;
   background: #214b55;
@@ -20,9 +21,10 @@
   transition: all 0.2s;
 }
 
+/* 
 .sidebar:hover {
-  /* width: 200px; */
-}
+  width: 200px;
+} */
 
 .sidebar ul {
   display: flex;
