@@ -20,6 +20,45 @@ header {
     text-align:center;
     margin-top:15px;
 }
+.frow{
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(10, 47, 53, 0.6);
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+    transition: .3s;
+
+}
+.searchbox {
+
+    border-radius: 15px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.616);
+    margin: 30px 40px;
+    display: flex;
+}
+
+
+.searchbox>.search {
+    border: none;
+    width: 85%;
+}
+.searchbox>.btn-search {
+    border-radius: 14px;
+    font-size: larger;
+    padding: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.searchbox>.btn-search:hover {
+
+    background: rgba(255, 255, 255, 0.644);
+
+}
 .ctable{
     display: table;
     font-family: 'Quicksand', sans-serif;
