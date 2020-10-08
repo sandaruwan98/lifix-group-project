@@ -33,11 +33,13 @@
 
 .btn {
     /* width: ; */
-    margin: 10px 0;
+    margin: 30px 30px;
+    color:#FFFFFF;
 }
 
-
-
+.col{
+    color:#FFFFFF;
+}
 
 
 
