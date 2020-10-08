@@ -54,9 +54,9 @@
                        
                         <br><br>
                         <input type="text" placeholder="User Name" class="field-1" name="userName" value="" >
-                        <div style="font-size: 15px; color: red;" id="middle-div"><?php echo $a_con->getUsrTag();?></div>
+                        <div id="middle-div"><?php echo $a_con->getUsrTag();?></div>
                         <input type="password" placeholder="Password" class="field-2" name="password" value="">
-                        <div style="font-size: 15px; color: red;"><?php echo $a_con->getPassTag();?></div>
+                        <div id="last-div"><?php echo $a_con->getPassTag();?></div>
                         <input type="submit" value="login" id="myButton" name="loginBtn">
                     </form>
                  </div> 

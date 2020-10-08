@@ -3,9 +3,9 @@
 include '../classes/Database.php';
 class AuthController extends Database{
     protected $username,$password;
-    protected $usrTag="12";
-    protected $passTag="12";
-    protected $wrongCredentials="12";
+    protected $usrTag="";
+    protected $passTag="";
+    protected $wrongCredentials="";
     protected $statusUser=1;
     protected $starusPass=1;
     public function __construct()
@@ -52,6 +52,7 @@ class AuthController extends Database{
                     header('location:./reset.html');
                 }else{
                     $this->passTag="Pasword field is empty";
+                    // $this->wrongCredentials="Pasword field is empty";
                     // password field is empty
                 }
             }else{
@@ -61,7 +62,9 @@ class AuthController extends Database{
             
 
         }elseif(!$this->statusUser){
+            // $this->wrongCredentials="UserName field is empty";
             $this->usrTag="UserName field is empty";
+            
             // username field is empty
         }else{
             echo "came in to the else part  ".$username. " ".$password;

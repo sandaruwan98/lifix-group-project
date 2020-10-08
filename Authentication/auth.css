@@ -289,19 +289,54 @@ body{
 
 
 #wrong-div {
-    position: relative;
+    position: absolute;
+    top: 25%;
+    margin-left: 30%;
+    margin-right: 20%;
     color: red;
     font-family: Verdana,Arial,Helvetica,sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
 }
 
 #middle-div{
-    font-size: 15px;
+
+    font-size: 12px;
     color: red;
-    position: relative;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    position: absolute;
+    /* top: 150%; */
+    margin-left: 15%;
+    margin-right: 20%;
     text-align: center;
-    top: 30px;
+    top: 42.8%;
+    /* font-size: 15px;
+    color: red;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    position: absolute;
+    top: 150%;
+    margin-left: 30%;
+    margin-right: 20%;
+    text-align: center;
+    top: 43px; */
+}
+
+#last-div{
+
+   
+    position: absolute;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: red;
+    font-size: 12px;
+    top: 60%;
+    text-align: center;
+    margin-left: 15%;
+    /* position: absolute;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: red;
+    font-size: 15px;
+    top: 112px;
+    text-align: center; */
 }
 
 
@@ -332,9 +367,28 @@ body{
         left: 0;
         margin: auto;
     }
+
+    #middle-div{
+        top: 43.5%;
+        margin-left: 10%;
+    }
+    
+    #last-div{
+        top: 61%;
+        margin-left: 10%;
+    }
   }
   
   @media only screen and (max-width: 768px) {
+    #middle-div{
+
+        margin-left: 2%;
+    }
+    
+    #last-div{
+        margin-left: 2%;
+    }
+    
     #fist_div{
         background-image: url("");
     }
@@ -394,6 +448,15 @@ body{
     
     #par_id{
         font-size: 120%;
+    }
+
+    #middle-div{
+
+        margin-left: 2%;
+    }
+    
+    #last-div{
+        margin-left: 2%;
     }
     
   }
