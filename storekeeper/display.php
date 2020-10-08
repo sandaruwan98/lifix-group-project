@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../Clerk/css/clerk.css">
-    <link rel="stylesheet" href="../clerk/css/repairHistory.css">
-    <link rel="stylesheet" href="./display.css">
+    <link rel="stylesheet" href="./store.css">
+    <link rel="stylesheet" href="../css/display.css">
+    <link rel="stylesheet" href="./clerk/css/repairHistory.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Display Records</title>
 
@@ -39,10 +39,10 @@
         </ul>
 
 </nav>     
-<div class="feild-row">
-     <h2>Issued Items History</h2>
+<div class="frow">
+     <h1>Issued Items History</h1>
   </div>
-<table class="content-table">
+<table class="ctable">
 <thead>                 
 <div id="" class="repair-item">
      <div class="row">
