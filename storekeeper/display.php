@@ -42,6 +42,12 @@
 <div class="frow">
      <h1>Issued Items History</h1>
   </div>
+  <div class="container1">
+            <!-- searchbox -->
+            <div class="searchbox">
+                <input id="search" type="text" placeholder="Search..." name="search" class="search">
+                <button class="btn-search"><i class="fas fa-search"></i></button>
+            </div>
 <table class="ctable">
 <thead>                 
 <div id="" class="repair-item">
