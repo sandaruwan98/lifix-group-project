@@ -20,7 +20,11 @@
 
 </tr>
 <?php
-include "../connection.php";
+//include "../connection.php";
+$conn = new mysqli("localhost", "root", "", "lifix","3306");
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 $sql="select *from issue_item";
 $result=mysqli_query($conn,$sql);
 $resultcheck=mysqli_num_rows($result);
@@ -41,4 +45,3 @@ while($row=mysqli_fetch_assoc($result)){
 </table>
 </body>
 </html>
-

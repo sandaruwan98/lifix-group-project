@@ -1,0 +1,41 @@
+.map-section {
+
+    flex: 0.4;
+    margin: 0 15px;
+    border-radius: 10px;
+}
+
+.list-section {
+    display: flex;
+    flex: 0.6;
+    /* background-color: rgba(0, 0, 0, 0.438); */
+    /* border-radius: 5px; */
+    position: relative;
+    flex-flow: column;
+    margin: 0 0 0 15px;
+}
+
+.details {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.281);
+    flex: .5;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.details H2 {
+    margin: auto;
+    width: 100%;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.335);
+}
+
+.repair-details {
+    margin-bottom: 7.5px;
+}
+
+.complainer-details {
+    margin-top: 7.5px;
+}

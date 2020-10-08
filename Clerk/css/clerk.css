@@ -10,7 +10,7 @@ body {
 
 }
 
-header {
+.main_content header {
     background: rgb(0, 0, 0);
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.40379901960784315) 0%, rgba(0, 0, 0, 0.5746673669467788) 48%, rgba(0, 0, 0, 0.3981967787114846) 100%);
     margin-bottom: 10px;

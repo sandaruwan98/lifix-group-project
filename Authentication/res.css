@@ -190,7 +190,7 @@ body{
 
 .field-1{
     position: absolute;
-    top: 33%;
+    top: 25%;
     min-width: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
@@ -203,10 +203,24 @@ body{
     margin-right: 20%;
     /* animation-delay: 2s; */
 }
+.field-3{
+    position: absolute;
+    top: 50%;
+    min-width: 250px;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 0.5rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+    transition: 2s;
+    margin-left: 15%;
+    margin-right: 20%;
+}
 
 .field-2{
     position: absolute;
-    top: 50%;
+    top: 37.5%;
     min-width: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
@@ -252,6 +266,10 @@ body{
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
+.field-3:hover{
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
 #myButton {
     position: absolute;
     top: 75%;
@@ -271,45 +289,13 @@ body{
     right: 24.7%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#wrong-div {
+#wrong_div{
     position: relative;
-    color: red;
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 15px;
-    text-align: center;
-}
-
-#middle-div{
-    font-size: 15px;
     color: red;
-    position: relative;
     text-align: center;
-    top: 30px;
 }
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 1024px) {
     #par_id{
@@ -327,12 +313,19 @@ body{
         margin-left: 10%;
     }
 
+    .field-3{
+        min-width: 100px;
+        margin-left: 10%;
+    }
+
     #myButton{
         right: 0;
         left: 0;
         margin: auto;
     }
   }
+
+
   
   @media only screen and (max-width: 768px) {
     #fist_div{
@@ -359,6 +352,15 @@ body{
     }
     
     .field-2{
+        min-width: 200px;
+        max-width: 300px;
+        width: auto;
+        left: 0;
+        right: 0;
+        margin: 5px;	
+    }
+
+    .field-3{
         min-width: 200px;
         max-width: 300px;
         width: auto;

@@ -1,3 +1,18 @@
+
+<?php
+    include './AuthenticationController/AuthController.php';
+    $a_con=new AuthController();
+
+    $pass=$a_con->getPassTag();
+    $usr=$a_con->getUsrTag();
+    $wrn=$a_con->getWrongCredentials();
+
+    if(isset($_POST['loginBtn'])){
+        $a_con->loginUser($_POST['userName'],$_POST['password']);
+    }
+    
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +31,8 @@
     <title>Welcome to lifix</title>
 </head>
 <body>
+
+    
     <div id="fist_div">
         <div id="common-div">
             <div id="outer-left">
@@ -31,13 +48,16 @@
             <div id="right-view">
                 
                 <div id="form-div"> 
-                    <form action="">
+                    <form action="index.php" method="post">
                         <h1 id="login-header">Login</h1>
+                        <div id="wrong-div"><?php echo $a_con->getWrongCredentials();?></div>
                        
                         <br><br>
-                        <input type="text" placeholder="User Name" class="field-1" >
-                        <input type="password" placeholder="Password" class="field-2">
-                        <input type="button" value="login" id="myButton">
+                        <input type="text" placeholder="User Name" class="field-1" name="userName" value="" >
+                        <div style="font-size: 15px; color: red;" id="middle-div"><?php echo $a_con->getUsrTag();?></div>
+                        <input type="password" placeholder="Password" class="field-2" name="password" value="">
+                        <div style="font-size: 15px; color: red;"><?php echo $a_con->getPassTag();?></div>
+                        <input type="submit" value="login" id="myButton" name="loginBtn">
                     </form>
                  </div> 
                  <div id="right-inner">

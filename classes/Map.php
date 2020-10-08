@@ -8,8 +8,8 @@ class Map extends Database
 
         $q = "SELECT repair.repair_id, lamppost.lattitude, lamppost.longitude 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lpid=repair.lp_id WHERE repair.status!='c'";
-        
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status!='c'";
+
         $result =  $this->conn->query($q);
         $arr = array();
         if ($result->num_rows > 0) {
