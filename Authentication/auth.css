@@ -271,6 +271,46 @@ body{
     right: 24.7%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#wrong-div {
+    position: relative;
+    color: red;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    text-align: center;
+}
+
+#middle-div{
+    font-size: 15px;
+    color: red;
+    position: relative;
+    text-align: center;
+    top: 30px;
+}
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 1024px) {
     #par_id{
         left: 5%;

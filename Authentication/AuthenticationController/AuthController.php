@@ -1,11 +1,17 @@
 <?php
 
-include '../databaseconn.php';
+include '../classes/Database.php';
 class AuthController extends Database{
-    private $username,$password;
+    protected $username,$password;
+    protected $usrTag="12";
+    protected $passTag="12";
+    protected $wrongCredentials="12";
+    protected $statusUser=1;
+    protected $starusPass=1;
     public function __construct()
     {
         parent::__construct();   
+        
     }
 
     function validateUser($username){
@@ -25,26 +31,37 @@ class AuthController extends Database{
     }
 
     function loginUser($username,$password){
-        $statusUser=$this->validateUser($username);
-        $starusPass=$this->validatePass($password);
+        $this->statusUser=$this->validateUser($username);
+        $this->starusPass=$this->validatePass($password);
 
-        if(!$starusPass && !$statusUser){
+        if(!$this->starusPass && !$this->statusUser){
+            $this->passTag="Pasword field is empty";
+            $this->usrTag="user name field is empty";
             // both fiels are empty
-            header('location:../Clerk/index.php');
+            // header('location:../Clerk/index.php');
         }
-        elseif(!$starusPass){
-            $query="SELECT * FROM `user` WHERE `username`='.$username.'";
+        elseif(!$this->starusPass){
+            $query="SELECT * FROM `user` WHERE `username`='$username'";
             $result=$this->conn->query($query);
             $row=$result->fetch_assoc();
-            if($row['statusFlag']==0){// 0 is reset
-                header('location:./reset.html');
-                session_start();
-                $_SESSION['user']=$username;
+            // $val=$row['statusFlag'];
+            if($result->num_rows==1){
+                if($row['statusFlag']==0){// 0 is reset
+                    session_start();
+                    $_SESSION['user']=$username;
+                    header('location:./reset.html');
+                }else{
+                    $this->passTag="Pasword field is empty";
+                    // password field is empty
+                }
             }else{
-                // password field is empty
+                $this->wrongCredentials="Wrong Credentials";
             }
+            
+            
 
-        }elseif(!$statusUser){
+        }elseif(!$this->statusUser){
+            $this->usrTag="UserName field is empty";
             // username field is empty
         }else{
             echo "came in to the else part  ".$username. " ".$password;
@@ -72,13 +89,27 @@ class AuthController extends Database{
                     $_SESSION['user']=$username;
                 }else{
                     // Account has banned
+                    $this->wrongCredentials="You account has suspended";
                 }
             }else{
+                $this->wrongCredentials="You have entered wrong credetials";
                 //alert "wrong credentials"
             }
 
         }
     } 
+
+    public function getWrongCredentials(){
+        return $this->wrongCredentials;
+    }
+    public function getUsrTag(){
+        return $this->usrTag;
+    }
+    public function getPassTag(){
+        return $this->passTag;
+    }
+        
+    
 
 }
 
