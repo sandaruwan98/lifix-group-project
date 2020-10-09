@@ -1,3 +1,11 @@
+<?php
+include './AuthenticationController/ResetController.php';
+$con=new RestController();
+
+if(isset($_POST['myButton'])){
+    $con->resetUser($_SESSION['username'],$_POST['pass'],$_POST['pass_com']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,18 +39,19 @@
             <div id="right-view">
                 
                 <div id="form-div"> 
-                    <form action="">
+                    <form action="./reset.php" method="post">
                         <h1 id="login-header">Reset</h1>
                         <div id="di-1"><p></p></div>
                        
                         <br><br>
-                        <input type="text" placeholder="User Name" class="field-1" >
-                        
-                        <input type="password" placeholder="Password" class="field-2">
+                        <input type="text" placeholder="User Name" class="field-1" value="<?php echo $con->getSessionName();?>"  name="username">
+                       
+                         
+                        <input type="password" placeholder="Password" class="field-2" name="pass">
                         <div id="div-2"></div>
-                        <input type="password" placeholder="Confirm Password" class="field-3">
+                        <input type="password" placeholder="Confirm Password" class="field-3" name="pass_com">
                         <div id="div-3"></div>
-                        <input type="button" value="login" id="myButton">
+                        <input type="button" value="reset" id="myButton" name="myButton">
                     </form>
                  </div> 
                  <div id="right-inner">

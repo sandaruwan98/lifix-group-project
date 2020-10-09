@@ -49,9 +49,12 @@ class AuthController extends Database{
                 if($row['statusFlag']==0){// 0 is reset
                     session_start();
                     $_SESSION['user']=$username;
-                    header('location:./reset.html');
+                    $_SESSION['id']=$row['userId'];
+                    // $_SESSION['id']=23;
+                    $this->__destruct();
+                    header('location:./reset.php');
                 }else{
-                    $this->passTag="Pasword field is empty";
+                    $this->passTag="Pasword field is empty....";
                     // $this->wrongCredentials="Pasword field is empty";
                     // password field is empty
                 }
@@ -79,6 +82,8 @@ class AuthController extends Database{
                 if($row1['statusFlag']==1){
                     session_start();
                     $_SESSION['user']=$username;
+                    $_SESSION['id']=$row1['userId'];
+                    $this->__destruct();
                     switch($row1['occuFlag']){
                         case 1: header('location:../Clerk/index.php');break;
                         // case 2:header('location:./Clerk.html');break;
@@ -87,9 +92,11 @@ class AuthController extends Database{
                         default: session_destroy();
                     }
                 }else if($row1['statusFlag']==0){
-                    header('location:./reset.html');
                     session_start();
                     $_SESSION['user']=$username;
+                    $this->__destruct();
+                    header('location:./reset.php');
+                   
                 }else{
                     // Account has banned
                     $this->wrongCredentials="You account has suspended";
