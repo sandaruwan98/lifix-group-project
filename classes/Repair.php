@@ -37,10 +37,25 @@ class Repair extends Database
         return $list->fetch_assoc();
     }
 
-    public function AddUsedReturnItem($r_id,$item_id,$quantity){
 
+    public function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){
+        $q = "INSERT INTO `repair_inventory_asc`( `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES 
+        ('$r_id','$item_id' , '$quantity', '$returnflag')";
+
+        $this->conn->query($q);
     }
-    public function CompleteRepair($r_id){
 
+
+    public function CompleteRepair($r_id,$used_items,$return_items){
+        // add ussed items to database
+        foreach ($used_items as $item){
+            $this->AddUsedReturnItem($r_id, $item[0],$item[1],0);
+        }
+        // add return items to database
+        foreach ($return_items as $item){
+            $this->AddUsedReturnItem($r_id, $item[0],$item[1],1);
+        }
+        // chansge repair status as completed
+        $this->changeStatus($r_id,'c');
     }
 }

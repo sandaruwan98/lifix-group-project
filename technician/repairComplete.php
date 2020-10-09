@@ -5,12 +5,45 @@ if (!isset($_GET["id"]))
 $r_id = $_GET["id"];
 
 
-// require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/Repair.php';
 require_once __DIR__ . '/../classes/Inventory.php';
 
+
+//  to laod repair items
 $inv = new Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
+
+if (isset($_POST["complete"]) ) {
+    $used_items = array();
+    $return_items = array();
+    foreach ($item_names as $item){
+        //for collect used items quantities
+        $item_name = $item[0]."_u";
+        $quantity = $_POST["$item_name"];
+
+        if ($quantity!=0 && $quantity!=null) {
+
+            $used_item = array($item[0], $quantity);
+            $used_items[] = $used_item;
+        }
+        
+        //for collect return items quantities
+        $item_name = $item[0]."_r";
+        $quantity = $_POST["$item_name"];
+
+        if ($quantity!=0 && $quantity!=null) {
+
+            $return_item = array($item[0], $quantity);
+            $return_items[] = $return_item;
+        }
+    }
+
+    if (!empty($used_items)) {
+        $repair = new Repair();
+        $repair->CompleteRepair($r_id,$used_items,$return_items);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +54,7 @@ $item_names= $item_names->fetch_all();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
+
     <link rel="stylesheet" href="./css/tech.css">
     <link rel="stylesheet" href="./css/request.css">
     <link rel="stylesheet" href="./css/complete.css">
@@ -56,7 +90,7 @@ $item_names= $item_names->fetch_all();
         <div class="con">
 
 
-            <form>
+            <form method="POST" action="repairComplete.php?id=<?= $r_id ?>">
                 <h2>Complete Repair</h2>
                 <?php 
                 foreach ($item_names as $item):
@@ -68,7 +102,7 @@ $item_names= $item_names->fetch_all();
                 </div>
                 <?php endforeach ?>
 
-                <button type="submit" id="" class="btn">COMPLETE REPAIR</button>
+                <button type="submit" id="" name="complete" class="btn">COMPLETE REPAIR</button>
 
 
             </form>
