@@ -190,7 +190,7 @@ body{
 
 .field-1{
     position: absolute;
-    top: 25%;
+    top: 30%;
     min-width: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
@@ -205,7 +205,7 @@ body{
 }
 .field-3{
     position: absolute;
-    top: 50%;
+    top: 65%;
     min-width: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
@@ -220,7 +220,7 @@ body{
 
 .field-2{
     position: absolute;
-    top: 37.5%;
+    top: 47.5%;
     min-width: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
@@ -272,7 +272,7 @@ body{
 
 #myButton {
     position: absolute;
-    top: 75%;
+    top: 85.5%;
     right: 25%;
     width: 100px;
     height: 35px;
@@ -285,7 +285,7 @@ body{
 }
 #myButton:active {
 	/* position:relative; */
-    top:75.7%;
+    top:85.7%;
     right: 24.7%;
 }
 
