@@ -13,9 +13,9 @@ class Inventory extends Database
     }
 
    
-    public function getAllItems()
+    public function getItemNames()
     {
-        $q = "SELECT * FROM inventory";
+        $q = "SELECT Item_id,name FROM inventory";
 
         $list =   $this->conn->query($q);
         return $list;

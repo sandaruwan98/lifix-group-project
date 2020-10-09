@@ -1,3 +1,12 @@
+<?php 
+
+// require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/Inventory.php';
+
+$inv = new Inventory();
+$item_names = $inv->getItemNames();
+$item_names= $item_names->fetch_all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,11 +32,11 @@
                         class="link-text">Home</span> </a></li>
             <li class="nav-item"><a class="nav-link " href="./map.html"><i class="fas fa-map"></i><span
                         class="link-text">ViewMap</span> </a></li>
-            <li class="nav-item"><a class="nav-link " href="./request.html"><i
+            <li class="nav-item"><a class="nav-link " href="./request.php"><i
                         class="fas fa-plus-square"></i><span class="link-text ">Request</span></a></li>
             <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-exclamation-circle"></i><span
                         class="link-text">EmgRepair</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./lamppost.html"><i class="fas fa-shower"></i><span
+            <li class="nav-item"><a class="nav-link" href="./lamppost.php"><i class="fas fa-shower"></i><span
                         class="link-text">Lamppost</span></a></li>
 
         </ul>
@@ -49,41 +58,15 @@
 
                 </div>
 
-                <div class="collapsible">Bulbs</div>
+                <?php 
+                foreach ($item_names as $item):
+                 ?>
+                <div class="collapsible"><?= $item[1] ?></div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="<?= $item[0] ?>_u" id="">
+                    <input class="field" type="text" placeholder="Enter returned Amount" name="<?= $item[0] ?>_r" id="">
                 </div>
-                <div class="collapsible">Sunboxes</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
-                <div class="collapsible">Wires</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
-                <div class="collapsible">Switches</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
-                <div class="collapsible">Holderes</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
-                <div class="collapsible">Screw holder</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
-                <div class="collapsible">3 Pin holder</div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
-                </div>
+                <?php endforeach ?>
 
                 <button type="submit" id="" class="btn">ADD REPAIR</button>
 

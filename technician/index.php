@@ -30,9 +30,9 @@ $list_assign = $repair->getRepairs('x');
                         class="link-text">Home</span> </a></li>
             <li class="nav-item"><a class="nav-link " href="./map.html"><i class="fas fa-map"></i><span
                         class="link-text">ViewMap</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./request.html"><i class="fas fa-plus-square"></i><span
+            <li class="nav-item"><a class="nav-link" href="./request.php"><i class="fas fa-plus-square"></i><span
                         class="link-text">Request</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./EmgRepair.html"><i class="fas fa-exclamation-circle"></i><span
+            <li class="nav-item"><a class="nav-link" href="./EmgRepair.php"><i class="fas fa-exclamation-circle"></i><span
                         class="link-text">EmgRepair</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shower"></i><span
                         class="link-text">Lamppost</span></a></li>

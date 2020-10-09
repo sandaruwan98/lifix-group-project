@@ -37,7 +37,10 @@ class Repair extends Database
         return $list->fetch_assoc();
     }
 
+    public function AddUsedReturnItem($r_id,$item_id,$quantity){
+
+    }
     public function CompleteRepair($r_id){
-        
+
     }
 }
