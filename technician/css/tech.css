@@ -1,0 +1,69 @@
+body {
+    background-color: #417785;
+
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    padding-left: 55px;
+    height: 100vh;
+    flex-direction: row;
+}
+
+.list {
+    width: 100%;
+
+}
+
+.list-item {
+    background-color: aliceblue;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.id {
+    background-color: #12bfeb;
+    padding: 2px;
+    border-radius: 5px;
+
+}
+
+.address {
+    font-size: .8rem;
+
+}
+
+.btn {
+    width: auto;
+    height: 100%;
+    padding: 0.2rem .4rem;
+    background-color: #12bfeb;
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}

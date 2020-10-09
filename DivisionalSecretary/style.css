@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #417785;
+}
+
+.container {
+  margin-left: 50px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "card1 card2 card3";
+  grid-column-gap: 10px;
+  padding: 10px;
+}
+
+.column1 {
+  grid-area: card1;
+  
+}
+
+.column2 {
+  grid-area: card2;
+}
+
+.column3 {
+  grid-area: card3;
+}
+
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .row {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: 
+      "card1"
+      "card2"
+      "card3";
+      grid-row-gap: 10px;
+      padding: 10px;
+    }
+
+    
+    .column1 {
+      grid-area: card1;
+      width: 100%;
+    }
+
+  }
