@@ -3,7 +3,6 @@ const sidebar = document.querySelector('.sidebar');
 const linkText = document.querySelectorAll('.link-text');
 var is_open = false;
 logoBtn.addEventListener('click', () => {
-
     // console.log(logoBtn);
     if (is_open) {
         sidebar.style.width = '50px'

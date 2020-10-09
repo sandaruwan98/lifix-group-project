@@ -33,19 +33,27 @@ body {
   grid-area: card3;
 }
 
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    text-align: center;
-    background-color: #f1f1f1;
-  }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
   
+
+
   /* Responsive columns - one column layout (vertical) on small screens */
   @media screen and (max-width: 600px) {
+
+    .card {
+      display: block;
+    }
+
     .row {
       display: grid;
       grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       grid-template-areas: 
       "card1"
       "card2"
