@@ -8,3 +8,14 @@
     margin: 2.5px 0;
     font-size: .8rem;
 }
+
+
+/* for emgrepair */
+
+.feild-row label{
+    margin-bottom: 5px;
+}
+
+.feild-row .field{
+    margin-bottom: 10px;
+}

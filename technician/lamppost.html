@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/tech.css">
     <link rel="stylesheet" href="./css/request.css">
+    <link rel="stylesheet" href="./css/complete.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
-    <title>Add Request</title>
+    <title>Add Lamp Post</title>
 </head>
 
 <body>
@@ -22,11 +23,11 @@
                         class="link-text">Home</span> </a></li>
             <li class="nav-item"><a class="nav-link " href="./map.html"><i class="fas fa-map"></i><span
                         class="link-text">ViewMap</span> </a></li>
-            <li class="nav-item"><a class="nav-link active" href="./request.html"><i
+            <li class="nav-item"><a class="nav-link " href="./request.html"><i
                         class="fas fa-plus-square"></i><span class="link-text ">Request</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./EmgRepair.html"><i class="fas fa-exclamation-circle"></i><span
+            <li class="nav-item"><a class="nav-link " href="#"><i class="fas fa-exclamation-circle"></i><span
                         class="link-text">EmgRepair</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shower"></i><span
+            <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-shower"></i><span
                         class="link-text">Lamppost</span></a></li>
 
         </ul>
@@ -41,38 +42,60 @@
 
 
             <form>
-                <h2>Add Item Request</h2>
+                <h2>Add Lamp Post</h2>
+                <div class="feild-row">
+                    <label for="lp_id">Lamp Post ID</label>
+                    <input class="field" type="text" placeholder="#xxxx" name="bulb" id="">
 
+                </div>
+                <div class="feild-row">
+                    <label for="lp_id">Road</label>
+                    <input class="field" type="text" placeholder="" name="bulb" id="">
+
+                </div>
+                <div class="feild-row">
+                    <label for="lp_id">Division</label>
+                    <input class="field" type="text" placeholder="" name="bulb" id="">
+
+                </div>
+                <!-- <div class="feild-row"> -->
+                    <label for="is_new">Is it new : </label>
+                    <input type="checkbox" name="is_new" id="newcheck" onclick="toggleCollapse()">
+                <!-- </div> -->
+              
+
+                <!-- collapse -->
+                    <div class="collapse" style="display: none;margin-top: 5px;">
                 <div class="collapsible">Bulbs</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Sunboxes</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Wires</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Switches</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Holderes</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Screw holder</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">3 Pin holder</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
                 </div>
-
-                <button type="submit" id="" class="btn">ADD REQUEST</button>
+            </div>
+                <button type="submit" id="" class="btn">ADD REPAIR</button>
 
 
             </form>
@@ -81,6 +104,7 @@
     </div>
 
     <script>
+        //for collapse
         var coll = document.getElementsByClassName("collapsible");
         var i;
 
@@ -91,9 +115,23 @@
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
                 } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.maxHeight = "50px";
                 }
             });
+        }
+
+
+        //for checkbox
+        function toggleCollapse() {
+       
+            var checkBox = document.getElementById("newcheck");
+            var collapse = document.querySelector('.collapse');
+
+            if (checkBox.checked == true){
+                collapse.style.display = "block";
+            } else {
+                collapse.style.display = "none";
+            }
         }
     </script>
 </body>
