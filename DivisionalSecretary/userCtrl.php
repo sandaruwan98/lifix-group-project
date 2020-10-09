@@ -11,15 +11,7 @@
 </head>
 <body>
     
-<nav class="sidebar">
-    <!-- <h2 class="link-text">MENU</h2> -->
-    <ul>
-        <li class="nav-logo"><span class="nav-link" href="#"><i class="fas fa-lightbulb"></i><span class="link-text" style="margin-left: 5px;">LiFix</span> </span>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="./index.html"><i class="fas fa-file-invoice"></i><span class="link-text">Report</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span class="link-text">User Control</span></a></li>
-    </ul>
-</nav>
+<?php include "./nav.html"?>
 
 <div class="container">
     <h1 style="color:white; text-align: center;">User Control</h1>
@@ -88,7 +80,7 @@
     </div>
 </div>
 
-<script src="../js/slider.js"></script>
+
 <script src="ds.js"></script>
 </body>
 </html>
