@@ -1,0 +1,32 @@
+.container { 
+    justify-content: start;
+  }
+
+.range {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    justify-content: center;
+}
+
+.field {
+    width: 300px;
+    margin: 20px;
+    background-color: rgb(230, 230, 230);
+}
+
+p {
+    align-self: center;
+    font-size: 30px;
+    color: azure;
+}
+
+.btn{
+    width: 15%;
+    height: 45px;
+    align-self: center;
+}
+
+h1 { 
+    margin-top: 20px;
+  }
