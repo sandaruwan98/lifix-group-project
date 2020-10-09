@@ -1,3 +1,18 @@
+<?php 
+if (!isset($_GET["id"])) 
+    header('location: ./index.php');
+
+$r_id = $_GET["id"];
+
+
+// require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/Inventory.php';
+
+$inv = new Inventory();
+$item_list = $inv->getAllItems();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +34,7 @@
         <ul>
             <li class="nav-logo"><span class="nav-link" href="#"><i class="fas fa-lightbulb"></i><span class="link-text"
                         style="margin-left: 5px;">LiFix</span></span></li>
-            <li class="nav-item"><a class="nav-link " href="./index.html"><i class="fas fa-home"></i><span
+            <li class="nav-item"><a class="nav-link " href="./index.php"><i class="fas fa-home"></i><span
                         class="link-text">Home</span> </a></li>
             <li class="nav-item"><a class="nav-link " href="./map.html"><i class="fas fa-map"></i><span
                         class="link-text">ViewMap</span> </a></li>
@@ -46,27 +61,27 @@
 
                 <div class="collapsible">Bulbs</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb_u" id="">
+                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb_r" id="">
                 </div>
                 <div class="collapsible">Sunboxes</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="sunbox_u" id="">
+                    <input class="field" type="text" placeholder="Enter returned Amount" name="sunbox_r" id="">
                 </div>
                 <div class="collapsible">Wires</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="wire_u" id="">
+                    <input class="field" type="text" placeholder="Enter returned Amount" name="wire_r" id="">
                 </div>
                 <div class="collapsible">Switches</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="switch_u" id="">
+                    <input class="field" type="text" placeholder="Enter returned Amount" name="switch_r" id="">
                 </div>
                 <div class="collapsible">Holderes</div>
                 <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="bulb" id="">
+                    <input class="field" type="text" placeholder="Enter used Amount" name="holder" id="">
                     <input class="field" type="text" placeholder="Enter returned Amount" name="bulb" id="">
                 </div>
                 <div class="collapsible">Screw holder</div>

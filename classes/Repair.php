@@ -36,4 +36,8 @@ class Repair extends Database
         // echo $list;
         return $list->fetch_assoc();
     }
+
+    public function CompleteRepair($r_id){
+        
+    }
 }

@@ -615,3 +615,13 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+INSERT INTO `inventory`( `name`, `total`) VALUES 
+('bulb',100),
+('sunbox',50),
+('wire',100),
+('switch',30),
+('holder',50),
+('screw holder',30),
+('3pin holder',30)
