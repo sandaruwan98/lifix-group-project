@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="style.css">
+    
     
 </head>
 <body>
@@ -14,11 +15,11 @@
 <?php include "./nav.html"?>
 
 <div class="container">
-    <h1 style="color:white; text-align: center;">User Control</h1>
+    <h1>User Control</h1>
     <div class="row">
         <div class="column1">
             <div class="card">
-                <h2>Create New User Account</h2>
+                <h2>New User</h2>
                     <form action="">
 
                         <select name="userroll" id="userroll" class="field" required>
@@ -34,7 +35,7 @@
 
                         <input type="password" name="password2" id="password2" class="field" placeholder="Re-enter the Password" required>
 
-                        <button name="submit" class="btn">CREATE</button>
+                        <button name="submit" class="btn b0">CREATE</button>
 
                     </form>
             </div>
@@ -55,14 +56,14 @@
 
                     <input type="password" name="password2" id="password2" class="field" placeholder="Re-enter the Password" required>
 
-                    <button name="submit" class="btn">RESET</button>
+                    <button name="submit" class="btn b1">RESET</button>
 
                 </form>
             </div>
         </div>
         <div class="column3">
             <div class="card">
-                <h2>Revoke User Access</h2>
+                <h2>Revoke Access</h2>
                 <form action="">
 
                     <select name="useracc" id="useracc" class="field" required>
@@ -72,7 +73,7 @@
                         <option value="Technician">Technician</option> -->
                     </select>
 
-                    <button name="submit" class="btn">REVOKE</button>
+                    <button name="submit" class="btn b2">REVOKE</button>
 
                 </form>
             </div>
