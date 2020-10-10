@@ -4,6 +4,7 @@
     padding: 1em;
     font-size: small;
     width: 100%;
+    height: fit-content;
 }
 
 .collapsible {
