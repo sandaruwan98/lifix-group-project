@@ -4,6 +4,7 @@
 #### avilable -> a
 #### assigned -> x
 #### suggested -> s
+#### emergency repair -> e
 
 
 
