@@ -1,3 +1,7 @@
+<?php 
+include "UserCtrlDb.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
         <div class="column1">
             <div class="card">
                 <h2>New User</h2>
-                    <form action="">
+                    <form action="UserCtrl.php" method="POST">
 
                         <select name="userroll" id="userroll" class="field" required>
                             <option value="" disabled selected>Select the user roll</option>
@@ -34,6 +38,7 @@
                         <input type="password" name="password" id="password" class="field" placeholder="Create a Password" required>
 
                         <input type="password" name="password2" id="password2" class="field" placeholder="Re-enter the Password" required>
+                        <p style="color: red;"><?php echo htmlspecialchars($pwd2); ?></p>
 
                         <button name="submit" class="btn b0">CREATE</button>
 
@@ -43,7 +48,7 @@
         <div class="column2">
             <div class="card">
                 <h2>Password Reset</h2>
-                <form action="">
+                <form action="userCtrl.php" method="POST">
 
                     <select name="useracc" id="useracc" class="field" required>
                         <option value="" disabled selected>Select the user Account</option>
@@ -64,7 +69,7 @@
         <div class="column3">
             <div class="card">
                 <h2>Revoke Access</h2>
-                <form action="">
+                <form action="userCtrl.php" method="POST">
 
                     <select name="useracc" id="useracc" class="field" required>
                         <option value="" disabled selected>Select the user Account</option>

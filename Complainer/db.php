@@ -46,8 +46,9 @@
             $nic = $_POST['nic'];
             $lp_id = $_POST['lampid'];
             $phoneno = $_POST['phone'];
+            $note = $_POST['note'];
     
-            $query = "INSERT INTO complaints( name, phoneno, nic, lp_id) VALUES ( '$name','$phoneno','$nic','$lp_id' )";
+            $query = "INSERT INTO complainer( NIC, Name, phone_no, notes, lp_id) VALUES ( '$nic','$name','$phoneno', '$note', '$lp_id' )";
 
             if ($conn->query($query) === TRUE) {
                 header("location: index.php");
