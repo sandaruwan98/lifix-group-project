@@ -13,7 +13,12 @@
 ####  returned -> 1
 
 
-## Itemrequest status
+## Item request status
 #### completed -> c
 #### open -> o
 #### denied -> d
+
+
+## When Revoking access, 
+#### access revoked -> 1
+#### access not revoked -> 0  (when creating a new account, this set as default value)
