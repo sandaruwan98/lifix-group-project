@@ -1,11 +1,37 @@
 <?php 
 
-// require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/ItemRequest.php';
 require_once __DIR__ . '/../classes/Inventory.php';
 
 $inv = new Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
+
+
+
+// create new requst when button pressed
+if (isset($_POST["addrequest"]) ) {
+    $request_items = array(); // item eke id eka ekka quantity eka me array ekata dagannawa
+
+    foreach ($item_names as $item){
+        //for collect used items quantities
+        $item_name = $item[0]."_u";
+        $quantity = $_POST["$item_name"];
+
+        if ($quantity!=0 && $quantity!=null) {
+
+            $request_item = array($item[0], $quantity);
+            $request_items[] = $request_item;
+        }
+        
+    }
+
+    if (!empty($request_items)) {
+        $itemrequest = new ItemRequest();
+        // danata created_user_id eka 1 authentication nathi nisa
+        $itemrequest->CreateItemRequest(1,$request_items );
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +76,7 @@ $item_names= $item_names->fetch_all();
         <div class="con">
 
 
-            <form>
+            <form method="POST" action="request.php">
                 <h2>Add Item Request</h2>
 
 
@@ -66,7 +92,7 @@ $item_names= $item_names->fetch_all();
 
                
 
-                <button type="submit" id="" class="btn">ADD REQUEST</button>
+                <button type="submit" name="addrequest" class="btn">ADD REQUEST</button>
 
 
             </form>

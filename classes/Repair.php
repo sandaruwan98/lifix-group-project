@@ -4,6 +4,20 @@ require_once "Database.php";
 class Repair extends Database
 {
 
+    
+    public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
+    {
+        $date = date("yy-m-d");
+
+        $q = "INSERT INTO `repair`(`date`, `status`, `lp_id`, `technician_id`, `clerk_id`) VALUES 
+        ('$date', '$status','$lp_id', '$technician_id' , '$clerk_id' )";
+        
+        $this->conn->query($q);
+        return $this->conn->insert_id;
+    }
+    
+
+
     public function getRepairs($status)
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
@@ -20,12 +34,6 @@ class Repair extends Database
         $this->conn->query($q);
     }
 
-    public function createRepair($name, $st)
-    {
-        // $q = "UPDATE `repair` SET `status`='$st' WHERE `repair_id`= '$id'";
-        // $this->conn->query($q);
-    }
-
     public function getRepairByid($r_id)
     {
         $q = "SELECT repair.repair_id, repair.lp_id,repair.status,repair.date  , lamppost.division , lamppost.lattitude,lamppost.longitude
@@ -37,7 +45,6 @@ class Repair extends Database
         return $list->fetch_assoc();
     }
 
-
     public function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){
         $q = "INSERT INTO `repair_inventory_asc`( `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES 
         ('$r_id','$item_id' , '$quantity', '$returnflag')";
@@ -46,8 +53,18 @@ class Repair extends Database
     }
 
 
+
+
+
+
+
+
+
+
+
+
     public function CompleteRepair($r_id,$used_items,$return_items){
-        // add ussed items to database
+        // add used items to database
         foreach ($used_items as $item){
             $this->AddUsedReturnItem($r_id, $item[0],$item[1],0);
         }
@@ -58,4 +75,27 @@ class Repair extends Database
         // chansge repair status as completed
         $this->changeStatus($r_id,'c');
     }
+
+    public function CreateEmergencyRepair($lp_id,$technician_id,$used_items,$return_items){
+        // hence this is emgrepair status is e, clerkid is 0 (defalt one) because he did not assign that to technician
+        $r_id = $this->createRepair('e',$lp_id,$technician_id,0);
+        
+        // add used items to database
+        foreach ($used_items as $item){
+            $this->AddUsedReturnItem($r_id, $item[0],$item[1],0);
+        }
+        // add return items to database
+        foreach ($return_items as $item){
+            $this->AddUsedReturnItem($r_id, $item[0],$item[1],1);
+        }
+        
+    }
+
+
+
+    
+
+
+
 }
+
