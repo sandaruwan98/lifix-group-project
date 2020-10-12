@@ -51,7 +51,7 @@ $item_names= $item_names->fetch_all();
         <div class="con">
 
 
-            <form>
+            <form method="POST" action="">
                 <h2>Add Lamp Post</h2>
                 <div class="feild-row">
                     <label for="lp_id">Lamp Post ID</label>
@@ -87,7 +87,7 @@ $item_names= $item_names->fetch_all();
                     <?php endforeach ?>
 
                 </div>
-                <button type="submit" id="" class="btn">ADD REPAIR</button>
+                <button type="submit" name="addlp" class="btn">Add Lamp Post</button>
 
 
             </form>

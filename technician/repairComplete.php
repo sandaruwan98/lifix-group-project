@@ -42,6 +42,8 @@ if (isset($_POST["complete"]) ) {
     if (!empty($used_items)) {
         $repair = new Repair();
         $repair->CompleteRepair($r_id,$used_items,$return_items);
+
+        header("location: ./index.php");
     }
 }
 ?>

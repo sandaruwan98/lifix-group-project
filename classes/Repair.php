@@ -49,7 +49,9 @@ class Repair extends Database
         $q = "INSERT INTO `repair_inventory_asc`( `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES 
         ('$r_id','$item_id' , '$quantity', '$returnflag')";
 
-        $this->conn->query($q);
+       if( $this->conn->query($q) !== TRUE)
+            echo (' <h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0;">Process failed '.$this->conn->error .'</h4> ');
+       
     }
 
 
@@ -74,6 +76,9 @@ class Repair extends Database
         }
         // chansge repair status as completed
         $this->changeStatus($r_id,'c');
+
+        
+       
     }
 
     public function CreateEmergencyRepair($lp_id,$technician_id,$used_items,$return_items){
