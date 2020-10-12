@@ -12,7 +12,7 @@
     <title>User Control</title>
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/slider.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     
