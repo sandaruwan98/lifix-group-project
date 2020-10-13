@@ -12,7 +12,7 @@ class ItemRequest extends Database
         $this->conn->query($q);
     }
    
-    public function AddRequestedItemAsc($req_id,$item_id,$quantity){
+    private function AddRequestedItemAsc($req_id,$item_id,$quantity){
         $q = "INSERT INTO `itemrequest_inventory_asc`( `Itemrequest_id`, `item_id`, `quantity`) VALUES 
         ('$req_id','$item_id' , '$quantity')";
 
