@@ -58,7 +58,7 @@ class RestController extends Database{
                 $sId=$_SESSION['id'];
                 $usr=$_SESSION['user'];
                 echo $sId." this ".$usr;
-                $query="UPDATE `user` SET `username`='$usr',`password`='$pss' WHERE `userId`='$sId'";
+                $query="UPDATE `user` SET `username`='$usr',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
                 // $query="UPDATE user SET username=".$_SESSION['user'].", password=".$pss.",  WHERE userId=".$this->Id;
                 $result=$this->conn->query($query);
                 if($result){
@@ -77,7 +77,7 @@ class RestController extends Database{
                 $sId=$_SESSION['id'];
                 // echo $sId. "I am checking yet";
                 // $query="UPDATE user SET 'username'='$usrname', 'password'='$pss',  WHERE 'userId'=$sId";
-                $query="UPDATE `user` SET `username`=$usrname,`password`=$pss,`statusFlag`=1 WHERE `userId`=$sId";
+                $query="UPDATE `user` SET `username`='$usrname',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
                 $this->conn->query($query);
                 // if($result){
                 //     echo "this is sucess";
