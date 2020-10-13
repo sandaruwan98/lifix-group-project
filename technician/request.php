@@ -30,7 +30,11 @@ if (isset($_POST["addrequest"]) ) {
         $itemrequest = new ItemRequest();
         // danata created_user_id eka 1 authentication nathi nisa
         $itemrequest->CreateItemRequest(1,$request_items );
+
+        echo ("<script>alert('repair completed succesfully') </script>");
+        header("location: ./index.php");
     }
+
 }
 ?>
 

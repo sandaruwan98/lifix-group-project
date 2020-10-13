@@ -34,7 +34,7 @@ $list_assign = $repair->getRepairs('x');
                         class="link-text">Request</span></a></li>
             <li class="nav-item"><a class="nav-link" href="./EmgRepair.php"><i class="fas fa-exclamation-circle"></i><span
                         class="link-text">EmgRepair</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shower"></i><span
+            <li class="nav-item"><a class="nav-link" href="./lamppost.php"><i class="fas fa-shower"></i><span
                         class="link-text">Lamppost</span></a></li>
 
         </ul>

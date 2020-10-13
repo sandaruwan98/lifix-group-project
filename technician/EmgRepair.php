@@ -43,6 +43,9 @@ if (isset($_POST["addrepair"]) ) {
      
         // danata technician_id eka 1 denoo. authentication nathi nisa
         $repair->CreateEmergencyRepair($lp_id,1,$used_items,$return_items);
+
+        echo ("<script>alert('repair completed succesfully') </script>");
+        header("location: ./index.php");
     }
 }
 

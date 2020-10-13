@@ -3,15 +3,16 @@
 include '../classes/Database.php';
 class RestController extends Database{
 
-    protected $div_1="12";
-    protected $div_2="12";
-    protected $div_3="12";
+    protected $div_1="";
+    protected $div_2="";
+    protected $div_3="";
     protected $Id;
     protected $pass_status=1;
     protected $pass_com_status=1;
     protected $usr_status=1;
 
     public function __construct(){
+        parent::__construct();
         session_start();
         $this->checkSession();
         $this->Id=$_SESSION['id'];
@@ -54,7 +55,11 @@ class RestController extends Database{
             $this->div_2="This field is esseintial";
         }elseif(!$this->usr_status){
             if($this->compare($pss,$pass_com)){
-                $query="UPDATE user SET username=".$_SESSION['user'].", password=".$pss.",  WHERE userId=".$this->Id;
+                $sId=$_SESSION['id'];
+                $usr=$_SESSION['user'];
+                echo $sId." this ".$usr;
+                $query="UPDATE `user` SET `username`='$usr',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
+                // $query="UPDATE user SET username=".$_SESSION['user'].", password=".$pss.",  WHERE userId=".$this->Id;
                 $result=$this->conn->query($query);
                 if($result){
                     //send message that done
@@ -65,19 +70,26 @@ class RestController extends Database{
                 }
                 
             }else{
-                $this->div_3="Password is not mmatching";
+                $this->div_3="Password is not matching";
             }
         }else{
             if($this->compare($pss,$pass_com)){
-                $query="UPDATE user SET username=".$usrname.", password=".$pss.",  WHERE userId=".$this->Id;
-                $result=$this->conn->query($query);
-                if($result){
-                    //send message that done
+                $sId=$_SESSION['id'];
+                // echo $sId. "I am checking yet";
+                // $query="UPDATE user SET 'username'='$usrname', 'password'='$pss',  WHERE 'userId'=$sId";
+                $query="UPDATE `user` SET `username`='$usrname',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
+                $this->conn->query($query);
+                // if($result){
+                //     echo "this is sucess";
+                //     //send message that done
+                //     session_destroy();
+                //     header('location:./index.php');
+                // }else{
+                //     //send message that not done
+                // }
+
                     session_destroy();
                     header('location:./index.php');
-                }else{
-                    //send message that not done
-                }
             }else{
                 $this->div_3="Password is not mmatching";
             }

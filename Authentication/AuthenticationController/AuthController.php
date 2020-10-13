@@ -85,10 +85,10 @@ class AuthController extends Database{
                     $_SESSION['id']=$row1['userId'];
                     $this->__destruct();
                     switch($row1['occuFlag']){
-                        case 1: header('location:../Clerk/index.php');break;
-                        // case 2:header('location:./Clerk.html');break;
-                        // case 3:header('location:./storekeeper.html');break;
-                        // case 4:header('location:./technician.html');break;
+                        case 1: header('location:../DivisionalSecretary/index.php');break;
+                        case 2:header('location:../Clerk/index.php');break;
+                        case 3:header('location:../storekeeper/display.php');break;
+                        case 4:header('location:../technician/index.php');break;
                         default: session_destroy();
                     }
                 }else if($row1['statusFlag']==0){

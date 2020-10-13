@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: rgb(226, 226, 226)">
+    <h1>geo</h1>
+
+    <script>
+      getLocation();
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            let lat = position.coords.latitude;
+            let lng = position.coords.longitude;
+            // console.log(position.coords.longitude);
+
+            const url =
+              "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+              lat +
+              "," +
+              lng +
+              "&key=AIzaSyBs3xcz7WtgWjnoSMnJi4zBzGReOijrJrU";
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                data = JSON.parse(this.responseText);
+                document.body.innerHTML =
+                  "<h3>" +
+                  data.results[0].formatted_address +
+                  " </h3>" +
+                  "<h3>" +
+                  data.results[1].formatted_address +
+                  " </h3>";
+                // console.log(data.results[0].formatted_address);
+                // console.log(data.results[1].formatted_address);
+              }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+          });
+        } else {
+          document.body.innerHTML =
+            "Geolocation is not supported by this browser.";
+        }
+      }
+    </script>
+  </body>
+</html>
