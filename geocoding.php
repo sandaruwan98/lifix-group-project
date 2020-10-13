@@ -1,4 +1,5 @@
 <?php 
+
 function getaddress($lat,$lng)
 {
    $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($lat).','.trim($lng).'&key=AIzaSyBs3xcz7WtgWjnoSMnJi4zBzGReOijrJrU';
@@ -14,12 +15,10 @@ function getaddress($lat,$lng)
    }
    else
    {
-     return false;
+     echo "failed";
    }
 }
 
-getaddress( 6.881167433870161,79.864157036964 );
-// getaddress( 6.881570466305064, 79.85680047538261);
-// getaddress( 6.883686767848502,79.86359102010118 );
+
 
 ?>

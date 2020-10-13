@@ -69,13 +69,16 @@
                 // add markers to the map
                 mapdata.forEach(mk => {
 
+                    var popup = new mapboxgl.Popup()
+                    .setHTML("<h2>#" + mk.lp_id + "</h2>")
+                    .addTo(map);
 
                     var marker = new mapboxgl.Marker({
                             color: "black"
                             // color: "#3FB1CE"
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
-                        .addTo(map);
+                        .addTo(map).setPopup(popup);;
                     // markerArr['id' + mk.repair_id] = mk;
                     markerArr.set(mk.repair_id, marker);
                 });
