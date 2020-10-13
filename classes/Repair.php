@@ -45,7 +45,7 @@ class Repair extends Database
         return $list->fetch_assoc();
     }
 
-    public function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){
+    private function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){
         $q = "INSERT INTO `repair_inventory_asc`( `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES 
         ('$r_id','$item_id' , '$quantity', '$returnflag')";
 

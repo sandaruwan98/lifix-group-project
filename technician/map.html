@@ -68,6 +68,7 @@
 
     <!-- load map from mapbox api -->
     <script>
+
       mapboxgl.accessToken =
         "pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww";
       var map = new mapboxgl.Map({
@@ -82,22 +83,19 @@
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           mapdata = JSON.parse(this.responseText);
-          // console.log(mapdata);
           // add markers to the map
           mapdata.forEach((mk) => {
-              
+
             var popup = new mapboxgl.Popup()
               .setHTML("<h4>#" + mk.lp_id + "</h4>")
               .addTo(map);
 
             var marker = new mapboxgl.Marker({
-              color: "black",
-              // color: "#3FB1CE"
+              color: "#12bfeb"
             })
               .setLngLat([mk.longitude, mk.lattitude])
               .addTo(map)
               .setPopup(popup);
-            // markerArr['id' + mk.repair_id] = mk;
           });
         }
       };

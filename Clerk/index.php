@@ -56,20 +56,16 @@
 
 
 
-        // var marke2 = new mapboxgl.Marker()
-        //     .setLngLat([79.854770, 6.891551])
-        //     .addTo(map);
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
 
                 mapdata = JSON.parse(this.responseText);
-                // console.log(mapdata);
                 // add markers to the map
                 mapdata.forEach(mk => {
-
-                    var popup = new mapboxgl.Popup()
+                    //for popup to display lamppost id
+                    var popup = new mapboxgl.Popup({closeButton: false})
                     .setHTML("<h2>#" + mk.lp_id + "</h2>")
                     .addTo(map);
 
@@ -79,7 +75,6 @@
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map).setPopup(popup);;
-                    // markerArr['id' + mk.repair_id] = mk;
                     markerArr.set(mk.repair_id, marker);
                 });
 

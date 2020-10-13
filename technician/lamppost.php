@@ -1,13 +1,45 @@
 <?php 
 
-// require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/LampPost.php';
 require_once __DIR__ . '/../classes/Inventory.php';
 
 $inv = new Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
+if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
+    $lp_id = $_POST["lp_id"];
+    $adr = $_POST["adr"];
+    $lat = $_POST["lat"];
+    $lng = $_POST["lng"];
 
+    $lp = new LampPost();
+      // danata tecnician_id eka 1 authentication nathi nisa
+    $lp->addLampost($lp_id,$adr,$lat,$lng,1);
+
+
+    //if checbox checked we have add used items for new lamppost
+   if (isset($_POST["is_new"])) {
+    $used_items = array();
+    foreach ($item_names as $item){
+        //for collect used items quantities
+        $item_name = $item[0]."_u";
+        $quantity = $_POST["$item_name"];
+
+        if ($quantity!=0 && $quantity!=null) {
+
+            $used_item = array($item[0], $quantity);
+            $used_items[] = $used_item;
+        }
+        
+    }
+
+    if (!empty($used_item)) {
+        $lp->Add_All_Used_Items_forNewLP($lp_id,$used_items);
+    }
+   }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +108,7 @@ $item_names= $item_names->fetch_all();
                 </div>
                 <!-- <div class="feild-row"> -->
                     <label for="is_new">Is it new : </label>
-                    <input type="checkbox" name="is_new" id="newcheck" onclick="toggleCollapse()">
+                    <input type="checkbox" name="is_new" value="is_new" id="newcheck" onclick="toggleCollapse()">
                 <!-- </div> -->
               
 
