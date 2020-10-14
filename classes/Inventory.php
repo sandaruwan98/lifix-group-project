@@ -20,6 +20,13 @@ class Inventory extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    public function getAllInventory()
+    {
+        $q = "SELECT Item_id,name,total FROM inventory";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
 
    
 }

@@ -45,7 +45,7 @@
 
 <tr>
 <th>Item Id</th>
-<th><span>Date</span></th>
+<!-- <th><span>Date</span></th> -->
 <th><span>Name</span></th>
 <th><span>Total</span></th>
 
@@ -53,26 +53,24 @@
 </div>
  </div>
 </thead>
+
 <?php
-//include "../connection.php";
-$conn = new mysqli("localhost", "root", "", "lifix","3306");
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql="select *from inventory";
-$result=mysqli_query($conn,$sql);
-$resultcheck=mysqli_num_rows($result);
-if($resultcheck >0)
-{
+
+require_once __DIR__ . '/../classes/Inventory.php';
+
+$inventory = new Inventory();
+$result = $inventory->getAllInventory();
+
+
 while($row=mysqli_fetch_assoc($result)){
     echo"<tr>";
     echo "<td>".$row['Item_id']."</td>";
-    echo "<td>".$row['date']."</td>";
+    // echo "<td>".$row['date']."</td>";
     echo "<td>".$row['name']."</td>";
     echo "<td>".$row['total']."</td>";
     echo"</tr>";
 }
-}
+
 ?>
 </table>
 </body>

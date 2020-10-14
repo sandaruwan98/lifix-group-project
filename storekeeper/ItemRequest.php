@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +25,7 @@
                         class="link-text"> Request Items</span></a></li>	
             <li class="nav-item"><a class="nav-link " href="./requestHistory.html"><i class="fas fa-history"></i><span
                             class="link-text">Item Request History</span></a></li>	
-            <li class="nav-item"><a class="nav-link " href="./inventory.html"><i class='far fa-file-alt'></i><span
+            <li class="nav-item"><a class="nav-link " href="./inventory.php"><i class='far fa-file-alt'></i><span
                 class="link-text">Inventory Details</span></a></li>
             <li class="nav-item"><a class="nav-link " href="./stockaddition.html"><i class="fas fa-file-invoice"></i><span
                 class="link-text">Issue Items</span></a></li>  	
@@ -48,39 +50,27 @@
                 </div>
 
                 <!-- request list -->
+                <?php 
+                    
+                    require_once __DIR__ . '/../classes/ItemRequest.php';
 
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Uditha Ishan</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Udi Ishan</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: itha han</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Ishan</span>
-                        <i class="s fas fa-times"></i>
-                    </div>
-                </div>
-               
+                    $itemrequest= new ItemRequest();
+                    $request_list = $itemrequest->getPendingRequestList();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <div id="" class="repair-item">
+                            <div class="row">
+                                <span>Date: <?= $row['added_date'] ?></span>
+                                <span>Technician: <?= $row['username'] ?></span>
+                                <i class="s fas fa-check"></i>
+                            </div>
+                        </div>
+                    
+                    <?php } ?>
 
                 </div>
                 <div class="table-section">
@@ -91,38 +81,22 @@
                             <div class="feild-row">
                                 <h2>Issue Items</h2>
 
-                            </div>
-                            <div class="feild-row">
+                            </div>   
+                            <?php 
+                            require_once __DIR__ . '/../classes/Inventory.php';
 
+                            $inv = new Inventory();
+                            $item_names = $inv->getItemNames();
+                            $item_names= $item_names->fetch_all();
 
+                            foreach ($item_names as $item):  ?>
+                            <div class="feild-row">
+                                <label> <?= $item[1] ?></label>
+                                <input class="field" type="text" placeholder="Enter Amount" name=" <?= $item[0] ?>" id="">
+                            </div>
+                              <?php endforeach ?>
 
-                                <label>Bulb</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="bulb" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>Sunbox</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="sunbox" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>Wire</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>Switch</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>Holder</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>Screw holder</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
-                            </div>
-                            <div class="feild-row">
-                                <label>3 Pin holder</label>
-                                <input class="field" type="text" placeholder="Enter Amount" name="wire" id="">
-                            </div>
+                              
                             <div class="feild-row">
                                 <button class="btn" type="submit">SUBMIT</button>
                             </div>
