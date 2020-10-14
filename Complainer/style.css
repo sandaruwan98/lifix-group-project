@@ -111,15 +111,6 @@ h2:after{
 	height: 100px;
 }
 
-@media screen and (max-width: 880px){
-	.contact-box{
-		grid-template-columns: 1fr;
-	}
-	.left{
-		height: 200px;
-	}
-}
-
 .phone-box{
 	/* max-width: 850px; */
 	display: grid;
@@ -154,4 +145,52 @@ h2:after{
 
 .btn2:hover{
     background-color: #27ae60;
+}
+
+@media screen and (max-width: 880px){
+
+	.container:after{
+		background: none;
+		background-color:#fff;
+		padding: 20px;
+	}
+
+	.contact-box{
+		margin-top: 50px;
+		margin-bottom: 50px;
+		grid-template-columns: 1fr;
+		box-shadow: none;
+		background: #fff; 
+	}
+	
+	.field{
+		width: 300px;
+		border: 2px solid rgba(0, 0, 0, 0);
+		outline: none;
+		background-color: rgba(230, 230, 230, 0.6);
+		padding: 0.5rem 1rem;
+		font-size: 1.1rem;
+		margin-bottom: 22px;
+		transition: .3s;
+	}
+
+	.phone-box {
+		display: grid;
+		background: none;
+	}
+
+	.p-left input{
+		width: 170px;
+	}
+	.p-right{
+		height: 100%;
+		padding: 0 0 0 10px ;
+	}
+
+	.btn2{
+		font-size: 1.1rem;
+		width: 120px;
+		padding: 0.6rem 1rem;
+	}
+
 }
