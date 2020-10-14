@@ -22,7 +22,7 @@ class Repair extends Database
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status'";
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' ORDER BY repair.date DESC " ;
 
         $list =   $this->conn->query($q);
         return $list;

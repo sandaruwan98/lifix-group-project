@@ -14,6 +14,8 @@ $inv = new Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
+$repair = new Repair();
+
 if (isset($_POST["complete"]) ) {
     $used_items = array();
     $return_items = array();
@@ -40,7 +42,7 @@ if (isset($_POST["complete"]) ) {
     }
 
     if (!empty($used_items)) {
-        $repair = new Repair();
+       
         $repair->CompleteRepair($r_id,$used_items,$return_items);
 
         header("location: ./index.php");
