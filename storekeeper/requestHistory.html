@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./store.css">
+    <!-- <link rel="stylesheet" href="../Clerk/css/repairpage.css"> -->
+    <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <title>Item Requests</title>
+
+</head>
+<body>
+<nav class="sidebar">
+        <!-- <h2 class="link-text">MENU</h2> -->
+        <ul>
+            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
+                        style="margin-left: 5px;">LiFix</span> </span>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
+                        class="link-text">Home</span> </a></li>
+			<li class="nav-item"><a class="nav-link active" href="./ItemRequest.html"><i class='far fa-list-alt'></i><span
+                        class="link-text">Request Items</span></a></li>	
+            <li class="nav-item"><a class="nav-link " href="./issueitems.html"><i class="fas fa-file-invoice"></i><span
+                            class="link-text">Issue Items</span></a></li>  	
+            <li class="nav-item"><a class="nav-link " href="./display.php"><i class="fas fa-history"></i><span
+                            class="link-text">Item Request History</span></a></li>	
+            <li class="nav-item"><a class="nav-link " href="./inventory.php"><i class='far fa-file-alt'></i><span
+                                class="link-text">Inventory Details</span></a></li>
+            
+
+        </ul>
+
+    </nav>
+
+
+    
+    <div class="main_content">
+        <header>
+            <h1>Item Request History</h1>
+        </header>
+        <div class="container">
+            <div class="p-list-section">
+
+
+                <div class="xx">
+                    <h2>Request List</h2>
+                </div>
+
+                <!-- request list -->
+
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: Uditha Ishan</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: Udi Ishan</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: itha han</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: Ishan</span>
+                        <i class="s fas fa-times"></i>
+                    </div>
+                </div>
+               
+
+                </div>
+
+                <div class="table-section">
+                    <div class="details">
+                        <h2>Request Details</h2>
+    
+                        <table class="content-table">
+    
+                            <tbody>
+                                <tr>
+                                    <td>Technician Name</td>
+                                    <td>Bla Bla</td>
+                                </tr>
+                                <tr>
+                                    <td>Created Date</td>
+                                    <td>2020-10-14</td>
+                                </tr>
+                                <tr>
+                                    <td>Supplied Date</td>
+                                    <td>2020-10-15</td>
+                                </tr>
+                               
+    
+                            </tbody>
+    
+    
+                        </table>
+                    </div>
+
+                    <!-- supply items -->
+                    <div class="details">
+                        <h2 style="margin-bottom: 8px;"> Supplied Items</h2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>LED BULB</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>LED BULB</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>SUNBOXES</td>
+                                <td>20</td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>WIRES</td>
+                                <td>50m</td>
+
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>FUSE</td>
+                                <td>20</td>
+
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>BULB</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>BULB</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>BULB</td>
+                                <td>80</td>
+
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>BULB</td>
+                                <td>80</td>
+
+                            </tr>
+
+                        </tbody>
+
+
+                    </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <script>
+            const btnAdd = document.querySelector('#btnAdd');
+            const table_section = document.querySelector('.content-table');
+            const addnew_section = document.querySelector('.add-new');
+            const list_items = document.querySelectorAll('.repair-item');
+
+            btnAdd.addEventListener('click', () => {
+                table_section.style.display = 'none';
+                addnew_section.style.display = 'block';
+
+            })
+
+            list_items.forEach(item => {
+                item.addEventListener('click', () => {
+                    addnew_section.style.display = 'none';
+                    table_section.style.display = 'table ';
+
+                })
+            })
+        </script>
+</body>
+</html>
