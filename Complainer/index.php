@@ -1,6 +1,6 @@
 <?php 
-include "db.php"; 
-
+$page = 'index.php';
+include "DbAccess.php"; 
 ?>
 
 <!DOCTYPE html>
@@ -15,25 +15,26 @@ include "db.php";
 <body>
 
 	<div class="container">
-
-	<button class="material-icons floating-btn">language</button>
+	<section>
+		<button id="lan" class="material-icons floating-btn">language</button>
+	</section>
 
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
 				<h2>Make a Complaint</h2>
 				<form action="index.php" method="POST">
-				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="Your Name" >
+				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="Your Name" id="f1">
 				<div class="error"><?php echo $errors['name']; ?></div>
-				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="Your NIC" >
+				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="Your NIC" id="f2">
 				<div class="error"><?php echo $errors['nic']; ?></div>
-				<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="Lamppost ID" >
-				<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Additional notes about the problem" >
+				<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="Lamppost ID" id="f3">
+				<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Notes about the problem" id="f4">
 				<div class="error"><?php echo $errors['lampid']; ?></div>
 
 				<div class="phone-box">
 					<div class="p-left">
-						<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="Phone" >
+						<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="Phone" id="f5">
 						<div class="error"><?php echo $errors['phone']; ?></div>
 					</div>
 					<div class="p-right">
@@ -41,7 +42,7 @@ include "db.php";
 					</div>
 				</div>
 
-				<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="OTP Code" >
+				<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="OTP Code" id="f6">
 				<div class="error"><?php echo $errors['otp']; ?></div>
 				<button name="submit" class="btn">SUBMIT</button>
 			</form>		
@@ -49,6 +50,6 @@ include "db.php";
 		</div>
 		
 	</div>
-	
+	<script src="index.js"></script>
 </body>
 </html>
