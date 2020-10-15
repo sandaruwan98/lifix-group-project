@@ -18,6 +18,10 @@
 #### open -> o
 #### denied -> d
 
+## Stock Addition status
+#### completed -> 1
+#### not completed -> 0
+
 
 ## When Revoking access, 
 #### access revoked -> 1
