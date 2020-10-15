@@ -1,5 +1,5 @@
 <?php 
-$page = 'index.php';
+$page = 'english.php';
 include "DbAccess.php"; 
 ?>
 
