@@ -21,7 +21,7 @@ lanButton.addEventListener('click', function() {
         si.classList.add('floating-btn');
         si.style.top = '63px';
         si.style.right= "20px";
-        si.innerText = 'සි';
+        si.innerText = 'සිං';
         si.setAttribute('id', 'si');
 
         const en = document.createElement('button');
