@@ -164,10 +164,6 @@ h2:after{
 	top: 20px;
 	border: none;
 	cursor: pointer;
-	/* background-image: url("./img/icons8-language-30.png"); */
-	/* outline: blue;
-	
-	transition: background 0.25s; */
 }
 
 .floating-btn:active {

@@ -22,7 +22,7 @@ include "DbAccess.php";
 			<div class="left"></div>
 			<div class="right">
 				<h2>පැමිණිලි</h2>
-				<form action="si.php" method="POST">
+				<form action="index.php" method="POST">
 				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="නම" >
 				<div class="error"><?php echo $errors['name']; ?></div>
 				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="හැඳුනුම්පත් අංකය" >
