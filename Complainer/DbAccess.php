@@ -49,9 +49,6 @@ require_once "../classes/Database.php";
         }
 
         if(!array_filter($errors)) {
-            
-            
-    
             $obj = new DbAccess();
             $obj->sendData($page);
         }

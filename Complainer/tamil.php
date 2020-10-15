@@ -1,6 +1,6 @@
 <?php 
-	$page = 'english.php';
-	include "DbAccess.php"; 
+$page = 'tamil.php';
+include "DbAccess.php"; 
 ?>
 
 <!DOCTYPE html>
@@ -13,15 +13,17 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
+
 	<div class="container">
-		<section>
-			<a id="lan" class="floating-btn">En</a>
-		</section>
+	<section>
+		<a id="lan" class="floating-btn">த</a>
+	</section>
+
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
 				<h2>Make a Complaint</h2>
-				<form action="english.php" method="POST">
+				<form action="tamil.php" method="POST">
 				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="Your Name" id="f1">
 				<div class="error"><?php echo $errors['name']; ?></div>
 				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="Your NIC" id="f2">
