@@ -37,7 +37,7 @@ include "DbAccess.php";
 						<div class="error"><?php echo $errors['phone']; ?></div>
 					</div>
 					<div class="p-right">
-						<button class="btn2" style="font-size:14px; padding: 0.7rem 1rem;">කේතය ලබා ගන්න</button>
+						<button class="btn2" style="font-size:14px; padding: 0.7rem 1rem;">කේතය ගන්න</button>
 					</div>
 				</div>
 
