@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 06:51 AM
+-- Generation Time: Oct 16, 2020 at 05:52 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -174,7 +174,9 @@ CREATE TABLE `itemrequest` (
 --
 
 INSERT INTO `itemrequest` (`Itemrequest_id`, `status`, `completed_by`, `created_by`, `added_date`, `supplied_date`) VALUES
-(1, 'o', 0, 1, '0000-00-00', '0000-00-00');
+(1, 'o', 0, 1, '2020-10-12', '0000-00-00'),
+(2, 'o', 0, 1, '2020-10-14', '0000-00-00'),
+(3, 'o', 0, 1, '2020-10-14', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -195,7 +197,11 @@ CREATE TABLE `itemrequest_inventory_asc` (
 INSERT INTO `itemrequest_inventory_asc` (`Itemrequest_id`, `Item_id`, `quantity`) VALUES
 (1, 1, 10),
 (1, 2, 4),
-(1, 3, 3);
+(1, 3, 3),
+(2, 1, 10),
+(2, 2, 5),
+(2, 5, 3),
+(3, 3, 20);
 
 -- --------------------------------------------------------
 
@@ -272,10 +278,10 @@ CREATE TABLE `repair` (
 INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `clerk_id`) VALUES
 (1, '2020-07-08', 'c', 1000, 0, 0),
 (2, '2020-07-07', 'a', 1001, 0, 0),
-(3, '2020-07-11', 'x', 1002, 0, 0),
-(5, '2020-07-15', 'x', 1003, 0, 0),
-(6, '2020-07-18', 'x', 1004, 0, 0),
-(7, '2020-07-15', 'x', 1005, 0, 0),
+(3, '2020-07-11', 'a', 1002, 0, 0),
+(5, '2020-07-15', 'a', 1003, 0, 0),
+(6, '2020-07-18', 'a', 1004, 0, 0),
+(7, '2020-07-15', 'a', 1005, 0, 0),
 (8, '2020-10-09', 'e', 1004, 1, 0),
 (9, '2020-10-11', 'e', 1002, 1, 0),
 (10, '2020-10-11', 'e', 1004, 1, 0);
@@ -326,6 +332,14 @@ CREATE TABLE `stock_addition` (
   `clerk_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `stock_addition`
+--
+
+INSERT INTO `stock_addition` (`sa_id`, `date`, `status`, `clerk_id`) VALUES
+(1, '2020-10-15', '0', 1),
+(2, '2020-10-15', '0', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -337,6 +351,18 @@ CREATE TABLE `stock_addition_inventory_asc` (
   `item_id` int(255) NOT NULL,
   `quantity` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_addition_inventory_asc`
+--
+
+INSERT INTO `stock_addition_inventory_asc` (`sa_id`, `item_id`, `quantity`) VALUES
+(1, 1, 50),
+(1, 2, 4),
+(1, 3, 6),
+(2, 3, 6),
+(2, 5, 3),
+(2, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -362,7 +388,7 @@ CREATE TABLE `user` (
   `userId` int(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
   `occuFlag` int(11) NOT NULL,
   `statusFlag` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -371,9 +397,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `username`, `password`, `email`, `occuFlag`, `statusFlag`) VALUES
+INSERT INTO `user` (`userId`, `username`, `password`, `Name`, `occuFlag`, `statusFlag`) VALUES
 (0, 'default', 'default', 'default', 1, 0),
-(1, 'Isuru', '1234', 'riniranja@gmail.com', 1, 0);
+(1, 'Isururox', '1234', 'riniran', 1, 0),
+(4, 'Sahan123', '2345', 'Sahan Sandaruwan', 4, 0),
+(5, 'vPerera', '2345', 'Vimal Perera', 4, 0);
 
 --
 -- Indexes for dumped tables
@@ -546,7 +574,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `itemrequest`
 --
 ALTER TABLE `itemrequest`
-  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `newlamppostrecord`
@@ -570,7 +598,7 @@ ALTER TABLE `repair_inventory_asc`
 -- AUTO_INCREMENT for table `stock_addition`
 --
 ALTER TABLE `stock_addition`
-  MODIFY `sa_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `sa_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tmpinventory`
@@ -582,7 +610,7 @@ ALTER TABLE `tmpinventory`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
