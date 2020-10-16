@@ -26,3 +26,9 @@
 ## When Revoking access, 
 #### access revoked -> 1
 #### access not revoked -> 0  (when creating a new account, this set as default value)
+
+## occuStatus,
+#### divisional secretaty ->1
+#### Clerk ->2
+#### Storekeeper ->3
+#### Technician ->4
