@@ -2,30 +2,34 @@
 
 require __DIR__ . '/../../classes/Repair.php';
 require __DIR__ . '/../../classes/User.php';
-
+session_start();
 $repair = new Repair();
-$list_assign = $repair->getRepairs('x');
-$list_avail = $repair->getRepairs('a');
+
+$list_avail = $repair->getUnassignedRepairs();
 
 $user = new User();
 $technicians = $user->getUsers(4);
-
+// echo $_SESSION["tid"];
 ?>
 
 
 <div id="x" class="list">
     <h2>Assigned</h2>
-    <select name="userroll" id="userroll" class="field" required="">
+    <select name="techSelect" id="techSelect" class="field" >
         <option value="" disabled="" >Select the technician</option>
         <?php
-              $fl=true; 
+               
               while($tech = $technicians->fetch_assoc()) :?>
-                <option <?php if($fl){echo 'selected';$fl=false; } ?> value= "<?= $tech['userId'] ?>" ><?= $tech['username'] ?></option>
+              
+                <option <?php if(!isset($_SESSION["tid"])){echo 'selected';$_SESSION["tid"]=$tech['userId']; }else{  if($_SESSION["tid"]==$tech['userId']) echo 'selected' ;} ?> value= "<?= $tech['userId'] ?>" ><?= $tech['Name'] ?></option>
 
         <?php endwhile ?>
     </select>
 
     <?php
+   
+    $list_assign = $repair->getAssignedRepairs($_SESSION["tid"]);
+    
     if ($list_assign->num_rows > 0) {
         while ($row = $list_assign->fetch_assoc()) { ?>
             <div id="<?= $row["repair_id"] ?>" class="list-item" draggable="true">
@@ -35,6 +39,7 @@ $technicians = $user->getUsers(4);
                     <span><?= $row["date"] ?></span>
                 </div>
             </div>
+           
 
     <?php
         }

@@ -14,7 +14,7 @@ class User extends Database
     
     public function getUsers($type)
     {
-        $q = "SELECT `userId`, `username` FROM `user` WHERE `occuFlag`='$type' AND `statusFlag`= 0";
+        $q = "SELECT `userId`, `Name` FROM `user` WHERE `occuFlag`='$type' AND `statusFlag`= 0";
         $list =   $this->conn->query($q);
         return $list;
     }

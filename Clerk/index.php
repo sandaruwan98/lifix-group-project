@@ -10,6 +10,8 @@
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Repairs</title>
 
 </head>
@@ -76,7 +78,7 @@
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map).setPopup(popup);;
-                    markerArr.set(mk.repair_id, marker);
+                    markerArr.set(mk.repair_id, [mk.longitude, mk.lattitude]);
                 });
 
             }

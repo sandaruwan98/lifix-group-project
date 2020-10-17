@@ -1,6 +1,6 @@
 const list_items = document.querySelectorAll('.list-item');
 const lists = document.querySelectorAll('.list');
-
+const techSelect = document.querySelector('#techSelect');
 let draggedItem = null;
 
 for (let i = 0; i < list_items.length; i++) {
@@ -26,13 +26,13 @@ for (let i = 0; i < list_items.length; i++) {
 
     item.addEventListener('click', () => {
         // loadMap("blue")
-        var lngLat = markerArr.get(item.getAttribute("id")).getLngLat();
+        var mk = markerArr.get(item.getAttribute("id"));
         // markerArr.get(item.getAttribute("id")).remove();
         var tmpmarker = new mapboxgl.Marker({
                 color: "red"
                 // color: "#3FB1CE"
             })
-            .setLngLat([lngLat.lng, lngLat.lat])
+            .setLngLat([mk[0],mk[1]])
             .addTo(map);
         setTimeout(() => {
             tmpmarker.remove()
@@ -61,7 +61,12 @@ for (let j = 0; j < lists.length; j++) {
     list.addEventListener('drop', (e) => {
         // console.log("fuck",i);
         list.append(draggedItem);
-        AssignRepairs(draggedItem.getAttribute("id"), list.getAttribute("id"));
+        if (list.getAttribute("id") == 'x') {
+            AssignRepairs(draggedItem.getAttribute("id"), techSelect.value);
+        }else{
+            AssignRepairs(draggedItem.getAttribute("id"), 0);
+        }
+        // AssignRepairs(draggedItem.getAttribute("id"), list.getAttribute("id"));
         list.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 
     });
@@ -70,18 +75,30 @@ for (let j = 0; j < lists.length; j++) {
 }
 
 
-function AssignRepairs(id, st) {
 
-    var xhr = new XMLHttpRequest();
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState == 4 && xhr.status == 200) {
-    //         console.log("Done. ", xhr.responseText);
-    //     }
-    // }
-    xhr.open("GET", "./components/saveAssignedData.php?st=" + st + "&id=" + id, true);
-    xhr.send();
 
+
+///////////////////////////////////////////////////////
+
+
+techSelect.addEventListener('change',function(){
+    
+    location.href = './toggleTecnician.php?tid='+this.value;
+
+})
+
+
+function AssignRepairs(id, tid) {
+
+    $.get("./components/saveAssignedData.php?tid=" + tid + "&id=" + id);
+
+   
 
 
 
 }
+
+
+
+
+

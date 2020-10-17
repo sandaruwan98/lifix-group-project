@@ -2,8 +2,8 @@
 
 require __DIR__ . '/../../classes/Repair.php';
 
-$st = $_GET["st"];
+$tid = $_GET["tid"];
 $id = $_GET["id"];
 
 $repair = new Repair();
-$repair->changeStatus($id, $st);
+$repair->assignRepair($id, $tid);

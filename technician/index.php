@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../classes/Repair.php';
 
 $repair = new Repair();
-$list_assign = $repair->getRepairs('x');
+// user id eka danna one.danata is eka 4 
+$list_assign = $repair->getAssignedRepairs(4);
 ?>
 
 
