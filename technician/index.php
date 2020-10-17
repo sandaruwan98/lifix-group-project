@@ -46,24 +46,28 @@ $list_assign = $repair->getAssignedRepairs(4);
 
 
     <div class="main">
-        <div class="list">
-            <?php while ($row = $list_assign->fetch_assoc()) :
-             ?>
+        <div class="con">
+            <h2 class="title-r">Pending Repairs</h2>
+            <div class="list">
+                <?php while ($row = $list_assign->fetch_assoc()) :
+                ?>
 
-            <div class="list-item" id="<?= $row["repair_id"] ?>">
-                <div class="content">
-                    <div class="row">
-                        <div class="id"># <?= $row['lp_id'] ?> </div>
-                        <div class="id"><?= $row["date"] ?></div>
+                <div class="list-item" id="<?= $row["repair_id"] ?>">
+                    <div class="content">
+                        <div class="row">
+                            <div class="id"># <?= $row['lp_id'] ?> </div>
+                            <div class="id"><?= $row["date"] ?></div>
+                        </div>
+
+                        <div class="address"><?= $row["division"] ?></div>
                     </div>
-
-                    <div class="address"><?= $row["division"] ?></div>
+                    <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
                 </div>
-                <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
+
+                <?php endwhile ?>
+
+
             </div>
-
-            <?php endwhile ?>
-
 
         </div>
     </div>
