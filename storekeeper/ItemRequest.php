@@ -17,7 +17,7 @@
         <!-- <h2 class="link-text">MENU</h2> -->
         <ul>
             <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span> </span>
+                        style="margin-left: 5px;">Li-Fix</span> </span>
             </li>
             <!-- <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
                         class="link-text">Home</span> </a></li> -->
@@ -175,7 +175,7 @@
                     </table>
 
                     <!-- supply button -->
-                    <button class="btn " style="font-size: large;">Supply Items to technician</button>
+                    <button class="btn " style="font-size: large;">Supply items to technician</button>
 
                     </div>
                    
