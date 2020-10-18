@@ -205,25 +205,6 @@
             </div>
         </div>
 
-        <script>
-            const btnAdd = document.querySelector('#btnAdd');
-            const table_section = document.querySelector('.supply');
-            const addnew_section = document.querySelector('.add-new');
-            const list_items = document.querySelectorAll('.repair-item');
-
-            btnAdd.addEventListener('click', () => {
-                table_section.style.display = 'none';
-                addnew_section.style.display = 'block';
-
-            })
-
-            list_items.forEach(item => {
-                item.addEventListener('click', () => {
-                    addnew_section.style.display = 'none';
-                    table_section.style.display = 'block ';
-
-                })
-            })
-        </script>
+     
 </body>
 </html>
