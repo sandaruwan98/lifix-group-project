@@ -17,7 +17,7 @@
         <!-- <h2 class="link-text">MENU</h2> -->
         <ul>
             <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span> </span>
+                        style="margin-left: 5px;">Li-Fix</span> </span>
             </li>
             <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
                         class="link-text">Home</span> </a></li>
@@ -26,7 +26,7 @@
             <li class="nav-item"><a class="nav-link " href="./issueitems.html"><i class="fas fa-file-invoice"></i><span
                                 class="link-text">Issue Items Form</span></a></li>  
             <li class="nav-item"><a class="nav-link active" href="./display.php"><i class="fas fa-history"></i><span
-                        class="link-text">Issued ItemHistory</span></a></li>
+                        class="link-text">Issued Item History</span></a></li>
             <li class="nav-item"><a class="nav-link " href="./inventory.php"><i class='far fa-file-alt'></i><span
                         class="link-text">Inventory Details</span></a></li>
            

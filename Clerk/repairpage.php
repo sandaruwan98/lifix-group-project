@@ -79,7 +79,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
                                 <td>#<?= $rp['lp_id'] ?></td>
                             </tr>
                             <tr>
-                                <td>Lamppost Divisoin</td>
+                                <td>Lamp post Divisoin</td>
                                 <td><?= $rp['division'] ?>
                                 </td>
                             </tr>
