@@ -21,7 +21,7 @@
             </li>
             <!-- <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
                         class="link-text">Home</span> </a></li> -->
-			<li class="nav-item"><a class="nav-link active" href="./ItemRequest.html"><i class='far fa-list-alt'></i><span
+			<li class="nav-item"><a class="nav-link active" href="./ItemRequest.php"><i class='far fa-list-alt'></i><span
                         class="link-text"> Request Items</span></a></li>	
             <li class="nav-item"><a class="nav-link " href="./requestHistory.html"><i class="fas fa-history"></i><span
                             class="link-text">Item Request History</span></a></li>	
