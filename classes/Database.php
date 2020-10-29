@@ -7,10 +7,12 @@ class Database {
  
  public function __construct()
  {
-   $servername = "localhost";
-   $username = "root";
-   $password = "";
-   $dbname = "lifix";
+   
+   $servername = "88.211.101.187";
+  //  $servername = "svr.educationhost.cloud";
+   $username = "lysjfdgs_lifix";
+   $password = "Zs6oTewG";
+   $dbname = "lysjfdgs_lifix";
    $port = "3306";
    $this->conn = new mysqli($servername, $username, $password, $dbname, $port);  
    if ($this->conn->connect_error) {
