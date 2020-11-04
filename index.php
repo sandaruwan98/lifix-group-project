@@ -35,7 +35,11 @@
 
 				<input type="text" name="otp" class="field" value="" placeholder="OTP Code" id="f6">
 				<div class="error"></div>
-				<a href="./clerk/" class="btn">SUBMIT</a>
+				<a href="./Authentication/" class="btn">auth</a>
+				<a href="./clerk/" class="btn">clerk</a>
+				<a href="./DivisionalSecretary/" class="btn">ds</a>
+				<a href="./storekeeper/" class="btn">storekeeper</a>
+				<a href="./technician/" class="btn">tech</a>
 			</form>		
 			</div>
 		</div>
