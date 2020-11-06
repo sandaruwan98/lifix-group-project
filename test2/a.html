@@ -5,35 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="./a.css">
+    <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
 <body>
     
 
-<div id="hero" class="hero">
-
-
-    <div id="" class="">
-      <div  class="">
+  
+  <div  class="col-lg">
+    <div class="col-xl">
         
 
-        <select name="userroll" id="item-select" class="field col-xs" required>
+        <select name="userroll" id="item-select" class="field col-sm" required>
           <option value="-1" disabled selected>Select the item</option>
-          <option value="1">Bulb</option>
-          <option value="2">Sunbox</option>
-          <option value="3">wire</option>
-          <option value="4">switch</option>
+          <option value="1-Bulb">Bulb</option>
+          <option value="2-Sunbox">Sunbox</option>
+          <option value="3-wire">wire</option>
+          <option value="4-switch">switch</option>
       </select>
         <input id="item-quantity" class="field col-sm" type="text" placeholder="Enter Quantity" aria-label="Enter to do text" autofocus>
       </div>
 
 
-      <ul id="item-list" class="item-list" aria-label="List of to do tasks"></ul>
+      <ul id="item-list" class="item-list col-md" aria-label="List of to do tasks">
+
+
+
+        <li class="it-list">
+          <label class="i-text">Bulb</label>
+          <label class="q-text">34</label><button class="delete-button">×</button>
+        </li>
+        <li class="itemst">
+          <label class="i-text">Bulb</label>
+          <label class="q-text">34</label><button class="delete-button"><i class="fas fa-window-close"></i></button>
+        </li>
+        <li class="item-st">
+          <label class="i-text">Bulb</label>
+          <label class="q-text">34</label><button class="delete-button">×</button>
+        </li>
+      </ul>
   
 
       
     </div>
-  </div>
+
   <script src="./a.js"></script>
 </body>
 
