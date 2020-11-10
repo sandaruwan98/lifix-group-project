@@ -122,7 +122,7 @@ var itemList = {
     }) 
     // console.log( JSON.stringify( filtereList));
     if (filtereList.length != 0) {
-        $.post( "test.php", JSON.stringify( filtereList))
+        $.post( "./components/save_itemlist.php", JSON.stringify( filtereList))
         .done(function( data ) {
           console.log( data );
           location.reload();

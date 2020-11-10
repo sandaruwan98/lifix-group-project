@@ -2,7 +2,7 @@
 $data = file_get_contents('php://input');
 $items = json_decode($data,true);
 
-require_once __DIR__ . '/../classes/StockAddition.php';
+require_once __DIR__ . '/../../classes/StockAddition.php';
 
 
 $sa = new StockAddition();
