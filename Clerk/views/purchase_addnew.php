@@ -1,21 +1,35 @@
 
-<div class="add-new" style="display: none;">
-    <form method="POST" action="purchase.php">
+<div  class="col-12">
+    <div class="feild-row">
+        
 
-        <div class="feild-row">
-            <h2>Add new purchase</h2>
-        </div>
+        <select name="userroll" id="item-select" class="field col-4" required>
+
+        <option value="-1" disabled selected>Select the item</option>    
         <?php 
         foreach ($item_names as $item):  ?>
-        <div class="feild-row">
-            <label> <?= $item[1] ?></label>
-            <input class="field" type="text" placeholder="Enter Amount" name=" <?= $item[0] ?>" >
-        </div>
-            <?php endforeach ?>
 
-        
-        <div class="feild-row">
-            <button name="addpurchase" class="btn" type="submit">SUBMIT</button>
-        </div>
-    </form>
+            <option value="<?= $item[0].'-'.$item[1] ?>"><?= $item[1] ?></option>
+
+
+        <?php endforeach ?>
+
+
+
+      </select>
+
+      <input id="item-quantity" class="field col-4" type="text" placeholder="Enter Quantity" aria-label="Enter to do text" autofocus>
+      </div>
+
+
+      <ul id="item-list" class="item-list" aria-label="List of to do tasks"></ul>
+  
+
+      
+    </div>
+
+<div class="feild-row">
+    <button id="addpurchase" onclick="SendAjax()" class="btn" >SUBMIT</button>
 </div>
+
+<script src="../js/itemList.js"></script>
