@@ -1,5 +1,6 @@
 * {
   font-family: 'Quicksand', sans-serif;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -93,16 +94,30 @@
 
 
 
-.col-xl{width: 100%;}
-.col-lg{width: 75%;}
-.col-md{width: 50%;}
-.col-sm{width: 25%;}
-.col-xs{width: 12.5%;}
+.col-12{width: 100%;}
+.col-11{width: 91.6666%;}
+.col-l0{width: 83.3333%;}
+.col-9{width: 75%;}
+.col-8{width: 66.6666%;}
+.col-6{width: 50%;}
+.col-5{width: 41.6666%;}
+.col-4{width: 33.3333%;}
+.col-3{width: 25%;}
+.col-2{width: 16.6666%;}
+.col-1{width: 8.33333%;}
 
 
 
-.row-xl{height: 100%;}
-.row-lg{height: 75%;}
-.row-md{height: 50%;}
-.row-sm{height: 25%;}
-.row-xs{height: 12.5%;}
+
+.row-12{width: 100%;}
+.row-11{width: 91.6666%;}
+.row-l0{width: 83.3333%;}
+.row-9{width: 75%;}
+.row-8{width: 66.6666%;}
+.row-6{width: 50%;}
+.row-5{width: 41.6666%;}
+.row-4{width: 33.3333%;}
+.row-3{width: 25%;}
+.row-2{width: 16.6666%;}
+.row-1{width: 8.33333%;}
+
