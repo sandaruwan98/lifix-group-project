@@ -26,7 +26,12 @@ var itemList = {
         itemList.addItem(t[0],t[1], inputQuantity.value);
         inputQuantity.value = '';
         view.displayItemsList();
-        console.log(itemList.items);
+
+
+        const filteredByKey = itemList.items.map( (item) => {
+          return Object.fromEntries(Object.entries(item).filter(([key, value]) => (key === 'Quantity') || (key === 'itemNo')))
+        }) 
+        console.log( JSON.stringify( filteredByKey));
       }
     },
     deleteItem: function(position) {
