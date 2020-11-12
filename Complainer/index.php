@@ -13,11 +13,9 @@ include "DbAccess.php";
 </head>
 <body>
 	<div class="container">
-
 	<section>
 		<a id="lan" class="floating-btn">සිං</a>
 	</section>
-
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">

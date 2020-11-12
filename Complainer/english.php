@@ -22,31 +22,23 @@
 			<div class="right">
 				<h2>Make a Complaint</h2>
 				<form action="english.php" method="POST">
-				<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="Your Name" id="f1">
-				<div class="error"><?php echo $errors['name']; ?></div>
-				<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="Your NIC" id="f2">
-				<div class="error"><?php echo $errors['nic']; ?></div>
-				<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="Lamppost ID" id="f3">
-				<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Notes about the problem" id="f4">
-				<div class="error"><?php echo $errors['lampid']; ?></div>
-
-				<div class="phone-box">
-					<div class="p-left">
-						<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="Phone" id="f5">
-						<div class="error"><?php echo $errors['phone']; ?></div>
+					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo $errors['name']; else echo 'Your Name'; ?>" id="f1">
+					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="<?php if($errors['nic']) echo $errors['nic']; else echo 'Your NIC'; ?>" id="f2">
+					<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo $errors['lampid']; else echo 'Lamppost ID'; ?>" id="f3">
+					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Notes about the problem" id="f4">
+					<div class="phone-box">
+						<div class="p-left">
+							<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="<?php if($errors['phone']) echo $errors['phone']; else echo 'Phone'; ?>" id="f5">
+						</div>
+						<div class="p-right">
+							<button class="btn2">Get Code</button>
+						</div>
 					</div>
-					<div class="p-right">
-						<button class="btn2">Get Code</button>
-					</div>
-				</div>
-
-				<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="OTP Code" id="f6">
-				<div class="error"><?php echo $errors['otp']; ?></div>
-				<button name="submit" class="btn">SUBMIT</button>
-			</form>		
+					<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="<?php if($errors['otp']) echo $errors['otp']; else echo 'OTP Code'; ?>" id="f6">
+					<button name="submit" class="btn">SUBMIT</button>
+				</form>		
 			</div>
-		</div>
-		
+		</div>	
 	</div>
 	<script src="index.js"></script>
 </body>
