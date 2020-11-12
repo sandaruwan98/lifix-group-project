@@ -58,7 +58,7 @@ class AuthController extends Database{
                     // $this->wrongCredentials="Pasword field is empty";
                     // password field is empty
                 }
-            }else{
+            }else{ 
                 $this->wrongCredentials="Wrong Credentials";
             }
             
@@ -72,7 +72,8 @@ class AuthController extends Database{
         }else{
             echo "came in to the else part  ".$username. " ".$password;
             echo "came in to the else part";
-            $query="SELECT * FROM `user` WHERE `username`='$username' AND `password`='$password'";
+            $encrypted_pass = md5($password);
+            $query="SELECT * FROM `user` WHERE `username`='$username' AND `password`='$encrypted_pass'";
 
             $result=$this->conn->query($query);
             // $result2=$result->fetch_assoc();

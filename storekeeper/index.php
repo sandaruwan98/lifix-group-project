@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./store.css">
+    <link rel="stylesheet" href="../css/itemList.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Item Requests</title>
 
@@ -75,33 +76,8 @@
                 </div>
                 <div class="table-section">
 
-                    <div class="add-new" style="display: none;">
-                        <form>
-
-                            <div class="feild-row">
-                                <h2>Issue Items</h2>
-
-                            </div>   
-                            <?php 
-                            require_once __DIR__ . '/../classes/Inventory.php';
-
-                            $inv = new Inventory();
-                            $item_names = $inv->getItemNames();
-                            $item_names= $item_names->fetch_all();
-
-                            foreach ($item_names as $item):  ?>
-                            <div class="feild-row">
-                                <label> <?= $item[1] ?></label>
-                                <input class="field" type="text" placeholder="Enter Amount" name=" <?= $item[0] ?>" id="">
-                            </div>
-                              <?php endforeach ?>
-
-                              
-                            <div class="feild-row">
-                                <button class="btn" type="submit">SUBMIT</button>
-                            </div>
-                        </form>
-                    </div>
+                <?php include_once "./views/index_addnew.php"  ?>
+         
 
                     <div class="supply">
                          <table class="content-table">
