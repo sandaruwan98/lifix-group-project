@@ -3,13 +3,14 @@
 <html>
 <head>
 	<title>Li - Fix</title>
+	<meta http-equiv="refresh" content="0; URL=./Complainer/index.php"/>
 	<link rel="stylesheet" type="text/css" href="./Complainer/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
-	<div class="container">
+	<!-- <div class="container">
 		<section>
 			<a id="lan" class="floating-btn">En</a>
 		</section>
@@ -35,12 +36,12 @@
 
 				<input type="text" name="otp" class="field" value="" placeholder="OTP Code" id="f6">
 				<div class="error"></div>
-				<a href="./clerk/" class="btn">SUBMIT</a>
+				<class="btn">SUBMIT</a>
 			</form>		
 			</div>
 		</div>
 		
 	</div>
-	<script src="./Complainer/index.js"></script>
+	<script src="./Complainer/index.js"></script> -->
 </body>
 </html>
