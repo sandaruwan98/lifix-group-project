@@ -34,11 +34,11 @@ include "DbAccess.php";
 
 				<div class="phone-box">
 					<div class="p-left">
-						<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="தொலைபேசி " id="f5">
+						<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="தொலைபேசி" id="f5">
 						<div class="error"><?php echo $errors['phone']; ?></div>
 					</div>
 					<div class="p-right">
-						<button class="btn2">இரகசிய குறியீடு</button>
+						<button class="btn2">குறியீடு</button>
 					</div>
 				</div>
 
