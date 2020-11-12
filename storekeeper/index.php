@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./store.css">
+    <link rel="stylesheet" href="../css/itemList.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Item Requests</title>
 

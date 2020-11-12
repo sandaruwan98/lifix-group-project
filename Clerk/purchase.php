@@ -9,33 +9,7 @@
 
    $sa = new StockAddition();
    $sa_list = $sa->get_SA_List();
-    // create new requst when button pressed
-if (isset($_POST["addpurchase"]) ) {
-    $added_items = array(); // item eke id eka ekka quantity eka me array ekata dagannawa
-
-    foreach ($item_names as $item){
-        //for collect used items quantities
-        $item_name = $item[0];
-        $quantity = $_POST["$item_name"];
-
-        if ($quantity!=0 && $quantity!=null) {
-
-            $added_item = array($item[0], $quantity);
-            $added_items[] = $added_item;
-        }
-        
-    }
-
-    if (!empty($added_items)) {
-        
-        // danata created_user_id eka 1 authentication nathi nisa
-        $sa->Create_SA(1,$added_items );
-
-        // echo ("<script>alert('repair completed succesfully') </script>");
-        header("location: ./index.php");
-    }
-
-}
+ 
 ?>
 
 
@@ -47,7 +21,7 @@ if (isset($_POST["addpurchase"]) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/a.css">
+    <link rel="stylesheet" href="../css/itemList.css">
 
 
     <link rel="stylesheet" href="./css/clerk.css">
