@@ -47,10 +47,13 @@ if (isset($_POST["addpurchase"]) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/a.css">
+
 
     <link rel="stylesheet" href="./css/clerk.css">
     <link rel="stylesheet" href="./css/repairHistory.css">
     <link rel="stylesheet" href="./css/purchase.css">
+    <link rel="stylesheet" href="./a.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Purchases</title>
@@ -89,72 +92,34 @@ if (isset($_POST["addpurchase"]) ) {
             <h1>Purchases</h1>
         </header>
         <div class="container">
-            <div class="p-list-section">
 
-                <button id="btnAdd" class="btn">ADD NEW</button>
-                <!-- searchbox -->
-                <div class="searchbox-sm">
-                    <input id="search" type="text" placeholder="Search..." name="search" class="search"
-                        style="font-size: small;">
-                    <button class="btn-search"><i class="fas fa-search"></i></button>
-                </div>
-
-
-                <!-- repair list -->
-                <?php 
-
-                    while ($row = $sa_list->fetch_assoc()) :
-                ?>
-                    <div id="<?= $row['sa_id'] ?>" class="repair-item">
-                        <div class="row">
-                            <span>#<?= $row['sa_id'] ?></span>
-                            <span><?= $row['date'] ?></span>
-                            <i class="s fas fa-check"></i>
-                        </div>
-                    </div>
-               <?php endwhile ?>
-            </div>
+        <!-- purchase_list -->
+        <?php include_once "./views/purchase_list.php"  ?>
 
             <div class="table-section">
 
-                <div class="add-new" style="display: none;">
-                    <form method="POST" action="purchase.php">
-
-                        <div class="feild-row">
-                            <h2>Add new purchase</h2>
-
-                        </div>
-                        <?php 
-                        foreach ($item_names as $item):  ?>
-                        <div class="feild-row">
-                            <label> <?= $item[1] ?></label>
-                            <input class="field" type="text" placeholder="Enter Amount" name=" <?= $item[0] ?>" >
-                        </div>
-                            <?php endforeach ?>
-
+            <!-- purchase_addnew -->
                         
-                        <div class="feild-row">
-                            <button name="addpurchase" class="btn" type="submit">SUBMIT</button>
-                        </div>
-                    </form>
+            <div class="add-new" style="display: none;">
+                <div class="feild-row">
+                    <h2 class="feild-h">Add new purchase</h2>
                 </div>
 
+                  <?php include_once "./views/purchase_addnew.php"  ?>
+              
+            </div>
 
+                <!-- item table -->
                 <table  id="p-table" class="content-table">
                     <thead>
                         <tr>
                             <th>ITEM ID</th>
                             <th>ITEM NAME</th>
                             <th>QUANTITY</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                    
-
                     </tbody>
-
-
                 </table>
 
             </div>
@@ -163,7 +128,9 @@ if (isset($_POST["addpurchase"]) ) {
             </div>
         </div>
 
-        <script>
+     <script>
+
+
             const btnAdd = document.querySelector('#btnAdd');
             const table_section = document.querySelector('.content-table');
             const addnew_section = document.querySelector('.add-new');
@@ -182,7 +149,9 @@ if (isset($_POST["addpurchase"]) ) {
 
                 })
             })
-        </script>
+
+
+     </script>
            <script src="./purchase.js"></script>
 
 </html>

@@ -60,7 +60,7 @@ class StockAddition extends Database
         $last_id = $this->conn->insert_id;
         // add added items to database
         foreach ($added_items as $item){
-            $this->Add_SA_Asc($last_id, $item[0],$item[1]);
+            $this->Add_SA_Asc($last_id, $item["itemNo"],$item["Quantity"]);
         }
         
     }

@@ -1,3 +1,7 @@
+
+
+
+
 $(document).ready(function(){
 
     $(".repair-item").click( function(){
@@ -12,10 +16,7 @@ $(document).ready(function(){
         })
         
     })
-
-
-
-
+    
 
 });
   
