@@ -100,14 +100,9 @@ if (isset($_POST["addpurchase"]) ) {
 
             <!-- purchase_addnew -->
                         
-            <div class="add-new" style="display: none;">
-                <div class="feild-row">
-                    <h2 class="feild-h">Add new purchase</h2>
-                </div>
-
+           
                   <?php include_once "./views/purchase_addnew.php"  ?>
-              
-            </div>
+         
 
                 <!-- item table -->
                 <table  id="p-table" class="content-table">
