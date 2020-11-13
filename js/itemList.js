@@ -115,17 +115,17 @@ var itemList = {
 
 
 
-  function SendAjax(page){
+  function SendAjax(dir){
 
     const filtereList = itemList.items.map( (item) => {
       return Object.fromEntries(Object.entries(item).filter(([key, value]) => (key === 'Quantity') || (key === 'itemNo')))
     }) 
     // console.log( JSON.stringify( filtereList));
     if (filtereList.length != 0) {
-        $.post( "./components/" + page + ".php", JSON.stringify( filtereList))
+        $.post( "./" + dir + ".php", JSON.stringify( filtereList))
         .done(function( data ) {
           console.log( data );
-          location.reload();
+          // location.reload();
         });
         
         
