@@ -57,8 +57,9 @@ class RestController extends Database{
             if($this->compare($pss,$pass_com)){
                 $sId=$_SESSION['id'];
                 $usr=$_SESSION['user'];
+                $encrypted_pass = md5($pss);
                 echo $sId." this ".$usr;
-                $query="UPDATE `user` SET `username`='$usr',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
+                $query="UPDATE `user` SET `username`='$usr',`password`='$encrypted_pass',`statusFlag`=1 WHERE `userId`='$sId'";
                 // $query="UPDATE user SET username=".$_SESSION['user'].", password=".$pss.",  WHERE userId=".$this->Id;
                 $result=$this->conn->query($query);
                 if($result){
@@ -75,9 +76,10 @@ class RestController extends Database{
         }else{
             if($this->compare($pss,$pass_com)){
                 $sId=$_SESSION['id'];
+                $encrypted_pass = md5($pss);
                 // echo $sId. "I am checking yet";
                 // $query="UPDATE user SET 'username'='$usrname', 'password'='$pss',  WHERE 'userId'=$sId";
-                $query="UPDATE `user` SET `username`='$usrname',`password`='$pss',`statusFlag`=1 WHERE `userId`='$sId'";
+                $query="UPDATE `user` SET `username`='$usrname',`password`='$encrypted_pass',`statusFlag`=1 WHERE `userId`='$sId'";
                 $this->conn->query($query);
                 // if($result){
                 //     echo "this is sucess";
@@ -91,7 +93,7 @@ class RestController extends Database{
                     session_destroy();
                     header('location:./index.php');
             }else{
-                $this->div_3="Password is not mmatching";
+                $this->div_3="Password is not matching";
             }
         }
     }
