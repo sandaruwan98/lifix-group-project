@@ -1,6 +1,6 @@
-<?php 
-$page = 'tamil.php';
-include "DbAccess.php"; 
+<?php
+	$page = 'tamil.php';
+	include "DbAccess.php";
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +36,9 @@ include "DbAccess.php";
 					</div>
 					<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="<?php if($errors['otp']) echo 'OTP சரியான  இருக்க வேண்டும்'; else echo 'OTP குறியீடு'; ?>" id="f6">
 					<button name="submit" class="btn">SUBMIT</button>
-				</form>		
+				</form>
 			</div>
 		</div>
-		
 	</div>
 	<script src="index.js"></script>
 </body>

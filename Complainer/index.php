@@ -1,6 +1,6 @@
 <?php 
-$page = 'index.php';
-include "DbAccess.php"; 
+	$page = 'index.php';
+	include "DbAccess.php";
 ?>
 
 <!DOCTYPE html>
