@@ -42,7 +42,7 @@ require_once "../classes/Database.php";
         //     echo "fdd";//$errors['phone'] = 'Lamp post ID must be a valid ID number';
         // }
         if(empty($phoneNo)) {
-            $errors['phone'] = 'Phone number must be a valid number';
+            $errors['phone'] = 'Enter valid number';
         }
         if(empty($otpCode)) {
             $errors['otp'] = 'OTP must be a valid number';

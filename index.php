@@ -4,9 +4,9 @@
 <head>
 	<title>Li - Fix</title>
 	<meta http-equiv="refresh" content="0; URL=./Complainer/index.php"/>
-	<link rel="stylesheet" type="text/css" href="./Complainer/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="./Complainer/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
