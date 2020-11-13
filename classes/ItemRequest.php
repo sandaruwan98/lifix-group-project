@@ -4,6 +4,22 @@ require_once "Database.php";
 class ItemRequest extends Database
 {
 
+
+    
+
+    public function getItemsfor_ItemRequest_byId($ir_id)
+    {
+        $q = "SELECT itemrequest_inventory_asc.Item_id, itemrequest_inventory_asc.quantity, inventory.name
+         FROM `itemrequest_inventory_asc` INNER JOIN `inventory`
+         ON itemrequest_inventory_asc.Item_id=inventory.Item_id 
+         WHERE `Itemrequest_id`='$ir_id' ";
+
+        $list =   $this->conn->query($q);
+        return $list->fetch_all(MYSQLI_ASSOC);
+    }
+ 
+
+
     public function getPendingRequestList()
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";

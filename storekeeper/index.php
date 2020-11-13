@@ -65,7 +65,7 @@
                         
                     
                 ?>
-                        <div id="" class="repair-item">
+                        <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
                                 <span>Date: <?= $row['added_date'] ?></span>
                                 <span>Technician: <?= $row['username'] ?></span>
@@ -184,5 +184,6 @@
                 })
             })
         </script>
+        <script src="index.js"></script>
 </body>
 </html>
