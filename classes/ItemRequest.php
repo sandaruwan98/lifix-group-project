@@ -46,7 +46,7 @@ class ItemRequest extends Database
         $last_id = $this->conn->insert_id;
         // add ussed items to database
         foreach ($request_items as $item){
-            $this->AddRequestedItemAsc($last_id, $item[0],$item[1]);
+            $this->AddRequestedItemAsc($last_id, $item["itemNo"],$item["Quantity"]);
         }
         
     }

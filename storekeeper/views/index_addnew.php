@@ -35,7 +35,7 @@ $item_names= $item_names->fetch_all();
         </div>
 
     <div class="feild-row">
-        <button id="addpurchase" onclick="SendAjax('save_itemlist')" class="btn" >SUBMIT</button>
+        <button id="addpurchase" onclick="SendAjax('ajax/save_itemrequestlist')" class="btn" >SUBMIT</button>
     </div>
 </div>
 <script src="../js/itemList.js"></script>

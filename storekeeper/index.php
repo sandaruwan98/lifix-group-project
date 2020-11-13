@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./store.css">
     <link rel="stylesheet" href="../css/itemList.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Item Requests</title>
 
 </head>
