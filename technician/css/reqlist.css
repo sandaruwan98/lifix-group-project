@@ -40,3 +40,14 @@
     border-radius: 5px;
 
 }
+
+
+.title-date{
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    /* border-radius: 20px; */
+    background-color: #D3DBDD;
+    text-align: center;
+}
