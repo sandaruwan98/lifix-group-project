@@ -1,7 +1,10 @@
 <?php 
+require_once "../classes/Database.php";
+$obj = new Database();
+
     $connect = mysqli_connect("localhost", "root", "root", "lifix");
     $query = "SELECT * FROM notification ORDER BY id";
-    $result = mysqli_query($connect, $query);
+    $result = $obj->conn->query($query);
     $output = "";
 
     if(mysqli_num_rows($result) > 0) {

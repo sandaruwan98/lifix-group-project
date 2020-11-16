@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<form action="" method="post">
+<form action="" method="post" id="comment_form">
     <input type="text" name="comment" id="comment">
     <input type="submit" value="submit">
 
@@ -79,10 +79,43 @@
                 dataType : "JSON",
                 success : function(data) {
                     $('.dropdown-content').html(data.notification);
-                    
+                    if(data.unseen_count > 0) {
+                        $('.count').html(data.unseen_count);
+                    }
                 }
             })
         }
+        loadUnseenNotifications();
+        $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  if($('#comment').val() != '')
+  {
+   var form_data = $(this).serialize();
+   $.ajax({
+    url:"insert.php",
+    method:"POST",
+    data:form_data,
+    success:function(data)
+    {
+     $('#comment_form')[0].reset();
+     load_unseen_notification();
+    }
+   });
+  }
+  else
+  {
+   alert("Both Fields are Required");
+  }
+ });
+ 
+ $(document).on('click', '.dropdown', function(){
+  $('.count').html('');
+  load_unseen_notification('yes');
+ });
+ 
+ setInterval(function(){ 
+  load_unseen_notification();; 
+ }, 5000);
     });
 </script>
 </body>
