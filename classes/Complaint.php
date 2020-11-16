@@ -4,7 +4,6 @@ require_once "Database.php";
 class Complaint extends Database
 {
 
-
     public function checkComplainerExists($nic) {
         $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`='$nic'";
         $list =   $this->conn->query($q);

@@ -82,6 +82,17 @@ h2:after{
 	transition: .3s;
 }
 
+.bulb {
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: white;
+	color: darkslategrey;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+}
+
 .field:hover{
 	background-color: rgba(0, 0, 0, 0.1);
 }
