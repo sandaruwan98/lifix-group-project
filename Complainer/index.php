@@ -31,7 +31,6 @@
 						<div class="bulb">
 							<span><label for="bulb">බල්බය තිබේද? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes" required></span>
 						</div>
-						
 					</div>
 					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="දෝශය පිළිබඳව විස්තර">					
 					<div class="phone-box">
