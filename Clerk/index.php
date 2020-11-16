@@ -83,7 +83,7 @@
 
             }
         };
-        xmlhttp.open("GET", "./components/getMapdata.php", true);
+        xmlhttp.open("GET", "./ajax/getMapdata.php", true);
         xmlhttp.send();
     </script>
     <script src="app.js"></script>
