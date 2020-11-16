@@ -16,7 +16,8 @@
 <body>
 
 
-    <?php include "./components/nav.php" ?>
+    <?php include "./views/nav.php" ?>
+
 
 
     <div class="main_content">
