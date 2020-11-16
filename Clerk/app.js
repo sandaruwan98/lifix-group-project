@@ -90,7 +90,7 @@ techSelect.addEventListener('change',function(){
 
 function AssignRepairs(id, tid) {
 
-    $.get("./components/saveAssignedData.php?tid=" + tid + "&id=" + id);
+    $.get("./ajax/saveAssignedData.php?tid=" + tid + "&id=" + id);
 
    
 

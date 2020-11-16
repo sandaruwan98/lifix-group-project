@@ -21,3 +21,13 @@ logoBtn.addEventListener('click', () => {
         is_open = true
     }
 })
+
+
+
+let current_url = document.location;
+document.querySelectorAll(".sidebar .nav-link").forEach(function(e){
+    // console.log(e.href);
+    if(e.href == current_url){
+        e.classList += " active";
+    }
+});

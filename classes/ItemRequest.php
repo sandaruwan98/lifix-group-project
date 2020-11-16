@@ -32,6 +32,13 @@ class ItemRequest extends Database
         return $list;
     }
 
+    public function getPendingRequestList_by_userid($id)
+    {
+        $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='o' AND  created_by='$id' ";
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+
 
 
 
