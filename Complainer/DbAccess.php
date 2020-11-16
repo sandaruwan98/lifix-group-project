@@ -1,21 +1,46 @@
 <?php 
 
-require_once "../classes/Database.php";
+    require_once "../classes/Complaint.php";
+    require_once "../classes/Repair.php";
+    
+    
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
 
-    class DbAccess extends Database {
-        function sendData($page) {
+    class DbAccess {
+        public $repairObj;
+        public $complaintObj;
+        
+        public function sendData($page) {
+            $repairObj = new Repair();
+            $complaintObj = new Complaint();
+            
             $name = $_POST['name'];
             $nic = $_POST['nic'];
             $lp_id = $_POST['lampid'];
             $phoneno = $_POST['phone'];
             $note = $_POST['note'];
+            array_search('Yes', $_POST)?($bulb = 1):($bulb = 0);
 
-            $query = "INSERT INTO complainer( NIC, Name, phone_no, notes, lp_id) VALUES ( '$nic','$name','$phoneno', '$note', '$lp_id' )";
+            // $q = "SELECT complainer_id FROM complainer WHERE NIC='$nic'";
+            // $list =   $this->conn->query($q);
+            // if ($list->num_rows >0) {
+            //     $id = $list->fetch_assoc();
+            //     $id = $id['complainer_id'];
+            //     $q = "UPDATE complainer SET NIC = '$nic', Name = '$name', phone_no = '$phoneno' WHERE complainer_id = '$id';";
+            // }else {
+            //     $q = "INSERT INTO complainer( NIC, Name, phone_no) VALUES ('$nic','$name','$phoneno');";
+            // }
 
-            if ($this->conn->query($query) === TRUE) {
+            // $q .= "INSERT INTO complaint( is_bulb_there, Notes, lp_id) VALUES ('$bulb','$note','$lp_id') ";
+            
+
+            $repairId = $repairObj->createRepair('a', $lp_id, 0, 0);
+            $complainerCheck = $complaintObj->checkComplainerExists($nic);
+            $complainer_id = $complaintObj->addComplainer($complainerCheck, $nic, $name, $phoneno);
+            $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
+            if ($complainer_id ) {
                 header("location: $page");
             }
         }

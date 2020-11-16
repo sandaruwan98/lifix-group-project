@@ -25,7 +25,7 @@
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo 'பெயர் சரியான பெயராக இருக்க வேண்டும்'; else echo 'உங்களது பெயர்'; ?>" id="f1">
 					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="<?php if($errors['nic']) echo 'என்ஐசி செல்லுபடியாகும் என்ஐசி எண்ணாக இருக்க வேண்டும்'; else echo 'அடையாள அட்டை இல'; ?> " id="f2">
 					<!-- <input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'சரியான அடையாள எண்ணாக இருக்க வேண்டும்'; else echo 'மின்விளக்கு கம்ப இல'; ?>" id="f3"> -->
-					<div class="phone-box">
+					<div class="box">
 						<div class="p-left">
 							<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'சரியான அடையாள எண்ணாக இருக்க வேண்டும்'; else echo 'மின்விளக்கு கம்ப இல'; ?>" >					
 						</div>
@@ -34,7 +34,7 @@
 						</div>
 					</div>
 					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="பிரச்சனை குறிப்பு" id="f4">
-					<div class="phone-box">
+					<div class="box">
 						<div class="p-left">
 							<input type="text" name="phone" value="<?php echo htmlspecialchars($phoneNo) ?>" class="field" placeholder="<?php if($errors['phone']) echo 'சரியான எண்ணை உள்ளிடவும்'; else echo 'தொலைபேசி'; ?>" id="f5">
 						</div>

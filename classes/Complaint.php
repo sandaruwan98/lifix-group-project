@@ -19,22 +19,28 @@ class Complaint extends Database
         if ($id == -1) {
             $q = " INSERT INTO `complainer`( `NIC`, `Name`, `phone_no`) VALUES 
             ('$nic','$name','$phone_no') ";
+            $this->conn->query($q);
+             return $this->conn->insert_id;
 
         }else {
              $q = "UPDATE `complainer` SET `NIC`='$nic',`Name`='$name',`phone_no`='$phone_no' WHERE `complainer_id`='$id'  ";
+             $this->conn->query($q);
+             return $this->conn->insert_id;
         }
-        $list =   $this->conn->query($q);
+        
     }
 
-    public function addComplaint() {
-        $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`=''";
-        $list =   $this->conn->query($q);
+    public function addComplaint($bulb, $note, $lp_id, $repair_id, $complainer_id) {
+        $q = "INSERT INTO `complaint`( `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`) VALUES ('$bulb','$note','$lp_id', '$repair_id', '$complainer_id') ";
+        $this->conn->query($q);
+        return $this->conn->insert_id;
     }
 
-
-
-
-
+    // public function addComplaint() {
+    //     $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`=''";
+    //     $this->conn->query($q);
+    //     return $this->conn->insert_id;
+    // }
 
     public function getCompliant_by_id($c_id)
     {

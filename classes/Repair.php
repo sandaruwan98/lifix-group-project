@@ -4,7 +4,6 @@ require_once "Database.php";
 class Repair extends Database
 {
 
-    
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
     {
         $date = date("yy-m-d");
