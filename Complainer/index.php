@@ -23,7 +23,16 @@
 				<form action="index.php" method="POST">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo 'ඔබගේ නම අත්‍යාවශ්‍ය වේ'; else echo 'නම'; ?>">
 					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="<?php if($errors['nic']) echo 'හැදුනුම්පත් අංකය අත්‍යාවශ්‍ය වේ'; else echo 'හැඳුනුම්පත් අංකය'; ?>" >				
-					<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'පහන් කණු අත්‍යාවශ්‍ය වේ'; else echo 'පහන් කණු අංකය'; ?>" >	
+					<!-- <input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'පහන් කණු අත්‍යාවශ්‍ය වේ'; else echo 'පහන් කණු අංකය'; ?>" >	 -->
+					<div class="phone-box">
+						<div class="p-left">
+							<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'පහන් කණු අත්‍යාවශ්‍ය වේ'; else echo 'පහන් කණු අංකය'; ?>" >					
+						</div>
+						<div class="bulb">
+							<span><label for="bulb">බල්බය තිබේද? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes" required></span>
+						</div>
+						
+					</div>
 					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="දෝශය පිළිබඳව විස්තර">					
 					<div class="phone-box">
 						<div class="p-left">
