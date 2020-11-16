@@ -1,10 +1,10 @@
 <?php 
 
-require_once __DIR__ . '/../classes/Repair.php';
+require_once __DIR__ . '/../classes/ItemRequest.php';
 
-$repair = new Repair();
+$itemrequest = new ItemRequest();
 // user id eka danna one.danata is eka 4 
-$list_assign = $repair->getAssignedRepairs(4);
+$requestlist = $itemrequest->getPendingRequestList_by_userid(1);
 ?>
 
 
@@ -17,6 +17,7 @@ $list_assign = $repair->getAssignedRepairs(4);
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/tech.css">
+    <link rel="stylesheet" href="./css/reqlist.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Pending Item Requsts</title>
 </head>
@@ -31,19 +32,19 @@ $list_assign = $repair->getAssignedRepairs(4);
         <div class="con">
             <h2 class="title-r">Pending Item Requsts</h2>
             <div class="list">
-                <?php while ($row = $list_assign->fetch_assoc()) :
+                <?php while ($row = $requestlist->fetch_assoc()) :
                 ?>
 
-                <div class="list-item" id="<?= $row["repair_id"] ?>">
-                    <div class="content">
+                <div class="list-item" id="<?= $row["Itemrequest_id"] ?>">
+                    
                         <div class="row">
-                            <div class="id"># <?= $row['lp_id'] ?> </div>
-                            <div class="id"><?= $row["date"] ?></div>
+                            <div class="id"># <?= $row['Itemrequest_id'] ?> </div>
+                            <div class="date"><?= $row["added_date"] ?></div>
                         </div>
 
-                        <div class="address"><?= $row["division"] ?></div>
-                    </div>
-                    <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
+                        
+                    
+                    <!-- <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button> -->
                 </div>
 
                 <?php endwhile ?>
