@@ -14,8 +14,6 @@ class Repair extends Database
         $this->conn->query($q);
         return $this->conn->insert_id;
     }
-    
-
 
     public function getRepairs($status)
     {

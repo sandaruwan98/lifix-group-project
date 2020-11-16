@@ -25,7 +25,7 @@ class Complaint extends Database
         }else {
              $q = "UPDATE `complainer` SET `NIC`='$nic',`Name`='$name',`phone_no`='$phone_no' WHERE `complainer_id`='$id'  ";
              $this->conn->query($q);
-             return $this->conn->insert_id;
+             return $id;
         }
         
     }
