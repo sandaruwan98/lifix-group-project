@@ -18,7 +18,7 @@ $list_assign = $repair->getAssignedRepairs(4);
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/tech.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
-    <title>Avalable Repairs</title>
+    <title>Pending Item Requsts</title>
 </head>
 
 <body>

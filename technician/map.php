@@ -62,7 +62,7 @@
           });
         }
       };
-      xmlhttp.open("GET", "./../Clerk/components/getMapdata.php", true);
+      xmlhttp.open("GET", "./../Clerk/ajax/getMapdata.php", true);
       xmlhttp.send();
     </script>
   </body>
