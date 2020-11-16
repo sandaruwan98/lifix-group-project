@@ -25,21 +25,25 @@ class Complaint extends Database
         }else {
              $q = "UPDATE `complainer` SET `NIC`='$nic',`Name`='$name',`phone_no`='$phone_no' WHERE `complainer_id`='$id'  ";
              $this->conn->query($q);
-             return $this->conn->insert_id;
+
+             return $id;
         }
         
     }
 
-    public function addComplaint() {
-        $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`=''";
+
+    public function addComplaint($bulb, $note, $lp_id, $repair_id, $complainer_id) {
+        $q = "INSERT INTO `complaint`( `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`) VALUES ('$bulb','$note','$lp_id', '$repair_id', '$complainer_id') ";
+
         $this->conn->query($q);
         return $this->conn->insert_id;
     }
 
-
-
-
-
+    // public function addComplaint() {
+    //     $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`=''";
+    //     $this->conn->query($q);
+    //     return $this->conn->insert_id;
+    // }
 
     public function getCompliant_by_id($c_id)
     {

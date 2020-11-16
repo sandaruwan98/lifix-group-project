@@ -4,7 +4,6 @@ require_once "Database.php";
 class Repair extends Database
 {
 
-    
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
     {
         $date = date("yy-m-d");
@@ -15,8 +14,6 @@ class Repair extends Database
         $this->conn->query($q);
         return $this->conn->insert_id;
     }
-    
-
 
     public function getRepairs($status)
     {

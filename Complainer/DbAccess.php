@@ -1,21 +1,33 @@
 <?php 
 
-require_once "../classes/Database.php";
-
+    require_once "../classes/Complaint.php";
+    require_once "../classes/Repair.php";
+    
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
 
-    class DbAccess extends Database {
-        function sendData($page) {
+    class DbAccess {
+        public $repairObj;
+        public $complaintObj;
+        
+        public function sendData($page) {
+            
+            $repairObj = new Repair();
+            $complaintObj = new Complaint();
+
             $name = $_POST['name'];
             $nic = $_POST['nic'];
             $lp_id = $_POST['lampid'];
             $phoneno = $_POST['phone'];
             $note = $_POST['note'];
+            array_search('Yes', $_POST)?($bulb = 1):($bulb = 0);
 
-            $query = "INSERT INTO complainer( NIC, Name, phone_no, notes, lp_id) VALUES ( '$nic','$name','$phoneno', '$note', '$lp_id' )";
+            $repairId = $repairObj->createRepair('a', $lp_id, 0, 0);
+            $complainerCheck = $complaintObj->checkComplainerExists($nic);
+            $complainer_id = $complaintObj->addComplainer($complainerCheck, $nic, $name, $phoneno);
+            $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
 
-            if ($this->conn->query($query) === TRUE) {
+            if ($complainer_id &&  $repairId) {
                 header("location: $page");
             }
         }

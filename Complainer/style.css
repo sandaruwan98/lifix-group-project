@@ -122,7 +122,7 @@ h2:after{
 	height: 100px;
 }
 
-.phone-box{
+.box{
 	/* max-width: 850px; */
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -209,7 +209,7 @@ h2:after{
 		transition: .3s;
 	}
 
-	.phone-box {
+	.box {
 		display: grid;
 		background: none;
 	}
