@@ -1,5 +1,5 @@
 <?php
-
+include 'const.php';
 
 function loadClasses($class) {
     $base_dir = __DIR__ . '/../';

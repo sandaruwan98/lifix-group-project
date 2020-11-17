@@ -3,9 +3,14 @@
 namespace classes;
 class Session
 {
-    public function __construct() {
+    public function __construct($occuFlag) {
         session_start();
+        // session_destroy();
+        echo $occuFlag;
         if (!isset($_SESSION["user"])) {
+            header('location: ./../login');
+        }
+        else if($occuFlag != $_SESSION["occuFlag"]){
             header('location: ./../login');
         }
     }
@@ -16,10 +21,7 @@ class Session
     public function getuserName(){
         return $_SESSION["user"];
     }
-    public function logout(){
-        session_destroy();
-        header('location: ./../login');
-    }
+    
 
    
 }
