@@ -1,7 +1,6 @@
 <?php 
-require_once __DIR__ . '/../../classes/Inventory.php';
 
-$inv = new Inventory();
+$inv = new classes\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 

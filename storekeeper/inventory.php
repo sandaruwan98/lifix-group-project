@@ -1,6 +1,7 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+
+$session = new classes\Session();
 ?>
 
 
@@ -47,9 +48,8 @@ $session = new Session();
 
 <?php
 
-require_once __DIR__ . '/../classes/Inventory.php';
 
-$inventory = new Inventory();
+$inventory = new classes\Inventory();
 $result = $inventory->getAllInventory();
 
 

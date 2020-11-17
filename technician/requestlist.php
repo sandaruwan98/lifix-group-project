@@ -1,14 +1,15 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+
+include_once '../utils/classloader.php';
+
+$session = new classes\Session();
 ?>
 
 
 <?php 
 
-require_once __DIR__ . '/../classes/ItemRequest.php';
 
-$itemrequest = new ItemRequest();
+$itemrequest = new classes\ItemRequest();
 // user id eka danna one.danata is eka 4 
 $requestlist = $itemrequest->getPendingRequestList_by_userid(1);
 ?>

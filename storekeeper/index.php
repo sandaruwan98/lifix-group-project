@@ -1,6 +1,7 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+
+$session = new classes\Session();
 ?>
 
 
@@ -41,9 +42,8 @@ $session = new Session();
                 <!-- request list -->
                 <?php 
                     
-                    require_once __DIR__ . '/../classes/ItemRequest.php';
 
-                    $itemrequest= new ItemRequest();
+                    $itemrequest= new classes\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 

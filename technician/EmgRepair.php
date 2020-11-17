@@ -1,15 +1,13 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+$session = new classes\Session();
 ?>
 
 
 <?php 
 
-require_once __DIR__ . '/../classes/Repair.php';
-require_once __DIR__ . '/../classes/Inventory.php';
 
-$inv = new Inventory();
+$inv = new classes\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
@@ -45,7 +43,7 @@ if (isset($_POST["addrepair"]) ) {
 
     if (!empty($used_items) && $lp_id!=null && $lp_id!=0) {
     
-        $repair = new Repair();
+        $repair = new classes\Repair();
      
         // danata technician_id eka 1 denoo. authentication nathi nisa
         $repair->CreateEmergencyRepair($lp_id,1,$used_items,$return_items);

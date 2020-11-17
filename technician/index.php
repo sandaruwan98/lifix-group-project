@@ -1,15 +1,15 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+
+$session = new classes\Session();
 ?>
 
 
 
 <?php 
 
-require_once __DIR__ . '/../classes/Repair.php';
 
-$repair = new Repair();
+$repair = new classes\Repair();
 // user id eka danna one.danata is eka 4 
 $list_assign = $repair->getAssignedRepairs(4);
 ?>
