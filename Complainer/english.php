@@ -30,7 +30,7 @@
 							<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo $errors['lampid']; else echo 'Lamppost ID'; ?>" >					
 						</div>
 						<div class="bulb">
-							<span><label for="bulb">Is bulb available? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes" required></span>
+							<span><label for="bulb">Is bulb available? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes"></span>
 						</div>
 					</div>
 					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="Notes about the problem" id="f4">

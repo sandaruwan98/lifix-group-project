@@ -19,7 +19,7 @@
             $lp_id = $_POST['lampid'];
             $phoneno = $_POST['phone'];
             $note = $_POST['note'];
-            array_search('Yes', $_POST)?($bulb = 1):($bulb = 0);
+            array_search('yes', $_POST)?($bulb = 1):($bulb = 0);
 
             $repairId = $repairObj->createRepair('a', $lp_id, 0, 0);
             $complainerCheck = $complaintObj->checkComplainerExists($nic);

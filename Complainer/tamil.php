@@ -30,7 +30,7 @@
 							<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo 'சரியான அடையாள எண்ணாக இருக்க வேண்டும்'; else echo 'மின்விளக்கு கம்ப இல'; ?>" >					
 						</div>
 						<div class="bulb">
-							<span><label for="bulb">விளக்கை? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes" required></span>
+							<span><label for="bulb">விளக்கை? </label><input class="checkmark" type="checkbox" name="bulb" id="bulb" value="yes"></span>
 						</div>
 					</div>
 					<input type="text" name="note" value="<?php echo htmlspecialchars($note) ?>" class="field note" placeholder="பிரச்சனை குறிப்பு" id="f4">
