@@ -1,7 +1,6 @@
-<?php 
-include_once '../utils/classloader.php';
-
-$session = new classes\Session();
-$session->logout();
+<?php
+session_start();
+session_destroy();
+header('location: ./');
 
 ?>

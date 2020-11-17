@@ -1,7 +1,7 @@
 <?php 
 require_once "../classes/Database.php";
 
-$session = new classes\Session();
+$session = new classes\Session(DSFL);
 ?>
 
 
