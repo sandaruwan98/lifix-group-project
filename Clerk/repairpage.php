@@ -1,12 +1,17 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(CleckFL);
+?>
+
+
 <?php
 if (!isset($_GET["id"]))
     header('location: ./repairHistory.php');
 
-require __DIR__ . '/../classes/Repair.php';
-require __DIR__ . '/../classes/Complaint.php';
 
-$repair = new Repair();
-$complaint = new Complaint();
+$repair = new classes\Repair();
+$complaint = new classes\Complaint();
 $repair_id = $_GET["id"];
 $rp = $repair->getRepairByid($repair_id);
 $cp = $complaint->getCompliant_by_repair_id($repair_id);
@@ -33,7 +38,8 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 
 <body>
 
-    <?php include "./components/nav.php" ?>
+
+    <?php include "./views/nav.php" ?>
 
 
     <div class="main_content">
@@ -145,7 +151,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
             .setLngLat([<?= $rp['longitude'] . ' , ' . $rp['lattitude']  ?>])
             .addTo(map);
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

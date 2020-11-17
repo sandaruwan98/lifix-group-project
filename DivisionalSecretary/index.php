@@ -1,3 +1,10 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(DSFL);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

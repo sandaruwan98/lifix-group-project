@@ -8,7 +8,7 @@
 
 
 
-## return/used flag
+## repair return/used flag
 ####  used -> 0
 ####  returned -> 1
 
@@ -27,8 +27,17 @@
 #### access revoked -> 1
 #### access not revoked -> 0  (when creating a new account, this set as default value)
 
-## occuStatus,
+## user occuFlag,
 #### divisional secretaty ->1
 #### Clerk ->2
 #### Storekeeper ->3
 #### Technician ->4
+
+
+
+## user statusFlag,
+#### divisional secretaty ->1
+#### Clerk ->2
+#### Storekeeper ->3
+#### Technician ->4
+

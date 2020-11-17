@@ -1,6 +1,6 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class ItemRequest extends Database
 {
 
@@ -28,6 +28,13 @@ class ItemRequest extends Database
         ON itemrequest.created_by=user.userId
          WHERE itemrequest.status='o' ";
 
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+
+    public function getPendingRequestList_by_userid($id)
+    {
+        $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='o' AND  created_by='$id' ";
         $list =   $this->conn->query($q);
         return $list;
     }

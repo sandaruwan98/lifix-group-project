@@ -1,7 +1,9 @@
 <?php
 
-include '../classes/Database.php';
-class AuthController extends Database{
+// include '../classes/Database.php';
+include_once '../utils/classloader.php';
+
+class AuthController extends classes\Database{
     protected $username,$password;
     protected $usrTag="";
     protected $passTag="";
@@ -10,7 +12,7 @@ class AuthController extends Database{
     protected $starusPass=1;
     public function __construct()
     {
-        parent::__construct();   
+        parent::__construct();    
         
     }
 
@@ -84,11 +86,12 @@ class AuthController extends Database{
                     session_start();
                     $_SESSION['user']=$username;
                     $_SESSION['id']=$row1['userId'];
+                    $_SESSION['occuFlag']=$row1['occuFlag'];
                     $this->__destruct();
                     switch($row1['occuFlag']){
                         case 1: header('location:../DivisionalSecretary/index.php');break;
                         case 2:header('location:../Clerk/index.php');break;
-                        case 3:header('location:../storekeeper/display.php');break;
+                        case 3:header('location:../storekeeper/index.php');break;
                         case 4:header('location:../technician/index.php');break;
                         default: session_destroy();
                     }

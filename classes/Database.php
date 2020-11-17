@@ -1,6 +1,6 @@
 <?php
 
-
+namespace classes;
 class Database {
 
  public $conn;
@@ -19,7 +19,7 @@ class Database {
    $password = "";
    $dbname = "lifix";
    $port = "3306";
-   $this->conn = new mysqli($servername, $username, $password, $dbname, $port);  
+   $this->conn = new \mysqli($servername, $username, $password, $dbname, $port);  
    if ($this->conn->connect_error) {
     die("Connection failed: " . $this->conn->connect_error);
   }

@@ -1,3 +1,8 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(StorekeeperFL);
+?>
 
 
 <!DOCTYPE html>
@@ -16,29 +21,11 @@
 
 </head>
 <body>
-<nav class="sidebar">
-        <!-- <h2 class="link-text">MENU</h2> -->
-        <ul>
-            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">Li-Fix</span> </span>
-            </li>
-            <!-- <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
-                        class="link-text">Home</span> </a></li> -->
-			<li class="nav-item"><a class="nav-link active" href="./ItemRequest.php"><i class='far fa-list-alt'></i><span
-                        class="link-text"> Request Items</span></a></li>	
-            <li class="nav-item"><a class="nav-link " href="./requestHistory.html"><i class="fas fa-history"></i><span
-                            class="link-text">Item Request History</span></a></li>	
-            <li class="nav-item"><a class="nav-link " href="./inventory.php"><i class='far fa-file-alt'></i><span
-                class="link-text">Inventory Details</span></a></li>
-            <li class="nav-item"><a class="nav-link " href="./stockaddition.html"><i class="fas fa-file-invoice"></i><span
-                class="link-text">Issue Items</span></a></li>  	
-
-        </ul>
-
-    </nav>
-
-    <script src="../js/slider.js"></script>
     
+
+    <?php include "./views/nav.php" ?>
+
+
     <div class="main_content">
         <header>
             <h1>Item Requests</h1>
@@ -55,9 +42,8 @@
                 <!-- request list -->
                 <?php 
                     
-                    require_once __DIR__ . '/../classes/ItemRequest.php';
 
-                    $itemrequest= new ItemRequest();
+                    $itemrequest= new classes\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 

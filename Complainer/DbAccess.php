@@ -1,8 +1,7 @@
 <?php 
 
-    require_once "../classes/Complaint.php";
-    require_once "../classes/Repair.php";
-    
+    include_once '../utils/classloader.php';
+
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
 
@@ -12,8 +11,8 @@
         
         public function sendData($page) {
             
-            $repairObj = new Repair();
-            $complaintObj = new Complaint();
+            $repairObj = new classes\Repair();
+            $complaintObj = new classes\Complaint();
 
             $name = $_POST['name'];
             $nic = $_POST['nic'];

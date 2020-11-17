@@ -7,7 +7,7 @@ $(document).ready(function(){
     $(".repair-item").click( function(){
 
         // console.log(this.id);
-        $.get("./components/getTableData.php?id=" + this.id ,function (data,status) {
+        $.get("./ajax/getTableData.php?id=" + this.id ,function (data,status) {
             if (status == "success") {
                 var tabledata = JSON.parse(data)
                 generateTable(tabledata);

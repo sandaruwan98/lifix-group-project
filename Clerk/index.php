@@ -1,3 +1,8 @@
+<?php 
+include_once '../utils/classloader.php';
+$session = new classes\Session(CleckFL);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +26,7 @@
 
 
 
-<?php include "./components/nav.php" ?>
+<?php include "./views/nav.php" ?>
 
    
     <div class="main_content">
@@ -33,7 +38,7 @@
             <div class="list-section">
                 <div class="lists">
                     <!-- load available repairlist from database -->
-                    <?php include "./components/AvailRepairList.php" ?>
+                    <?php include "./views/AvailRepairList.php" ?>
                 </div>
                 <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
             </div>
@@ -83,10 +88,10 @@
 
             }
         };
-        xmlhttp.open("GET", "./components/getMapdata.php", true);
+        xmlhttp.open("GET", "./ajax/getMapdata.php", true);
         xmlhttp.send();
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

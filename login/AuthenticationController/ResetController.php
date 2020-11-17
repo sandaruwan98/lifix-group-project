@@ -1,7 +1,9 @@
 <?php
 
-include '../classes/Database.php';
-class RestController extends Database{
+// include '../classes/Database.php';
+include_once '../utils/classloader.php';
+
+class RestController extends classes\Database{
 
     protected $div_1="";
     protected $div_2="";

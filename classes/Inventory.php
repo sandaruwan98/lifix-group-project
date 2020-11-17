@@ -1,6 +1,6 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class Inventory extends Database
 {
 
