@@ -44,7 +44,7 @@
             $name = "";
             $errors['name'] = 'Name must be a valid name';
         }
-        if(empty($nic) || !preg_match("/^[1-9][0-9]{8}(x|v|X|V)$/", $nic) || !preg_match("/^[1-9][0-9]{11}$/", $nic)) {
+        if(empty($nic) || !preg_match("/^[1-9]([0-9]{8}(x|v|X|V)|[0-9]{11})$/", $nic)) {
             $nic = "";
             $errors['nic'] = 'NIC must be a valid NIC number';
         }
