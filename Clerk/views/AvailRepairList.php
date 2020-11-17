@@ -2,7 +2,6 @@
 
 require __DIR__ . '/../../classes/Repair.php';
 require __DIR__ . '/../../classes/User.php';
-session_start();
 $repair = new Repair();
 
 $list_avail = $repair->getUnassignedRepairs();

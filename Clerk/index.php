@@ -1,3 +1,8 @@
+<?php 
+require_once __DIR__ . '/../classes/Session.php';
+$session = new Session();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

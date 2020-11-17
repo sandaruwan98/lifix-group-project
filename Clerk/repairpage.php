@@ -1,3 +1,9 @@
+<?php 
+require_once __DIR__ . '/../classes/Session.php';
+$session = new Session();
+?>
+
+
 <?php
 if (!isset($_GET["id"]))
     header('location: ./repairHistory.php');
