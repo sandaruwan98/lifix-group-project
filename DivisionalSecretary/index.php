@@ -1,6 +1,7 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+require_once "../classes/Database.php";
+
+$session = new classes\Session();
 ?>
 
 

@@ -1,6 +1,8 @@
 <?php
 
-include '../classes/Database.php';
+// include '../classes/Database.php';
+include_once '../utils/classloader.php';
+
 class AuthController extends classes\Database{
     protected $username,$password;
     protected $usrTag="";
@@ -10,7 +12,7 @@ class AuthController extends classes\Database{
     protected $starusPass=1;
     public function __construct()
     {
-        parent::__construct();   
+        parent::__construct();    
         
     }
 

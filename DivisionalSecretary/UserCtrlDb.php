@@ -1,7 +1,8 @@
 <?php 
-    require_once "../classes/Database.php";
 
-    class DbAccess extends Database {
+    include_once '../utils/classloader.php';
+
+    class DbAccess extends classes\Database {
 
         function addNewUser($userroll, $name) {
             $query = "INSERT INTO user(occuFlag, name) VALUES ( '$userroll','$name')";

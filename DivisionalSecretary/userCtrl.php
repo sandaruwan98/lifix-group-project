@@ -1,6 +1,9 @@
 <?php 
 require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+
+
+$session = new classes\Session();
 ?>
 
 
