@@ -1,5 +1,7 @@
 <?php
-require "Database.php";
+
+namespace classes;
+require_once "Database.php";
 class Map extends Database
 {
 

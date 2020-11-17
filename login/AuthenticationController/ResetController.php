@@ -1,7 +1,7 @@
 <?php
 
 include '../classes/Database.php';
-class RestController extends Database{
+class RestController extends classes\Database{
 
     protected $div_1="";
     protected $div_2="";

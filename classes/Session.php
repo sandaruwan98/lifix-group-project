@@ -1,6 +1,6 @@
 <?php
-// require_once "Database.php";
 
+namespace classes;
 class Session
 {
     public function __construct() {

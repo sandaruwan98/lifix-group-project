@@ -1,7 +1,7 @@
 <?php
 
 include '../classes/Database.php';
-class AuthController extends Database{
+class AuthController extends classes\Database{
     protected $username,$password;
     protected $usrTag="";
     protected $passTag="";
@@ -84,6 +84,7 @@ class AuthController extends Database{
                     session_start();
                     $_SESSION['user']=$username;
                     $_SESSION['id']=$row1['userId'];
+                    $_SESSION['occuFlag']=$row1['occuFlag'];
                     $this->__destruct();
                     switch($row1['occuFlag']){
                         case 1: header('location:../DivisionalSecretary/index.php');break;

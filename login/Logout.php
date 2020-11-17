@@ -1,7 +1,7 @@
 <?php 
+include_once '../utils/classloader.php';
 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+$session = new classes\Session();
 $session->logout();
 
 ?>

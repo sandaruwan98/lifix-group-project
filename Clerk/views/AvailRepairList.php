@@ -1,12 +1,12 @@
 <?php
 
-require __DIR__ . '/../../classes/Repair.php';
-require __DIR__ . '/../../classes/User.php';
-$repair = new Repair();
+// require __DIR__ . '/../../classes/Repair.php';
+// require __DIR__ . '/../../classes/User.php';
+$repair = new classes\Repair();
 
 $list_avail = $repair->getUnassignedRepairs();
 
-$user = new User();
+$user = new classes\User();
 $technicians = $user->getUsers(4);
 // echo $_SESSION["tid"];
 ?>

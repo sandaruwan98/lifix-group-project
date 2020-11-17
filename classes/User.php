@@ -1,4 +1,5 @@
 <?php
+namespace classes;
 require_once "Database.php";
 
 class User extends Database
