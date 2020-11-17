@@ -1,4 +1,10 @@
 <?php 
+require_once __DIR__ . '/../classes/Session.php';
+$session = new Session();
+?>
+
+
+<?php 
 
 require_once __DIR__ . '/../classes/Repair.php';
 require_once __DIR__ . '/../classes/Inventory.php';
@@ -51,6 +57,8 @@ if (isset($_POST["addrepair"]) ) {
 
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
