@@ -1,5 +1,5 @@
 <?php 
-require_once "../classes/Database.php";
+include_once '../utils/classloader.php';
 
 $session = new classes\Session(DSFL);
 ?>

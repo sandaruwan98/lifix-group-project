@@ -91,7 +91,7 @@ class AuthController extends classes\Database{
                     switch($row1['occuFlag']){
                         case 1: header('location:../DivisionalSecretary/index.php');break;
                         case 2:header('location:../Clerk/index.php');break;
-                        case 3:header('location:../storekeeper/display.php');break;
+                        case 3:header('location:../storekeeper/index.php');break;
                         case 4:header('location:../technician/index.php');break;
                         default: session_destroy();
                     }
