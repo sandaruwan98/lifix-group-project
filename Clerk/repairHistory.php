@@ -1,6 +1,7 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+
+$session = new classes\Session();
 ?>
 
 
@@ -40,8 +41,7 @@ $session = new Session();
 
             <!-- repair list -->
             <?php
-            require __DIR__ . '/../classes/Repair.php';
-            $repair = new Repair();
+            $repair = new classes\Repair();
             $list = $repair->getRepairs('a');
 
             while ($row = $list->fetch_assoc()) :

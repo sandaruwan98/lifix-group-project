@@ -1,20 +1,18 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
-$session = new Session();
+include_once '../utils/classloader.php';
+$session = new classes\Session();
 ?>
 
 
 <?php 
     
-   require_once __DIR__ . '/../classes/Inventory.php';
-   require_once __DIR__ . '/../classes/StockAddition.php';
-
-   $inv = new Inventory();
+ 
+   $inv = new classes\Inventory();
    $item_names = $inv->getItemNames();
    $item_names= $item_names->fetch_all();
 
 
-   $sa = new StockAddition();
+   $sa = new classes\StockAddition();
    $sa_list = $sa->get_SA_List();
  
 ?>
