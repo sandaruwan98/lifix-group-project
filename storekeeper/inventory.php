@@ -1,3 +1,10 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(StorekeeperFL);
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +48,8 @@
 
 <?php
 
-require_once __DIR__ . '/../classes/Inventory.php';
 
-$inventory = new Inventory();
+$inventory = new classes\Inventory();
 $result = $inventory->getAllInventory();
 
 

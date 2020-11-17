@@ -1,13 +1,18 @@
 <?php 
-   require_once __DIR__ . '/../classes/Inventory.php';
-   require_once __DIR__ . '/../classes/StockAddition.php';
+include_once '../utils/classloader.php';
+$session = new classes\Session(CleckFL);
+?>
 
-   $inv = new Inventory();
+
+<?php 
+    
+ 
+   $inv = new classes\Inventory();
    $item_names = $inv->getItemNames();
    $item_names= $item_names->fetch_all();
 
 
-   $sa = new StockAddition();
+   $sa = new classes\StockAddition();
    $sa_list = $sa->get_SA_List();
  
 ?>
@@ -99,6 +104,6 @@
 
 
      </script>
-           <script src="./purchase.js"></script>
+           <script src="./../js/clerck/purchase.js"></script>
 
 </html>

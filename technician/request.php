@@ -1,9 +1,14 @@
 <?php 
+include_once '../utils/classloader.php';
 
-require_once __DIR__ . '/../classes/ItemRequest.php';
-require_once __DIR__ . '/../classes/Inventory.php';
+$session = new classes\Session(TechnicianFL);
+?>
 
-$inv = new Inventory();
+
+<?php 
+
+
+$inv = new classes\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
@@ -27,7 +32,7 @@ if (isset($_POST["addrequest"]) ) {
     }
 
     if (!empty($request_items)) {
-        $itemrequest = new ItemRequest();
+        $itemrequest = new classes\ItemRequest();
         // danata created_user_id eka 1 authentication nathi nisa
         $itemrequest->CreateItemRequest(1,$request_items );
 

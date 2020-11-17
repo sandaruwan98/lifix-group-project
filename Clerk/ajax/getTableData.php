@@ -1,8 +1,9 @@
 <?php 
 
 
-require __DIR__ . '/../../classes/StockAddition.php';
-$sa= new StockAddition();
+require_once __DIR__ . '/../../utils/classloader.php';
+
+$sa= new classes\StockAddition();
 
 $id = $_GET["id"];
 $list = $sa->getItemsfor_SA_byId($id);

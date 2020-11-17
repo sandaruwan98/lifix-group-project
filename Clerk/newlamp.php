@@ -1,3 +1,10 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(CleckFL);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

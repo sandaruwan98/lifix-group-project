@@ -1,4 +1,13 @@
 <?php 
+require_once __DIR__ . '/../classes/Session.php';
+include_once '../utils/classloader.php';
+
+
+$session = new classes\Session(DSFL);
+?>
+
+
+<?php 
     include "UserCtrlDb.php";
 ?>
 

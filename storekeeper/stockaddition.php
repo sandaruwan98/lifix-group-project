@@ -1,3 +1,11 @@
+<?php 
+
+include_once '../utils/classloader.php';
+$session = new classes\Session(StorekeeperFL);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

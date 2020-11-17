@@ -1,6 +1,6 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class LampPost extends Database
 {    
     public function addLampost( $lp_id,$address,$lat,$lng,$technician_id)

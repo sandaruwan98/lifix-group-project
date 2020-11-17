@@ -1,3 +1,8 @@
+<?php 
+include_once '../utils/classloader.php';
+$session = new classes\Session(CleckFL);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,7 +91,7 @@
         xmlhttp.open("GET", "./ajax/getMapdata.php", true);
         xmlhttp.send();
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

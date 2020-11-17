@@ -1,20 +1,25 @@
 <?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(TechnicianFL);
+?>
+
+
+<?php 
 if (!isset($_GET["id"])) 
     header('location: ./index.php');
 
 $r_id = $_GET["id"];
 
 
-require_once __DIR__ . '/../classes/Repair.php';
-require_once __DIR__ . '/../classes/Inventory.php';
 
 
 //  to laod repair items
-$inv = new Inventory();
+$inv = new classes\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
-$repair = new Repair();
+$repair = new classes\Repair();
 
 if (isset($_POST["complete"]) ) {
     $used_items = array();

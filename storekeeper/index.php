@@ -1,3 +1,8 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(StorekeeperFL);
+?>
 
 
 <!DOCTYPE html>
@@ -37,9 +42,8 @@
                 <!-- request list -->
                 <?php 
                     
-                    require_once __DIR__ . '/../classes/ItemRequest.php';
 
-                    $itemrequest= new ItemRequest();
+                    $itemrequest= new classes\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 
