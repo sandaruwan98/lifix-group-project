@@ -1,4 +1,10 @@
 <?php 
+require_once __DIR__ . '/../classes/Session.php';
+$session = new Session();
+?>
+
+
+<?php 
     include "UserCtrlDb.php";
 ?>
 
