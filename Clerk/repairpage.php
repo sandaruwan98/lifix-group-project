@@ -146,7 +146,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
             .setLngLat([<?= $rp['longitude'] . ' , ' . $rp['lattitude']  ?>])
             .addTo(map);
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

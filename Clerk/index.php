@@ -86,7 +86,7 @@
         xmlhttp.open("GET", "./ajax/getMapdata.php", true);
         xmlhttp.send();
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

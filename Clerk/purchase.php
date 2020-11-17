@@ -99,6 +99,6 @@
 
 
      </script>
-           <script src="./purchase.js"></script>
+           <script src="./../js/clerck/purchase.js"></script>
 
 </html>
