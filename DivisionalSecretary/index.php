@@ -1,3 +1,10 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(DSFL);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +13,8 @@
     <title>Report Generate</title>
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/slider.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/report.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/report.css">
 </head>
 <body>
     
@@ -25,6 +32,7 @@
             </div>
         </form>
     </div>
+    
     </div>
     
 </body>

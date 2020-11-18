@@ -1,3 +1,8 @@
+<?php 
+include_once '../utils/classloader.php';
+$session = new classes\Session(CleckFL);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +10,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/clerk.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Repairs</title>
 
 </head>
@@ -18,7 +26,7 @@
 
 
 
-<?php include "./components/nav.php" ?>
+<?php include "./views/nav.php" ?>
 
    
     <div class="main_content">
@@ -30,7 +38,7 @@
             <div class="list-section">
                 <div class="lists">
                     <!-- load available repairlist from database -->
-                    <?php include "./components/AvailRepairList.php" ?>
+                    <?php include "./views/AvailRepairList.php" ?>
                 </div>
                 <!-- <button style="margin-top: 10px;" onclick="AssignRepairs()">Assign</button> -->
             </div>
@@ -75,15 +83,15 @@
                         })
                         .setLngLat([mk.longitude, mk.lattitude])
                         .addTo(map).setPopup(popup);;
-                    markerArr.set(mk.repair_id, marker);
+                    markerArr.set(mk.repair_id, [mk.longitude, mk.lattitude]);
                 });
 
             }
         };
-        xmlhttp.open("GET", "./components/getMapdata.php", true);
+        xmlhttp.open("GET", "./ajax/getMapdata.php", true);
         xmlhttp.send();
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

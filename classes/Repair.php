@@ -1,10 +1,10 @@
 <?php
+namespace classes;
 require_once "Database.php";
 
 class Repair extends Database
 {
 
-    
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
     {
         $date = date("yy-m-d");
@@ -15,14 +15,33 @@ class Repair extends Database
         $this->conn->query($q);
         return $this->conn->insert_id;
     }
-    
-
 
     public function getRepairs($status)
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status'";
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' ORDER BY repair.date DESC " ;
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+
+
+    public function getUnassignedRepairs()
+    {
+        $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id=0 AND repair.status='a' ORDER BY repair.date DESC " ;
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+
+    public function getAssignedRepairs($tech_id)
+    {
+        $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id='$tech_id' ORDER BY repair.date DESC " ;
 
         $list =   $this->conn->query($q);
         return $list;
@@ -31,6 +50,12 @@ class Repair extends Database
     public function changeStatus($id, $st)
     {
         $q = "UPDATE `repair` SET `status`='$st' WHERE `repair_id`= '$id'";
+        $this->conn->query($q);
+    }
+
+    public function assignRepair($id, $tech_id)
+    {
+        $q = "UPDATE `repair` SET `technician_id`='$tech_id' WHERE `repair_id`= '$id'";
         $this->conn->query($q);
     }
 

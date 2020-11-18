@@ -249,7 +249,8 @@ CREATE TABLE `lamppost` (
   `lpid` int(255) NOT NULL,
   `division` varchar(40) NOT NULL,
   `lattitude` double NOT NULL,
-  `longitude` double NOT NULL
+  `longitude` double NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -288,7 +289,9 @@ CREATE TABLE `repair` (
   `repair_id` int(255) NOT NULL,
   `date` date NOT NULL,
   `status` char(1) NOT NULL,
-  `lp_id` int(255) NOT NULL
+  `lp_id` int(255) NOT NULL,
+  `technician_id` int(255) NOT NULL,
+  `clerk_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -465,10 +468,56 @@ ALTER TABLE `newlamppostrecord`
   ADD KEY `lp_id` (`lp_id`);
 
 --
+-- Indexes for table `newlamppostrecord`
+--
+ALTER TABLE `newlamppostrecord`
+  ADD PRIMARY KEY (`Lp_record_id`),
+  ADD KEY `lp_id` (`lp_id`);
+
+--
 -- Indexes for table `repair`
 --
 ALTER TABLE `repair`
-  ADD PRIMARY KEY (`repair_id`);
+  ADD PRIMARY KEY (`repair_id`),
+  ADD KEY `clerk_id` (`clerk_id`),
+  ADD KEY `repair_ibfk_1` (`technician_id`),
+  ADD KEY `lp_id` (`lp_id`);
+
+--
+-- Indexes for table `repair_inventory_asc`
+--
+ALTER TABLE `repair_inventory_asc`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `repair_id` (`repair_id`);
+
+--
+-- Indexes for table `stock_addition`
+--
+ALTER TABLE `stock_addition`
+  ADD PRIMARY KEY (`sa_id`),
+  ADD KEY `clerk_id` (`clerk_id`);
+
+--
+-- Indexes for table `stock_addition_inventory_asc`
+--
+ALTER TABLE `stock_addition_inventory_asc`
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `sa_id` (`sa_id`);
+
+--
+-- Indexes for table `tmpinventory`
+--
+ALTER TABLE `tmpinventory`
+  ADD PRIMARY KEY (`tmp_id`),
+  ADD KEY `tecnician_id` (`tecnician_id`),
+  ADD KEY `item_id` (`Item_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userId`);
 
 --
 -- Indexes for table `repair_inventory_asc`
@@ -517,10 +566,159 @@ ALTER TABLE `complaints`
   MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `fraud`
+--
+ALTER TABLE `fraud`
+  MODIFY `Fraud_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `fraud_item`
+--
+ALTER TABLE `fraud_item`
+  MODIFY `Fraud_item_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `Item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `itemrequest`
+--
+ALTER TABLE `itemrequest`
+  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `newlamppostrecord`
+--
+ALTER TABLE `newlamppostrecord`
+  MODIFY `Lp_record_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `repair`
 --
 ALTER TABLE `repair`
-  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `repair_inventory_asc`
+--
+ALTER TABLE `repair_inventory_asc`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `stock_addition`
+--
+ALTER TABLE `stock_addition`
+  MODIFY `sa_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tmpinventory`
+--
+ALTER TABLE `tmpinventory`
+  MODIFY `tmp_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `complaint`
+--
+ALTER TABLE `complaint`
+  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`repair_id`) REFERENCES `repair` (`repair_id`),
+  ADD CONSTRAINT `complaint_ibfk_2` FOREIGN KEY (`complainer_id`) REFERENCES `complainer` (`complainer_id`);
+
+--
+-- Constraints for table `fraud`
+--
+ALTER TABLE `fraud`
+  ADD CONSTRAINT `fraud_ibfk_1` FOREIGN KEY (`doneBy`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `fraud_item`
+--
+ALTER TABLE `fraud_item`
+  ADD CONSTRAINT `fraud_item_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory` (`Item_id`);
+
+--
+-- Constraints for table `fraud_repair_asc`
+--
+ALTER TABLE `fraud_repair_asc`
+  ADD CONSTRAINT `fraud_repair_asc_ibfk_1` FOREIGN KEY (`fraud_id`) REFERENCES `fraud` (`Fraud_id`),
+  ADD CONSTRAINT `fraud_repair_asc_ibfk_2` FOREIGN KEY (`repair_id`) REFERENCES `repair` (`repair_id`);
+
+--
+-- Constraints for table `inventory_lamppost_asc`
+--
+ALTER TABLE `inventory_lamppost_asc`
+  ADD CONSTRAINT `inventory_lamppost_asc_ibfk_1` FOREIGN KEY (`Item_id`) REFERENCES `inventory` (`Item_id`),
+  ADD CONSTRAINT `inventory_lamppost_asc_ibfk_2` FOREIGN KEY (`lamppost_id`) REFERENCES `lamppost` (`lp_id`);
+
+--
+-- Constraints for table `itemrequest`
+--
+ALTER TABLE `itemrequest`
+  ADD CONSTRAINT `itemrequest_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `itemrequest_inventory_asc`
+--
+ALTER TABLE `itemrequest_inventory_asc`
+  ADD CONSTRAINT `itemrequest_inventory_asc_ibfk_1` FOREIGN KEY (`Itemrequest_id`) REFERENCES `itemrequest` (`Itemrequest_id`),
+  ADD CONSTRAINT `itemrequest_inventory_asc_ibfk_2` FOREIGN KEY (`Item_id`) REFERENCES `inventory` (`Item_id`);
+
+--
+-- Constraints for table `itemrequest_tmpinventory_asc`
+--
+ALTER TABLE `itemrequest_tmpinventory_asc`
+  ADD CONSTRAINT `itemrequest_tmpinventory_asc_ibfk_1` FOREIGN KEY (`Itemrequest_id`) REFERENCES `itemrequest` (`Itemrequest_id`),
+  ADD CONSTRAINT `itemrequest_tmpinventory_asc_ibfk_2` FOREIGN KEY (`tmp_inventory_id`) REFERENCES `tmpinventory` (`tmp_id`);
+
+--
+-- Constraints for table `newlamppostrecord`
+--
+ALTER TABLE `newlamppostrecord`
+  ADD CONSTRAINT `newlamppostrecord_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `lamppost` (`lp_id`);
+
+--
+-- Constraints for table `repair`
+--
+ALTER TABLE `repair`
+  ADD CONSTRAINT `repair_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `lamppost` (`lp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `repair_inventory_asc`
+--
+ALTER TABLE `repair_inventory_asc`
+  ADD CONSTRAINT `repair_inventory_asc_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory` (`Item_id`),
+  ADD CONSTRAINT `repair_inventory_asc_ibfk_2` FOREIGN KEY (`repair_id`) REFERENCES `repair` (`repair_id`);
+
+--
+-- Constraints for table `stock_addition`
+--
+ALTER TABLE `stock_addition`
+  ADD CONSTRAINT `stock_addition_ibfk_1` FOREIGN KEY (`clerk_id`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `stock_addition_inventory_asc`
+--
+ALTER TABLE `stock_addition_inventory_asc`
+  ADD CONSTRAINT `stock_addition_inventory_asc_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory` (`Item_id`),
+  ADD CONSTRAINT `stock_addition_inventory_asc_ibfk_2` FOREIGN KEY (`sa_id`) REFERENCES `stock_addition` (`sa_id`);
+
+--
+-- Constraints for table `tmpinventory`
+--
+ALTER TABLE `tmpinventory`
+  ADD CONSTRAINT `item_id` FOREIGN KEY (`Item_id`) REFERENCES `inventory` (`Item_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,6 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class Inventory extends Database
 {
 
@@ -16,6 +16,13 @@ class Inventory extends Database
     public function getItemNames()
     {
         $q = "SELECT Item_id,name FROM inventory";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+    public function getAllInventory()
+    {
+        $q = "SELECT Item_id,name,total FROM inventory";
 
         $list =   $this->conn->query($q);
         return $list;

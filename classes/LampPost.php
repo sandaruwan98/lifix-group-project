@@ -1,10 +1,8 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class LampPost extends Database
-{
-
-    
+{    
     public function addLampost( $lp_id,$address,$lat,$lng,$technician_id)
     {
 
@@ -14,7 +12,6 @@ class LampPost extends Database
         $this->conn->query($q);
     }
 
-    
     private function AddUsedItemforLP($lp_id,$item_id,$quantity){
         $q = "INSERT INTO `inventory_lamppost_asc`( `lamppost_id`, `item_id`, `quantity`) VALUES 
         ('$lp_id','$item_id' , '$quantity')";
@@ -24,10 +21,6 @@ class LampPost extends Database
        
     }
 
-
-    
-
-    
     public function Add_All_Used_Items_forNewLP($lp_id,$used_items){
         // add ussed items to database
         foreach ($used_items as $item){
@@ -35,13 +28,6 @@ class LampPost extends Database
         }
         
     }
-
-
-
-
-    
-
-
 
 }
 

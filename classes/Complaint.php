@@ -1,8 +1,49 @@
 <?php
+namespace classes;
 require_once "Database.php";
-
 class Complaint extends Database
 {
+
+    public function checkComplainerExists($nic) {
+        $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`='$nic'";
+        $list =   $this->conn->query($q);
+        if ($list->num_rows >0) {
+            $id = $list->fetch_assoc();
+            return $id['complainer_id'];
+        }else {
+            return -1;
+        }
+    }
+
+    public function addComplainer($id,$nic,$name,$phone_no) {
+        if ($id == -1) {
+            $q = " INSERT INTO `complainer`( `NIC`, `Name`, `phone_no`) VALUES 
+            ('$nic','$name','$phone_no') ";
+            $this->conn->query($q);
+             return $this->conn->insert_id;
+
+        }else {
+             $q = "UPDATE `complainer` SET `NIC`='$nic',`Name`='$name',`phone_no`='$phone_no' WHERE `complainer_id`='$id'  ";
+             $this->conn->query($q);
+
+             return $id;
+        }
+        
+    }
+
+
+    public function addComplaint($bulb, $note, $lp_id, $repair_id, $complainer_id) {
+        $q = "INSERT INTO `complaint`( `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`) VALUES ('$bulb','$note','$lp_id', '$repair_id', '$complainer_id') ";
+
+        $this->conn->query($q);
+        return $this->conn->insert_id;
+    }
+
+    // public function addComplaint() {
+    //     $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`=''";
+    //     $this->conn->query($q);
+    //     return $this->conn->insert_id;
+    // }
 
     public function getCompliant_by_id($c_id)
     {

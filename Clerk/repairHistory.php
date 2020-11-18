@@ -1,3 +1,10 @@
+<?php 
+include_once '../utils/classloader.php';
+
+$session = new classes\Session(CleckFL);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +23,8 @@
 <body>
 
 
-    <?php include "./components/nav.php" ?>
+    <?php include "./views/nav.php" ?>
+
 
 
     <div class="main_content">
@@ -33,8 +41,7 @@
 
             <!-- repair list -->
             <?php
-            require __DIR__ . '/../classes/Repair.php';
-            $repair = new Repair();
+            $repair = new classes\Repair();
             $list = $repair->getRepairs('a');
 
             while ($row = $list->fetch_assoc()) :

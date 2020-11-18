@@ -1,89 +1,123 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+  box-sizing: border-box;
+}
+
 .btn {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    background-color: #009879;
-    color: #fff;
-    font-size: 1.1rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: .3s;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #009879;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: #27ae60;
+  background-color: #27ae60;
 }
 
 .btn:focus {
-    background-color: #27ae60;
+  background-color: #27ae60;
 }
 .btn.disable {
-    background-color: #485855;
-   
-   
+  background-color: #485855;
 }
 
 .content-table {
-    display: table;
-    font-family: 'Quicksand', sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    /* margin: 25px 0; */
-    font-size: 1.2em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+  display: table;
+  font-family: "Quicksand", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  /* margin: 25px 0; */
+  font-size: 1.2em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .content-table thead tr {
-    background-color: #009879;
-    color: white;
-    text-align: left;
-    font-weight: bold;
+  background-color: #009879;
+  color: white;
+  text-align: left;
+  font-weight: bold;
 }
 
 .content-table th,
 .content-table td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3c7;
+  background-color: #f3f3f3c7;
 }
 
 .content-table tbody tr:nth-of-type(odd) {
-    background-color: #f3f3f38f;
+  background-color: #f3f3f38f;
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #009879;
 }
 
 /* css for fields */
 
 .field {
-    width: 100%;
-    border: 2px solid rgba(0, 0, 0, 0);
-    outline: none;
-    background-color: rgba(230, 230, 230, 0.6);
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 22px;
-    transition: .3s;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
 }
 
 .field:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
-
 
 .field:focus {
-    border: 2px solid rgba(30, 85, 250, 0.47);
-    background-color: #fff;
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
 }
+
+
+
+
+
+
+.col-12{width: 100%;}
+.col-11{width: 91.6666%;}
+.col-l0{width: 83.3333%;}
+.col-9{width: 75%;}
+.col-8{width: 66.6666%;}
+.col-6{width: 50%;}
+.col-5{width: 41.6666%;}
+.col-4{width: 33.3333%;}
+.col-3{width: 25%;}
+.col-2{width: 16.6666%;}
+.col-1{width: 8.33333%;}
+
+
+
+
+.row-12{width: 100%;}
+.row-11{width: 91.6666%;}
+.row-l0{width: 83.3333%;}
+.row-9{width: 75%;}
+.row-8{width: 66.6666%;}
+.row-6{width: 50%;}
+.row-5{width: 41.6666%;}
+.row-4{width: 33.3333%;}
+.row-3{width: 25%;}
+.row-2{width: 16.6666%;}
+.row-1{width: 8.33333%;}
 

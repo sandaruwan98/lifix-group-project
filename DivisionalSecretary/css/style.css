@@ -46,7 +46,8 @@ body {
   text-align: center;
   background-color: #f1f1f1;
   display: block;
-  height: 400px;
+  width: 350px;
+  /* height: 400px; */
 }
 
 h1 {
@@ -97,15 +98,16 @@ h2 {
 }
 
 .b0 {
-  margin-top: 27px;
+  margin-top: 97px;
 }
+/* } //70 */
 
 .b1 {
-  margin-top: 90px;
+  margin-top: 160px;
 } 
 
 .b2 {
-  margin-top: 216.3px;
+  margin-top: 160px;
 }
   /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
