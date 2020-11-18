@@ -36,8 +36,8 @@
 
 
 ## user statusFlag,
-#### divisional secretaty ->1
-#### Clerk ->2
-#### Storekeeper ->3
-#### Technician ->4
+#### reset ->0
+#### in operation->1
+#### suspended ->2
+
 
