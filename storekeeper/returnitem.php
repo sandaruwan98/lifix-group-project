@@ -1,0 +1,200 @@
+<?php 
+
+include_once '../utils/classloader.php';
+$session = new classes\Session(StorekeeperFL);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./store.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script src="script.js"></script>
+    <script src="https://www.google.com/jsapi"></script>	
+    <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <title>return items</title>
+
+</head>
+<body>
+    <?php include "./views/nav.php" ?>
+
+    
+    <div class="main_content">
+        <header>
+            <h1>Return Items</h1>
+        </header>
+        <div class="container">
+            <div class="p-list-section">
+
+
+                <div class="xx">
+                    <h2>Return List</h2>
+                </div>
+
+                <!-- request list -->
+
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-10-14</span>
+                        <span>Technician: Alex</span>
+                        <i class="s fas fa-times"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: Alex</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician: Tej</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+                <div id="" class="repair-item">
+                    <div class="row">
+                        <span>Date: 2020-06-22</span>
+                        <span>Technician:Pqr</span>
+                        <i class="s fas fa-check"></i>
+                    </div>
+                </div>
+               
+
+                </div>
+
+                <div class="table-section">
+                    <div class="details">
+                        <h2>Return  Details</h2>
+    
+                        <table class="content-table">
+    
+                            <tbody>
+                                <tr>
+                                    <td>Technician Name</td>
+                                    <td>Alex</td>
+                                </tr>
+                                <tr>
+                                    <td>Returned Date</td>
+                                    <td>2020-10-14</td>
+                                </tr>
+                               <!-- <tr>
+                                    <td>Supplied Date</td>
+                                    <td>2020-10-15</td>
+                                </tr> -->
+                               
+    
+                            </tbody>
+    
+    
+                        </table>
+                    </div>
+
+                    <!-- supply items -->
+                    <div class="details">
+                        <h2 style="margin-bottom: 8px;"> Returned Items</h2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>LED BULB</td>
+                                <td>1</td>
+
+                            </tr>
+                            
+                            <tr>
+                                <td>2</td>
+                                <td>SUNBOXES</td>
+                                <td>2</td>
+
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>WIRES</td>
+                                <td>3m</td>
+
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>FUSE</td>
+                                <td>4</td>
+
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>BULB</td>
+                                <td>3</td>
+
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>BULB</td>
+                                <td>4</td>
+
+                            </tr>
+                            
+
+                        </tbody>
+
+
+                    </table>
+                 
+                    </div>
+                    <div class="abs"><button class="trigger_popup_fricc">confirm</button></div>
+                    <div class="hover_bkgr_fricc">
+                        <span class="helper"></span>
+                        <div>
+                          <div class="popupCloseButton">×</div>
+                          <p>Are you  confirm that you got all these return items? 
+                          </p>
+                          <button class="ret">Yes</button> <button class ="ret">No</button>
+                        </div>
+                        </div>
+                </div>
+s
+
+            </div>
+        </div>
+
+        <script>
+            const btnAdd = document.querySelector('#btnAdd');
+            const table_section = document.querySelector('.content-table');
+            const addnew_section = document.querySelector('.add-new');
+            const list_items = document.querySelectorAll('.repair-item');
+
+            btnAdd.addEventListener('click', () => {
+                table_section.style.display = 'none';
+                addnew_section.style.display = 'block';
+
+            })
+
+            list_items.forEach(item => {
+                item.addEventListener('click', () => {
+                    addnew_section.style.display = 'none';
+                    table_section.style.display = 'table ';
+
+                })
+            })
+
+     
+        </script>
+</body>
+</html>
