@@ -33,9 +33,17 @@
 }
 
 .btn {
-  /* width: ; */
-  margin: 10px 0;
+    /* width: ; */
+    margin: 30px 30px;
+    color:#FFFFFF;
 }
+
+.col{
+    color:#FFFFFF;
+}
+
+
+
 
 .searchbox-sm {
   border-radius: 10px;
