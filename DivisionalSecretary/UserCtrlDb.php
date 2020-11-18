@@ -2,7 +2,7 @@
 
     include_once '../utils/classloader.php';
 
-    class DbAccess extends classes\Database {
+    class DbAccess extends models\Database {
 
         function addNewUser($userroll, $name) {
             $query = "INSERT INTO user(occuFlag, name) VALUES ( '$userroll','$name')";

@@ -1,18 +1,18 @@
 <?php 
 include_once '../utils/classloader.php';
-$session = new classes\Session(CleckFL);
+$session = new models\Session(CleckFL);
 ?>
 
 
 <?php 
     
  
-   $inv = new classes\Inventory();
+   $inv = new models\Inventory();
    $item_names = $inv->getItemNames();
    $item_names= $item_names->fetch_all();
 
 
-   $sa = new classes\StockAddition();
+   $sa = new models\StockAddition();
    $sa_list = $sa->get_SA_List();
  
 ?>

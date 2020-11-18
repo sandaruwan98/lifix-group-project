@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(StorekeeperFL);
+$session = new models\Session(StorekeeperFL);
 ?>
 
 
@@ -43,7 +43,7 @@ $session = new classes\Session(StorekeeperFL);
                 <?php 
                     
 
-                    $itemrequest= new classes\ItemRequest();
+                    $itemrequest= new models\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 

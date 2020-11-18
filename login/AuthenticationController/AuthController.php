@@ -1,9 +1,9 @@
 <?php
 
-// include '../classes/Database.php';
+// include '../models/Database.php';
 include_once '../utils/classloader.php';
 
-class AuthController extends classes\Database{
+class AuthController extends models\Database{
     protected $username,$password;
     protected $usrTag="";
     protected $passTag="";

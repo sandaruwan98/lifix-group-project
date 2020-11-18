@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(CleckFL);
+$session = new models\Session(CleckFL);
 ?>
 
 
@@ -41,7 +41,7 @@ $session = new classes\Session(CleckFL);
 
             <!-- repair list -->
             <?php
-            $repair = new classes\Repair();
+            $repair = new models\Repair();
             $list = $repair->getRepairs('a');
 
             while ($row = $list->fetch_assoc()) :

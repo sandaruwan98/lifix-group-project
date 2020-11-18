@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace models;
 require_once "Database.php";
 class Map extends Database
 {

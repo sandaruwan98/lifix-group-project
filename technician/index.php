@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(TechnicianFL);
+$session = new models\Session(TechnicianFL);
 ?>
 
 
@@ -9,7 +9,7 @@ $session = new classes\Session(TechnicianFL);
 <?php 
 
 
-$repair = new classes\Repair();
+$repair = new models\Repair();
 // user id eka danna one.danata is eka 4 
 $list_assign = $repair->getAssignedRepairs(4);
 ?>

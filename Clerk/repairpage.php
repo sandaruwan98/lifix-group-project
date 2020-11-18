@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(CleckFL);
+$session = new models\Session(CleckFL);
 ?>
 
 
@@ -10,8 +10,8 @@ if (!isset($_GET["id"]))
     header('location: ./repairHistory.php');
 
 
-$repair = new classes\Repair();
-$complaint = new classes\Complaint();
+$repair = new models\Repair();
+$complaint = new models\Complaint();
 $repair_id = $_GET["id"];
 $rp = $repair->getRepairByid($repair_id);
 $cp = $complaint->getCompliant_by_repair_id($repair_id);

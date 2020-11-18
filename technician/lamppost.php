@@ -1,14 +1,14 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(TechnicianFL);
+$session = new models\Session(TechnicianFL);
 ?>
 
 
 <?php 
 
 
-$inv = new classes\Inventory();
+$inv = new models\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
@@ -18,7 +18,7 @@ if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
     $lat = $_POST["lat"];
     $lng = $_POST["lng"];
 
-    $lp = new classes\LampPost();
+    $lp = new models\LampPost();
       // danata tecnician_id eka 1 authentication nathi nisa
     $lp->addLampost($lp_id,$adr,$lat,$lng,1);
 

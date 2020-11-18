@@ -1,11 +1,11 @@
 <?php
 include 'const.php';
 
-function loadClasses($class) {
+function loadmodels($class) {
     $base_dir = __DIR__ . '/../';
     require_once $base_dir. $class .'.php';
 } 
      
-spl_autoload_register("loadClasses");
+spl_autoload_register("loadmodels");
 
 ?>

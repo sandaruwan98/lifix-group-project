@@ -1,11 +1,11 @@
 <?php
 
 
-$repair = new classes\Repair();
+$repair = new models\Repair();
 
 $list_avail = $repair->getUnassignedRepairs();
 
-$user = new classes\User();
+$user = new models\User();
 $technicians = $user->getUsers(4);
 // echo $_SESSION["tid"];
 ?>

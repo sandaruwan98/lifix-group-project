@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(TechnicianFL);
+$session = new models\Session(TechnicianFL);
 ?>
 
 
@@ -15,11 +15,11 @@ $r_id = $_GET["id"];
 
 
 //  to laod repair items
-$inv = new classes\Inventory();
+$inv = new models\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
-$repair = new classes\Repair();
+$repair = new models\Repair();
 
 if (isset($_POST["complete"]) ) {
     $used_items = array();

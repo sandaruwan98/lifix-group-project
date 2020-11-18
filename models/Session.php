@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace models;
 class Session
 {
     public function __construct($occuFlag) {

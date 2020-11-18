@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(StorekeeperFL);
+$session = new models\Session(StorekeeperFL);
 ?>
 
 
@@ -49,7 +49,7 @@ $session = new classes\Session(StorekeeperFL);
 <?php
 
 
-$inventory = new classes\Inventory();
+$inventory = new models\Inventory();
 $result = $inventory->getAllInventory();
 
 

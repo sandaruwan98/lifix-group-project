@@ -1,6 +1,6 @@
 <?php 
 include_once '../utils/classloader.php';
-$session = new classes\Session(CleckFL);
+$session = new models\Session(CleckFL);
 ?>
 
 <!DOCTYPE html>

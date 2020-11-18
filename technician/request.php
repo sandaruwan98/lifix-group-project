@@ -1,14 +1,14 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new classes\Session(TechnicianFL);
+$session = new models\Session(TechnicianFL);
 ?>
 
 
 <?php 
 
 
-$inv = new classes\Inventory();
+$inv = new models\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
@@ -32,7 +32,7 @@ if (isset($_POST["addrequest"]) ) {
     }
 
     if (!empty($request_items)) {
-        $itemrequest = new classes\ItemRequest();
+        $itemrequest = new models\ItemRequest();
         // danata created_user_id eka 1 authentication nathi nisa
         $itemrequest->CreateItemRequest(1,$request_items );
 
