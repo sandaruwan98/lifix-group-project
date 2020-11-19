@@ -1,7 +1,7 @@
 <?php 
 include_once '../utils/classloader.php';
 
-$session = new models\Session(DSFL);
+$session = new classes\Session(DSFL);
 ?>
 
 

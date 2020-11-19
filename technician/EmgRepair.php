@@ -1,6 +1,6 @@
 <?php 
 include_once '../utils/classloader.php';
-$session = new models\Session(TechnicianFL);
+$session = new classes\Session(TechnicianFL);
 ?>
 
 
