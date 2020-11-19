@@ -1,19 +1,25 @@
 <?php 
 namespace classes;
-include_once '../utils/classloader.php';
 
 class FrameWork
 {
     protected $session;
+    protected $data;
+
     public function __construct() {
         
     }
     public function loadModel($name)    
     {
-        return new $name;
+        $modelname = '\models\\'.$name;
+        return new $modelname;
     }
-    public function getSession($name)    
+    public function getSession()    
     {
         return $this->session;
+    }
+    public function getData($key)
+    {
+        return $this->data[$key];
     }
 }

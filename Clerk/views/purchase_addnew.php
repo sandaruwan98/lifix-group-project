@@ -13,6 +13,7 @@
 
             <option value="-1" disabled selected>Select the item</option>    
             <?php 
+            $item_names = $data['ItemData'];
             foreach ($item_names as $item):  ?>
 
                 <option value="<?= $item[0].'-'.$item[1] ?>"><?= $item[1] ?></option>

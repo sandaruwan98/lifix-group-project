@@ -1,20 +1,8 @@
 <?php 
 include_once '../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->RepairPage();
 
-$session = new classes\Session(CleckFL);
-?>
-
-
-<?php
-if (!isset($_GET["id"]))
-    header('location: ./repairHistory.php');
-
-
-$repair = new models\Repair();
-$complaint = new models\Complaint();
-$repair_id = $_GET["id"];
-$rp = $repair->getRepairByid($repair_id);
-$cp = $complaint->getCompliant_by_repair_id($repair_id);
 
 ?>
 
@@ -39,8 +27,14 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 <body>
 
 
-    <?php include "./views/nav.php" ?>
+<?php
+    include "./views/nav.php";
 
+    
+    $rp = $data['repair_details'];
+    $cp = $data['complaint_details'];
+    
+?>
 
     <div class="main_content">
         <header>
