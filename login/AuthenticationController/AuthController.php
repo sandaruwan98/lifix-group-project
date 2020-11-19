@@ -98,6 +98,7 @@ class AuthController extends classes\Database{
                 }else if($row1['statusFlag']==0){
                     session_start();
                     $_SESSION['user']=$username;
+                    $_SESSION['id']=$row1['userId'];
                     $this->__destruct();
                     header('location:./reset.php');
                    
@@ -106,6 +107,7 @@ class AuthController extends classes\Database{
                     $this->wrongCredentials="You account has suspended";
                 }
             }else{
+                
                 $this->wrongCredentials="You have entered wrong credetials";
                 //alert "wrong credentials"
             }
