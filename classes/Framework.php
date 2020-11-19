@@ -4,7 +4,7 @@ namespace classes;
 class FrameWork
 {
     protected $session;
-    protected $data;
+   
 
     public function __construct() {
         
@@ -18,8 +18,5 @@ class FrameWork
     {
         return $this->session;
     }
-    public function getData($key)
-    {
-        return $this->data[$key];
-    }
+   
 }
