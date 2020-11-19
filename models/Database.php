@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace models;
 class Database {
 
  public $conn;

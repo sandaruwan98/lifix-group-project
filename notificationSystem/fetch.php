@@ -1,5 +1,5 @@
 <?php 
-require_once "../classes/Database.php";
+require_once "../models/Database.php";
 $obj = new Database();
 
     $connect = mysqli_connect("localhost", "root", "root", "lifix");

@@ -9,7 +9,7 @@ $session = new classes\Session(TechnicianFL);
 <?php 
 
 
-$itemrequest = new classes\ItemRequest();
+$itemrequest = new models\ItemRequest();
 // user id eka danna one.danata is eka 4 
 $requestlist = $itemrequest->getPendingRequestList_by_userid(1);
 ?>

@@ -1,22 +1,8 @@
 <?php 
 include_once '../utils/classloader.php';
-$session = new classes\Session(CleckFL);
+$clerck = new classes\Clerck();
+$data =  $clerck->Purchase();
 ?>
-
-
-<?php 
-    
- 
-   $inv = new classes\Inventory();
-   $item_names = $inv->getItemNames();
-   $item_names= $item_names->fetch_all();
-
-
-   $sa = new classes\StockAddition();
-   $sa_list = $sa->get_SA_List();
- 
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">

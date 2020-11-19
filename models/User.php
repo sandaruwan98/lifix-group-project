@@ -1,5 +1,5 @@
 <?php
-namespace classes;
+namespace models;
 require_once "Database.php";
 
 class User extends Database
@@ -15,7 +15,8 @@ class User extends Database
     
     public function getUsers($type)
     {
-        $q = "SELECT `userId`, `Name` FROM `user` WHERE `occuFlag`='$type' AND `statusFlag`= 0";
+        $q = "SELECT `userId`, `Name` FROM `user` WHERE `occuFlag`='$type' ";
+        // $q = "SELECT `userId`, `Name` FROM `user` WHERE `occuFlag`='$type' AND `statusFlag`= 1";
         $list =   $this->conn->query($q);
         return $list;
     }

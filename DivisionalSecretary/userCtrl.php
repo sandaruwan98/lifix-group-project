@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
+require_once __DIR__ . '/../models/Session.php';
 include_once '../utils/classloader.php';
 
 

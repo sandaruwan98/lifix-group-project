@@ -11,6 +11,7 @@
 
 <!-- repair list -->
 <?php 
+    $sa_list = $data['StockAdditionList'];
 
     while ($row = $sa_list->fetch_assoc()) :
 ?>

@@ -1,5 +1,5 @@
 <?php
-namespace classes;
+namespace models;
 require_once "Database.php";
 
 class Repair extends Database

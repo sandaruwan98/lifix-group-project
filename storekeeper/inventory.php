@@ -49,7 +49,7 @@ $session = new classes\Session(StorekeeperFL);
 <?php
 
 
-$inventory = new classes\Inventory();
+$inventory = new models\Inventory();
 $result = $inventory->getAllInventory();
 
 

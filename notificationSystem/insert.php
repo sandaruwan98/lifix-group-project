@@ -1,6 +1,6 @@
 <?php
 //insert.php
-require_once "../classes/Database.php";
+require_once "../models/Database.php";
 $obj = new Database();
 
 if(isset($_POST["comment"]))
