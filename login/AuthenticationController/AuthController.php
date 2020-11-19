@@ -108,7 +108,31 @@ class AuthController extends classes\Database{
                 }
             }else{
                 
-                $this->wrongCredentials="You have entered wrong credetials";
+
+                $query="SELECT * FROM `user` WHERE `username`='$username'";
+                $result=$this->conn->query($query);
+                $row=$result->fetch_assoc();
+                // $val=$row['statusFlag'];
+                if($result->num_rows==1){
+                    if($row['statusFlag']==0){// 0 is reset
+                        session_start();
+                        $_SESSION['user']=$username;
+                        $_SESSION['id']=$row['userId'];
+                        // $_SESSION['id']=23;
+                        $this->__destruct();
+                        header('location:./reset.php');
+                    }else{
+                        $this->passTag="Wrong passord..";
+                        // $this->wrongCredentials="Pasword field is empty";
+                        // password field is empty
+                    }
+                }else{
+                    $this->wrongCredentials="You have entered wrong credetials";
+                }                
+
+
+
+                // $this->wrongCredentials="You have entered wrong credetials";
                 //alert "wrong credentials"
             }
 
