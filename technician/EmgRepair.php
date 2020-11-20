@@ -1,58 +1,9 @@
 <?php 
 include_once '../utils/classloader.php';
-$session = new classes\Session(TechnicianFL);
+$tech = new classes\Technician();
+$data =  $tech->EmgRepair();
 ?>
 
-
-<?php 
-
-
-$item_names= $data['ItemData'];
-
-
-
-// if (isset($_POST["addrepair"]) ) {
-//     $used_items = array();
-//     $return_items = array();
-//     foreach ($item_names as $item){
-//         //for collect used items quantities
-//         $item_name = $item[0]."_u";
-//         $quantity = $_POST["$item_name"];
-
-//         if ($quantity!=0 && $quantity!=null) {
-
-//             $used_item = array($item[0], $quantity);
-//             $used_items[] = $used_item;
-//         }
-        
-//         //for collect return items quantities
-//         $item_name = $item[0]."_r";
-//         $quantity = $_POST["$item_name"];
-
-//         if ($quantity!=0 && $quantity!=null) {
-
-//             $return_item = array($item[0], $quantity);
-//             $return_items[] = $return_item;
-//         }
-//     }
-
-//     // get lamppost id
-//     $lp_id = $_POST["lp_id"];
-
-//     if (!empty($used_items) && $lp_id!=null && $lp_id!=0) {
-    
-//         $repair = new models\Repair();
-     
-//         // danata technician_id eka 1 denoo. authentication nathi nisa
-//         $repair->CreateEmergencyRepair($lp_id,1,$used_items,$return_items);
-
-//         echo ("<script>alert('repair completed succesfully') </script>");
-//         header("location: ./index.php");
-//     }
-// }
-
-
-?>
 
 
 <!DOCTYPE html>
@@ -88,6 +39,7 @@ $item_names= $data['ItemData'];
                 </div>
 
                 <?php 
+                $item_names= $data['ItemData'];
                 foreach ($item_names as $item):
                  ?>
                 <div class="collapsible"><?= $item[1] ?></div>
