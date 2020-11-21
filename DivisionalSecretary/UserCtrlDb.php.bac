@@ -1,5 +1,5 @@
 <?php 
-    require_once "../classes/Database.php";
+    require_once "../models/Database.php";
 
     $pwd2 = "";
     $pwd3 = "";

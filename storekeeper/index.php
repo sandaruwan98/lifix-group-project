@@ -43,7 +43,7 @@ $session = new classes\Session(StorekeeperFL);
                 <?php 
                     
 
-                    $itemrequest= new classes\ItemRequest();
+                    $itemrequest= new models\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 

@@ -12,8 +12,8 @@
         
         public function sendData($page) {
             
-            $repairObj = new classes\Repair();
-            $complaintObj = new classes\Complaint();
+            $repairObj = new models\Repair();
+            $complaintObj = new models\Complaint();
 
             $name = $_POST['name'];
             $nic = $_POST['nic'];

@@ -2,12 +2,15 @@
 
     include_once '../utils/classloader.php';
 
-    class DbAccess extends classes\Database {
+    class DbAccess extends models\Database {
+
 
         function addNewUser($userroll, $name) {
-            $query = "INSERT INTO user(occuFlag, name) VALUES ( '$userroll','$name')";
+            // echo "in AddNewUser();'$userroll'  '$name'";
+            $query="INSERT INTO user(`username`, `Name`, `occuFlag`, `statusFlag`) VALUES ('$name','$name','$userroll',0)";
             if ($this->conn->query($query) === TRUE) {
-                header("location: userCtrl.php");
+                header("location: index.php");
+                // echo "inoshcisuvsdfvohfsdviudsfjbvdfpviodhfvoip";
             }
         }
 
@@ -33,7 +36,7 @@
     }
 
 
-    if(isset($_POST['userroll'])) {
+    if(isset($_POST['unroll'])) {
         $obj = new DbAccess();
         $obj->addNewUser($_POST['userroll'], $_POST['name']); 
         unset($obj);       

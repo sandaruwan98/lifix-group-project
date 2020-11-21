@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . '/../classes/Session.php';
+require_once __DIR__ . '/../models/Session.php';
 include_once '../utils/classloader.php';
 
 
@@ -9,6 +9,13 @@ $session = new classes\Session(DSFL);
 
 <?php 
     include "UserCtrlDb.php";
+    $ref =new DbAccess();
+    if(isset($_POST['add'])){
+        //remaining part
+        
+        $ref =new DbAccess();
+        $ref->addNewUser($_POST['userroll'], $_POST['name']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +55,9 @@ $session = new classes\Session(DSFL);
                         <!-- <input type="password" name="password2" id="password2" class="field" placeholder="Re-enter the Password" required> -->
                         
 
-                        <button name="submit" class="btn b0">CREATE</button>
+                        <!-- <button name="submit" class="btn b0">CREATE</button> -->
+                        <input type="submit" name="add" value="CREATE" class="btn b0">
+                            
 
                     </form>
             </div>

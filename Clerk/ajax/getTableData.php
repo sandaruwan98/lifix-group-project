@@ -3,7 +3,7 @@
 
 require_once __DIR__ . '/../../utils/classloader.php';
 
-$sa= new classes\StockAddition();
+$sa= new models\StockAddition();
 
 $id = $_GET["id"];
 $list = $sa->getItemsfor_SA_byId($id);

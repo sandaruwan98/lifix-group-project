@@ -7,7 +7,7 @@ $session = new classes\Session(TechnicianFL);
 <?php 
 
 
-$inv = new classes\Inventory();
+$inv = new models\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 
@@ -43,7 +43,7 @@ if (isset($_POST["addrepair"]) ) {
 
     if (!empty($used_items) && $lp_id!=null && $lp_id!=0) {
     
-        $repair = new classes\Repair();
+        $repair = new models\Repair();
      
         // danata technician_id eka 1 denoo. authentication nathi nisa
         $repair->CreateEmergencyRepair($lp_id,1,$used_items,$return_items);
