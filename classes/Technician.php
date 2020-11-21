@@ -53,6 +53,51 @@ class Technician extends FrameWork
     }
 
 
+    public function Lamppost()
+    {
+        
+        
+        $invmodel = $this->loadModel('Inventory');
+        $item_names = $invmodel->getItemNames();
+        $data['ItemData']= $item_names->fetch_all();
+
+        if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
+            $lp_id = $_POST["lp_id"];
+            $adr = $_POST["adr"];
+            $lat = $_POST["lat"];
+            $lng = $_POST["lng"];
+        
+            $lp = $this->loadModel('LampPost');
+              // danata tecnician_id eka 1 authentication nathi nisa
+            $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
+        
+        
+            //if checbox checked we have add used items for new lamppost
+           if (isset($_POST["is_new"])) {
+            $used_items = array();
+            foreach ($item_names as $item){
+                //for collect used items quantities
+                $item_name = $item[0]."_u";
+                $quantity = $_POST["$item_name"];
+        
+                if ($quantity!=0 && $quantity!=null) {
+        
+                    $used_item = array($item[0], $quantity);
+                    $used_items[] = $used_item;
+                }
+                
+            }
+        
+            if (!empty($used_item)) {
+                $lp->Add_All_Used_Items_forNewLP($lp_id,$used_items);
+            }
+           }
+        
+        }
+        return $data;
+    }
+
+
     private function CompleteRepair_addUsedReturnedData($item_names)
     {
         
