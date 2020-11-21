@@ -36,6 +36,25 @@ class RestController extends models\Database{
         }
     }
 
+
+    public function availabiliy($usrname,$id){
+        $query="SELECT * FROM `user` WHERE `username`='$usrname'";
+        $result=$this->conn->query($query);
+        $row=$result->fetch_assoc();
+        
+        if($result->num_rows==1){
+            if($_SESSION['id']===$row['userId']){
+                return 1;
+            }else{
+                return 0;
+            }
+            
+        }else { 
+            return 1;
+        }
+    }
+
+
     public function resetUser($usrname,$pss,$pass_com){
         $this->pass_com_status=$this->validate($pass_com);
         $this->pass_status=$this->validate($pss);
@@ -79,21 +98,29 @@ class RestController extends models\Database{
             if($this->compare($pss,$pass_com)){
                 $sId=$_SESSION['id'];
                 $encrypted_pass = md5($pss);
-                // echo $sId. "I am checking yet";
-                // $query="UPDATE user SET 'username'='$usrname', 'password'='$pss',  WHERE 'userId'=$sId";
-                $query="UPDATE `user` SET `username`='$usrname',`password`='$encrypted_pass',`statusFlag`=1 WHERE `userId`='$sId'";
-                $this->conn->query($query);
-                // if($result){
-                //     echo "this is sucess";
-                //     //send message that done
-                //     session_destroy();
-                //     header('location:./index.php');
-                // }else{
-                //     //send message that not done
-                // }
+                
+                $avail=$this->availabiliy($usrname,$_SESSION['id']);
 
+                //code remain 
+                if($avail==1){    
+                    $query="UPDATE `user` SET `username`='$usrname',`password`='$encrypted_pass',`statusFlag`=1 WHERE `userId`='$sId'";
+                    $this->conn->query($query);
                     session_destroy();
                     header('location:./index.php');
+                }else{
+                    $this->div_2="Username is un available";
+                }
+
+
+
+
+                // $query="UPDATE `user` SET `username`='$usrname',`password`='$encrypted_pass',`statusFlag`=1 WHERE `userId`='$sId'";
+                // $this->conn->query($query);
+                // session_destroy();
+                // header('location:./index.php');
+
+
+
             }else{
                 $this->div_3="Password is not matching";
             }
