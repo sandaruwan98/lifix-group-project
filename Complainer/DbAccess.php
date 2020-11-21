@@ -4,6 +4,7 @@
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
+    $msg= "";
 
     class DbAccess {
         public $repairObj;
@@ -27,7 +28,8 @@
             $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
 
             if ($complainer_id &&  $repairId) {
-                header("location: $page");
+                // header("location: $page");
+                $msg =  "<script>alert('Success'); ". header("location: $page") . ";</script>";
             }
         }
     }

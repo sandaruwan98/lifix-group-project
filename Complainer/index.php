@@ -20,7 +20,7 @@
 			<div class="left"></div>
 			<div class="right">
 				<h2>පැමිණිලි</h2>
-				<form action="index.php" method="POST">
+				<form action="index.php" method="POST" class="contact-us">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo 'නිවැරදි නම යොදන්න'; else echo 'නම'; ?>">
 					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="<?php if($errors['nic']) echo 'නිවැරදි හැඳුනුම්පත් අංකය යොදන්න'; else echo 'හැඳුනුම්පත් අංකය'; ?>" >
 					<div class="box">
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="<?php if($errors['otp']) echo 'කේතය අත්‍යාවශ්‍ය වේ'; else echo 'කේතය'; ?>" >			
-					<button name="submit" class="btn">පැමිණිලි කරන්න</button>
+					<button name="submit" class="btn" id="submitBtn">පැමිණිලි කරන්න</button>
 				</form>		
 			</div>
 		</div>
