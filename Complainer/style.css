@@ -203,6 +203,7 @@ h2:after{
 		grid-template-columns: 1fr;
 		box-shadow: none;
 		background: #fff; 
+		
 	}
 	
 	.field{

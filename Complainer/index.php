@@ -21,7 +21,7 @@
 			<div class="left"></div>
 			<div class="right">
 				<h2>Make a Complaint</h2>
-				<form action="english.php" method="POST">
+				<form action="index.php" method="POST">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo $errors['name']; else echo 'Your Name'; ?>" id="f1">
 					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field" placeholder="<?php if($errors['nic']) echo $errors['nic']; else echo 'Your NIC'; ?>" id="f2">
 					<!-- <input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo $errors['lampid']; else echo 'Lamppost ID'; ?>" id="f3"> -->
