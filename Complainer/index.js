@@ -29,13 +29,13 @@ lanButton.addEventListener('click', function() {
         container.appendChild(secBtn);
 
         fstBtn.addEventListener('click', function() {
-            if(fstBtn.innerHTML == 'සිං') window.location.href = "./index.php";
-            else if(fstBtn.innerHTML == 'En') window.location.href = "./english.php";
+            if(fstBtn.innerHTML == 'සිං') window.location.href = "./sinhala.php";
+            else if(fstBtn.innerHTML == 'En') window.location.href = "./index.php";
             else if(fstBtn.innerHTML == 'த') window.location.href = "./tamil.php";
         })
         secBtn.addEventListener('click', function () {
-            if(secBtn.innerHTML == 'සිං') window.location.href = "./index.php";
-            else if(secBtn.innerHTML == 'En') window.location.href = "./english.php";
+            if(secBtn.innerHTML == 'සිං') window.location.href = "./sinhala.php";
+            else if(secBtn.innerHTML == 'En') window.location.href = "./index.php";
             else if(secBtn.innerHTML == 'த') window.location.href = "./tamil.php";
         })
     }
