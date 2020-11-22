@@ -61,7 +61,7 @@
         // if(empty($phoneNo || !preg_match('((\+94)|0)[0-9]{2}[.\- ]?[0-9]{3}[.\- ]?[0-9]{4}', $phoneNo))) {
         //     echo "fdd";//$errors['phone'] = 'Lamp post ID must be a valid ID number';
         // }
-        if(empty($phoneNo)) {
+        if(empty($phoneNo) || preg_match("/[a-zA-Z]+/", $phoneNo)) {
             $phoneNo = "";
             $errors['phone'] = 'Enter valid number';
         }

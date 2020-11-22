@@ -1,4 +1,7 @@
 <?php 
+	$greeting = 'ස්තූතියි!';
+	$msg = 'ඔබගේ පැමිණිල්ල බාරගන්නා ලදී.';
+	$btnText = 'වෙනත් පැමිණිල්ලක් කරන්න';
 	$page = 'sinhala.php';
 	include "DbAccess.php";
 ?>

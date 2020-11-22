@@ -1,10 +1,9 @@
 <?php 
-$greeting = 'Thank You!';
-$msg = 'Your complaint was recorded successfully.';
-$btnText = 'Submit another complaint';
-$page = 'index.php';
-
-include "DbAccess.php";	
+	$greeting = 'Thank You!';
+	$msg = 'Your complaint was recorded successfully.';
+	$btnText = 'Submit another complaint';
+	$page = 'index.php';
+	include "DbAccess.php";	
 ?>
 
 <!DOCTYPE html>

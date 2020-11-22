@@ -9,16 +9,16 @@ session_start();
     <link rel="stylesheet" href="success.css">
     <title>Li - Fix</title>
 </head>
-<body>
-<div class="outer">
-  <div class="middle">
-    <div class="inner">
-        <img src="img/4.svg" alt="checkmark">
-      <h1><?php echo $_SESSION['h1'];?></h1>
-      <p><?php echo $_SESSION['p'];?></p>
-      <a href="<?php echo $_SESSION['page'];?>"><button class="btn"><?php echo $_SESSION['btn'];?></button></a>
-    </div>
-  </div>
-</div>
+    <body>
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
+                    <img src="img/4.svg" alt="checkmark">
+                    <h1><?php echo $_SESSION['h1'];?></h1>
+                    <p><?php echo $_SESSION['p'];?></p>
+                    <a href="<?php echo $_SESSION['page'];?>"><button class="btn"><?php echo $_SESSION['btn'];?></button></a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

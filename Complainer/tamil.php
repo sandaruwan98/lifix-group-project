@@ -1,6 +1,9 @@
 <?php 
-$page = 'tamil.php';
-include "DbAccess.php"; 
+	$greeting = 'நன்றி!';
+	$msg = 'உங்கள் புகார் வெற்றிகரமாக பதிவு செய்யப்பட்டது.';
+	$btnText = 'மற்றொரு புகாரைச் சமர்ப்பிக்கவும்';
+	$page = 'tamil.php';
+	include "DbAccess.php"; 
 ?>
 
 <!DOCTYPE html>
