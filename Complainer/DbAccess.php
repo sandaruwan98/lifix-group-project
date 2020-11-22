@@ -10,7 +10,7 @@
         public $repairObj;
         public $complaintObj;
         
-        public function sendData($page) {
+        public function sendData($page, $greeting, $msg, $btnText) {
             
             $repairObj = new models\Repair();
             $complaintObj = new models\Complaint();
@@ -29,6 +29,9 @@
 
             if ($complainer_id &&  $repairId) {
                 session_start();
+                $_SESSION['h1'] = $greeting;
+                $_SESSION['p'] = $msg;
+                $_SESSION['btn'] = $btnText;
                 $_SESSION['page'] = $page;
                 header("location: success.php");
             }
@@ -68,7 +71,7 @@
 
         if(!array_filter($errors)) {
             $obj = new DbAccess();
-            $obj->sendData($page);
+            $obj->sendData($page, $greeting, $msg, $btnText);
         }
     }
 ?>

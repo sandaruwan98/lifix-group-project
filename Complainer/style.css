@@ -71,7 +71,7 @@ h2:after{
     width: 50px;
     border-radius: 2px;
 	/* background-color: #2ecc71; */
-	background-color: #4d84e2;
+	background-color: #0b9b83;
 }
 
 .field{
@@ -105,7 +105,7 @@ h2:after{
 .btn{
 	width: 100%;
 	padding: 0.5rem 1rem;
-	background-color: #5995fd;
+	background-color: #32BEA6;
 	border-radius: 49px;
 	color: #FFFFFF;
 	font-size: 1.1rem;
@@ -116,7 +116,7 @@ h2:after{
 }
 
 .btn:hover{
-    background-color: #1961dd;
+    background-color: #0b9b83;
 }
 
 .field:focus{
@@ -151,7 +151,7 @@ h2:after{
 .btn2{
 	width: 100%;
 	padding: 0.6rem 1rem;
-	background-color: #5995fd;
+	background-color: #32BEA6;
 	border-radius: 49px;
 	color: #fff;
 	font-size: 1.1rem;
@@ -162,13 +162,13 @@ h2:after{
 }
 
 .btn2:hover{
-    background-color: #1961dd;
+    background-color: #0b9b83;
 }
 
 .floating-btn {
 	width: 30px;
 	height: 25px;
-	background: #1961dd;
+	background: #0b9b83;
 	display: flex;
 	align-items: center;
 	justify-content: center;

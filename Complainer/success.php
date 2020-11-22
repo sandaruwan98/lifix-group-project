@@ -1,19 +1,24 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="success.css">
-    <title>Document</title>
+    <title>Li - Fix</title>
 </head>
 <body>
-        <div class="error">
-            <div>
-            <h1>404</h1>
-            <p>sorry we can’t find the page that you’re looking for :(</p>
-            
-            <a href="#"><div class="btn">return home</div></a>
-        </div>
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+        <img src="img/4.svg" alt="checkmark">
+      <h1><?php echo $_SESSION['h1'];?></h1>
+      <p><?php echo $_SESSION['p'];?></p>
+      <a href="<?php echo $_SESSION['page'];?>"><button class="btn"><?php echo $_SESSION['btn'];?></button></a>
     </div>
+  </div>
+</div>
     </body>
 </html>

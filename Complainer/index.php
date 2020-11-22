@@ -1,6 +1,10 @@
 <?php 
-	$page = 'index.php';
-	include "DbAccess.php";
+$greeting = 'Thank You!';
+$msg = 'Your complaint was recorded successfully.';
+$btnText = 'Submit another complaint';
+$page = 'index.php';
+
+include "DbAccess.php";	
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +17,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
+	<div><?php ?></div>
 	<div class="container">
 		<section>
 			<a id="lan" class="floating-btn">En</a>
@@ -20,6 +25,7 @@
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
+				<img src="./img/" alt="" srcset="">
 				<h2>Make a Complaint</h2>
 				<form action="index.php" method="POST">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field" placeholder="<?php if($errors['name']) echo $errors['name']; else echo 'Your Name'; ?>" id="f1">
