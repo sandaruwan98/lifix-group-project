@@ -1,10 +1,10 @@
 <?php 
-
+    session_unset();
     include_once '../utils/classloader.php';
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
-    $msg= "";
+    $redirect= "";
 
     class DbAccess {
         public $repairObj;
@@ -28,8 +28,9 @@
             $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
 
             if ($complainer_id &&  $repairId) {
-                // header("location: $page");
-                $msg =  "<script>alert('Success'); ". header("location: $page") . ";</script>";
+                session_start();
+                $_SESSION['page'] = $page;
+                header("location: success.php");
             }
         }
     }

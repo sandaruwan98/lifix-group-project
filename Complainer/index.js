@@ -3,7 +3,6 @@ const container = document.querySelector('section');
 
 let flag = false;
 
-
 lanButton.addEventListener('click', function() {
     if(!flag){
         flag = true;
@@ -53,3 +52,5 @@ function childsRemover() {
 
     flag = false;
 }
+
+// success msg remover

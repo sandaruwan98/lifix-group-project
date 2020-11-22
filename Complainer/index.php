@@ -17,6 +17,7 @@
 		<a id="lan" class="floating-btn">සිං</a>
 	</section>
 		<div class="contact-box">
+		
 			<div class="left"></div>
 			<div class="right">
 				<h2>පැමිණිලි</h2>
@@ -42,10 +43,13 @@
 					</div>
 					<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="<?php if($errors['otp']) echo 'කේතය අත්‍යාවශ්‍ය වේ'; else echo 'කේතය'; ?>" >			
 					<button name="submit" class="btn" id="submitBtn">පැමිණිලි කරන්න</button>
+					
 				</form>		
 			</div>
 		</div>
+		
 	</div>
+	
 	<script src="index.js"></script>
 </body>
 </html>
