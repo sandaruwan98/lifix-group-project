@@ -1,29 +1,6 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    outline: 0;
-}
-body{
-    width: 100vw;
-    height: 100vh;
-    background-image: url(img/2.jpg);
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: center;
-}
-
-.error{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-*/
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background: url("img/2.jpg") no-repeat;
+    background: url("../img/2.jpg") no-repeat;
     background-size: cover;
     background-color: #161616;
     
@@ -88,7 +65,7 @@ p{
 
     body {
 
-        background: url("img/2.jpg") no-repeat;
+        background: url("../img/2.jpg") no-repeat;
 		background-size: cover;
 		background-color: #161616;
     }
