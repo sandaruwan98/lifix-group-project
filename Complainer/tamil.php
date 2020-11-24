@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<input type="text" name="otp" class="field" value="<?php echo htmlspecialchars($otpCode) ?>" placeholder="<?php if($errors['otp']) echo 'OTP சரியான  இருக்க வேண்டும்'; else echo 'OTP குறியீடு'; ?>" id="f6">
-					<button name="submit" class="btn">முடிந்தது</button>
+					<button name="submit" class="btn">சமர்ப்பி</button>
 				</form>
 			</div>
 		</div>
