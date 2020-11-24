@@ -1,31 +1,9 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    outline: 0;
-}
-body{
-    width: 100vw;
-    height: 100vh;
-    background-image: url(img/2.jpg);
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: center;
-}
-
-.error{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-*/
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background: #606c88;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: url("../img/2.jpg") no-repeat;
+    background-size: cover;
+    background-color: #161616;
+    
 
 }
 
@@ -84,6 +62,13 @@ p{
 
 
 @media screen and (max-width: 880px){
+
+    body {
+
+        background: url("../img/2.jpg") no-repeat;
+		background-size: cover;
+		background-color: #161616;
+    }
     .outer {
         display: table;
         position: absolute;

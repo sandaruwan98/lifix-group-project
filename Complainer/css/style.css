@@ -18,8 +18,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 100px;
-	
+	padding: 20px 100px;	
 }
 
 .container:after{
@@ -29,7 +28,7 @@ body{
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: url("img/2.jpg") no-repeat center;
+	background: url("../img/2.jpg") no-repeat center;
 	background-size: cover;
 	filter: blur(0px);
 	z-index: -1;
@@ -41,14 +40,17 @@ body{
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: #fff;
+	background-color: #F2F0F1;
 	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
+	border-radius: 25px;
 }
 
 .left{
-	background: url("img/1.jpg") no-repeat center;
+	background: url("../img/1.jpg") no-repeat center;
 	background-size: cover;
 	height: 100%;
+	border-top-left-radius: 22.5px;
+	border-bottom-left-radius: 22.5px;
 }
 
 .right{
@@ -79,7 +81,7 @@ h2:after{
 	border: 2px solid rgba(0, 0, 0, 0);
 	border-radius: 55px;
 	outline: none;
-	background-color: rgba(230, 230, 230, 0.6);
+	background-color:#E5E6E1;
 	padding: 0.5rem 1rem;
 	font-size: 1.1rem;
 	font-weight: lighter;
@@ -91,7 +93,7 @@ h2:after{
 	width: 100%;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
-	background-color: white;
+	background-color: transparent;
 	color: rgb(19, 31, 31);
 	font-size: 1.1rem;
 	margin-bottom: 22px;
@@ -135,7 +137,7 @@ h2:after{
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: #fff;
+	background-color: transparent;
 }
 
 .p-left{
@@ -193,8 +195,14 @@ h2:after{
 
 	.container:after{
 		background: none;
-		background-color:#fff;
+		background-color:#161616;
 		padding: 20px;
+		background: #606c88;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #3f4c6b, #606c88); 
+		background: url("../img/2.jpg") no-repeat;
+		background-size: contain;
+		background-color: #161616;
 	}
 
 	.contact-box{
@@ -202,15 +210,20 @@ h2:after{
 		margin-bottom: 50px;
 		grid-template-columns: 1fr;
 		box-shadow: none;
-		background: #fff; 
-		
+		background-color: #F2F0F1;
+		border-radius: 25px;
+	}
+
+	.right{
+		padding:0px 15px 25px 15px;
+		margin: 5px;
 	}
 	
-	.field{
+	.field {
 		width: 300px;
 		border: 2px solid rgba(0, 0, 0, 0);
 		outline: none;
-		background-color: rgba(230, 230, 230, 0.6);
+		background-color:#E5E6E1;
 		padding: 0.5rem 1rem;
 		font-size: 1.1rem;
 		margin-bottom: 22px;
@@ -234,6 +247,10 @@ h2:after{
 		font-size: 1.1rem;
 		width: 120px;
 		padding: 0.6rem 1rem;
+	}
+
+	.bulb {
+		background-color: transparent;
 	}
 
 }
