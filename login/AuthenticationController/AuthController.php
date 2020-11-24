@@ -5,8 +5,8 @@ include_once '../utils/classloader.php';
 
 class AuthController extends models\Database{
     protected $username,$password;
-    protected $usrTag="";
-    protected $passTag="";
+    protected $usrTag="Username";
+    protected $passTag="Password";
     protected $wrongCredentials="";
     protected $statusUser=1;
     protected $starusPass=1;
@@ -37,8 +37,8 @@ class AuthController extends models\Database{
         $this->starusPass=$this->validatePass($password);
 
         if(!$this->starusPass && !$this->statusUser){
-            $this->passTag="Pasword field is empty";
-            $this->usrTag="user name field is empty";
+            $this->passTag="Password field is empty";
+            $this->usrTag="Username field is empty";
             // both fiels are empty
             // header('location:../Clerk/index.php');
         }
@@ -56,7 +56,7 @@ class AuthController extends models\Database{
                     $this->__destruct();
                     header('location:./reset.php');
                 }else{
-                    $this->passTag="Pasword field is empty....";
+                    $this->passTag="Password field is empty....";
                     // $this->wrongCredentials="Pasword field is empty";
                     // password field is empty
                 }
@@ -72,8 +72,8 @@ class AuthController extends models\Database{
             
             // username field is empty
         }else{
-            echo "came in to the else part  ".$username. " ".$password;
-            echo "came in to the else part";
+            // echo "came in to the else part  ".$username. " ".$password;
+            // echo "came in to the else part";
             $encrypted_pass = md5($password);
             $query="SELECT * FROM `user` WHERE `username`='$username' AND `password`='$encrypted_pass'";
 
