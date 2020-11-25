@@ -17,7 +17,7 @@ $session = new classes\Session(StorekeeperFL);
     <script src="script.js"></script>
     <script src="https://www.google.com/jsapi"></script>	
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
-    <title>return items</title>
+    <title>Return item Checking</title>
 
 </head>
 
@@ -36,7 +36,7 @@ $session = new classes\Session(StorekeeperFL);
     
     <div class="main_content">
         <header>
-            <h1>Return Items</h1>
+            <h1>Return Item Checking</h1>
         </header>
                 
                     <div class="details">

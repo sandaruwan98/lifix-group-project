@@ -13,8 +13,8 @@
                             class="link-text">Item Request History</span></a></li>	
             <li class="nav-item"><a class="nav-link" href="./inventory.php"><i class='far fa-file-alt'></i><span
                 class="link-text">Inventory Details</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./stockaddition.php"><i class="fas fa-file-invoice"></i><span
-                class="link-text">Issue Items</span></a></li>  	
+            <li class="nav-item"><a class="nav-link" href="./returnitem.php"><i class="fas fa-file-invoice"></i><span
+                class="link-text">Return Item</span></a></li>  	
             <li class="nav-item"><a class="nav-link" href="./../login/Logout.php"><i class="fas fa-sign-out-alt"></i><span class="link-text">LogOut</span></a></li>
 
         </ul>
