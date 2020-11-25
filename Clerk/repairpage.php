@@ -116,6 +116,32 @@ $data =  $clerck->RepairPage();
 
                     </table>
                 </div>
+
+                <div class="details complainer-details">
+                    <H2> Used Item List</H2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td><?= $cp['Name'] ?></td>
+                                <td><?= $cp['Name'] ?></td>
+                            </tr>
+
+                           
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
             </div>
 
             <div id="map" class="map-section"></div>

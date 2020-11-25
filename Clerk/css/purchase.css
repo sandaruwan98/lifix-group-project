@@ -34,7 +34,7 @@
 
 .btn {
     /* width: ; */
-    margin: 30px 30px;
+    margin: 0 0 10px 0;
     color:#FFFFFF;
 }
 
@@ -103,9 +103,9 @@
   /* margin: 10px; */
 }
 
-.feild-row label {
+/* .feild-row label {
   margin-top: 10px;
-}
+} */
 
 .feild-h {
   margin: auto;

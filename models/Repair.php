@@ -69,6 +69,16 @@ class Repair extends Database
         // echo $list;
         return $list->fetch_assoc();
     }
+    public function getRepairItemsByid($r_id,$used_damage_flag)
+    {
+        $q = "SELECT repair.repair_id, repair.lp_id,repair.status,repair.date  , lamppost.division , lamppost.lattitude,lamppost.longitude
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.repair_id='$r_id'";
+
+        $list =   $this->conn->query($q);
+        // echo $list;
+        return $list->fetch_assoc();
+    }
 
     private function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){
         $q = "INSERT INTO `repair_inventory_asc`( `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES 

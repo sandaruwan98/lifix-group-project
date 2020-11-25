@@ -56,6 +56,8 @@ class Clerck extends FrameWork
         $data['repair_details'] = $repairmodel->getRepairByid($repair_id);
 
         $data['complaint_details'] = $complaintmodel->getCompliant_by_repair_id($repair_id);
+        $data['used_items'] = $repairmodel->getCompliant_by_repair_id($repair_id);
+        $data['return_items'] = $repairmodel->getCompliant_by_repair_id($repair_id);
 
         return $data;
     }
