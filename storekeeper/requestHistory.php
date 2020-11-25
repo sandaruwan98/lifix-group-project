@@ -29,7 +29,7 @@ $session = new classes\Session(StorekeeperFL);
             <h1>Item Request History</h1>
         </header>
         <div class="container">
-            <div class="p-list-section">
+            <div class="p-list-section sc-bar">
 
 
                 <div class="xx">

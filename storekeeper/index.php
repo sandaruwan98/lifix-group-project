@@ -31,7 +31,7 @@ $session = new classes\Session(StorekeeperFL);
             <h1>Item Requests</h1>
         </header>
         <div class="container">
-            <div class="p-list-section">
+            <div class="p-list-section sc-bar">
 
                 <button id="btnAdd" class="btn">Issue Items</button>
 

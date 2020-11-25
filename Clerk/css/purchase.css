@@ -9,6 +9,7 @@
   padding: 10px 10px;
   height: 91vh;
   background-color: rgba(0, 0, 0, 0.062);
+  overflow-y: scroll;
 }
 
 .table-section {

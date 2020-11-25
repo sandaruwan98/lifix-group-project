@@ -3,6 +3,18 @@
   box-sizing: border-box;
 }
 
+.sc-bar::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+.sc-bar::-webkit-scrollbar-track {
+  background: #0000009e;
+}
+
+.sc-bar::-webkit-scrollbar-thumb {
+  background: #c8d1d3;
+}
+
 .btn {
   width: 100%;
   padding: 0.5rem 1rem;
