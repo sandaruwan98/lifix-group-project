@@ -37,7 +37,7 @@ class Clerck extends FrameWork
     {
         $repairmodel = $this->loadModel('Repair');
 
-        $repairs = $repairmodel->getRepairs('a');
+        $repairs = $repairmodel->getRepairs('ce');
         $data['repairs'] = $repairs;
 
         return $data;
@@ -56,6 +56,8 @@ class Clerck extends FrameWork
         $data['repair_details'] = $repairmodel->getRepairByid($repair_id);
 
         $data['complaint_details'] = $complaintmodel->getCompliant_by_repair_id($repair_id);
+        $data['used_items'] = $repairmodel->getRepairItemsByid($repair_id,USED_ITEM);
+        $data['return_items'] = $repairmodel->getRepairItemsByid($repair_id,RETURN_ITEM);
 
         return $data;
     }

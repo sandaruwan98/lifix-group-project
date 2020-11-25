@@ -21,7 +21,11 @@ class Repair extends Database
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
         ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' ORDER BY repair.date DESC " ;
-
+        if ($status== "ce") {
+            $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ORDER BY repair.date DESC " ;
+        }
         $list =   $this->conn->query($q);
         return $list;
     }
@@ -68,6 +72,17 @@ class Repair extends Database
         $list =   $this->conn->query($q);
         // echo $list;
         return $list->fetch_assoc();
+    }
+    public function getRepairItemsByid($r_id,$used_damage_flag)
+    {
+        $q = "SELECT repair_inventory_asc.item_id, repair_inventory_asc.quantity, inventory.name
+        FROM repair_inventory_asc INNER JOIN inventory
+        ON repair_inventory_asc.item_id=inventory.Item_id 
+        WHERE repair_inventory_asc.repair_id='$r_id' AND repair_inventory_asc.damage_used_flag = '$used_damage_flag' ";
+       
+        $list =   $this->conn->query($q);
+        // echo $list;
+        return $list->fetch_all(MYSQLI_ASSOC);
     }
 
     private function AddUsedReturnItem($r_id,$item_id,$quantity,$returnflag){

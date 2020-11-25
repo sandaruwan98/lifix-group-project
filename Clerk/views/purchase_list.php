@@ -1,4 +1,4 @@
-<div class="p-list-section">
+<div class="p-list-section sc-bar">
 
 <button id="btnAdd" class="btn">ADD NEW</button>
 <!-- searchbox -->
