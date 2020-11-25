@@ -39,7 +39,7 @@
                     <p>
                     Have a nice day !.
                     <br>
-                    Enter username and password to login to the system </p>
+                    Enter the username and password to login to the system </p>
 
 
                     <div id="wrong-div"><?php echo $a_con->getWrongCredentials();?></div>

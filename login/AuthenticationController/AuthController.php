@@ -104,7 +104,7 @@ class AuthController extends models\Database{
                    
                 }else{
                     // Account has banned
-                    $this->wrongCredentials="You account has suspended";
+                    $this->wrongCredentials="You account has been suspended";
                 }
             }else{
                 
@@ -122,7 +122,7 @@ class AuthController extends models\Database{
                         $this->__destruct();
                         header('location:./reset.php');
                     }else{
-                        $this->passTag="Wrong passord..";
+                        $this->passTag="Wrong password..";
                         // $this->wrongCredentials="Pasword field is empty";
                         // password field is empty
                     }
