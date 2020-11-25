@@ -56,7 +56,7 @@
         }
         if(empty($lampId) || !preg_match("/^[1-9][0-9]{3}$/", $lampId)) {
             $lampId = "";
-            $errors['lampid'] = 'Lamp post ID must be a valid ID';
+            $errors['lampid'] = 'ID must be a valid ID';
         }
         // if(empty($phoneNo || !preg_match('((\+94)|0)[0-9]{2}[.\- ]?[0-9]{3}[.\- ]?[0-9]{4}', $phoneNo))) {
         //     echo "fdd";//$errors['phone'] = 'Lamp post ID must be a valid ID number';
