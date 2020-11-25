@@ -42,7 +42,7 @@ $data =  $clerck->RepairPage();
         </header>
         <div class="main">
 
-            <div class="list-section">
+            <div class="list-section sc-bar">
                 <div class="details repair-details">
                     <H2> Repair Details</H2>
 
@@ -128,11 +128,48 @@ $data =  $clerck->RepairPage();
                             </tr>
                         </thead>
                         <tbody>
+                        <?php 
+                            $used_items= $data['used_items'];
+                            foreach ($used_items as $used_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $used_item["item_id"]  ?></td>
+                                    <td><?=  $used_item["name"] ?></td>
+                                    <td><?=  $used_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div class="details complainer-details">
+                    <H2> Damaged return item List</H2>
+                    <table class="content-table">
+                        <thead>
                             <tr>
-                                <td>Name</td>
-                                <td><?= $cp['Name'] ?></td>
-                                <td><?= $cp['Name'] ?></td>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $return_items= $data['return_items'];
+                            foreach ($return_items as $return_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $return_item["item_id"]  ?></td>
+                                    <td><?=  $return_item["name"] ?></td>
+                                    <td><?=  $return_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
 
                            
 
