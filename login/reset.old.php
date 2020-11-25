@@ -46,7 +46,7 @@ if(isset($_POST['myButton'])){
                         <input type="text" placeholder="User Name" class="field-1" name="username" value="<?php echo $con->getSessionName();?>"  >
                        
                          
-                        <input type="password" placeholder="Password" class="field-2" name="pass">
+                        <input type="password" placeholder="<?php if($con->getdiv_2()) echo $con->getdiv_2(); else echo "Password"?>" class="field-2" name="pass">
                         <div id="div-2"><?php echo $con->getdiv_2();?></div>
                         <input type="password" placeholder="Confirm Password" class="field-3" name="pass_com">
                         <div id="div-3"><?php echo $con->getdiv_3();?></div>

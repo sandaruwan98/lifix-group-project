@@ -46,12 +46,12 @@ if(isset($_POST['myButton'])){
                     <input type="text" placeholder="User Name" class="field" name="username" value="<?php echo $con->getSessionName();?>"  >
                        
                          
-                        <input type="password" placeholder="Password" class="field" name="pass">
-                        <div id="div-2"><?php echo $con->getdiv_2();?></div>
-                        <input type="password" placeholder="Confirm Password" class="field" name="pass_com">
-                        <div id="div-3"><?php echo $con->getdiv_3();?></div>
+                        <input type="password" class="field <?php if ($con->getdiv_3() == "Password is not matching" ||$con->getdiv_3() == "This field is esseintial") echo "err";?>" placeholder="<?php if($con->getdiv_2()) echo $con->getdiv_2(); else echo "New Password"?>" name="pass">
+                        <!-- <div id="div-2"><?php echo $con->getdiv_2();?></div> -->
+                        <input type="password" placeholder="<?php if($con->getdiv_3()) echo $con->getdiv_3(); else echo "Confirm Password"?>" class="field <?php if ($con->getdiv_3() == "Password is not matching" ||$con->getdiv_3() == "This field is esseintial") echo "err";?>" name="pass_com">
+                        <!-- <div id="div-3"><?php echo $con->getdiv_3();?></div> -->
 
-                    <button type="submit" name="loginBtn" class="btn">Reset</button>
+                    <button type="submit" class="btn" value="reset" name="myButton">Reset</button>
                     <br>
                     <br>
 				</form>		
