@@ -51,6 +51,42 @@ class Technician extends FrameWork
 
         return $data;
     }
+    public function AddRequestpage()
+    {
+        
+        
+        $invmodel = $this->loadModel('Inventory');
+        $item_names = $invmodel->getItemNames();
+        $data['ItemData']= $item_names->fetch_all();
+
+        if (isset($_POST["addrequest"]) ) {
+            $request_items = array(); // item eke id eka ekka quantity eka me array ekata dagannawa
+
+            foreach ($item_names as $item){
+                //for collect used items quantities
+                $item_name = $item[0]."_u";
+                $quantity = $_POST["$item_name"];
+        
+                if ($quantity!=0 && $quantity!=null) {
+        
+                    $request_item = array($item[0], $quantity);
+                    $request_items[] = $request_item;
+                }
+                
+            }
+        
+            if (!empty($request_items)) {
+                $itemrequest = $this->loadModel('ItemRequest');
+                
+                $itemrequest->CreateItemRequest($this->session->getuserID(),$request_items );
+        
+                echo ("<script>alert('repair completed succesfully') </script>");
+                header("location: ./index.php");
+            }
+        }
+
+        return $data;
+    }
 
 
     public function Lamppost()
