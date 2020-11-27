@@ -5,13 +5,21 @@ require_once "Database.php";
 class StockAddition extends Database
 {
 
-    public function get_SA_List()
+    public function get_SA_ListAll()
     {
         $q = "SELECT `sa_id`, `date`, `status`, `clerk_id` FROM `stock_addition`";
 
         $list =   $this->conn->query($q);
         return $list;
     }
+    public function get_SA_List($status)
+    {
+        $q = "SELECT `sa_id`, `date`, `clerk_id` FROM `stock_addition` WHERE status='$status' ";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
+
 
 
     

@@ -70,7 +70,7 @@ class Clerck extends FrameWork
         $data['ItemData']= $item_names->fetch_all();
 
         $samodel = $this->loadModel('StockAddition');
-        $data['StockAdditionList'] = $samodel->get_SA_List();
+        $data['StockAdditionList'] = $samodel->get_SA_ListAll();
 
         return $data;
     }
