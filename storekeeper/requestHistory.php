@@ -73,7 +73,7 @@ $session = new classes\Session(StorekeeperFL);
 
                 </div>
 
-                <div class="table-section">
+                <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
     

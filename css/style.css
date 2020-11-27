@@ -15,6 +15,18 @@
   background: #c8d1d3;
 }
 
+body::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #0000009e;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #c8d1d3;
+}
+
 .btn {
   width: 100%;
   padding: 0.5rem 1rem;

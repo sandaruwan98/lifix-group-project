@@ -24,7 +24,7 @@ $session = new classes\Session(StorekeeperFL);
     <?php include "./views/nav.php" ?>
 
 
-<div class="main_content">
+<div class="main_content sc-bar">
 
 
     
