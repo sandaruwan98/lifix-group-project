@@ -1,7 +1,8 @@
 <?php 
 include_once '../utils/classloader.php';
+$storekeeper = new classes\StoreKeeper();
+$data =  $storekeeper->Inventory();
 
-$session = new classes\Session(StorekeeperFL);
 ?>
 
 
@@ -68,52 +69,8 @@ $session = new classes\Session(StorekeeperFL);
     </div>
 
 
-
-    <div class="con">
-        <div class="new-stock">
-            <h1 class="heading">New Stocks</h1>
-
-            <!-- Nothing new yet -->
-            <div class="row">
-            <span class="lft">Date : </span>  <span class="right">10-04-2020</span>
-            </div>
-            <!-- <br> -->
-            <div class="row">
-            <span class="lft">Added by : </span> <span class="right">Mr. </span>
-            </div>
-
-            <table class="content-table">
-                <thead> 
-                    <tr>
-                    <th>Item Id</th>
-                    <th><span>Name</span></th>
-                    <th><span>Current Balance</span></th>
-
-                    </tr>
-                    </div>
-                    </div>
-                </thead>
-
-                <?php
-
-
-                $inventory = new models\Inventory();
-                $result = $inventory->getAllInventory();
-
-
-                while($row=mysqli_fetch_assoc($result)){
-                    echo"<tr>";
-                    echo "<td>".$row['Item_id']."</td>";
-                    // echo "<td>".$row['date']."</td>";
-                    echo "<td>".$row['name']."</td>";
-                    echo "<td>".$row['total']."</td>";
-                    echo"</tr>";
-                }
-
-                ?>
-            </table>
-        </div>
-    </div>
+        <?php include "./views/inventory_newstock.php" ?>
+    
 </div>  
 </body>
 </html>

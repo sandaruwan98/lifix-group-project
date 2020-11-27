@@ -40,14 +40,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 .btn:hover {
-  background-color: #27ae60;
+  background-color: #006a54;
 }
 
 .btn:focus {
-  background-color: #27ae60;
+  background-color: #005040;
 }
 .btn.disable {
   background-color: #485855;
+}
+
+.danger{
+  background-color: #b60000da;
+}
+
+
+.danger:focus{
+  background-color: #560000ed;
+}
+
+.danger:hover{
+  background-color: #780000da;
 }
 
 .content-table {

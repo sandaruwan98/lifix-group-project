@@ -73,7 +73,7 @@ header {
 }
 .new-stock{
     margin: 0 2.5%;
-
+    color:aliceblue;
 }
 
 .heading{
@@ -103,4 +103,13 @@ span{
     color:black;
     border-radius:6px;
     border: 2px solid #009879;
+}
+
+.btn-row{
+    display:flex;
+    justify-content:center;   
+}
+
+.btn-row button{
+    width:50%;
 }
