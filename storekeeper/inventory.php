@@ -1,5 +1,5 @@
 <?php 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 $storekeeper = new classes\StoreKeeper();
 $data =  $storekeeper->Inventory();
 

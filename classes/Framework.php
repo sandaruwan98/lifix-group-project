@@ -1,7 +1,7 @@
 <?php 
 namespace classes;
 
-class FrameWork
+class Framework
 {
     protected $session;
    

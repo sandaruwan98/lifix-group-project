@@ -1,9 +1,9 @@
 <?php
 namespace classes;
 // include_once '../utils/modelLoader.php';
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 
-class Clerck extends FrameWork
+class Clerck extends Framework
 {
     public function __construct() {
         $this->session = new Session(CleckFL);
