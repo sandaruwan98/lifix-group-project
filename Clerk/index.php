@@ -1,6 +1,7 @@
 <?php 
-include_once '../utils/classloader.php';
-$session = new classes\Session(CleckFL);
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->DailyRepair();
 ?>
 
 <!DOCTYPE html>

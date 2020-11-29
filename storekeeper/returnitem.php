@@ -1,6 +1,6 @@
 <?php 
 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 $session = new classes\Session(StorekeeperFL);
 ?>
 
@@ -11,69 +11,34 @@ $session = new classes\Session(StorekeeperFL);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./store.css">
     <link rel="stylesheet" href="./style.css">
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
     <script src="script.js"></script>
     <script src="https://www.google.com/jsapi"></script>	
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
-    <title>return items</title>
+    <title>Return item Checking</title>
 
 </head>
+
+<style>
+
+.field{
+  display: none;
+  width: 150px;
+  margin: 0;
+}
+
+</style>
 <body>
     <?php include "./views/nav.php" ?>
 
     
     <div class="main_content">
         <header>
-            <h1>Return Items</h1>
+            <h1>Return Item Checking</h1>
         </header>
-        <div class="container">
-            <div class="p-list-section">
-
-
-                <div class="xx">
-                    <h2>Return List</h2>
-                </div>
-
-                <!-- request list -->
-
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-10-14</span>
-                        <span>Technician: Alex</span>
-                        <i class="s fas fa-times"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Alex</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Tej</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician:Pqr</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-
-                </div>
-
-                <div class="table-section">
+                
                     <div class="details">
                         <h2>Return  Details</h2>
     
@@ -88,10 +53,6 @@ $session = new classes\Session(StorekeeperFL);
                                     <td>Returned Date</td>
                                     <td>2020-10-14</td>
                                 </tr>
-                               <!-- <tr>
-                                    <td>Supplied Date</td>
-                                    <td>2020-10-15</td>
-                                </tr> -->
                                
     
                             </tbody>
@@ -109,6 +70,8 @@ $session = new classes\Session(StorekeeperFL);
                                 <th>ITEM ID</th>
                                 <th>ITEM NAME</th>
                                 <th>QUANTITY</th>
+                                <th></th>
+                                <th></th>
 
                             </tr>
                         </thead>
@@ -117,6 +80,8 @@ $session = new classes\Session(StorekeeperFL);
                                 <td>1</td>
                                 <td>LED BULB</td>
                                 <td>1</td>
+                                <td><button  class="bttn confirm" id="1" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button class="bttn button1 decline" id="emo"  >Decline</button></td>
 
                             </tr>
                             
@@ -124,32 +89,31 @@ $session = new classes\Session(StorekeeperFL);
                                 <td>2</td>
                                 <td>SUNBOXES</td>
                                 <td>2</td>
-
+                                <td><button  class="bttn confirm" id="demo1" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button class="bttn button1 decline" id="emo1"  >Decline</button></td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>WIRES</td>
                                 <td>3m</td>
-
+                                <td><button  class="bttn confirm"  id="demo3" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button class="bttn button1 decline" id="emo3" >Decline</button></td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>FUSE</td>
                                 <td>4</td>
-
+                                <td><button  class="bttn confirm" id="demo4" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button class="bttn button1 decline" id="emo4" >Decline</button></td>
                             </tr>
                             <tr>
                                 <td>5</td>
                                 <td>BULB</td>
                                 <td>3</td>
-
+                                <td><button  class="bttn confirm">confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button class="bttn button1 decline">Decline</button></td>
                             </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>BULB</td>
-                                <td>4</td>
-
-                            </tr>
+                            
                             
 
                         </tbody>
@@ -158,43 +122,52 @@ $session = new classes\Session(StorekeeperFL);
                     </table>
                  
                     </div>
-                    <div class="abs"><button class="trigger_popup_fricc">confirm</button></div>
-                    <div class="hover_bkgr_fricc">
-                        <span class="helper"></span>
-                        <div>
-                          <div class="popupCloseButton">×</div>
-                          <p>Are you  confirm that you got all these return items? 
-                          </p>
-                          <button class="ret">Yes</button> <button class ="ret">No</button>
-                        </div>
-                        </div>
+                    
+    
                 </div>
-s
+     <script>
+       var confirmBtns = document.querySelectorAll('.confirm');
+       var declineBtns = document.querySelectorAll('.decline');
+       var declineInputs = document.querySelectorAll('.declineInput');
 
-            </div>
-        </div>
+        confirmBtns.forEach( (confirmbtn,index) => {
 
-        <script>
-            const btnAdd = document.querySelector('#btnAdd');
-            const table_section = document.querySelector('.content-table');
-            const addnew_section = document.querySelector('.add-new');
-            const list_items = document.querySelectorAll('.repair-item');
+          confirmbtn.addEventListener('click',()=>{
 
-            btnAdd.addEventListener('click', () => {
-                table_section.style.display = 'none';
-                addnew_section.style.display = 'block';
+            declinebtn = declineBtns[index];
+          if (confirmbtn.style.visibility === 'hidden'  ) {
+            confirmbtn.style.visibility = 'hidden';
+          } else {
+            declinebtn.style.visibility = 'hidden';
+            confirmbtn.innerHTML = "Equal";
+          }
 
-            })
 
-            list_items.forEach(item => {
-                item.addEventListener('click', () => {
-                    addnew_section.style.display = 'none';
-                    table_section.style.display = 'table ';
+          })
 
-                })
-            })
+          
+        } )
 
-     
-        </script>
+        declineBtns.forEach( (declinebtn,index) => {
+
+          declinebtn.addEventListener('click',()=>{
+
+            confirmbtn = confirmBtns[index];
+            if (declinebtn.style.visibility === 'hidden' ) {
+              declinebtn.style.visibility = 'hidden';
+            } else {
+              confirmbtn.style.display = 'none';
+              declineInputs[index].style.display = 'block';
+              declinebtn.innerHTML = "Fraud";
+            }
+
+
+          })
+
+          
+        } )
+
+
+</script>
 </body>
 </html>

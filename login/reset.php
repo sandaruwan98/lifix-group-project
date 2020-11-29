@@ -12,7 +12,7 @@ if(isset($_POST['myButton'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../Complainer/img/1.jpg" type="image/x-icon">
     <link rel="stylesheet" href="res.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../Complainer/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@900&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@900&family=Source+Sans+Pro&display=swap" rel="stylesheet"> -->
@@ -20,45 +20,43 @@ if(isset($_POST['myButton'])){
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     
-    <title>Welcome to lifix</title>
+    <title>Welcome to Li-Fix</title>
 </head>
 <body>
-    <div id="fist_div">
-        <div id="common-div">
-            <div id="outer-left">
-                <h1 id="welcome-note">Welcome To The</h1>
-                <h1 id="welcome-note2">Li-Fix</h1>
-                <p id="par_id">Have a nice day!. You are going to enter in to the Li-Fix, the lamp post management system of the Baddegama Pradeshiya Sabha. This is the dashbord for the system.</p>
-                <div id="left-viwew">
+<div class="container">
+		
+		<div class="contact-box">
+			<div class="left"></div>
+			<div class="right">
+				<img src="../Complainer/img/" alt="" srcset="">
+				<h2>Reset</h2>
+				<form action="./reset.php" method="POST">
+                    <!-- <h3>Welcome To The Li-Fix</h2>
+                    <br>
+                    <p>
+                    Have a nice day !. -->
+                    <br>
+                    Enter a new password to reset the old password </p>
+
+
                     
-                </div>
-            </div>
-            
-            
-            <div id="right-view">
-                
-                <div id="form-div"> 
-                    <form action="./reset.php" method="post">
-                        <h1 id="login-header">Reset</h1>
-                        <div id="di-1"><p></p></div>
-                       
-                        <br><br>
-                        <input type="text" placeholder="User Name" class="field-1" name="username" value="<?php echo $con->getSessionName();?>"  >
+                    
+                    
+                    <br>
+                    <input type="text" placeholder="User Name" class="field" name="username" value="<?php echo $con->getSessionName();?>"  >
                        
                          
-                        <input type="password" placeholder="Password" class="field-2" name="pass">
-                        <div id="div-2"><?php echo $con->getdiv_2();?></div>
-                        <input type="password" placeholder="Confirm Password" class="field-3" name="pass_com">
-                        <div id="div-3"><?php echo $con->getdiv_3();?></div>
-                        <input type="submit" value="reset" id="myButton" name="myButton">
-                    </form>
-                 </div> 
-                 <div id="right-inner">
+                        <input type="password" class="field <?php if ($con->getdiv_3() == "Password is not matching" ||$con->getdiv_3() == "This field is esseintial") echo "err";?>" placeholder="<?php if($con->getdiv_2()) echo $con->getdiv_2(); else echo "New Password"?>" name="pass">
+                        <!-- <div id="div-2"><?php echo $con->getdiv_2();?></div> -->
+                        <input type="password" placeholder="<?php if($con->getdiv_3()) echo $con->getdiv_3(); else echo "Confirm Password"?>" class="field <?php if ($con->getdiv_3() == "Password is not matching" ||$con->getdiv_3() == "This field is esseintial") echo "err";?>" name="pass_com">
+                        <!-- <div id="div-3"><?php echo $con->getdiv_3();?></div> -->
 
-                 </div>   
-            </div>
-            
-        </div>
-    </div>
+                    <button type="submit" class="btn" value="reset" name="myButton">Reset</button>
+                    <br>
+                    <br>
+				</form>		
+			</div>
+		</div>	
+	</div>
 </body>
 </html>

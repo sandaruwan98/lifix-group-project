@@ -1,20 +1,8 @@
 <?php 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->RepairPage();
 
-$session = new classes\Session(CleckFL);
-?>
-
-
-<?php
-if (!isset($_GET["id"]))
-    header('location: ./repairHistory.php');
-
-
-$repair = new classes\Repair();
-$complaint = new classes\Complaint();
-$repair_id = $_GET["id"];
-$rp = $repair->getRepairByid($repair_id);
-$cp = $complaint->getCompliant_by_repair_id($repair_id);
 
 ?>
 
@@ -39,8 +27,14 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 <body>
 
 
-    <?php include "./views/nav.php" ?>
+<?php
+    include "./views/nav.php";
 
+    
+    $rp = $data['repair_details'];
+    $cp = $data['complaint_details'];
+    
+?>
 
     <div class="main_content">
         <header>
@@ -48,7 +42,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
         </header>
         <div class="main">
 
-            <div class="list-section">
+            <div class="list-section sc-bar">
                 <div class="details repair-details">
                     <H2> Repair Details</H2>
 
@@ -115,6 +109,69 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
                                 <td><?= $cp['phone_no'] ?></td>
                             </tr>
 
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+                <div class="details complainer-details">
+                    <H2> Used Item List</H2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $used_items= $data['used_items'];
+                            foreach ($used_items as $used_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $used_item["item_id"]  ?></td>
+                                    <td><?=  $used_item["name"] ?></td>
+                                    <td><?=  $used_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div class="details complainer-details">
+                    <H2> Damaged return item List</H2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $return_items= $data['return_items'];
+                            foreach ($return_items as $return_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $return_item["item_id"]  ?></td>
+                                    <td><?=  $return_item["name"] ?></td>
+                                    <td><?=  $return_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
+
+                           
 
 
                         </tbody>

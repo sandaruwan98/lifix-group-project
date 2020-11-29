@@ -9,6 +9,7 @@
   padding: 10px 10px;
   height: 91vh;
   background-color: rgba(0, 0, 0, 0.062);
+  overflow-y: scroll;
 }
 
 .table-section {
@@ -34,7 +35,7 @@
 
 .btn {
     /* width: ; */
-    margin: 30px 30px;
+    margin: 0 0 10px 0;
     color:#FFFFFF;
 }
 
@@ -103,9 +104,9 @@
   /* margin: 10px; */
 }
 
-.feild-row label {
+/* .feild-row label {
   margin-top: 10px;
-}
+} */
 
 .feild-h {
   margin: auto;
@@ -113,4 +114,5 @@
   padding: 5px 20px;
   border-radius: 20px;
   background-color: #d3dbdd;
+  border: 2px solid #009879;
 }

@@ -1,7 +1,7 @@
 <?php 
-include_once '../utils/classloader.php';
-
-$session = new classes\Session(CleckFL);
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+// $data =  $clerck->();
 ?>
 
 
@@ -25,33 +25,8 @@ $session = new classes\Session(CleckFL);
 
 <body>
 
-    <nav class="sidebar">
-        <!-- <h2 class="link-text">MENU</h2> -->
-        <ul>
-            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span> </span>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
-                        class="link-text">Home</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-columns"></i><span
-                        class="link-text">DailyRepairs</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./repairHistory.php"><i class="fas fa-history"></i><span
-                        class="link-text">RepairHistory</span></a></li>
-            <li class="nav-item"><a class="nav-link active" href="./purchase.html"><i
-                        class="fas fa-file-invoice"></i><span class="link-text">Purchases</span></a></li>
-            <li class="nav-item"><a class="nav-link " href="../storekeeper/Requestitem.html"><i class="fas fa-file-invoice"></i><span
-                            class="link-text">Request Items</span></a></li>		
-            <li class="nav-item"><a class="nav-link " href="../storekeeper/display.php"><i class="fas fa-history"></i><span
-                                class="link-text">Issued ItemHistory</span></a></li>
-            <li class="nav-item"><a class="nav-link active" href="./newlamp.html"><i class="fas fa-plus-square"></i><span
-                        class="link-text">LampPost</span></a></li>
-            <li class="nav-item"><a class="nav-link " href="#"><i class="fas fa-cog"></i><span
-                        class="link-text">Settings</span></a></li>
-
-        </ul>
-
-    </nav>
-    <script src="../js/slider.js"></script>
+<?php include "./views/nav.php" ?>
+   
 
     <div class="notification-container-wrap">
         <div class="notification-container  popup-ani">
@@ -91,7 +66,7 @@ $session = new classes\Session(CleckFL);
                 <form>
 
                     <div class="feild-row">
-                        <h2>Add New Lamp Post</h2>
+                        <h2 class="feild-h">Add New Lamp Post</h2>
 
                     </div>
                     <div class="feild-row">

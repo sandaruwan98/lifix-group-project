@@ -1,5 +1,5 @@
 <?php 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 
 $session = new classes\Session(StorekeeperFL);
 ?>
@@ -31,7 +31,7 @@ $session = new classes\Session(StorekeeperFL);
             <h1>Item Requests</h1>
         </header>
         <div class="container">
-            <div class="p-list-section">
+            <div class="p-list-section sc-bar">
 
                 <button id="btnAdd" class="btn">Issue Items</button>
 
@@ -43,7 +43,7 @@ $session = new classes\Session(StorekeeperFL);
                 <?php 
                     
 
-                    $itemrequest= new classes\ItemRequest();
+                    $itemrequest= new models\ItemRequest();
                     $request_list = $itemrequest->getPendingRequestList();
 
 

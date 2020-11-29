@@ -1,6 +1,6 @@
 <?php 
 require_once __DIR__ . '/../classes/Session.php';
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 
 
 $session = new classes\Session(DSFL);
@@ -25,6 +25,7 @@ $session = new classes\Session(DSFL);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Control</title>
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -32,13 +33,17 @@ $session = new classes\Session(DSFL);
     
 <?php include "./nav.html"?>
 
+<div class="hidden" id="my-popup">
+    <p>some msg</p>
+</div>
+
 <div class="container">
     <h1>User Control</h1>
     <div class="row">
         <div class="column1">
             <div class="card">
                 <h2>New User</h2>
-                    <form action="UserCtrl.php" method="POST">
+                    <form action="UserCtrl.php" method="POST" id="my-form">
 
                         <select name="userroll" id="userroll" class="field" required>
                             <option value="" disabled selected>Select the user roll</option>
@@ -118,6 +123,6 @@ $session = new classes\Session(DSFL);
         </div>
     </div>
 </div>
-
+<script src="ds.js"></script>
 </body>
 </html>

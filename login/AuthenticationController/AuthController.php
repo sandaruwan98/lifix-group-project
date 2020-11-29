@@ -1,12 +1,12 @@
 <?php
 
-// include '../classes/Database.php';
-include_once '../utils/classloader.php';
+// include '../models/Database.php';
+include_once  __DIR__ . '/../../utils/classloader.php';
 
-class AuthController extends classes\Database{
+class AuthController extends models\Database{
     protected $username,$password;
-    protected $usrTag="";
-    protected $passTag="";
+    protected $usrTag="Username";
+    protected $passTag="Password";
     protected $wrongCredentials="";
     protected $statusUser=1;
     protected $starusPass=1;
@@ -37,8 +37,8 @@ class AuthController extends classes\Database{
         $this->starusPass=$this->validatePass($password);
 
         if(!$this->starusPass && !$this->statusUser){
-            $this->passTag="Pasword field is empty";
-            $this->usrTag="user name field is empty";
+            $this->passTag="Password field is empty";
+            $this->usrTag="Username field is empty";
             // both fiels are empty
             // header('location:../Clerk/index.php');
         }
@@ -56,7 +56,7 @@ class AuthController extends classes\Database{
                     $this->__destruct();
                     header('location:./reset.php');
                 }else{
-                    $this->passTag="Pasword field is empty....";
+                    $this->passTag="Password field is empty....";
                     // $this->wrongCredentials="Pasword field is empty";
                     // password field is empty
                 }
@@ -72,8 +72,8 @@ class AuthController extends classes\Database{
             
             // username field is empty
         }else{
-            echo "came in to the else part  ".$username. " ".$password;
-            echo "came in to the else part";
+            // echo "came in to the else part  ".$username. " ".$password;
+            // echo "came in to the else part";
             $encrypted_pass = md5($password);
             $query="SELECT * FROM `user` WHERE `username`='$username' AND `password`='$encrypted_pass'";
 
@@ -89,8 +89,8 @@ class AuthController extends classes\Database{
                     $_SESSION['occuFlag']=$row1['occuFlag'];
                     $this->__destruct();
                     switch($row1['occuFlag']){
-                        case 1: header('location:../DivisionalSecretary/index.php');break;
-                        case 2:header('location:../Clerk/index.php');break;
+                        case 1: header('location:../divisionalsecretary/index.php');break;
+                        case 2:header('location:../clerk/index.php');break;
                         case 3:header('location:../storekeeper/index.php');break;
                         case 4:header('location:../technician/index.php');break;
                         default: session_destroy();
@@ -104,7 +104,7 @@ class AuthController extends classes\Database{
                    
                 }else{
                     // Account has banned
-                    $this->wrongCredentials="You account has suspended";
+                    $this->wrongCredentials="You account has been suspended";
                 }
             }else{
                 
@@ -122,7 +122,7 @@ class AuthController extends classes\Database{
                         $this->__destruct();
                         header('location:./reset.php');
                     }else{
-                        $this->passTag="Wrong passord..";
+                        $this->passTag="Wrong password..";
                         // $this->wrongCredentials="Pasword field is empty";
                         // password field is empty
                     }

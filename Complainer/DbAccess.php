@@ -1,18 +1,19 @@
 <?php 
-
-    include_once '../utils/classloader.php';
+    session_unset();
+    include_once  __DIR__ . '/../utils/classloader.php';
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
+    $redirect= "";
 
     class DbAccess {
         public $repairObj;
         public $complaintObj;
         
-        public function sendData($page) {
+        public function sendData($page, $greeting, $msg, $btnText) {
             
-            $repairObj = new classes\Repair();
-            $complaintObj = new classes\Complaint();
+            $repairObj = new models\Repair();
+            $complaintObj = new models\Complaint();
 
             $name = $_POST['name'];
             $nic = $_POST['nic'];
@@ -27,7 +28,12 @@
             $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
 
             if ($complainer_id &&  $repairId) {
-                header("location: $page");
+                session_start();
+                $_SESSION['h1'] = $greeting;
+                $_SESSION['p'] = $msg;
+                $_SESSION['btn'] = $btnText;
+                $_SESSION['page'] = $page;
+                header("location: success.php");
             }
         }
     }
@@ -50,12 +56,12 @@
         }
         if(empty($lampId) || !preg_match("/^[1-9][0-9]{3}$/", $lampId)) {
             $lampId = "";
-            $errors['lampid'] = 'Lamp post ID must be a valid ID';
+            $errors['lampid'] = 'ID must be a valid ID';
         }
         // if(empty($phoneNo || !preg_match('((\+94)|0)[0-9]{2}[.\- ]?[0-9]{3}[.\- ]?[0-9]{4}', $phoneNo))) {
         //     echo "fdd";//$errors['phone'] = 'Lamp post ID must be a valid ID number';
         // }
-        if(empty($phoneNo)) {
+        if(empty($phoneNo) || preg_match("/[a-zA-Z]+/", $phoneNo)) {
             $phoneNo = "";
             $errors['phone'] = 'Enter valid number';
         }
@@ -65,7 +71,7 @@
 
         if(!array_filter($errors)) {
             $obj = new DbAccess();
-            $obj->sendData($page);
+            $obj->sendData($page, $greeting, $msg, $btnText);
         }
     }
 ?>

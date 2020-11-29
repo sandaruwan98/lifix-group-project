@@ -3,7 +3,7 @@
 
 require __DIR__ . '/../../utils/classloader.php';
 
-$ir = new classes\ItemRequest();
+$ir = new models\ItemRequest();
 
 
 $id = $_GET["id"];

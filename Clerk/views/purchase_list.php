@@ -1,4 +1,4 @@
-<div class="p-list-section">
+<div class="p-list-section sc-bar">
 
 <button id="btnAdd" class="btn">ADD NEW</button>
 <!-- searchbox -->
@@ -11,6 +11,7 @@
 
 <!-- repair list -->
 <?php 
+    $sa_list = $data['StockAdditionList'];
 
     while ($row = $sa_list->fetch_assoc()) :
 ?>

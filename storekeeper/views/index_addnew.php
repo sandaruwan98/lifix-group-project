@@ -1,6 +1,6 @@
 <?php 
 
-$inv = new classes\Inventory();
+$inv = new models\Inventory();
 $item_names = $inv->getItemNames();
 $item_names= $item_names->fetch_all();
 

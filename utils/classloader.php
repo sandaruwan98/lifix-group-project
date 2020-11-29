@@ -1,9 +1,15 @@
 <?php
-include 'const.php';
+include_once 'const.php';
 
+
+     
 function loadClasses($class) {
     $base_dir = __DIR__ . '/../';
-    require_once $base_dir. $class .'.php';
+
+    $base_dir = $_SERVER['DOCUMENT_ROOT'].'/';
+    $cl = str_replace("\\","/",$class);
+    // echo $base_dir. $cl .'.php';
+    require_once $base_dir. $cl .'.php';
 } 
      
 spl_autoload_register("loadClasses");

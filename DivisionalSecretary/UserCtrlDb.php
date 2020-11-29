@@ -1,15 +1,15 @@
 <?php 
 
-    include_once '../utils/classloader.php';
+    include_once  __DIR__ . '/../utils/classloader.php';
 
-    class DbAccess extends classes\Database {
+    class DbAccess extends models\Database {
 
 
         function addNewUser($userroll, $name) {
             // echo "in AddNewUser();'$userroll'  '$name'";
             $query="INSERT INTO user(`username`, `Name`, `occuFlag`, `statusFlag`) VALUES ('$name','$name','$userroll',0)";
             if ($this->conn->query($query) === TRUE) {
-                header("location: index.php");
+                header("location: userCtrl.php");
                 // echo "inoshcisuvsdfvohfsdviudsfjbvdfpviodhfvoip";
             }
         }

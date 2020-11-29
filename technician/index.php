@@ -1,19 +1,8 @@
 <?php 
-include_once '../utils/classloader.php';
-
-$session = new classes\Session(TechnicianFL);
+include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$data =  $tech->AvalableRepairs();
 ?>
-
-
-
-<?php 
-
-
-$repair = new classes\Repair();
-// user id eka danna one.danata is eka 4 
-$list_assign = $repair->getAssignedRepairs(4);
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +26,10 @@ $list_assign = $repair->getAssignedRepairs(4);
         <div class="con">
             <h2 class="title-r">Pending Repairs</h2>
             <div class="list">
-                <?php while ($row = $list_assign->fetch_assoc()) :
+                <?php
+                
+                $list_assign = $data['repairs'];
+                while ($row = $list_assign->fetch_assoc()) :
                 ?>
 
                 <div class="list-item" id="<?= $row["repair_id"] ?>">

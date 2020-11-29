@@ -1,5 +1,5 @@
 <?php 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 
 $session = new classes\Session(StorekeeperFL);
 ?>
@@ -29,7 +29,7 @@ $session = new classes\Session(StorekeeperFL);
             <h1>Item Request History</h1>
         </header>
         <div class="container">
-            <div class="p-list-section">
+            <div class="p-list-section sc-bar">
 
 
                 <div class="xx">
@@ -73,7 +73,7 @@ $session = new classes\Session(StorekeeperFL);
 
                 </div>
 
-                <div class="table-section">
+                <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
     

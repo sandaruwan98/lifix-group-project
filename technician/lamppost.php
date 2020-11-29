@@ -1,50 +1,15 @@
 <?php 
-include_once '../utils/classloader.php';
-
-$session = new classes\Session(TechnicianFL);
+include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$data =  $tech->Lamppost();
 ?>
 
 
 <?php 
 
 
-$inv = new classes\Inventory();
-$item_names = $inv->getItemNames();
-$item_names= $item_names->fetch_all();
-
-if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
-    $lp_id = $_POST["lp_id"];
-    $adr = $_POST["adr"];
-    $lat = $_POST["lat"];
-    $lng = $_POST["lng"];
-
-    $lp = new classes\LampPost();
-      // danata tecnician_id eka 1 authentication nathi nisa
-    $lp->addLampost($lp_id,$adr,$lat,$lng,1);
 
 
-    //if checbox checked we have add used items for new lamppost
-   if (isset($_POST["is_new"])) {
-    $used_items = array();
-    foreach ($item_names as $item){
-        //for collect used items quantities
-        $item_name = $item[0]."_u";
-        $quantity = $_POST["$item_name"];
-
-        if ($quantity!=0 && $quantity!=null) {
-
-            $used_item = array($item[0], $quantity);
-            $used_items[] = $used_item;
-        }
-        
-    }
-
-    if (!empty($used_item)) {
-        $lp->Add_All_Used_Items_forNewLP($lp_id,$used_items);
-    }
-   }
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +69,7 @@ if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
                 <div class="collapse" style="display: none;margin-top: 5px;">
                         
                     <?php 
+                    $item_names=$data['ItemData'];
                     foreach ($item_names as $item):
                     ?>
                     <div class="collapsible"><?= $item[1] ?></div>

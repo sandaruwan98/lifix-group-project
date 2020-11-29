@@ -1,59 +1,10 @@
 <?php 
-include_once '../utils/classloader.php';
-
-$session = new classes\Session(TechnicianFL);
+include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$data =  $tech->CompleteRepair();
 ?>
 
 
-<?php 
-if (!isset($_GET["id"])) 
-    header('location: ./index.php');
-
-$r_id = $_GET["id"];
-
-
-
-
-//  to laod repair items
-$inv = new classes\Inventory();
-$item_names = $inv->getItemNames();
-$item_names= $item_names->fetch_all();
-
-$repair = new classes\Repair();
-
-if (isset($_POST["complete"]) ) {
-    $used_items = array();
-    $return_items = array();
-    foreach ($item_names as $item){
-        //for collect used items quantities
-        $item_name = $item[0]."_u";
-        $quantity = $_POST["$item_name"];
-
-        if ($quantity!=0 && $quantity!=null) {
-
-            $used_item = array($item[0], $quantity);
-            $used_items[] = $used_item;
-        }
-        
-        //for collect return items quantities
-        $item_name = $item[0]."_r";
-        $quantity = $_POST["$item_name"];
-
-        if ($quantity!=0 && $quantity!=null) {
-
-            $return_item = array($item[0], $quantity);
-            $return_items[] = $return_item;
-        }
-    }
-
-    if (!empty($used_items)) {
-       
-        $repair->CompleteRepair($r_id,$used_items,$return_items);
-
-        header("location: ./index.php");
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,9 +32,11 @@ if (isset($_POST["complete"]) ) {
         <div class="con">
 
 
-            <form method="POST" action="repairComplete.php?id=<?= $r_id ?>">
+            <form method="POST" action="repairComplete.php?id=<?= $_GET["id"] ?>">
                 <h2>Complete Repair</h2>
                 <?php 
+
+                $item_names= $data['ItemData'];
                 foreach ($item_names as $item):
                  ?>
                 <div class="collapsible"><?= $item[1] ?></div>
