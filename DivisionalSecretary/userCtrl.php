@@ -1,6 +1,6 @@
 <?php 
 require_once __DIR__ . '/../classes/Session.php';
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 
 
 $session = new classes\Session(DSFL);

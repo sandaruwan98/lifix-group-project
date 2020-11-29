@@ -1,5 +1,5 @@
 <?php 
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../utils/classloader.php';
 $clerck = new classes\Clerck();
 $data =  $clerck->RepairPage();
 

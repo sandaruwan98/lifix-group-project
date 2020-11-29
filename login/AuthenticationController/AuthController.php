@@ -1,7 +1,7 @@
 <?php
 
 // include '../models/Database.php';
-include_once '../utils/classloader.php';
+include_once  __DIR__ . '/../../utils/classloader.php';
 
 class AuthController extends models\Database{
     protected $username,$password;
@@ -89,8 +89,8 @@ class AuthController extends models\Database{
                     $_SESSION['occuFlag']=$row1['occuFlag'];
                     $this->__destruct();
                     switch($row1['occuFlag']){
-                        case 1: header('location:../DivisionalSecretary/index.php');break;
-                        case 2:header('location:../Clerk/index.php');break;
+                        case 1: header('location:../divisionalsecretary/index.php');break;
+                        case 2:header('location:../clerk/index.php');break;
                         case 3:header('location:../storekeeper/index.php');break;
                         case 4:header('location:../technician/index.php');break;
                         default: session_destroy();

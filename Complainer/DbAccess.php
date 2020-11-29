@@ -1,6 +1,6 @@
 <?php 
     session_unset();
-    include_once '../utils/classloader.php';
+    include_once  __DIR__ . '/../utils/classloader.php';
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
     $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
