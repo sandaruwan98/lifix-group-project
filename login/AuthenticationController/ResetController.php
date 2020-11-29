@@ -21,7 +21,8 @@ class RestController extends models\Database{
     }
 
     public function validate($string){
-        if(preg_match('/\\s+/',$string) || empty($string)){
+        // Minimum eight characters, at least one letter and one number
+        if(!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/',$string) || empty($string)){
             return 0;
         }else{
             return 1;
