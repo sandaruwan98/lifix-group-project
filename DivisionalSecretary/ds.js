@@ -1,6 +1,7 @@
 $('#my-form').on('submit', function(e)
 {
-    e.preventDefault(); //this stops the form submit + refresh 
+    e.preventDefault();
+    
     var that = $(this),
         url = that.attr('action'),
         type = that.attr('method'),

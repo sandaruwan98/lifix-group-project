@@ -17,7 +17,7 @@ class AuthController extends models\Database{
     }
 
     function validateUser($username){
-        if(preg_match('/\\s+/',$username) || empty($username)){
+        if(empty($username)){
             return 0;
         }else{
             return 1;
