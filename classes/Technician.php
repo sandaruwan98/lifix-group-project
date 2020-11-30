@@ -57,8 +57,8 @@ class Technician extends Framework
         
         $invmodel = $this->loadModel('Inventory');
         $item_names = $invmodel->getItemNames();
-        $data['ItemData']= $item_names->fetch_all();
-
+        $item_names = $item_names->fetch_all();
+        $data['ItemData'] = $item_names;
         if (isset($_POST["addrequest"]) ) {
             $request_items = array(); // item eke id eka ekka quantity eka me array ekata dagannawa
 
@@ -95,7 +95,8 @@ class Technician extends Framework
         
         $invmodel = $this->loadModel('Inventory');
         $item_names = $invmodel->getItemNames();
-        $data['ItemData']= $item_names->fetch_all();
+        $item_names = $item_names->fetch_all();
+        $data['ItemData'] = $item_names;
 
         if (isset($_POST["addlp"]) && $_POST["lp_id"] != null) {
             $lp_id = $_POST["lp_id"];

@@ -1,4 +1,4 @@
-<div id="x" class="list">
+<div id="x" class="list sc-bar">
     <h2>Assigned</h2>
     <select name="techSelect" id="techSelect" class="field" >
         <option value="" disabled="" >Select the technician</option>
@@ -36,7 +36,7 @@
 </div>
 
 
-<div id="a" class="list">
+<div id="a" class="list sc-bar">
     <h2>Other</h2>
     <?php
 
