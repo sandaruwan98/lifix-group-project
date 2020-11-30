@@ -2,6 +2,9 @@
 include './AuthenticationController/ResetController.php';
 $con=new RestController();
 if(isset($_POST['myButton'])){
+    echo "this is checking";
+    $chdeck=$_POST['username'];
+    echo "$chdeck";
     $con->resetUser($_POST['username'],$_POST['pass'],$_POST['pass_com']);
 }
 ?>
