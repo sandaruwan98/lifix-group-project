@@ -65,7 +65,7 @@ class Repair extends Database
 
     public function getRepairByid($r_id)
     {
-        $q = "SELECT repair.repair_id, repair.lp_id,repair.status,repair.date  , lamppost.division , lamppost.lattitude,lamppost.longitude
+        $q = "SELECT repair.repair_id, repair.lp_id,repair.status,repair.date ,repair.technician_id , lamppost.division , lamppost.lattitude,lamppost.longitude
         FROM lamppost INNER JOIN repair 
         ON lamppost.lp_id=repair.lp_id WHERE repair.repair_id='$r_id'";
 
