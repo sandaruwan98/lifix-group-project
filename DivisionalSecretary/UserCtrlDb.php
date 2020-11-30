@@ -29,7 +29,7 @@
         }
 
         function fetchData() {
-            $query = "SELECT name FROM user WHERE NOT statusFlag = 2";
+            $query = "SELECT name FROM user WHERE NOT statusFlag = 2 AND NOT statusFlag = 0";
             $list =   $this->conn->query($query);
             return $list;
         }
