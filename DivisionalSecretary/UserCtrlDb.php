@@ -9,7 +9,7 @@
             // echo "in AddNewUser();'$userroll'  '$name'";
             $query="INSERT INTO user(`username`, `Name`, `occuFlag`, `statusFlag`) VALUES ('$name','$name','$userroll',0)";
             if ($this->conn->query($query) === TRUE) {
-                header("location: userCtrl.php");
+                header("location: index.php");
                 // echo "inoshcisuvsdfvohfsdviudsfjbvdfpviodhfvoip";
             }
         }
@@ -17,14 +17,14 @@
         function pwdReset($name) {
             $query = "UPDATE user SET statusFlag = 0 WHERE name = '$name'";
             if ($this->conn->query($query) === TRUE) {
-                header("location: userCtrl.php");
+                header("location: index.php");
             }
         }
 
         function revoke($name) {
             $query = "UPDATE user SET statusFlag = 2 WHERE name = '$name'";
             if ($this->conn->query($query) === TRUE) {
-                header("location: userCtrl.php");
+                header("location: index.php");
             }
         }
 
