@@ -10,9 +10,9 @@ if(isset($_POST['myButton'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../Complainer/img/1.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../complainer/img/1.jpg" type="image/x-icon">
     <link rel="stylesheet" href="res.css">
-    <link rel="stylesheet" href="../Complainer/css/style.css">
+    <link rel="stylesheet" href="../complainer/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@900&family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@900&family=Source+Sans+Pro&display=swap" rel="stylesheet"> -->
@@ -28,7 +28,7 @@ if(isset($_POST['myButton'])){
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
-				<img src="../Complainer/img/" alt="" srcset="">
+				<img src="../complainer/img/" alt="" srcset="">
 				<h2>Reset</h2>
 				<form action="./reset.php" method="POST">
                     <!-- <h3>Welcome To The Li-Fix</h2>

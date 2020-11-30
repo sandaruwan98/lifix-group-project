@@ -10,7 +10,7 @@ if(isset($_POST['myButton'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../Complainer/img/1.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../complainer/img/1.jpg" type="image/x-icon">
     <link rel="stylesheet" href="res.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
