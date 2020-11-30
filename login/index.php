@@ -18,7 +18,7 @@
 <head>
     <title>Li - Fix</title>
     
-    <link rel="stylesheet" type="text/css" href="../Complainer/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../complainer/css/style.css">
     <link rel="stylesheet" href="auth.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -31,7 +31,7 @@
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
-				<img src="../Complainer/img/" alt="" srcset="">
+				<img src="../complainer/img/" alt="" srcset="">
 				<h2>Login</h2>
 				<form action="index.php" method="POST">
                     <h3>Welcome To The Li-Fix</h2>

@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../Complainer/img/1.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../complainer/img/1.jpg" type="image/x-icon">
     <link rel="stylesheet" href="auth.css">
     <link rel="stylesheet" href="../css/style.css">
     
