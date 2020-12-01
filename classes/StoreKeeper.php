@@ -22,6 +22,12 @@ class StoreKeeper extends Framework
             
             $data[$sa_id] = $samodel->getItemsfor_SA_byId($sa_id);
         }
+
+        if (isset($_POST["confirm"])) {
+            $samodel->setStatus('1', $_POST["sa_id"]);
+            $this->session->sendMessage("New stock confirmed",'success');
+
+        }
         return $data;
     }
 

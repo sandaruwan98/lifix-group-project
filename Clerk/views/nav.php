@@ -8,11 +8,19 @@
         <li class="nav-item"><a class="nav-link" href="./repairHistory.php"><i class="fas fa-history"></i><span class="link-text">RepairHistory</span></a></li>
         <li class="nav-item"><a class="nav-link" href="./purchase.php"><i class="fas fa-file-invoice"></i><span class="link-text">Purchases</span></a></li>
         <li class="nav-item"><a class="nav-link" href="./newlamp.php"><i class="fas fa-plus-square"></i><span class="link-text">LampPost</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span class="link-text">Settings</span></a></li>
+        <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span class="link-text">Settings</span></a></li> -->
         <li class="nav-item"><a class="nav-link" href="./../login/Logout.php"><i class="fas fa-sign-out-alt"></i><span class="link-text">LogOut</span></a></li>
 
     </ul>
 
 </nav>
+
+
+<div class="toast-message">
+      <span class="close"></span>
+      <div class="message">
+          This is an Alert! But these are some junks to see how alert looks in long messages.
+      </div>
+</div>
 
 <script src="../js/slider.js"></script>

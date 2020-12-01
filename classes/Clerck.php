@@ -59,7 +59,7 @@ class Clerck extends Framework
         $data['complaint_details'] = $complaintmodel->getCompliant_by_repair_id($repair_id);
         $data['used_items'] = $repairmodel->getRepairItemsByid($repair_id,USED_ITEM);
         $data['return_items'] = $repairmodel->getRepairItemsByid($repair_id,RETURN_ITEM);
-
+       
         return $data;
     }
     
@@ -72,7 +72,8 @@ class Clerck extends Framework
 
         $samodel = $this->loadModel('StockAddition');
         $data['StockAdditionList'] = $samodel->get_SA_ListAll();
-
+        // $this->session->sendMessage("helooo",'success');
+        
         return $data;
     }
     

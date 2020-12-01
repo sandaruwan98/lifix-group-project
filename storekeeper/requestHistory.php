@@ -149,24 +149,7 @@ $session = new classes\Session(StorekeeperFL);
                                 <td>80</td>
 
                             </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
+                        
 
                         </tbody>
 

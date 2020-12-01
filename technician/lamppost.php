@@ -24,6 +24,8 @@ $data =  $tech->Lamppost();
     <link rel="stylesheet" href="./css/request.css">
     <link rel="stylesheet" href="./css/complete.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Add Lamp Post</title>
 </head>
 
@@ -32,7 +34,7 @@ $data =  $tech->Lamppost();
 
 <?php include './nav.html' ?>
 
-
+<?php  $tech->getSession()->showMessage() ?>
 
     <div class="main">
         <div class="con">

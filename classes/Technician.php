@@ -69,7 +69,7 @@ class Technician extends Framework
         
                 if ($quantity!=0 && $quantity!=null) {
         
-                    $request_item = array($item[0], $quantity);
+                    $request_item = array("itemNo"=>$item[0],"Quantity"=>$quantity);
                     $request_items[] = $request_item;
                 }
                 
@@ -77,11 +77,11 @@ class Technician extends Framework
         
             if (!empty($request_items)) {
                 $itemrequest = $this->loadModel('ItemRequest');
-                
+                // var_dump($request_items);
                 $itemrequest->CreateItemRequest($this->session->getuserID(),$request_items );
         
-                echo ("<script>alert('repair completed succesfully') </script>");
-                header("location: ./index.php");
+                 $this->session->sendMessage("New item request added succesfully",'success');
+                // header("location: ./index.php");
             }
         }
 
@@ -129,8 +129,10 @@ class Technician extends Framework
                 $lp->Add_All_Used_Items_forNewLP($lp_id,$used_items);
             }
            }
-        
+           $this->session->sendMessage("New Lamppost addded successfully",'success');
+
         }
+       
         return $data;
     }
 
@@ -166,7 +168,8 @@ class Technician extends Framework
             $repairmodel = $this->loadModel('Repair');
             $r_id = $_GET["id"];
             $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
-            header("location: ./index.php");
+            $this->session->sendMessage("Repair marked as completed",'success');
+            // header("location: ./index.php");
         }
     }
 
@@ -206,9 +209,10 @@ class Technician extends Framework
             $repairmodel = $this->loadModel('Repair');
            
             $repairmodel->CreateEmergencyRepair($lp_id,$this->session->getuserID() ,$used_items,$return_items);
-
+            
+            $this->session->sendMessage("Emergency repir added added succesfully",'success');
             // echo ("<script>alert('repair completed succesfully') </script>");
-            header("location: ./index.php");
+            // header("location: ./index.php");
         }
     }
   

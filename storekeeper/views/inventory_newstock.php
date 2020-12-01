@@ -41,10 +41,16 @@ foreach($newstocks as $newstock):
 
                 ?>
             </table>
+            <form method="POST" action="inventory.php">
             <div class="btn-row">
-                <button id="confirm" class="btn">Confirm</button>
-                <button id="decline" class="btn danger">Decline</button>
+                    
+                    <button id="confirm" name="confirm" class="btn">Confirm</button>
+                    <input name="sa_id" type="text" hidden value="<?= $sa_id ?>" >
+                    <button id="decline" class="btn danger">Decline</button>
+
+               
             </div>
+            </form>
         </div>
     </div>
 <?php endforeach ?>
