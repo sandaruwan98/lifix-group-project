@@ -37,7 +37,10 @@ class StockAddition extends Database
     }
  
 
-
+    public function setStatus($st,$id){
+        $q = "UPDATE `stock_addition` SET `status` = '$st' WHERE `stock_addition`.`sa_id` = '$id' ";
+        $this->conn->query($q);
+    }
 
 
 

@@ -11,7 +11,7 @@ $session = new classes\Session(TechnicianFL);
 
 $itemrequest = new models\ItemRequest();
 // user id eka danna one.danata is eka 4 
-$requestlist = $itemrequest->getPendingRequestList_by_userid(1);
+$requestlist = $itemrequest->getPendingRequestList_by_userid($session->getuserID());
 ?>
 
 

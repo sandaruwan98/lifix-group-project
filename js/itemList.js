@@ -124,8 +124,8 @@ var itemList = {
     if (filtereList.length != 0) {
         $.post( "./" + dir + ".php", JSON.stringify( filtereList))
         .done(function( data ) {
-          console.log( data );
-          // location.reload();
+          // console.log( data );
+          location.reload();
         });
         
         

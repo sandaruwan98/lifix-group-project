@@ -26,6 +26,8 @@ $session = new classes\Session(StorekeeperFL);
     <?php include "./views/nav.php" ?>
 
 
+    <?php  $session->showMessage() ?>
+    
     <div class="main_content">
         <header>
             <h1>Item Requests</h1>

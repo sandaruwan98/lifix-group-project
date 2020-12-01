@@ -18,7 +18,7 @@ $data =  $clerck->Purchase();
     <link rel="stylesheet" href="./css/clerk.css">
     <link rel="stylesheet" href="./css/repairHistory.css">
     <link rel="stylesheet" href="./css/purchase.css">
-    <link rel="stylesheet" href="./a.css">
+    <!-- <link rel="stylesheet" href="./a.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Purchases</title>
@@ -28,8 +28,9 @@ $data =  $clerck->Purchase();
 <body>
 
     <?php include "./views/nav.php" ?>
-
-
+   
+    <?php  $clerck->getSession()->showMessage() ?>
+    
     <div class="main_content">
         <header>
             <h1>Purchases</h1>
