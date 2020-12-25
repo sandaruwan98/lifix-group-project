@@ -6,12 +6,13 @@ class User extends Database
 {
 
     
-    public function addUser()
+    public function CreateUser($username,$name,$role,$phone,$pass)
     {
-
-      
+        $query="INSERT INTO user(`username`, `Name`, `phone` , `occuFlag`, `statusFlag`,`password`) VALUES ('$username','$name', '$phone','$role',0,'$pass')";
+        return $this->conn->query($query);
     }
-    public function checkUser($username,$pass)
+
+    public function getUser($username,$pass)
     {
         
         $q = "SELECT * FROM `user` WHERE `username`='$username' AND `password`='$pass'  ";
