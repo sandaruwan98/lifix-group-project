@@ -6,11 +6,14 @@ class Session
 {
     public function __construct($occuFlag) {
         session_start();
-        if (!isset($_SESSION["user"])) {
-            header('location: ./../login');
-        }
-        else if($occuFlag != $_SESSION["occuFlag"]){
-            header('location: ./../login');
+        if($occuFlag != "login"){
+
+            if (!isset($_SESSION["user"])) {
+                header('location: ./../login');
+            }
+            else if($occuFlag != $_SESSION["occuFlag"]){
+                header('location: ./../login');
+            }
         }
     }
     

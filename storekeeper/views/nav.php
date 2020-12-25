@@ -31,3 +31,4 @@
       </div>
     </div>
     <script src="../js/slider.js"></script>
+    <script src="../js/toast.js"></script>
