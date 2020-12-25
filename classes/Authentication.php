@@ -75,31 +75,43 @@ class Authentication extends Framework{
             $this->regdata = [$username,$name,$phone,$pass,$confirmpass];
 
             if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)){
-                $this->session->sendMessage("Invalid  Name","danger");
-                return ;
+                $this->session->sendMessage("Invalid  Name","danger");return ;
             }
+
             if(preg_match("/[a-zA-Z]+/", $phone)){
-                $this->session->sendMessage("Invalid phone number","danger");
-                return ;
+                $this->session->sendMessage("Invalid phone number","danger");return ;
             }
             
             if($pass != $confirmpass){
-                $this->session->sendMessage("Passwords does not match","danger");
-                return ;
+                $this->session->sendMessage("Passwords does not match","danger");return;
             }
             //strong pass valid
             // if(preg_match("", $pass)){
             //     $this->session->sendMessage("Passwords is weak","danger");
             //     return ;
             // }
-            
-           
 
+        
             // $usermodel = $this->loadModel('User');
             $usermodel = new \models\User();
+            
+            if(!$usermodel->isUsernameAvailable($username))
+            {
+                $this->session->sendMessage("Username already taken,Try onother","danger");return ;
+            }
+
+
             $encrypted_pass = md5($pass);
-            $usermodel->CreateUser($username,$name,$role,$phone,$encrypted_pass);
-            header('location: ./index.php');
+            $user_id = $usermodel->CreateUser($username,$name,$role,$phone,$encrypted_pass);
+
+            $rolemodel = new \models\Role();
+            
+
+            if ($rolemodel->addRole($user_id,$role)) {
+            
+                $this->session->sendMessage("Registration successful","success");
+                echo "<script>setTimeout(() => {  location.href = './index.php' }, 2000);</script>";
+            }
         }
     }
 
