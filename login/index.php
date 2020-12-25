@@ -41,32 +41,50 @@ $auth->Loginuser();
 			<div class="left"></div>
 			<div class="right">
 				<img src="../complainer/img/" alt="" srcset="">
-				<h2>Login</h2>
-				<form action="index.php" method="POST">
-                    <h3>Welcome To The Li-Fix</h2>
-                    <br>
-                    <p>
-                    Have a nice day !.
-                    <br>
-                    Enter the username and password to login to the system </p>
+                <h2>Login</h2>
+                
+                <?php if(isset($_SESSION["role"]) && $_SESSION["role"]==-1 && !is_null($auth->getRoles_to_select())) : ?>
+                    <form action="index.php" method="POST">
+                    <h3>Choose a role</h2>
+                            <?php 
+                            $roles = $auth->getRoles_to_select();
+                            foreach ($roles as $role ) : ?>
+                                <button type="submit" name="loginBtn" class="btn"><?= $role[0] ?></button>
+                            
+                            <?php endforeach ?>
+                            <button type="submit" name="loginBtn" class="btn">Back</button>
+                    </form>
+
+                <?php else : ?>
+                
+              
+                    <form action="index.php" method="POST">
+                        <h3>Welcome To The Li-Fix</h2>
+                        <br>
+                        <p>
+                        Have a nice day !.
+                        <br>
+                        Enter the username and password to login to the system </p>
 
 
-                    
-                    <br>
-                    <input type="text" name="username" value="" class="field" placeholder="UserName" id="f1" required>
+                        
+                        <br>
+                        <input type="text" name="username" value="" class="field" placeholder="UserName" id="f1" required>
 
-                    <div id="middle-div"></div>
+                        <div id="middle-div"></div>
 
-					<input type="password" name="password" value="" class="field" placeholder="Password" id="f2" required>
-                    
-                    <div id="last-div"></div>
+                        <input type="password" name="password" value="" class="field" placeholder="Password" id="f2" required>
+                        
+                        <div id="last-div"></div>
 
-                    <button type="submit" name="loginBtn" class="btn">Login</button>
-                    <a  href="./register.php" class="btn">Register</a>
-                    <a  href="./register.php" class="btn">fogot password</a>
-                    <br>
-                    <br>
-				</form>		
+                        <button type="submit" name="loginBtn" class="btn">Login</button>
+                        <a  href="./register.php" class="btn">Register</a>
+                        <a  href="./register.php" class="btn">fogot password</a>
+                        <br>
+                        <br>
+                    </form>	
+                
+                <?php endif ?>	
 			</div>
 		</div>	
 	</div>

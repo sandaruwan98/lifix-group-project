@@ -5,8 +5,12 @@ include_once  __DIR__ . '/../utils/classloader.php';
 
 class Authentication extends Framework{
     private $regdata = ['','','','',''];
+    private $roles_to_select = null;
     public function getRegData(){
         return $this->regdata;
+    }
+    public function getRoles_to_select(){
+        return $this->roles_to_select;
     }
    
         
@@ -47,14 +51,26 @@ class Authentication extends Framework{
                 
                 $_SESSION['id']=$user['userId'];
                 $_SESSION["user"] = $user["username"];
-                $_SESSION["occuFlag"] = $user["occuFlag"];
-                switch($user['occuFlag']){
-                    case DSFL: header('location:../divisionalsecretary/index.php');break;
-                    case CleckFL:header('location:../clerk/index.php');break;
-                    case StorekeeperFL:header('location:../storekeeper/index.php');break;
-                    case TechnicianFL:header('location:../technician/index.php');break;
-                    case AdminFL:header('location:../admin/index.php');break;
+                $rolemodel = new \models\Role();
+                $roles = $rolemodel->getActiveRoles($user['userId']);
+                if ($roles->num_rows<=1) {
+                    $role = $roles->fetch_array();
+                    
+                    $_SESSION["role"] =  $role[0];
+            
+                    switch($role[0]){
+                        case DSFL: header('location:../divisionalsecretary/index.php');break;
+                        case CleckFL:header('location:../clerk/index.php');break;
+                        case StorekeeperFL:header('location:../storekeeper/index.php');break;
+                        case TechnicianFL:header('location:../technician/index.php');break;
+                        case AdminFL:header('location:../admin/index.php');break;
+                    }
+                }else {
+                     $_SESSION["role"] = -1;
+                     $this->roles_to_select = $roles->fetch_all();
+                    
                 }
+                
             }
 
         }

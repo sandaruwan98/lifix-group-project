@@ -17,9 +17,11 @@ class Role extends Database
     public function getActiveRoles($userid)
     {
         
-      
+      $query = "SELECT  `role`  FROM `roles` WHERE `is_active`=1 AND `user_id`='$userid' ";
+      return $this->conn->query($query);
       
     }
+    
     public function getallRoles($userid)
     {
         
