@@ -2,8 +2,8 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
 
-$controller = new \classes\Login();
-$controller->Loginuser();
+$auth = new \classes\Authentication();
+$auth->Loginuser();
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ $controller->Loginuser();
 <script src="../js/toast.js"></script>
 
 
-<?php $controller->getSession()->showMessage(); ?>
+<?php $auth->getSession()->showMessage(); ?>
 
 
 	<div class="container">
@@ -53,16 +53,17 @@ $controller->Loginuser();
 
                     
                     <br>
-                    <input type="text" name="username" value="" class="field" placeholder="UserName" id="f1">
+                    <input type="text" name="username" value="" class="field" placeholder="UserName" id="f1" required>
 
                     <div id="middle-div"></div>
 
-					<input type="password" name="password" value="" class="field" placeholder="Password" id="f2">
+					<input type="password" name="password" value="" class="field" placeholder="Password" id="f2" required>
                     
                     <div id="last-div"></div>
 
                     <button type="submit" name="loginBtn" class="btn">Login</button>
                     <a  href="./register.php" class="btn">Register</a>
+                    <a  href="./register.php" class="btn">fogot password</a>
                     <br>
                     <br>
 				</form>		
