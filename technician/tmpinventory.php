@@ -43,7 +43,7 @@ $session = new classes\Session(TechnicianFL);
                     </thead>
                     <tbody>
                         <tr>
-                            <td>LED BULB</td>
+                            <td>BULB</td>
                             <td>80</td>
 
                         </tr>
@@ -67,26 +67,7 @@ $session = new classes\Session(TechnicianFL);
                             <td>20</td>
 
                         </tr>
-                        <tr>
-                            <td>BULB</td>
-                            <td>80</td>
-
-                        </tr>
-                        <tr>
-                            <td>BULB</td>
-                            <td>80</td>
-
-                        </tr>
-                        <tr>
-                            <td>BULB</td>
-                            <td>80</td>
-
-                        </tr>
-                        <tr>
-                            <td>BULB</td>
-                            <td>80</td>
-
-                        </tr>
+                        
 
                     </tbody>
 
@@ -94,7 +75,7 @@ $session = new classes\Session(TechnicianFL);
                 </table>
 
 
-                <button type="submit" id="" name="complete" class="btn">Report a change</button>
+                <!-- <button type="submit" id="" name="complete" class="btn">Report a change</button> -->
 
 
             </form>

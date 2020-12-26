@@ -55,7 +55,7 @@ $data =  $clerck->RepairPage();
                             </tr>
                             <tr>
                                 <td>Status</td>
-                                <td>Completed</td>
+                                <td><?php if($rp['status'] == 'a') echo 'Pending'; elseif($rp['status'] == 'e') echo "Emergency Repair"; elseif($rp['status'] == 'x') echo "Assigned but not complted";else echo "Completed";  ?></td>
                             </tr>
                             <tr>
                                 <td>Date</td>
@@ -72,7 +72,7 @@ $data =  $clerck->RepairPage();
 
                             <tr>
                                 <td>Completed by</td>
-                                <td>Technitian</td>
+                                <td><?= $rp['completed_by'] ?></td>
                             </tr>
                             <tr>
                                 <td>Lamppost ID</td>

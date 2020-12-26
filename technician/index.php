@@ -14,12 +14,14 @@ $data =  $tech->AvalableRepairs();
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/tech.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Avalable Repairs</title>
 </head>
 
 <body>
     
 <?php include './nav.html' ?>
+<?php  $tech->getSession()->showMessage() ?>
 
 
     <div class="main">
@@ -51,6 +53,7 @@ $data =  $tech->AvalableRepairs();
 
         </div>
     </div>
+    
 </body>
 
 </html>

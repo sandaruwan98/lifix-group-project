@@ -28,7 +28,7 @@ $clerck = new classes\Clerck();
 <?php include "./views/nav.php" ?>
    
 
-    <div class="notification-container-wrap">
+    <!-- <div class="notification-container-wrap">
         <div class="notification-container  popup-ani">
             <header>
                 <h1>Notifications</h1>
@@ -44,7 +44,7 @@ $clerck = new classes\Clerck();
                 <div class="img-fab img"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script>
         const fab = document.querySelector('.notification-fab');
@@ -58,7 +58,7 @@ $clerck = new classes\Clerck();
 
     <div class="main_content">
         <header>
-            <h1>New Lamp Post</h1>
+            <h1>Confirm Lamppost</h1>
         </header>
         <div class="container-lp">
 
@@ -66,19 +66,23 @@ $clerck = new classes\Clerck();
                 <form>
 
                     <div class="feild-row">
-                        <h2 class="feild-h">Add New Lamp Post</h2>
+                        <h2 class="feild-h">Confirm Lamppost</h2>
 
                     </div>
                     <div class="feild-row">
 
 
 
-                        <label>Lamp post</label>
+                        <label>Lamppost</label>
                         <input class="field" type="text" placeholder="#xxxx" name="lp" id="">
                     </div>
                     <div class="feild-row">
+                        <label>Added technician</Address></label>
+                            <input class="field" type="text" disabled placeholder="Damish Nisal" name="sunbox" id="">
+                    </div>
+                    <div class="feild-row">
                         <label>Address</Address></label>
-                            <input class="field" type="text" placeholder="Division" name="sunbox" id="">
+                            <input class="field" type="text" placeholder="Road,Division" name="sunbox" id="">
                     </div>
                     <div class="feild-row">
                         <label>Date</label>
@@ -91,6 +95,10 @@ $clerck = new classes\Clerck();
                     <div class="feild-row">
                         <label>Authorized By</label>
                         <input class="field" type="text" placeholder="person" name="wire" id="">
+                    </div>
+                    <div class="feild-row">
+                        <label>Additional Notes</label>
+                        <input class="field" style="height: 80px;" type="text" placeholder="Notes" name="wire" id="">
                     </div>
 
                     <div class="feild-row">

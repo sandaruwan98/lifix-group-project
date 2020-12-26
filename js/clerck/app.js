@@ -43,6 +43,11 @@ for (let i = 0; i < list_items.length; i++) {
         // console.log(markerArr);
     })
 
+
+    item.addEventListener('dblclick', function (e) {
+        location.href = './repairpage.php?id='+this.id;
+    });
+
 }
 for (let j = 0; j < lists.length; j++) {
     const list = lists[j];

@@ -21,4 +21,14 @@
 
     </nav>
 
+
+
+
+    <div class="toast-message">
+      <span class="close"></span>
+      <div class="message">
+          
+      </div>
+    </div>
     <script src="../js/slider.js"></script>
+    <script src="../js/toast.js"></script>
