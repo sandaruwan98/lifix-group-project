@@ -1,5 +1,8 @@
 
-<?php 
+<?php
+
+use classes\Clerck;
+
 include_once  __DIR__ . '/../utils/classloader.php';
 
 $auth = new \classes\Authentication();
@@ -44,16 +47,20 @@ $auth->Loginuser();
                 <h2>Login</h2>
                 
                 <?php if(isset($_SESSION["role"]) && $_SESSION["role"]==-1 && !is_null($auth->getRoles_to_select())) : ?>
-                    <form action="index.php" method="POST">
+                    
                     <h3>Choose a role</h2>
                             <?php 
+                            $roletext = ['','Divisional Secetary','Clerck','Storekeeper','Technician', 'Admin'];
                             $roles = $auth->getRoles_to_select();
-                            foreach ($roles as $role ) : ?>
-                                <button type="submit" name="loginBtn" class="btn"><?= $role[0] ?></button>
+                            ?>
+                            <?php foreach ($roles as $role ) : ?>
+
+                                <a type="submit" href="./loginredirect.php?role=<?= $role[0] ?>" class="btn"><?= $roletext[ $role[0] ] ?></a>
                             
                             <?php endforeach ?>
-                            <button type="submit" name="loginBtn" class="btn">Back</button>
-                    </form>
+
+                            <a type="submit" href="./loginredirect.php?role=-1" class="btn">Back</a>
+                    
 
                 <?php else : ?>
                 
@@ -65,8 +72,6 @@ $auth->Loginuser();
                         Have a nice day !.
                         <br>
                         Enter the username and password to login to the system </p>
-
-
                         
                         <br>
                         <input type="text" name="username" value="" class="field" placeholder="UserName" id="f1" required>

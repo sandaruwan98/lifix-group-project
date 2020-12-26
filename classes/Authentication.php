@@ -53,7 +53,7 @@ class Authentication extends Framework{
                 $_SESSION["user"] = $user["username"];
                 $rolemodel = new \models\Role();
                 $roles = $rolemodel->getActiveRoles($user['userId']);
-                if ($roles->num_rows<=1) {
+                if ($roles->num_rows==1) {
                     $role = $roles->fetch_array();
                     
                     $_SESSION["role"] =  $role[0];
