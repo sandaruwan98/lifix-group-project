@@ -80,7 +80,7 @@ $session = new classes\Session(StorekeeperFL);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>LED BULB</td>
                                 <td>80</td>
@@ -133,7 +133,7 @@ $session = new classes\Session(StorekeeperFL);
                                 <td>BULB</td>
                                 <td>80</td>
 
-                            </tr>
+                            </tr> -->
 
                         </tbody>
 
