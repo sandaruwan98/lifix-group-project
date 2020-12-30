@@ -26,7 +26,7 @@ class ItemRequest extends Database
         $q = "SELECT itemrequest.Itemrequest_id,user.username , itemrequest.added_date 
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-         WHERE itemrequest.status='o' ";
+         WHERE itemrequest.status='a' ";
 
         $list =   $this->conn->query($q);
         return $list;
@@ -57,15 +57,23 @@ class ItemRequest extends Database
         $this->conn->query($q);
     }
 
+    public function sendToTech($id){
+        $date = date("yy-m-d");
+        echo "done";
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date WHERE `Itemrequest_id`=$id";
+        $this->conn->query($qurey);
+        return true;
+    }
 
 
 
 
 
+////////////////////////////////////
     
     public function CreateItemRequest($created_user_id,$request_items){
         // 
-        $this->AddRequestItemRecord($created_user_id, 0 ,'o');
+        $this->AddRequestItemRecord($created_user_id, 0 ,'a');
         $last_id = $this->conn->insert_id;
         // add ussed items to database
         foreach ($request_items as $item){

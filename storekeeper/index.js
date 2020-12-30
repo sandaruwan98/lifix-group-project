@@ -1,21 +1,35 @@
 
 
-
+var reItemId=0;
 
 $(document).ready(function(){
 
+    
     $(".repair-item").click( function(){
 
+        
+
+        reItemId=this.id;
         // console.log(this.id);
+        
         $.get("./ajax/getTableData.php?id=" + this.id ,function (data,status) {
+            // alert("done");
             if (status == "success") {
                 var tabledata = JSON.parse(data)
                 generateTable(tabledata);
+                // console.log("in the nethod");
             }
            
         })
         
     })
+
+    $(".btn").click(
+        $.get("./ajax/sendToTechnician.php?id="+reItemId,function(data, success){
+            console.log("in the nethod");
+            console.log(success);
+        })
+    )
     
 
 });
@@ -36,7 +50,9 @@ function generateTable(data) {
         cell1.innerHTML = item.Item_id;
         cell2.innerHTML = item.name;
         cell3.innerHTML = item.quantity;
+        
     });
     
     
 } 
+
