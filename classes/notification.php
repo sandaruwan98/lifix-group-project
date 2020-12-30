@@ -3,16 +3,6 @@
 
 <body style="background-color: rgb(72, 127, 149);">
 
-
-
-
-
-
-
-
-
-    
-
     <div class="notification-container-wrap">
         <div class="notification-container  popup-ani">
             <header>
