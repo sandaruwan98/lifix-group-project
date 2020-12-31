@@ -222,23 +222,33 @@ body::-webkit-scrollbar-thumb {
 
 /* pagination css */
 
-.link {
+.pagination{
+  padding-top: 30px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+ }
+
+.pagination .link {
   padding: 10px 15px;
+  margin: 0 2px;
   background: transparent;
   border:#bccfd8 1px solid;
-  cursor:
-  pointer;
-  color:#bccfd8
+  cursor:pointer;
+  color:#bccfd8;
+  height: 45px;
 }
-.disabled {
+.pagination .disabled {
   cursor:not-allowed;
   color: #bccfd8;
 }
-.current {background: #bccfd8;color: #0e7d8b;}
-.first{border-left:#bccfd8 1px solid;}
-.pagination{padding-top: 30px;}
+.pagination .current {background: #bccfd8;color: #0e7d8b;}
+.pagination .first{border-left:#bccfd8 1px solid;}
 
-.dot {
+
+.pagination .dot {
   padding: 10px 15px; 
   color: #bccfd8; 
   font-size: x-large;

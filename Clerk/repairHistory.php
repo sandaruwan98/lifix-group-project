@@ -57,6 +57,8 @@ $data =  $clerck->RepairHistory();
             <?php endwhile ?>
 
         </div>
+
+        <?php include "../pagination.php" ?>
     </div>
 
 </body>
