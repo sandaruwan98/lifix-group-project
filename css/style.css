@@ -163,6 +163,7 @@ body::-webkit-scrollbar-thumb {
 /* noti css for now */
 
 @charset "utf-8";
+
 .toast-message {
   position: fixed;
   top: -100%;
@@ -206,7 +207,7 @@ body::-webkit-scrollbar-thumb {
   line-height: 1;
   color: white;
   text-shadow: #1c1c1c 0px 1px 0px;
-  opacity: ;
+  opacity: 1;
   cursor: pointer;
  
 }
@@ -216,4 +217,40 @@ body::-webkit-scrollbar-thumb {
 }
 .toast-message .close:hover {
   opacity: 0.6;
+}
+
+
+/* pagination css */
+
+.pagination{
+  padding-top: 30px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+ }
+
+.pagination .link {
+  padding: 10px 15px;
+  margin: 0 2px;
+  background: transparent;
+  border:#bccfd8 1px solid;
+  cursor:pointer;
+  color:#bccfd8;
+  height: 45px;
+}
+.pagination .disabled {
+  cursor:not-allowed;
+  color: #bccfd8;
+}
+.pagination .current {background: #bccfd8;color: #0e7d8b;}
+.pagination .first{border-left:#bccfd8 1px solid;}
+
+
+.pagination .dot {
+  padding: 10px 15px; 
+  color: #bccfd8; 
+  font-size: x-large;
+  background: transparent;
 }

@@ -23,4 +23,7 @@
         </div>
     </div>
 <?php endwhile ?>
+
+
+<?php include "../pagination.php" ?>
 </div>

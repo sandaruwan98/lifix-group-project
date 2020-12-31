@@ -5,13 +5,25 @@ require_once "Database.php";
 class StockAddition extends Database
 {
 
-    public function get_SA_ListAll()
+    public function get_SA_ListAll($paginationFilter)
     {
-        $q = "SELECT `sa_id`, `date`, `status`, `clerk_id` FROM `stock_addition`";
+        $q = "SELECT `sa_id`, `date`, `status`, `clerk_id` FROM `stock_addition`" . $paginationFilter;
 
         $list =   $this->conn->query($q);
         return $list;
     }
+
+    public function get_SA_ListAll_Count()
+    {
+        $q = "SELECT count(sa_id) as count FROM `stock_addition`";
+
+        $count =   $this->conn->query($q);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+
+
+
     public function get_SA_List($status)
     {
         $q = "SELECT `sa_id`, `date`, `clerk_id` FROM `stock_addition` WHERE status='$status' ";
