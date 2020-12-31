@@ -3,13 +3,16 @@
 if(isset($_POST["view"]))
 {
  include("connect.php");
+//  $obj = new Database();
  if($_POST["view"] != '')
  {
   $update_query = "UPDATE comments SET comment_status=1 WHERE comment_status=0";
-  mysqli_query($connect, $update_query);
+  $this->conn->query($update_query);
+//   mysqli_query($connect, $update_query);
  }
  $query = "SELECT * FROM comments ORDER BY comment_id DESC LIMIT 5";
- $result = mysqli_query($connect, $query);
+ $result = $this->conn->query($query);
+//  $result = mysqli_query($connect, $query);
  $output = '';
  
  if(mysqli_num_rows($result) > 0)
