@@ -2,8 +2,13 @@
 
 
 require __DIR__ . '/../../utils/classloader.php';
+$sesion = new \classes\Session(StorekeeperFL);
 
 $itemReq = new models\ItemRequest();
 $id=$_GET["id"];
-echo "just get into php";
-$bool=$itemReq->sendToTech($id);
+
+$bool=$itemReq->SupplyItemRequest($id);
+if($bool)
+    $sesion->sendMessage("Item supply successfull",'success');
+else
+    $sesion->sendMessage("Item supply unsuccessfull",'danger');

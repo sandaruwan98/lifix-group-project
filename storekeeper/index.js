@@ -10,7 +10,7 @@ $(document).ready(function(){
         
 
         reItemId=this.id;
-        // console.log(this.id);
+        console.log(reItemId);
         
         $.get("./ajax/getTableData.php?id=" + this.id ,function (data,status) {
             // alert("done");
@@ -24,11 +24,15 @@ $(document).ready(function(){
         
     })
 
-    $(".btn").click(
+    $("#supplybtn").click(()=>{
         $.get("./ajax/sendToTechnician.php?id="+reItemId,function(data, success){
-            console.log("in the nethod");
-            console.log(success);
+            // console.log("in the nethod");
+            if(success == "success"){
+                location.reload();
+            }
+           
         })
+    }
     )
     
 

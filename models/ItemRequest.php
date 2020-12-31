@@ -57,12 +57,11 @@ class ItemRequest extends Database
         $this->conn->query($q);
     }
 
-    public function sendToTech($id){
+    public function SupplyItemRequest($ir_id){
         $date = date("yy-m-d");
-        echo "done";
-        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date WHERE `Itemrequest_id`=$id";
-        $this->conn->query($qurey);
-        return true;
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date WHERE `Itemrequest_id`=$ir_id";
+        
+        return $this->conn->query($qurey);
     }
 
 
