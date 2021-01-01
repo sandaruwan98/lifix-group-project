@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Hind:700" rel="stylesheet">
-<script src="jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="fab.css">
+<script src="../js/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="../css/fab.css">
 
 <body style="background-color: rgb(72, 127, 149);">
 
@@ -32,7 +32,7 @@
         function load_unseen_notification(view = '')
         {
         $.ajax({
-        url:"fetch.php",
+        url:"../utils/fetch.php",
         method:"POST",
         data:{view:view},
         dataType:"json",
@@ -58,29 +58,7 @@
         
         load_unseen_notification();
         
-        // $('#comment_form').on('submit', function(event){
-        // event.preventDefault();
-        // if($('#subject').val() != '' && $('#comment').val() != '')
-        // {
-        // var form_data = $(this).serialize();
-        // $.ajax({
-        //     url:"insert.php",
-        //     method:"POST",
-        //     data:form_data,
-        //     success:function(data)
-        //     {
-        //     $('#comment_form')[0].reset();
-        //     load_unseen_notification();
-        //     }
-        // });
-        // }
-        // else
-        // {
-        // alert("Both Fields are Required");
-        // }
-        // });
-        
-        $(document).on('click', '.notification-container', function(){
+        $(document).on('click', '.img-fab', function(){
         $('.count').html('');
         $('.count').css({
             "position": "",
