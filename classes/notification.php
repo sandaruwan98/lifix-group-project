@@ -29,52 +29,51 @@
 
         $(document).ready(function(){
         
-        function load_unseen_notification(view = '')
-        {
-        $.ajax({
-        url:"../utils/fetch.php",
-        method:"POST",
-        data:{view:view},
-        dataType:"json",
-        success:function(data)
-        {
-            $('.notification-container').html(data.notification);
-            if(data.unseen_notification > 0)
+            function load_unseen_notification(view = '')
             {
-            $('.count').html(data.unseen_notification);
-            $('.count').css({
-            "position": "absolute",
-            "top": "-10px",
-            "right": "-10px",
-            "padding": "5px 10px",
-            "border-radius": "50%",
-            "background": "red",
-            "color": "white"
-        });
+               
+                $.post( "../utils/fetch.php", {view:view})
+                .done(function( data ) {
+                    console.log(data);
+                    data = JSON.parse(data);
+                    $('.notification-container').html(data.notification);
+                    if(data.unseen_notification > 0)
+                    {
+                        $('.count').html(data.unseen_notification);
+                        $('.count').css({
+                            "position": "absolute",
+                            "top": "-10px",
+                            "right": "-10px",
+                            "padding": "5px 10px",
+                            "border-radius": "50%",
+                            "background": "red",
+                            "color": "white"
+                        });
+                    }
+                });
+
+               
             }
-        }
-        });
-        }
         
-        load_unseen_notification();
+            // load_unseen_notification();
         
         $(document).on('click', '.img-fab', function(){
-        $('.count').html('');
-        $('.count').css({
-            "position": "",
-            "top": "",
-            "right": "",
-            "padding": "",
-            "border-radius": "",
-            "background": "",
-            "color": ""
-        });
-        load_unseen_notification('yes');
+            $('.count').html('');
+            $('.count').css({
+                "position": "",
+                "top": "",
+                "right": "",
+                "padding": "",
+                "border-radius": "",
+                "background": "",
+                "color": ""
+            });
+            load_unseen_notification('yes');
         });
         
-        setInterval(function(){ 
-        load_unseen_notification();; 
-        }, 5000);
+        // setInterval(function(){ 
+        // load_unseen_notification();; 
+        // }, 5000);
         
         }); 
 
