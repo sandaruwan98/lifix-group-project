@@ -50,20 +50,16 @@ $data =  $clerck->SectionAssign();
 
 
     
-.disabled-button {
-  -webkit-filter: opacity(.3) drop-shadow(0 0 0 #FFF);
-  filter: opacity(.3) drop-shadow(0 0 0 #FFF);
-  cursor: default !important;
-}
+    .disabled-button {
+    -webkit-filter: opacity(.3) drop-shadow(0 0 0 #FFF);
+    filter: opacity(.3) drop-shadow(0 0 0 #FFF);
+    cursor: default !important;
+    }
 </style>
 
 <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
-<link
-    rel="stylesheet"
-    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
-    type="text/css"
-/>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css" type="text/css"/>
 
 
 
@@ -93,7 +89,7 @@ $data =  $clerck->SectionAssign();
             <div class="map-section">
                 <div id="map"></div>
                 <div class="calculation-box">
-                    <span>select color</span> <input type="color" name="" id="">
+                    <span>select color</span> <input type="color" name="" id="colorselect">
                     <button id="delete" class="btn">Delete</button>
                     <button id="add" class="btn">Add</button>
                     <div id="calculated-area"></div>
@@ -109,7 +105,9 @@ $data =  $clerck->SectionAssign();
     
     var tech_id = 0;
     var drawData = null;
+    var color = '#000000'; 
     const addBtn = document.querySelector('#add');
+    const colorSelect = document.querySelector('#colorselect');
    
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
@@ -161,6 +159,20 @@ $data =  $clerck->SectionAssign();
         }
 
     }
+
+    addBtn.addEventListener('click',()=>{
+        console.log(tech_id);
+        $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
+        .done((data)=>{
+            console.log("recived" + data);
+        });
+    })
+
+    colorSelect.addEventListener('change',()=>{
+        color = colorSelect.value;
+        console.log(color);
+
+    })
 
     var feateredata = {
             'type': 'geojson',

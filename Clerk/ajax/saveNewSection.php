@@ -1,7 +1,10 @@
 <?php 
-$data = json_decode($_GET["data"]);
-var_dump($data[0][1]);
-// print_r($data);
+
+$id = $_POST["id"];
+$data = $_POST["coords"];
+$color = $_POST["color"];
+
+echo $_POST["id"]. '    '. $data[0][1][0];
 
 
 // array(1) { 
