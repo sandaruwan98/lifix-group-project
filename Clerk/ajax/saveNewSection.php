@@ -4,8 +4,15 @@ $id = $_POST["id"];
 $data = $_POST["coords"];
 $color = $_POST["color"];
 
-echo $_POST["id"]. '    '. $data[0][1][0];
+require_once __DIR__ . '/../../utils/classloader.php';
 
+$section = new models\Section();
+
+$section_id = $section->CreateSection($id,$color);
+
+foreach($data[0] as $coord){
+    $section->AddPoint($section_id,$coord[0],$coord[1]);
+}
 
 // array(1) { 
 //     [0]=> array(4) {

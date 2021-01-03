@@ -107,6 +107,7 @@ $data =  $clerck->SectionAssign();
     var drawData = null;
     var color = '#000000'; 
     const addBtn = document.querySelector('#add');
+    const deleteBtn = document.querySelector('#delete');
     const colorSelect = document.querySelector('#colorselect');
    
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
@@ -163,16 +164,15 @@ $data =  $clerck->SectionAssign();
     addBtn.addEventListener('click',()=>{
         console.log(tech_id);
         $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
-        .done((data)=>{
-            console.log("recived" + data);
-        });
+        .done((data)=>{console.log("recived" + data);});
+    })
+    deleteBtn.addEventListener('click',()=>{
+        console.log(tech_id);
+        $.get( "./ajax/deteteSection.php?id="+tech_id)
+        .done((data)=>{console.log("recived" + data);});
     })
 
-    colorSelect.addEventListener('change',()=>{
-        color = colorSelect.value;
-        console.log(color);
-
-    })
+    colorSelect.addEventListener('change',()=>{color = colorSelect.value;})
 
     var feateredata = {
             'type': 'geojson',
@@ -194,6 +194,8 @@ $data =  $clerck->SectionAssign();
                     }
             }
             }
+
+
 
     map.on('load', function () {
 
