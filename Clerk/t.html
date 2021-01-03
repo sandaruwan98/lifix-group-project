@@ -30,6 +30,14 @@
         margin: 0;
         font-size: 13px;
     }
+
+
+    
+.disabled-button {
+  -webkit-filter: opacity(.3) drop-shadow(0 0 0 #FFF);
+  filter: opacity(.3) drop-shadow(0 0 0 #FFF);
+  cursor: default !important;
+}
 </style>
 
 <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
@@ -88,31 +96,61 @@
     map.addControl(draw);
 
     map.on('draw.create', updateArea);
-    map.on('draw.delete', updateArea);
+    map.on('draw.delete', onDelete);
    // map.on('draw.update', updateArea);
-
+  
     var feateredata = null;
 
     function updateArea(e) {
         var data = draw.getAll();
-        var answer = document.getElementById('calculated-area');
-        if (data.features.length > 0) {
-            var area = turf.area(data);
+        
+        if (data.features.length == 1) {
+            var drawPolygon = document.getElementsByClassName('mapbox-gl-draw_polygon');
 
+            drawPolygon[0].disabled = true;
+            drawPolygon[0].classList.add('disabled-button');
+            
 
-            feateredata = JSON.stringify(data.features[0].geometry.coordinates)
-            console.log(feateredata);
-            // restrict to area to 2 decimal points
-            var rounded_area = Math.round(area * 100) / 100;
-            answer.innerHTML =
-                '<p><strong>' +
-                rounded_area +
-                '</strong></p><p>square meters</p>';
-        } else {
-            answer.innerHTML = '';
-            if (e.type !== 'draw.delete')
-                alert('Use the draw tools to draw a polygon!');
         }
+    
+    }
+
+    function onDelete(e) {
+        var data = draw.getAll();
+        
+        if (data.features.length == 0) {
+            var drawPolygon = document.getElementsByClassName('mapbox-gl-draw_polygon');
+
+            drawPolygon[0].disabled = false;
+            drawPolygon[0].classList.remove('disabled-button');
+            
+
+        }
+
+
+
+        // if (data.features.length > 0) {
+        //     var area = turf.area(data);
+
+
+        //     feateredata = JSON.stringify(data.features[0].geometry.coordinates)
+        //     console.log(feateredata);
+        //     // restrict to area to 2 decimal points
+        //     var rounded_area = Math.round(area * 100) / 100;
+        //     answer.innerHTML =
+        //         '<p><strong>' +
+        //         rounded_area +
+        //         '</strong></p><p>square meters</p>';
+        // } else {
+        //     answer.innerHTML = '';
+        //     if (e.type !== 'draw.delete')
+        //         alert('Use the draw tools to draw a polygon!');
+        // }
+
+
+
+
+
     }
 
     feateredata = {
