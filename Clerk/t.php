@@ -1,25 +1,42 @@
+<?php 
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->SectionAssign();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
 <title>Show drawn polygon area</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet" />
 <link rel="stylesheet" href="../css/slider.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./css/clerk.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="./css/clerk.css">
 
 </head>
 <body>
 
 <style>
+    .map-section{
+        position: relative;
+    }
+    #map{
+        height: 100%;
+        width: 100%;
+    }
     .calculation-box {
-        height: 75px;
-        width: 150px;
+        height: 150px;
+        width: 300px;
         position: absolute;
-        bottom: 40px;
-        right: 10px;
+        top: 10px;
+        left: 10px;
         background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
         text-align: center;
@@ -50,33 +67,50 @@
 
 
 
-<!-- <?php include "./views/nav.php" ?> -->
+<?php include "./views/nav.php" ?>
 
    
     <div class="main_content">
         <header>
-            <h1>Available Repairs</h1>
+            <h1>Assign Sections</h1>
         </header>
         <div class="main">
 
-            <div class="list-section">
-                <div class="lists">
-                    
-                </div>
+            <div class="list-section" style="min-width: 300px;">
+               
+                    <div class="tech-section">
+                        <?php foreach ($data['technicians'] as  $tech) { ?>
+                            <div id="<?= $tech["userId"] ?>" class="radio" onclick="tech_id=this.id">
+                                <input id="<?= "input".$tech["userId"] ?>" type="radio"  name="radio"> 
+                                <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input type="color" value="#ff0000" name="" id="1" disabled> </label>
+                            </div>
+                       <?php } ?>
+                      
+                    </div>
+                
                
             </div>
+            <div class="map-section">
+                <div id="map"></div>
+                <div class="calculation-box">
+                    <span>select color</span> <input type="color" name="" id="">
+                    <button id="delete" class="btn">Delete</button>
+                    <button id="add" class="btn">Add</button>
+                    <div id="calculated-area"></div>
+                </div>
 
-            <div id="map" class="map-section"></div>
-            <div class="calculation-box">
-                <p>Draw a polygon using the draw tools.</p>
-                <div id="calculated-area"></div>
             </div>
+           
         </div>
     </div>
 
 
 <script>
-	
+    
+    var tech_id = 0;
+    var drawData = null;
+    const addBtn = document.querySelector('#add');
+   
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -99,14 +133,15 @@
     map.on('draw.delete', onDelete);
    // map.on('draw.update', updateArea);
   
-    var feateredata = null;
+    
 
     function updateArea(e) {
         var data = draw.getAll();
         
         if (data.features.length == 1) {
             var drawPolygon = document.getElementsByClassName('mapbox-gl-draw_polygon');
-
+            drawData = data.features[0].geometry.coordinates;
+            console.log(JSON.stringify(drawData));
             drawPolygon[0].disabled = true;
             drawPolygon[0].classList.add('disabled-button');
             
@@ -123,37 +158,11 @@
 
             drawPolygon[0].disabled = false;
             drawPolygon[0].classList.remove('disabled-button');
-            
-
         }
-
-
-
-        // if (data.features.length > 0) {
-        //     var area = turf.area(data);
-
-
-        //     feateredata = JSON.stringify(data.features[0].geometry.coordinates)
-        //     console.log(feateredata);
-        //     // restrict to area to 2 decimal points
-        //     var rounded_area = Math.round(area * 100) / 100;
-        //     answer.innerHTML =
-        //         '<p><strong>' +
-        //         rounded_area +
-        //         '</strong></p><p>square meters</p>';
-        // } else {
-        //     answer.innerHTML = '';
-        //     if (e.type !== 'draw.delete')
-        //         alert('Use the draw tools to draw a polygon!');
-        // }
-
-
-
-
 
     }
 
-    feateredata = {
+    var feateredata = {
             'type': 'geojson',
             'data': 
             {
