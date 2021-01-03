@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Show drawn polygon area</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/slider.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/clerk.css">
+
+</head>
+<body>
+
+<style>
+    .calculation-box {
+        height: 75px;
+        width: 150px;
+        position: absolute;
+        bottom: 40px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        text-align: center;
+    }
+
+    p {
+        font-family: 'Open Sans';
+        margin: 0;
+        font-size: 13px;
+    }
+</style>
+
+<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
+<link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
+    type="text/css"
+/>
+
+
+
+<!-- <?php include "./views/nav.php" ?> -->
+
+   
+    <div class="main_content">
+        <header>
+            <h1>Available Repairs</h1>
+        </header>
+        <div class="main">
+
+            <div class="list-section">
+                <div class="lists">
+                    
+                </div>
+               
+            </div>
+
+            <div id="map" class="map-section"></div>
+            <div class="calculation-box">
+                <p>Draw a polygon using the draw tools.</p>
+                <div id="calculated-area"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+	
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [79.861489, 6.885039],
+            zoom: 14
+        });
+
+
+    var draw = new MapboxDraw({
+        displayControlsDefault: false,
+        controls: {
+            polygon: true,
+            trash: true
+        }
+    });
+    map.addControl(draw);
+
+    map.on('draw.create', updateArea);
+    map.on('draw.delete', updateArea);
+   // map.on('draw.update', updateArea);
+
+    var feateredata = null;
+
+    function updateArea(e) {
+        var data = draw.getAll();
+        var answer = document.getElementById('calculated-area');
+        if (data.features.length > 0) {
+            var area = turf.area(data);
+
+
+            feateredata = JSON.stringify(data.features[0].geometry.coordinates)
+            console.log(feateredata);
+            // restrict to area to 2 decimal points
+            var rounded_area = Math.round(area * 100) / 100;
+            answer.innerHTML =
+                '<p><strong>' +
+                rounded_area +
+                '</strong></p><p>square meters</p>';
+        } else {
+            answer.innerHTML = '';
+            if (e.type !== 'draw.delete')
+                alert('Use the draw tools to draw a polygon!');
+        }
+    }
+
+    feateredata = {
+            'type': 'geojson',
+            'data': 
+            {
+                'type': 'Feature',
+                'geometry': 
+                    {
+                        'type': 'Polygon',
+                        'coordinates': [[
+                            [79.84822483549044,6.910831874933763],
+                            [79.87118673431127,6.921241070475986],
+                            [79.8773585741672,6.914718879850213],
+                            [79.87702675482046,6.895217651947021],
+                            [79.8765622077342,6.888629217769434],
+                            [79.85698486625415,6.878812281080769],
+                            [79.84822483549044,6.910831874933763]
+                        ]]
+                    }
+            }
+            }
+
+    map.on('load', function () {
+
+        if (feateredata != null) {
+            
+        
+            map.addSource('maine',feateredata );
+
+            map.addLayer({
+                'id': 'maine',
+                'type': 'fill',
+                'source': 'maine',
+                'layout': {},
+                'paint': {
+                    'fill-color': '#088',
+                    'fill-opacity': 0.6
+                }
+            });
+
+
+    }
+    });
+</script>
+
+</body>
+</html>
