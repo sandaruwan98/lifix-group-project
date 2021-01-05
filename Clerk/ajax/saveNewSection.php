@@ -6,12 +6,12 @@ $color = $_POST["color"];
 
 require_once __DIR__ . '/../../utils/classloader.php';
 
-$section = new models\Section();
+$map = new models\Map();
 
-$section_id = $section->CreateSection($id,$color);
+$section_id = $map->CreateSection($id,$color);
 
 foreach($data[0] as $coord){
-    $section->AddPoint($section_id,$coord[0],$coord[1]);
+    $map->AddPoint($section_id,$coord[0],$coord[1]);
 }
 
 // array(1) { 
