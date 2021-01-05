@@ -31,6 +31,10 @@ $data =  $clerck->SectionAssign();
         height: 100%;
         width: 100%;
     }
+    .mapboxgl-ctrl-group button{
+        width: 49px;
+        height: 39px;
+    }
     .calculation-box {
         height: 150px;
         width: 300px;
@@ -47,7 +51,9 @@ $data =  $clerck->SectionAssign();
         margin: 0;
         font-size: 13px;
     }
-
+    #delete{
+        background-color: red;
+    }
 
     
     .disabled-button {
@@ -76,7 +82,7 @@ $data =  $clerck->SectionAssign();
                
                     <div class="tech-section">
                         <?php foreach ($data['technicians'] as  $tech) { ?>
-                            <div id="<?= $tech["userId"] ?>" class="radio" onclick="tech_id=this.id">
+                            <div id="<?= $tech["userId"] ?>" class="radio" onclick="techListClick(this.id)">
                                 <input id="<?= "input".$tech["userId"] ?>" type="radio"  name="radio"> 
                                 <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input type="color" value="#ff0000" name="" id="1" disabled> </label>
                             </div>
@@ -101,15 +107,23 @@ $data =  $clerck->SectionAssign();
     </div>
 
 
+
+
+
+
+
 <script>
-    
+    var has_section = false;
     var tech_id = 0;
     var drawData = null;
-    var color = '#000000'; 
+    var color = '#000000';
+    var feateredata = null; 
+    var techs_who_have_section= [];
     const addBtn = document.querySelector('#add');
     const deleteBtn = document.querySelector('#delete');
     const colorSelect = document.querySelector('#colorselect');
-   
+
+    //map-------------------------------------
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -131,8 +145,64 @@ $data =  $clerck->SectionAssign();
     map.on('draw.create', updateArea);
     map.on('draw.delete', onDelete);
    // map.on('draw.update', updateArea);
-  
     
+    // $(document).ready(function(){
+    //     $.get("./ajax/getMapSectionData.php",(data,success)=>{
+    //         if (status == "success") {
+            
+    //         }
+    //     });
+    // });
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        feateredata = JSON.parse(this.responseText)
+
+        map.on('load', function () {
+            feateredata.forEach(feature => {
+                techs_who_have_section.push(feature.tech_id);
+                var fea = {
+                    'type': 'geojson',
+                    'data': 
+                    {
+                        'type': 'Feature',
+                        'geometry': 
+                            {
+                                'type': 'Polygon',
+                                'coordinates': [ feature.coords ]
+                            }
+                    }
+                }
+
+
+                map.addSource(feature.tech_id,fea );
+
+                map.addLayer({
+                    'id': feature.tech_id,
+                    'type': 'fill',
+                    'source': feature.tech_id,
+                    'layout': {},
+                    'paint': {
+                        'fill-color': feature.color,
+                        'fill-opacity': 0.6
+                    }
+                });
+            });
+            
+         });
+    
+     
+
+        
+
+
+    
+    }
+};
+xmlhttp.open("GET", "./ajax/getMapSectionData.php", true);
+xmlhttp.send();
+
+
 
     function updateArea(e) {
         var data = draw.getAll();
@@ -161,6 +231,61 @@ $data =  $clerck->SectionAssign();
 
     }
 
+    
+
+
+    // map.on('load', function () {
+
+    //     if (feateredata != null) {
+            
+        
+    //         map.addSource('maine',fea );
+
+    //         map.addLayer({
+    //             'id': 'maine',
+    //             'type': 'fill',
+    //             'source': 'maine',
+    //             'layout': {},
+    //             'paint': {
+    //                 'fill-color': '#088',
+    //                 'fill-opacity': 0.6
+    //             }
+    //         });
+
+
+    // }
+    // });
+
+    //----------------------------------------------------
+    
+    function setAddButtonActive(state) {
+       
+            deleteBtn.disabled = state;
+            addBtn.disabled = !state;
+            if (state) {
+                deleteBtn.classList.add('disabled-button');
+                addBtn.classList.remove('disabled-button');
+            }else{
+                deleteBtn.classList.remove('disabled-button');
+                addBtn.classList.add('disabled-button');
+            }
+            
+            
+            
+       
+    }
+    function techListClick(id) {
+        tech_id=id;
+        console.log(tech_id);
+        console.log(techs_who_have_section);
+        if (techs_who_have_section.indexOf(tech_id) != -1) {
+            setAddButtonActive(false);
+        }else{
+            setAddButtonActive(true);
+        }
+    }
+
+    setAddButtonActive();
     addBtn.addEventListener('click',()=>{
         console.log(tech_id);
         $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
@@ -168,56 +293,16 @@ $data =  $clerck->SectionAssign();
     })
     deleteBtn.addEventListener('click',()=>{
         console.log(tech_id);
-        $.get( "./ajax/deteteSection.php?id="+tech_id)
+        map.removeLayer(tech_id);
+        map.removeSource(tech_id);
+        setAddButtonActive(true)
+        $.get( "./ajax/deleteSection.php?id="+tech_id)
         .done((data)=>{console.log("recived" + data);});
     })
 
     colorSelect.addEventListener('change',()=>{color = colorSelect.value;})
 
-    var feateredata = {
-            'type': 'geojson',
-            'data': 
-            {
-                'type': 'Feature',
-                'geometry': 
-                    {
-                        'type': 'Polygon',
-                        'coordinates': [[
-                            [79.84822483549044,6.910831874933763],
-                            [79.87118673431127,6.921241070475986],
-                            [79.8773585741672,6.914718879850213],
-                            [79.87702675482046,6.895217651947021],
-                            [79.8765622077342,6.888629217769434],
-                            [79.85698486625415,6.878812281080769],
-                            [79.84822483549044,6.910831874933763]
-                        ]]
-                    }
-            }
-            }
-
-
-
-    map.on('load', function () {
-
-        if (feateredata != null) {
-            
-        
-            map.addSource('maine',feateredata );
-
-            map.addLayer({
-                'id': 'maine',
-                'type': 'fill',
-                'source': 'maine',
-                'layout': {},
-                'paint': {
-                    'fill-color': '#088',
-                    'fill-opacity': 0.6
-                }
-            });
-
-
-    }
-    });
+  
 </script>
 
 </body>
