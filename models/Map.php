@@ -21,4 +21,44 @@ class Map extends Database
         }
         return $arr;
     }
+
+
+    
+    public function DeleteSection($tech_id)
+    {
+        $query="DELETE FROM `tech_sections` WHERE `tech_id`='$tech_id' ";
+        
+        return $this->conn->query($query);
+    }
+    public function CreateSection($tech_id,$color)
+    {
+        $query="INSERT INTO `tech_sections` ( `tech_id`, `color`) VALUES ('$tech_id','$color')";
+        $this->conn->query($query);
+        return $this->conn->insert_id;
+    }
+    
+    public function AddPoint($sec_id,$lng,$lat)
+    {
+        $query="INSERT INTO `section_points`(`section_id`, `lng`, `lat`)  VALUES ('$sec_id','$lng','$lat')";
+        return $this->conn->query($query);
+    }
+
+    public function getSectionById($sec_id)
+    {
+        $query="SELECT * FROM `tech_sections` WHERE `section_id`='$sec_id' ";
+        
+        return $this->conn->query($query);
+    }
+    public function getAllSections()
+    {
+        $query="SELECT * FROM `tech_sections`";
+        
+        return $this->conn->query($query);
+    }
+    public function getPointsForSection($sec_id)
+    {
+        $q="SELECT `lng`, `lat`  FROM `section_points` WHERE `section_id`='$sec_id' ";
+        $list = $this->conn->query($q);
+        return $list->fetch_all();
+    }
 }
