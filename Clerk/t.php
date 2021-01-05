@@ -84,7 +84,7 @@ $data =  $clerck->SectionAssign();
                         <?php foreach ($data['technicians'] as  $tech) { ?>
                             <div id="<?= $tech["userId"] ?>" class="radio" onclick="techListClick(this.id)">
                                 <input id="<?= "input".$tech["userId"] ?>" type="radio"  name="radio"> 
-                                <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input type="color" value="<?= $data["color"][$tech["userId"]] ?>" name="" id="1" disabled> </label>
+                                <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input id="<?= "color-display".$tech["userId"] ?>" type="color" value="<?= $data["color"][$tech["userId"]] ?>" name="" id="1" disabled> </label>
                             </div>
                        <?php } ?>
                       
@@ -122,7 +122,11 @@ $data =  $clerck->SectionAssign();
     const addBtn = document.querySelector('#add');
     const deleteBtn = document.querySelector('#delete');
     const colorSelect = document.querySelector('#colorselect');
+    
 
+
+    deleteBtn.disabled = true;
+    addBtn.disabled = true;
     //map-------------------------------------
     mapboxgl.accessToken = 'pk.eyJ1IjoibGFrc2hhbnM5OCIsImEiOiJja2J4aXc1ZGowMXlnMnlsbXN5bGNhczEwIn0.c7hzHhRTqXx4CycvscjHww';
         var map = new mapboxgl.Map({
@@ -143,16 +147,9 @@ $data =  $clerck->SectionAssign();
     map.addControl(draw);
 
     map.on('draw.create', updateArea);
+    map.on('draw.update', updateArea);
     map.on('draw.delete', onDelete);
-   // map.on('draw.update', updateArea);
-    
-    // $(document).ready(function(){
-    //     $.get("./ajax/getMapSectionData.php",(data,success)=>{
-    //         if (status == "success") {
-            
-    //         }
-    //     });
-    // });
+   
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -229,36 +226,9 @@ function Add_section_to_map(id,coords,color) {
         }
 
     }
-
-    
-
-
-    // map.on('load', function () {
-
-    //     if (feateredata != null) {
-            
-        
-    //         map.addSource('maine',fea );
-
-    //         map.addLayer({
-    //             'id': 'maine',
-    //             'type': 'fill',
-    //             'source': 'maine',
-    //             'layout': {},
-    //             'paint': {
-    //                 'fill-color': '#088',
-    //                 'fill-opacity': 0.6
-    //             }
-    //         });
-
-
-    // }
-    // });
-
     //----------------------------------------------------
 
     function setAddButtonActive(state) {
-       
             deleteBtn.disabled = state;
             addBtn.disabled = !state;
             if (state) {
@@ -268,48 +238,67 @@ function Add_section_to_map(id,coords,color) {
                 deleteBtn.classList.remove('disabled-button');
                 addBtn.classList.add('disabled-button');
             }
-            
-            
-            
-       
     }
+
     function techListClick(id) {
+    
+            // e.preventDefault();
         tech_id=id;
-        console.log(tech_id);
-        console.log(techs_who_have_section);
+        drawData = null
         if (techs_who_have_section.indexOf(tech_id) != -1) {
             setAddButtonActive(false);
         }else{
             setAddButtonActive(true);
         }
+        
+        
     }
 
-    setAddButtonActive();
+    
     addBtn.addEventListener('click',()=>{
-        console.log(tech_id);
-        setAddButtonActive(false)
-        techs_who_have_section.push(tech_id);
-        $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
-        .done((data)=>{console.log("recived" + data);});
-        Add_section_to_map(tech_id,drawData[0],color)
+         console.log("add");
+         if(drawData != null){
+            //diasble add btn and enable delete btn
+            setAddButtonActive(false)
 
+            //set color of tech list
+            const colorDisplay = document.querySelector('#color-display'+tech_id);
+            colorDisplay.value=color;
+
+            
+            console.log(techs_who_have_section);
+            //send data to backend
+            $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
+            .done((data)=>{console.log("recived" + data);});
+            Add_section_to_map(tech_id,drawData[0],color)
+        }
     })
 
 
     deleteBtn.addEventListener('click',()=>{
-        console.log(tech_id);
+        // console.log("del");
+        //diasble delete btn and add btn
+    
 
         
-        var index = techs_who_have_section.indexOf(7)
-        techs_who_have_section[index]=v[0];
-        techs_who_have_section.shift()
+        setAddButtonActive(true)
+        //set color of tech list
+        const colorDisplay = document.querySelector('#color-display'+tech_id);
+        colorDisplay.value='#e8edee'
 
+        // delete techs_who_have_section item
+        var index = techs_who_have_section.indexOf(tech_id)
+        techs_who_have_section[index]=techs_who_have_section[0];
+        techs_who_have_section.shift()
 
         map.removeLayer(tech_id);
         map.removeSource(tech_id);
-        setAddButtonActive(true)
+
+        //send data to backend
         $.get( "./ajax/deleteSection.php?id="+tech_id)
         .done((data)=>{console.log("recived" + data);});
+    
+
     })
 
     colorSelect.addEventListener('change',()=>{color = colorSelect.value;})
