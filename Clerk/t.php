@@ -84,7 +84,7 @@ $data =  $clerck->SectionAssign();
                         <?php foreach ($data['technicians'] as  $tech) { ?>
                             <div id="<?= $tech["userId"] ?>" class="radio" onclick="techListClick(this.id)">
                                 <input id="<?= "input".$tech["userId"] ?>" type="radio"  name="radio"> 
-                                <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input type="color" value="#ff0000" name="" id="1" disabled> </label>
+                                <label for="<?= "input".$tech["userId"] ?>"  class="tech-item"> <span>ID- <?= $tech["userId"] ?> </span>  <span>Name: <?= $tech["Name"] ?> </span>  <input type="color" value="<?= $data["color"][$tech["userId"]] ?>" name="" id="1" disabled> </label>
                             </div>
                        <?php } ?>
                       
@@ -157,52 +157,51 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         feateredata = JSON.parse(this.responseText)
-
         map.on('load', function () {
             feateredata.forEach(feature => {
-                techs_who_have_section.push(feature.tech_id);
-                var fea = {
-                    'type': 'geojson',
-                    'data': 
-                    {
-                        'type': 'Feature',
-                        'geometry': 
-                            {
-                                'type': 'Polygon',
-                                'coordinates': [ feature.coords ]
-                            }
-                    }
-                }
-
-
-                map.addSource(feature.tech_id,fea );
-
-                map.addLayer({
-                    'id': feature.tech_id,
-                    'type': 'fill',
-                    'source': feature.tech_id,
-                    'layout': {},
-                    'paint': {
-                        'fill-color': feature.color,
-                        'fill-opacity': 0.6
-                    }
-                });
+                Add_section_to_map(feature.tech_id,feature.coords,feature.color)
             });
-            
-         });
-    
-     
+        
+        });
+
 
         
-
-
-    
     }
 };
 xmlhttp.open("GET", "./ajax/getMapSectionData.php", true);
 xmlhttp.send();
 
+function Add_section_to_map(id,coords,color) {
+        
+    techs_who_have_section.push(id);
+            var fea = {
+                'type': 'geojson',
+                'data': 
+                {
+                    'type': 'Feature',
+                    'geometry': 
+                        {
+                            'type': 'Polygon',
+                            'coordinates': [ coords ]
+                        }
+                }
+            }
 
+
+            map.addSource(id,fea );
+
+            map.addLayer({
+                'id': id,
+                'type': 'fill',
+                'source': id,
+                'layout': {},
+                'paint': {
+                    'fill-color': color,
+                    'fill-opacity': 0.6
+                }
+            });
+
+}
 
     function updateArea(e) {
         var data = draw.getAll();
@@ -257,7 +256,7 @@ xmlhttp.send();
     // });
 
     //----------------------------------------------------
-    
+
     function setAddButtonActive(state) {
        
             deleteBtn.disabled = state;
@@ -288,11 +287,24 @@ xmlhttp.send();
     setAddButtonActive();
     addBtn.addEventListener('click',()=>{
         console.log(tech_id);
+        setAddButtonActive(false)
+        techs_who_have_section.push(tech_id);
         $.post( "./ajax/saveNewSection.php", {id:tech_id,coords:drawData,color:color})
         .done((data)=>{console.log("recived" + data);});
+        Add_section_to_map(tech_id,drawData[0],color)
+
     })
+
+
     deleteBtn.addEventListener('click',()=>{
         console.log(tech_id);
+
+        
+        var index = techs_who_have_section.indexOf(7)
+        techs_who_have_section[index]=v[0];
+        techs_who_have_section.shift()
+
+
         map.removeLayer(tech_id);
         map.removeSource(tech_id);
         setAddButtonActive(true)

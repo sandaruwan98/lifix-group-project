@@ -22,7 +22,7 @@ class Map extends Database
         return $arr;
     }
 
-
+    
     
     public function DeleteSection($tech_id)
     {
@@ -55,6 +55,14 @@ class Map extends Database
         
         return $this->conn->query($query);
     }
+
+    // public function getSectionColors()
+    // {
+    //     $query="SELECT * FROM `tech_sections`";
+        
+    //     $list = $this->conn->query($query);
+    //     return $list->fetch_all(MYSQLI_ASSOC);
+    // }
     public function getPointsForSection($sec_id)
     {
         $q="SELECT `lng`, `lat`  FROM `section_points` WHERE `section_id`='$sec_id' ";

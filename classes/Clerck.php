@@ -38,6 +38,18 @@ class Clerck extends Framework
         $technicians = $usermodel->getUsers(TechnicianFL);
         $data['technicians'] = $technicians;
 
+        $mapmodel = new \models\Map();
+        $sections= $mapmodel->getAllSections();
+        
+        foreach ($technicians as $tech) {
+            $data["color"][$tech["userId"]] = "#e8edee";
+        }
+        while ($section=$sections->fetch_assoc()) {
+            $data["color"][$section["tech_id"]] = $section["color"];
+        }
+
+
+        //  $data['technicians'] =
         
         
         
