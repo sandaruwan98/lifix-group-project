@@ -51,6 +51,7 @@ class Authentication extends Framework{
                 
                 $_SESSION['id']=$user['userId'];
                 $_SESSION["user"] = $user["username"];
+                // $_SESSION["name"] = $user["Name"];
                 $rolemodel = new \models\Role();
                 $roles = $rolemodel->getActiveRoles($user['userId']);
                 if ($roles->num_rows==1) {

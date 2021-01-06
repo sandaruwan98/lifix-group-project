@@ -1,8 +1,5 @@
 
 <?php
-
-use classes\Clerck;
-
 include_once  __DIR__ . '/../utils/classloader.php';
 
 $auth = new \classes\Authentication();
@@ -25,14 +22,8 @@ $auth->Loginuser();
 </head>
 <body>
 	
-<div class="toast-message">
-    <span class="close"></span>
-    <div class="message">
-        This is an Alert! But these are some junks to see how alert looks in long messages.
-    </div>
-</div>
 
-<script src="../js/toast.js"></script>
+<?php include "../components/toast.php" ?>
 
 
 <?php $auth->getSession()->showMessage(); ?>
@@ -53,14 +44,17 @@ $auth->Loginuser();
                             $roletext = ['','Divisional Secetary','Clerck','Storekeeper','Technician', 'Admin'];
                             $roles = $auth->getRoles_to_select();
                             ?>
-                            <?php foreach ($roles as $role ) : ?>
+                            <div class="role-select">
 
-                                <a type="submit" href="./loginredirect.php?role=<?= $role[0] ?>" class="btn"><?= $roletext[ $role[0] ] ?></a>
-                            
-                            <?php endforeach ?>
+                                <?php foreach ($roles as $role ) : ?>
 
-                            <a type="submit" href="./loginredirect.php?role=-1" class="btn">Back</a>
-                    
+                                    <a type="submit" href="./loginredirect.php?role=<?= $role[0] ?>" class="role-btn"><?= $roletext[ $role[0] ] ?></a>
+                                
+                                <?php endforeach ?>
+
+                                <a type="submit" href="./loginredirect.php?role=-1" class="btn">Back</a>
+                            </div>
+                                
 
                 <?php else : ?>
                 
@@ -83,8 +77,10 @@ $auth->Loginuser();
                         <div id="last-div"></div>
 
                         <button type="submit" name="loginBtn" class="btn">Login</button>
-                        <a  href="./register.php" class="btn">Register</a>
-                        <a  href="./register.php" class="btn">fogot password</a>
+                        
+                        
+                        <a  href="./register.php" class="btn-log">Register</a>
+                        <a  href="./forgotpassword.php" class="btn-log">fogot password</a>
                         <br>
                         <br>
                     </form>	

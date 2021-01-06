@@ -42,6 +42,7 @@ class User extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+   
     public function getUserById($id)
     {
         $q = "SELECT `userId`, `Name` FROM `user` WHERE userId='$id'";

@@ -17,7 +17,7 @@ $session = new classes\Session(DSFL);
     <link rel="stylesheet" href="./css/report.css">
 </head>
 <body>
-    
+<?php include "../components/userfeild.php" ?>
     <?php include "./nav.html"?>
     <div class="container">
     <h1>Report Generate</h1>

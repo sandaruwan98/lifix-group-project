@@ -31,7 +31,7 @@ $requestlist = $itemrequest->getPendingRequestList_by_userid($session->getuserID
 
 <body>
    
-<?php include './nav.html' ?>
+<?php include './nav.php' ?>
 
 
 

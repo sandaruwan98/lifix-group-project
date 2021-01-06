@@ -32,7 +32,7 @@ $session = new classes\Session(DSFL);
 <body>
     
 <?php include "./nav.html"?>
-
+<?php include "../components/userfeild.php" ?>
 <div class="hidden" id="my-popup">
     <p>some msg</p>
 </div>
