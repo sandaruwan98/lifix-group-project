@@ -23,29 +23,29 @@
     border: none;
     outline: none;
     cursor: pointer;
-  transition: .3s;
+    transition: .3s;
 }
 
 .role-btn:hover{
     background-color: #f39c0f;
 }
 .btn-log{
-        text-decoration: none;
-        padding: 0.1rem 1rem;
-        border-radius:20px;
-        background-color: #455664;
-        color: #fff;
-        font-size: 1.1rem;
-        border: none;
-        outline: none;
-        cursor: pointer;
-      transition: .3s;
-    }
+    text-decoration: none;
+    padding: 0.1rem 1rem;
+    border-radius:20px;
+    background-color: #455664;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+}
     
     
-    .btn-log:hover{
-        background-color: #f39c0f;
-    }
+.btn-log:hover{
+    background-color: #f39c0f;
+}
 
 
     

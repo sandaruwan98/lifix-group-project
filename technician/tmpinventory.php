@@ -23,7 +23,7 @@ $session = new classes\Session(TechnicianFL);
 
 <body>
     
-    <?php include './nav.html' ?>
+    <?php include './nav.php' ?>
 
 
 
