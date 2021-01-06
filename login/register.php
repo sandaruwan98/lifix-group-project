@@ -15,8 +15,8 @@ $data = $auth->getRegData();
     <link rel="shortcut icon" href="../complainer/img/1.jpg" type="image/x-icon">
     <!-- <link rel="stylesheet" href="res.css"> -->
     <link rel="stylesheet" href="../css/style.css">
-
     <link rel="stylesheet" href="../complainer/css/style.css">
+    <link rel="stylesheet" href="./reg.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
        <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
