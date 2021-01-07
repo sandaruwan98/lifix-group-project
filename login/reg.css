@@ -16,3 +16,12 @@ h2:after{
 	font-size: 0.6em;
 	background-color: #726f68;
 }
+
+.disabled{
+	background-color: #7b7e80;
+
+}
+.disabled:hover{
+	background-color: #7b7e80;
+
+}
