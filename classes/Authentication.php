@@ -132,7 +132,94 @@ class Authentication extends Framework{
         }
     }
 
+    public function FogotPass()
+    {
 
+        // page 1
+        if(isset($_POST["getuser"])){
+            $username=$_POST["username"] ;
+            if(!empty($username)){
+                $usermodel = new \models\User();
+                if(!$usermodel->isUsernameAvailable($username)){
+                    $_SESSION["fp"] = 0;
+                    $_SESSION["username"] = $username;
+                    $_SESSION["phone"] = $usermodel->getPhoneNumByusername($username);
+                }else {
+                    $this->session->sendMessage("Wrong username","danger");
+                }
+            }
+        }
+
+        if(isset($_POST["back"])){
+            unset($_SESSION["fp"]);
+            unset($_SESSION["username"]);
+            unset($_SESSION["phone"]);
+        }
+
+
+        // page 2
+        if(isset($_POST["send"])){
+            $_SESSION["fp"] = 1;
+            $_SESSION["code"] = rand(10000,99999);
+            // send code to phone number 
+
+        }
+       
+        if(isset($_POST["resend"])){
+            
+            $_SESSION["code"] = rand(10000,99999);
+            // send code to phone number 
+
+        }
+        if(isset($_POST["verify"])){
+            $code = $_POST["code"];
+            if ($code == $_SESSION["code"]) {
+                $_SESSION["fp"] = 2;
+            }else {
+                $this->session->sendMessage("Verification code is wrong","danger");
+            }
+        }
+
+
+
+        // page 3
+        if(isset($_POST["reset"])){
+            $pass=$_POST["pass"];
+            $pass2=$_POST["pass2"];
+            if (!empty($pass) && !empty($pass2)) {
+                if ($pass == $pass2) {
+                    $usermodel = new \models\User();
+                    if($usermodel->updatePassword($_SESSION["username"],md5($pass))){
+                        session_destroy();
+                        $this->session->sendMessage("Password updated successfully","success");
+                        echo "<script>setTimeout(() => {  location.href = './index.php' }, 2000);</script>";
+                    }else
+                        $this->session->sendMessage("Something went wrong","danger");
+                    
+                
+                    }else{
+                    $this->session->sendMessage("Passwords does not match","danger");
+                }
+
+            }else{
+                $this->session->sendMessage("Please enter a password","danger");
+            }
+            
+        }
+
+
+
+
+        if(isset($_GET["cancel"])){
+          session_destroy();
+          header('location: ./');
+            
+        }
+
+
+
+
+    }
 
     
 }
