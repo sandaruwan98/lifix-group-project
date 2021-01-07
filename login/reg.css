@@ -8,3 +8,11 @@ h2:after{
 .btn:hover{
 	background-color: #f39c0f;
 }
+
+.back{
+	margin-top: 7px;
+	width: 75%;
+    padding: 0.3rem 0.8rem;
+	font-size: 0.6em;
+	background-color: #726f68;
+}
