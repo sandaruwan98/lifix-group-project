@@ -1,7 +1,9 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+$storekeeper = new classes\StoreKeeper();
+$data = $storekeeper->ItemRequest();
 
-$session = new classes\Session(StorekeeperFL);
+
 ?>
 
 
@@ -26,7 +28,7 @@ $session = new classes\Session(StorekeeperFL);
     <?php include "./views/nav.php" ?>
 
 
-    <?php  $session->showMessage() ?>
+    <?php  $storekeeper->getSession()->showMessage() ?>
     
     <div class="main_content">
         <header>
@@ -40,19 +42,12 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="xx">
                     <h2>Pending Requests</h2>
                 </div>
-
+                   
                 <!-- request list -->
-                <?php 
-                    
-
-                    $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->getPendingRequestList();
-
-
-                    while ($row = $request_list->fetch_assoc()) {
-                        
-                    
-                ?>
+                <?php
+                 $request_list = $data['request_list'];
+                while ($row = $request_list->fetch_assoc()) { ?>
+                
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
                                 <span>Date: <?= $row['added_date'] ?></span>
@@ -61,7 +56,9 @@ $session = new classes\Session(StorekeeperFL);
                             </div>
                         </div>
                     
-                    <?php } ?>
+                <?php } ?>
+    
+                <?php include "../components/pagination.php" ?>
 
                 </div>
                 <div class="table-section">

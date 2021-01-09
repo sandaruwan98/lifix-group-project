@@ -25,5 +25,5 @@
 <?php endwhile ?>
 
 
-<?php include "../pagination.php" ?>
+<?php include "../components/pagination.php" ?>
 </div>

@@ -20,16 +20,28 @@ class ItemRequest extends Database
  
 
 
-    public function getPendingRequestList()
+    public function getPendingRequestList($paginationfilter)
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
         $q = "SELECT itemrequest.Itemrequest_id,user.username , itemrequest.added_date 
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-         WHERE itemrequest.status='a' ";
+         WHERE itemrequest.status='a' ORDER BY itemrequest.added_date DESC" . $paginationfilter;
 
         $list =   $this->conn->query($q);
         return $list;
+    }
+    public function getPendingRequestListCount()
+    {
+        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
+        $q = "SELECT count(*) as count
+        FROM itemrequest INNER JOIN user 
+        ON itemrequest.created_by=user.userId
+         WHERE itemrequest.status='a' " ;
+
+        $count =   $this->conn->query($q);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
     }
 
     public function getPendingRequestList_by_userid($id)
