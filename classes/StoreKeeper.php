@@ -10,8 +10,28 @@ class StoreKeeper extends Framework
     }
 
     
+    public function ItemRequest()
+    {
+        $inv = new \models\Inventory();
+        $item_names = $inv->getItemNames();
+        $data['item_names']= $item_names->fetch_all();
+        
+        $itemrequest= new \models\ItemRequest();
+        $totalpages = $itemrequest->getPendingRequestListCount();
+        $p = new Pagination(5,$totalpages);
+        
+        $data['request_list'] = $itemrequest->getPendingRequestList($p->fiteringText());
+       
+        $data['pagination'] = $p;
+
+        return $data;
+    }
+
     public function Inventory()
     {
+        $inventory = new \models\Inventory();
+        $data['inventory'] = $inventory->getAllInventory();
+
         $samodel = $this->loadModel('StockAddition');
         $result = $samodel->get_SA_List('0');
         $result= $result->fetch_all(MYSQLI_ASSOC);
