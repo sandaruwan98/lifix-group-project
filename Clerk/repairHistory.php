@@ -59,7 +59,7 @@ $data =  $clerck->RepairHistory();
 
         </div>
 
-        <?php include "../pagination.php" ?>
+        <?php include "../components/pagination.php" ?>
     </div>
 
 </body>

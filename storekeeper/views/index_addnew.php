@@ -1,10 +1,3 @@
-<?php 
-
-$inv = new models\Inventory();
-$item_names = $inv->getItemNames();
-$item_names= $item_names->fetch_all();
-
-?>
 
 
 <div class="add-new" style="display: none;">
@@ -20,6 +13,7 @@ $item_names= $item_names->fetch_all();
 
                 <option value="-1" disabled selected>Select the item</option>    
             <?php 
+            $item_names= $data['item_names'];
             foreach ($item_names as $item):  ?>
                 <option value="<?= $item[0].'-'.$item[1] ?>"><?= $item[1] ?></option>
             <?php endforeach ?>
