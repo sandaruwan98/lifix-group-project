@@ -80,68 +80,14 @@ $session = new classes\Session(StorekeeperFL);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>SUNBOXES</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>WIRES</td>
-                                <td>50m</td>
-
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>FUSE</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-
+                           
                         </tbody>
 
 
                     </table>
 
                     <!-- supply button -->
-                    <button class="btn " style="font-size: large;">Supply items to technician</button>
+                    <button class="btn" id="supplybtn" style="font-size: large;">Supply items to technician</button>
 
                     </div>
                    

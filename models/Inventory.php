@@ -22,11 +22,12 @@ class Inventory extends Database
     }
     public function getAllInventory()
     {
-        $q = "SELECT Item_id,name,total FROM inventory";
+    
+    $q = "SELECT Item_id,name,total FROM inventory";
 
         $list =   $this->conn->query($q);
         return $list;
     }
-
+   
    
 }

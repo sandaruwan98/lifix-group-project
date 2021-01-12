@@ -35,10 +35,13 @@ class Clerck extends Framework
 
     public function RepairHistory()
     {
-        $repairmodel = $this->loadModel('Repair');
+        $repairmodel = new \models\Repair();
+        $totalpages = $repairmodel->getRepairsCount('ce');
 
-        $repairs = $repairmodel->getRepairs('ce');
+        $p = new Pagination(5,$totalpages);
+        $repairs = $repairmodel->getRepairs('ce', $p->fiteringText() );
         $data['repairs'] = $repairs;
+        $data['pagination'] = $p;
 
         return $data;
     }
@@ -70,10 +73,13 @@ class Clerck extends Framework
         $item_names = $invmodel->getItemNames();
         $data['ItemData']= $item_names->fetch_all();
 
-        $samodel = $this->loadModel('StockAddition');
-        $data['StockAdditionList'] = $samodel->get_SA_ListAll();
+        $samodel = new \models\StockAddition();
+
+        $totalpages = $samodel->get_SA_ListAll_Count();
+        $p = new Pagination(5,$totalpages);
+        $data['StockAdditionList'] = $samodel->get_SA_ListAll($p->fiteringText());
         // $this->session->sendMessage("helooo",'success');
-        
+        $data['pagination'] = $p;
         return $data;
     }
     
