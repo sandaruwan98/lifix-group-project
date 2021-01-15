@@ -11,6 +11,7 @@
     margin: 0 0 10px 0;
     overflow: hidden;
     opacity: 0;
+    padding: 10px, 10px;
 }
 
 .notification-container.open {
@@ -90,4 +91,5 @@
     right: 25px;
     bottom: 25px;
     z-index: 1000;
+    
 }
