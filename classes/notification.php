@@ -37,6 +37,20 @@
                     console.log(data);
                     data = JSON.parse(data);
                     $('.notification-container').html(data.notification);
+                    $('.notification-container').css({
+                        "overflow": "auto"
+                    });
+                    $('.notification').css({
+                        "padding" : "10px 10px",
+                    });
+                    $('a').css({
+                        "text-decoration": "none",
+                        "color" : "black",
+                        "display" : "flex",
+                        "flex-direction": "column",
+                        "align-items": "start",
+                        
+                    });
                     if(data.unseen_notification > 0)
                     {
                         $('.count').html(data.unseen_notification);
@@ -71,9 +85,9 @@
             load_unseen_notification('yes');
         });
         
-        // setInterval(function(){ 
-        // load_unseen_notification();; 
-        // }, 5000);
+        setInterval(function(){ 
+        load_unseen_notification();; 
+        }, 5000);
         
         }); 
 

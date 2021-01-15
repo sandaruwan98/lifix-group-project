@@ -11,22 +11,27 @@ include_once  __DIR__ . '/classloader.php';
   $obj->conn->query($update_query);
  }
  
- $query = "SELECT * FROM notification ORDER BY id DESC LIMIT 5";
+ $query = "SELECT * FROM notification ORDER BY id DESC";
  $result = $obj->conn->query($query);
- $output = '';
+ $output = '
+    <h1>Notifications</h1>
+    <hr>
+ ';
  
  if(mysqli_num_rows($result) > 0)
  {
   while($row = mysqli_fetch_array($result))
   {
    $output .= '
-   <li>
+   <li class="notification">
     <a href="#">
-     <strong>'.$row["subject"].'</strong><br />
+     <strong>'.$row["subject"].'</strong>
      <small><em>'.$row["body"].'</em></small>
     </a>
    </li>
-   <li class="divider"></li>
+   <li>
+    <hr>
+   </li>
    ';
   }
  }
