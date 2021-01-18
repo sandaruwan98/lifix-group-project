@@ -38,7 +38,13 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
-
+    
+  / public function RequesthistoryList($id)
+    {
+        $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='' AND  created_by='$id' ";
+        $list =   $this->conn->query($q);
+        return $list;
+    }
 
 
 
