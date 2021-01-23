@@ -113,6 +113,10 @@ $data =  $clerck->SectionAssign();
 
 
 <script>
+
+
+
+
     var has_section = false;
     var tech_id = 0;
     var drawData = null;
@@ -153,9 +157,11 @@ $data =  $clerck->SectionAssign();
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
         feateredata = JSON.parse(this.responseText)
         map.on('load', function () {
             feateredata.forEach(feature => {
+               
                 Add_section_to_map(feature.tech_id,feature.coords,feature.color)
             });
         

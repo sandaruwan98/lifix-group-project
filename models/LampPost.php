@@ -2,7 +2,18 @@
 namespace models;
 require_once "Database.php";
 class LampPost extends Database
-{    
+{  
+    
+    
+    public function getLangLat_byid( $lp_id)
+    {
+
+        $q = "SELECT longitude,lattitude FROM `lamppost` WHERE  lp_id='$lp_id'";
+        
+        $result = $this->conn->query($q);
+        return $result->fetch_assoc();
+    }
+    
     public function addLampost( $lp_id,$address,$lat,$lng,$technician_id)
     {
 
