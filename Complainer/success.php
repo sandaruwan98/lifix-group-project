@@ -1,5 +1,11 @@
 <?php
-session_start();
+
+
+include_once  __DIR__ . '/../utils/classloader.php';
+$caa = new classes\ComplainAutoAssign();
+$data = $caa->coordinates();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +16,8 @@ session_start();
     <title>Li - Fix</title>
 </head>
     <body>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+
         <div class="outer">
             <div class="middle">
                 <div class="inner">
@@ -20,5 +28,47 @@ session_start();
                 </div>
             </div>
         </div>
+
+    <script>
+
+        // alert('<?= $caa->getLampPostLngLat() ?>');
+
+        // var point = turf.point([-75.343, 39.984]); 
+        // var point = turf.point([-75.343, 39.984]); 
+        var point = turf.point(<?= $caa->getLampPostLngLat() ?>); 
+
+        var sectionarr = <?=json_encode($data['techarr']) ?>;
+        var dataarr = <?=json_encode($data['coords']) ?>;
+        console.log(dataarr);
+       
+            
+        dataarr.every((data,index) => {
+            var polygon = turf.polygon([data], { name: 'poly1'});
+
+            console.log(sectionarr[index]);
+
+
+            var inside = turf.inside(point, polygon)
+            console.log(inside);
+            if (inside) {
+                // send section index to php
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {console.log(this.responseText);}
+                };
+                xmlhttp.open("GET", "./ajax/getMapSectionData.php?id=" + sectionarr[index] , true);
+                xmlhttp.send();
+                
+            }
+            return !inside;
+
+        });
+       
+        
+
+        
+
+    </script>
+
     </body>
 </html>
