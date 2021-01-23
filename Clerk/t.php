@@ -157,8 +157,8 @@ $data =  $clerck->SectionAssign();
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
         feateredata = JSON.parse(this.responseText)
+        console.log(feateredata);
         map.on('load', function () {
             feateredata.forEach(feature => {
                

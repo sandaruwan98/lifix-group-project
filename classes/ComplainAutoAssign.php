@@ -18,7 +18,13 @@ class ComplainAutoAssign extends Framework{
         while ($section=$sections->fetch_assoc()) {
             
             $techarr[] = $section["tech_id"];
-            $coords[] = $map->getPointsForSection($section["section_id"]);
+            // $coords[] = $map->getPointsForSection($section["section_id"]);
+            $tmp = $map->getPointsForSection($section["section_id"]);
+            $tmp2 = [];
+            foreach ($tmp as $t) {
+                $tmp2[] = [(double) $t[0],(double) $t[1]];
+            }
+            $coords[]= $tmp2;
             
         }
         $data['techarr'] = $techarr;
@@ -28,7 +34,7 @@ class ComplainAutoAssign extends Framework{
     }
     public function getLampPostLngLat(){
         $lp = new \models\LampPost();
-        $l = $lp->getLangLat_byid(1003);
+        $l = $lp->getLangLat_byid($_SESSION["lpid"]);
         return "[".$l['longitude'].",".$l['lattitude']."]";
     }
    
