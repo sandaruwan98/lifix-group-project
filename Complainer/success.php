@@ -31,16 +31,12 @@ $data = $caa->coordinates();
 
     <script>
 
-        // alert('<?= $caa->getLampPostLngLat() ?>');
+        
 
-        // var point = turf.point([-75.343, 39.984]); 
-        // var point = turf.point([-75.343, 39.984]); 
         var point = turf.point(<?= $caa->getLampPostLngLat() ?>); 
 
         var sectionarr = <?=json_encode($data['techarr']) ?>;
         var dataarr = <?=json_encode($data['coords']) ?>;
-        console.log(dataarr);
-       
             
         dataarr.every((data,index) => {
             var polygon = turf.polygon([data], { name: 'poly1'});
@@ -56,7 +52,7 @@ $data = $caa->coordinates();
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {console.log(this.responseText);}
                 };
-                xmlhttp.open("GET", "./ajax/getMapSectionData.php?id=" + sectionarr[index] , true);
+                xmlhttp.open("GET", "./ajax/assignTechnition.php?id=" + sectionarr[index] , true);
                 xmlhttp.send();
                 
             }
