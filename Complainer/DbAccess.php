@@ -33,6 +33,11 @@
                 $_SESSION['p'] = $msg;
                 $_SESSION['btn'] = $btnText;
                 $_SESSION['page'] = $page;
+                
+                
+                $_SESSION['rid'] = $repairId;
+                $_SESSION['lpid'] = $lp_id;
+
                 header("location: success.php");
             }
         }
