@@ -41,17 +41,19 @@ $data = $caa->coordinates();
         dataarr.every((data,index) => {
             var polygon = turf.polygon([data], { name: 'poly1'});
 
-            console.log(sectionarr[index]);
+            
 
 
             var inside = turf.inside(point, polygon)
-            console.log(inside);
+            // console.log(inside);
+            // console.log(sectionarr[index]);
+            
             if (inside) {
                 // send section index to php
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {console.log(this.responseText);}
-                };
+                // xmlhttp.onreadystatechange = function() {
+                //     if (this.readyState == 4 && this.status == 200) {console.log(this.responseText);}
+                // };
                 xmlhttp.open("GET", "./ajax/assignTechnition.php?id=" + sectionarr[index] , true);
                 xmlhttp.send();
                 

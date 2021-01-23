@@ -8,7 +8,7 @@ if (isset($_GET["id"])) {
         $repair = new models\Repair();
         $repair->assignRepair($_SESSION["rid"], $_GET["id"]);
         session_destroy();
-        echo $_GET["id"];
+        // echo $_GET["id"];
     }
     
 }
