@@ -65,8 +65,11 @@ class Technician extends Framework
     {
 
         $itemrequest = new \models\ItemRequest();
-        $requestlist = $itemrequest->getItemsfor_ItemRequest_byId($_GET["id"]);
-        return $requestlist;
+        $itemlist = $itemrequest->getItemsfor_ItemRequest_byId($_GET["id"]);
+        $requestdetails = $itemrequest->getItemRequest_byid($_GET["id"]);
+        $data['itemlist'] = $itemlist;
+        $data['requestdetails'] = $requestdetails;
+        return $data;
     }
         
 
