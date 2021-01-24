@@ -17,6 +17,27 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function checkItemRequestAvailability($ir_id)
+    {
+        $q = "SELECT * FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
+
+        $list =   $this->conn->query($q);
+        if ($list->num_rows > 0) 
+            return false;
+        else
+            return true;
+
+    }
+ 
+    public function getItemRequest_byid($ir_id)
+    {
+        $q = "SELECT Itemrequest_id,added_date FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
+
+        $list =   $this->conn->query($q);
+        return $list->fetch_assoc();
+
+    }
  
 
 
@@ -46,7 +67,7 @@ class ItemRequest extends Database
 
     public function getPendingRequestList_by_userid($id)
     {
-        $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='o' AND  created_by='$id' ";
+        $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='a' AND  created_by='$id' ";
         $list =   $this->conn->query($q);
         return $list;
     }
