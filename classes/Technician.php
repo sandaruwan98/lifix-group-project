@@ -51,6 +51,38 @@ class Technician extends Framework
 
         return $data;
     }
+
+
+
+    public function PendingRequestList()
+    {
+        $itemrequest = new \models\ItemRequest();
+        $requestlist = $itemrequest->getPendingRequestList_by_userid($this->session->getuserID());
+        return $requestlist;
+    }
+
+    public function PendingRequestListDetails()
+    {
+
+        $itemrequest = new \models\ItemRequest();
+        $requestlist = $itemrequest->getItemsfor_ItemRequest_byId($_GET["id"]);
+        return $requestlist;
+    }
+        
+
+    public function CheckPendingRequestList()
+    {
+        if (isset($_GET["id"])) {
+            $itemrequest = new \models\ItemRequest();
+            return $itemrequest->checkItemRequestAvailability($_GET["id"]);
+        }
+        return true;
+    }
+        
+        
+        
+
+
     public function AddRequestpage()
     {
         
