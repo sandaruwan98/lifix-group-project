@@ -29,6 +29,7 @@ class Repair extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    
     public function getRepairsCount($status)
     {
         $q = "SELECT COUNT(repair.repair_id) AS count

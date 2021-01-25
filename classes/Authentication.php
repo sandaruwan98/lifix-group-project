@@ -221,7 +221,15 @@ class Authentication extends Framework{
 
     }
 
+    public function AddTmpInventoryfortech($tech)
+    {
+        $inv = new \models\Inventory();
+        $tmpinv = new \models\TmpInventory();
+        $items = $inv->getItemIDs();
+        foreach ($items->fetch_all() as $item) {
+            $tmpinv->addTmpInventoryItem($tech,$item[0]);
+        }
+    }
+
     
 }
-
-
