@@ -1,7 +1,8 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$data = $tech->TmpInventoryPage();
 
-$session = new classes\Session(TechnicianFL);
 ?>
 
 
@@ -25,11 +26,8 @@ $session = new classes\Session(TechnicianFL);
     
     <?php include './nav.php' ?>
 
-
-
     <div class="main">
         <div class="con">
-
 
             <form method="POST" action="">
                 <h2>Temporary Inventory</h2>
@@ -37,52 +35,22 @@ $session = new classes\Session(TechnicianFL);
                     <thead>
                         <tr>
                             <th>ITEM NAME</th>
-                            <th>QUANTITY</th>
-
+                            <th>TOTAL</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>BULB</td>
-                            <td>80</td>
-
-                        </tr>
-                        <tr>
-                            <td>LED BULB</td>
-                            <td>80</td>
-
-                        </tr>
-                        <tr>
-                            <td>SUNBOXES</td>
-                            <td>20</td>
-
-                        </tr>
-                        <tr>
-                            <td>WIRES</td>
-                            <td>50m</td>
-
-                        </tr>
-                        <tr>
-                            <td>FUSE</td>
-                            <td>20</td>
-
-                        </tr>
-                        
-
+                        <?php while ($row=$data->fetch_assoc()) { ?>
+                            <tr>
+                                <td><?=$row['name'] ?></td>
+                                <td><?=$row['quantity'] ?></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
-
-
                 </table>
-
-
                 <!-- <button type="submit" id="" name="complete" class="btn">Report a change</button> -->
-
-
             </form>
-
         </div>
     </div>
-
    
 </body>
 
