@@ -9,7 +9,7 @@ class Technician extends Framework
         $this->session = new Session(TechnicianFL);
     }
     
-    public function AvalableRepairs()
+    public function AvalableRepairsPage()
     {
         $repairmodel = $this->loadModel('Repair');
         $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID() );
@@ -19,7 +19,7 @@ class Technician extends Framework
 
 
 
-    public function CompleteRepair()
+    public function CompleteRepairPage()
     {
         if (!isset($_GET["id"])) 
             header('location: ./index.php');
@@ -37,7 +37,7 @@ class Technician extends Framework
 
 
     
-    public function EmgRepair()
+    public function EmgRepairPage()
     {
         
         
@@ -52,9 +52,16 @@ class Technician extends Framework
         return $data;
     }
 
+    public function TmpInventoryPage()
+    {
+        $tmpinvmodel = new \models\TmpInventory();
+        return $tmpinvmodel->getAllInventory($this->session->getuserID());
+       
+    }
 
 
-    public function PendingRequestList()
+
+    public function PendingRequestListPage()
     {
         $itemrequest = new \models\ItemRequest();
         $requestlist = $itemrequest->getPendingRequestList_by_userid($this->session->getuserID());
@@ -82,7 +89,15 @@ class Technician extends Framework
         return true;
     }
         
-        
+    public function AddTmpInventoryfortech($tech)
+    {
+        $inv = new \models\Inventory();
+        $tmpinv = new \models\TmpInventory();
+        $items = $inv->getItemIDs();
+        foreach ($items->fetch_all() as $item) {
+            $tmpinv->addTmpInventoryItem($tech,$item[0]);
+        }
+    }
         
 
 
@@ -124,7 +139,7 @@ class Technician extends Framework
     }
 
 
-    public function Lamppost()
+    public function LamppostPage()
     {
         
         

@@ -2,7 +2,7 @@
 
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
-$requestlist = $tech->PendingRequestList();
+$requestlist = $tech->PendingRequestListPage();
 
 ?>
 
