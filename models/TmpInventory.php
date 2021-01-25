@@ -6,7 +6,9 @@ class TmpInventory extends Database
 
     public function updateQuantity($tech,$itemid)
     {
-        // $q = "SELECT * FROM tmpinventory WHERE name='$name'";
+        $q1 = "SELECT quantity FROM tmpinventory WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
+        
+        $q2 = " UPDATE `tmpinventory` SET `quantity`=[value-2] WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
 
         // $list =   $this->conn->query($q);
         // return $list->fetch_assoc();
