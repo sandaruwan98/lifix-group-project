@@ -4,15 +4,32 @@ require_once "Database.php";
 class TmpInventory extends Database
 {
 
-    public function updateQuantity($tech,$itemid)
+    public function updateQuantity($tech,$itemid,$quantity,$operator)
     {
-        $q1 = "SELECT quantity FROM tmpinventory WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
+        // $q1 = "SELECT quantity FROM tmpinventory WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
         
-        $q2 = " UPDATE `tmpinventory` SET `quantity`=[value-2] WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
-
-        // $list =   $this->conn->query($q);
-        // return $list->fetch_assoc();
+        $q = " UPDATE tmpinventory SET quantity=quantity $operator '$quantity' WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
+        echo $q;
+        return $this->conn->query($q);
+        
     }
+
+    public function checkAvailability($tech,$itemid,$quantity)
+    {
+        $q = "SELECT quantity FROM tmpinventory WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
+        
+        
+        $result = $this->conn->query($q);
+        $result = $result->fetch_assoc();
+        if ($result['quantity'] < $quantity ){
+            return false;
+        }else {
+            return true;
+        }
+
+        
+    }
+    
 
    
     
