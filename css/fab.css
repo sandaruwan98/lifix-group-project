@@ -3,7 +3,7 @@
 .notification-container {
     width: 290px;
     height: 50px;
-    background-color: #fff;
+    background-color: rgb(115, 192, 243);
     border-radius: 15px;
     box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.15);
     font-family: "Roboto", sans-serif;
@@ -27,7 +27,7 @@
 
 .notification-container h1 {
     font-size: 20px;
-    color: #757575;
+    color: white;
     padding: 25px 0;
     margin: 0;
     font-weight: 400;
