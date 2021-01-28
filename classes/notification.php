@@ -29,7 +29,7 @@
 
         $(document).ready(function(){
         
-            function load_unseen_notification(view = '')
+            function load_unseen_notification(view = '',)
             {
                
                 $.post( "../utils/fetch.php", {view:view})
@@ -42,14 +42,14 @@
                     });
                     $('.notification').css({
                         "padding" : "10px 10px",
+                        "cursor": "pointer"
                     });
-                    $('a').css({
+                    $('.notification').css({
                         "text-decoration": "none",
                         "color" : "black",
                         "display" : "flex",
                         "flex-direction": "column",
                         "align-items": "start",
-                        
                     });
                     if(data.unseen_notification > 0)
                     {
@@ -61,7 +61,8 @@
                             "padding": "5px 10px",
                             "border-radius": "50%",
                             "background": "red",
-                            "color": "white"
+                            "color": "white",
+                            
                         });
                     }
                 });
@@ -71,7 +72,7 @@
         
             // load_unseen_notification();
         
-        $(document).on('click', '.img-fab', function(){
+        $(document).on('click', '.notification', function(){
             $('.count').html('');
             $('.count').css({
                 "position": "",
@@ -82,8 +83,9 @@
                 "background": "",
                 "color": ""
             });
-            load_unseen_notification('yes');
+            load_unseen_notification($(this).attr('id'));
         });
+        
         
         setInterval(function(){ 
         load_unseen_notification();; 
