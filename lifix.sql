@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2021 at 10:10 AM
+-- Generation Time: Jan 28, 2021 at 05:04 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,7 +45,7 @@ INSERT INTO `complainer` (`complainer_id`, `NIC`, `Name`, `phone_no`) VALUES
 (3, '22222222222', 'Lakshan Sandaruwan Jayasinghe', '0701549225'),
 (4, '982175745v', 'Lakshan Sandaruwan Jayasinghe', '+94701549225'),
 (5, '652175745v', 'Kumara perera', '+94701549225'),
-(6, '982171777v', 'llllllllllllllllllllllllllllll', '0700003333');
+(6, '982171777v', 'Lakshan Sandaruwan Jayasinghe', '+94701549225');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,8 @@ INSERT INTO `complaint` (`complaint_id`, `is_bulb_there`, `Notes`, `lp_id`, `rep
 (31, 0, 'bla bla', 1004, 42, 4),
 (32, 1, '', 1005, 44, 5),
 (33, 0, '', 1002, 48, 4),
-(34, 1, '', 1003, 49, 4);
+(34, 1, '', 1003, 49, 4),
+(40, 0, 'sdvvx', 1002, 56, 6);
 
 -- --------------------------------------------------------
 
@@ -178,7 +179,10 @@ INSERT INTO `itemrequest` (`Itemrequest_id`, `status`, `completed_by`, `created_
 (58, 'a', 0, 33, '2020-12-26', '0000-00-00'),
 (59, 'b', 0, 32, '2020-12-31', '0000-00-00'),
 (60, 'a', 0, 32, '2020-12-31', '0000-00-00'),
-(61, 'a', 0, 32, '2020-12-31', '0000-00-00');
+(61, 'a', 0, 32, '2020-12-31', '0000-00-00'),
+(62, 'a', 0, 32, '2121-01-07', '0000-00-00'),
+(63, 'a', 0, 32, '2121-01-08', '0000-00-00'),
+(64, 'a', 0, 33, '2121-01-24', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -207,7 +211,17 @@ INSERT INTO `itemrequest_inventory_asc` (`Itemrequest_id`, `Item_id`, `quantity`
 (60, 8, 56),
 (60, 10, 5),
 (61, 3, 3),
-(61, 5, 45);
+(61, 5, 45),
+(62, 1, 10),
+(62, 5, 3),
+(62, 7, 5),
+(63, 1, 6),
+(63, 3, 13),
+(63, 8, 4),
+(63, 10, 5),
+(64, 1, 30),
+(64, 2, 10),
+(64, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -307,7 +321,7 @@ CREATE TABLE `repair` (
 --
 
 INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `clerk_id`) VALUES
-(40, '2020-11-29', 'a', 1000, 33, 0),
+(40, '2020-11-29', 'a', 1000, 35, 0),
 (41, '2020-11-29', 'c', 1002, 0, 0),
 (42, '2020-11-30', 'c', 1004, 0, 0),
 (43, '2020-11-30', 'c', 1001, 0, 0),
@@ -315,9 +329,10 @@ INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `
 (45, '2020-11-29', 'a', 1004, 0, 0),
 (46, '2020-11-30', 'a', 1004, 0, 0),
 (47, '2020-11-17', 'c', 1005, 0, 0),
-(48, '2020-11-29', 'a', 1002, 33, 0),
+(48, '2020-11-29', 'a', 1002, 0, 0),
 (49, '2020-12-01', 'a', 1003, 0, 0),
-(50, '2020-12-01', 'e', 1005, 0, 0);
+(50, '2020-12-01', 'e', 1005, 0, 0),
+(56, '2121-01-23', 'a', 1002, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -399,7 +414,10 @@ INSERT INTO `roles` (`role_id`, `role`, `startdate`, `enddate`, `is_active`, `us
 (5, 3, '2020-12-26', '2020-12-26', 1, 32),
 (6, 4, '2020-12-26', '2020-12-26', 1, 33),
 (7, 2, '2020-12-26', '2020-12-26', 1, 30),
-(8, 5, '2020-12-26', '2020-12-26', 1, 30);
+(8, 5, '2020-12-26', '2020-12-26', 1, 30),
+(9, 4, '2121-01-23', '2021-01-23', 1, 36),
+(10, 4, '2121-01-23', '2021-01-23', 1, 37),
+(11, 2, '2121-01-27', '2021-01-27', 1, 38);
 
 -- --------------------------------------------------------
 
@@ -431,7 +449,22 @@ INSERT INTO `section_points` (`point_id`, `section_id`, `lng`, `lat`) VALUES
 (262, 56, 79.89065423033117, 6.867854865948402),
 (263, 56, 79.88758814821358, 6.906099480519174),
 (264, 56, 79.87453764484172, 6.906489715782158),
-(265, 56, 79.87603137715644, 6.89767032030521);
+(265, 56, 79.87603137715644, 6.89767032030521),
+(266, 57, 79.84627944927757, 6.917902351918542),
+(267, 57, 79.88734280340316, 6.92185237443573),
+(268, 57, 79.88710406297213, 6.905578069391879),
+(269, 57, 79.8762811634353, 6.897045685679899),
+(270, 57, 79.85336208206354, 6.8925424211874855),
+(271, 57, 79.84627944927757, 6.917902351918542),
+(272, 58, 79.8867769448537, 6.921961588669603),
+(273, 58, 79.89044059307582, 6.86834294681627),
+(274, 58, 79.85912230989084, 6.860598834903527),
+(275, 58, 79.88145874582216, 6.847105005763439),
+(276, 58, 79.91502249082072, 6.857900099639863),
+(277, 58, 79.9069861011734, 6.933341568669576),
+(278, 58, 79.86897070444496, 6.937445169559211),
+(279, 58, 79.86914839944973, 6.919893636513947),
+(280, 58, 79.8867769448537, 6.921961588669603);
 
 -- --------------------------------------------------------
 
@@ -451,13 +484,13 @@ CREATE TABLE `stock_addition` (
 --
 
 INSERT INTO `stock_addition` (`sa_id`, `date`, `status`, `clerk_id`) VALUES
-(26, '2020-12-30', '0', 31),
-(27, '2020-12-30', '0', 31),
-(28, '2020-12-31', '0', 31),
-(29, '2020-12-31', '0', 31),
-(30, '2020-12-31', '0', 31),
-(31, '2020-12-31', '0', 31),
-(32, '2020-12-31', '0', 31);
+(26, '2020-12-30', '1', 31),
+(27, '2020-12-30', '1', 31),
+(28, '2020-12-31', '1', 31),
+(29, '2020-12-31', '1', 31),
+(30, '2020-12-31', '1', 31),
+(31, '2020-12-31', '1', 31),
+(32, '2020-12-31', '1', 31);
 
 -- --------------------------------------------------------
 
@@ -512,7 +545,9 @@ CREATE TABLE `tech_sections` (
 
 INSERT INTO `tech_sections` (`section_id`, `tech_id`, `color`) VALUES
 (55, 33, '#fa0000'),
-(56, 35, '#2bff00');
+(56, 35, '#2bff00'),
+(57, 36, '#000000'),
+(58, 37, '#3f3da9');
 
 -- --------------------------------------------------------
 
@@ -522,7 +557,7 @@ INSERT INTO `tech_sections` (`section_id`, `tech_id`, `color`) VALUES
 
 CREATE TABLE `tmpinventory` (
   `tmp_id` int(255) NOT NULL,
-  `quantity` int(255) NOT NULL,
+  `quantity` int(255) NOT NULL DEFAULT 0,
   `tecnician_id` int(255) NOT NULL,
   `Item_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -532,13 +567,46 @@ CREATE TABLE `tmpinventory` (
 --
 
 INSERT INTO `tmpinventory` (`tmp_id`, `quantity`, `tecnician_id`, `Item_id`) VALUES
-(1, 10, 4, 1),
-(2, 10, 4, 2),
-(3, 5, 4, 3),
-(4, 15, 4, 4),
-(5, 4, 4, 5),
-(6, 5, 4, 6),
-(7, 6, 4, 7);
+(8, 30, 33, 1),
+(9, 0, 33, 2),
+(10, 0, 33, 3),
+(11, 0, 33, 4),
+(12, 0, 33, 5),
+(13, 0, 33, 6),
+(14, 0, 33, 7),
+(15, 0, 33, 8),
+(16, 0, 33, 9),
+(17, 0, 33, 10),
+(18, 0, 35, 1),
+(19, 0, 35, 2),
+(20, 0, 35, 3),
+(21, 0, 35, 4),
+(22, 0, 35, 5),
+(23, 0, 35, 6),
+(24, 0, 35, 7),
+(25, 0, 35, 8),
+(26, 0, 35, 9),
+(27, 0, 35, 10),
+(28, 0, 36, 1),
+(29, 0, 36, 2),
+(30, 0, 36, 3),
+(31, 0, 36, 4),
+(32, 0, 36, 5),
+(33, 0, 36, 6),
+(34, 0, 36, 7),
+(35, 0, 36, 8),
+(36, 0, 36, 9),
+(37, 0, 36, 10),
+(38, 0, 37, 1),
+(39, 0, 37, 2),
+(40, 0, 37, 3),
+(41, 0, 37, 4),
+(42, 0, 37, 5),
+(43, 0, 37, 6),
+(44, 0, 37, 7),
+(45, 0, 37, 8),
+(46, 0, 37, 9),
+(47, 0, 37, 10);
 
 -- --------------------------------------------------------
 
@@ -565,9 +633,11 @@ INSERT INTO `user` (`userId`, `username`, `password`, `Name`, `phone`, `occuFlag
 (30, 'DS', '81dc9bdb52d04dc20036dbd8313ed055', 'Bappa', '+947015492', 1, 1),
 (31, 'Clerck', '81dc9bdb52d04dc20036dbd8313ed055', 'Lakshan Jayasinghe', '+947015492', 2, 1),
 (32, 'Storekeeper', '81dc9bdb52d04dc20036dbd8313ed055', 'xxxxx', '+947015492', 3, 1),
-(33, 'Maldeniya', '81dc9bdb52d04dc20036dbd8313ed055', 'Maldeniya', '+947015492', 4, 1),
-(34, 'Tech', '81dc9bdb52d04dc20036dbd8313ed055', 'Tech1', '+947015492', 4, 1),
-(35, 'Isuru', '81dc9bdb52d04dc20036dbd8313ed055', 'Isuru', '+947015492', 4, 1);
+(33, 'Tech', '81dc9bdb52d04dc20036dbd8313ed055', 'Maldeniya', '+947015492', 4, 1),
+(35, 'Isuru', '81dc9bdb52d04dc20036dbd8313ed055', 'Isuru', '+947015492', 4, 1),
+(36, 'Tech3', '81dc9bdb52d04dc20036dbd8313ed055', 'Lakshan Sandaruwan Jayasinghe', '+947015492', 4, 1),
+(37, 'Tech4', '81dc9bdb52d04dc20036dbd8313ed055', 'ayasinghe', '+947015492', 4, 1),
+(38, 'ckck', '81dc9bdb52d04dc20036dbd8313ed055', 'an Jayasinghe', '+947015492', 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -720,8 +790,8 @@ ALTER TABLE `tech_sections`
 --
 ALTER TABLE `tmpinventory`
   ADD PRIMARY KEY (`tmp_id`),
-  ADD KEY `tecnician_id` (`tecnician_id`),
-  ADD KEY `item_id` (`Item_id`);
+  ADD KEY `item_id` (`Item_id`),
+  ADD KEY `techcdcdc` (`tecnician_id`);
 
 --
 -- Indexes for table `user`
@@ -743,7 +813,7 @@ ALTER TABLE `complainer`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `fraud`
@@ -767,7 +837,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `itemrequest`
 --
 ALTER TABLE `itemrequest`
-  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `newlamppostrecord`
@@ -785,7 +855,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `repair`
 --
 ALTER TABLE `repair`
-  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `repair_inventory_asc`
@@ -797,13 +867,13 @@ ALTER TABLE `repair_inventory_asc`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `role_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `section_points`
 --
 ALTER TABLE `section_points`
-  MODIFY `point_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
+  MODIFY `point_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
 --
 -- AUTO_INCREMENT for table `stock_addition`
@@ -815,19 +885,19 @@ ALTER TABLE `stock_addition`
 -- AUTO_INCREMENT for table `tech_sections`
 --
 ALTER TABLE `tech_sections`
-  MODIFY `section_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `section_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `tmpinventory`
 --
 ALTER TABLE `tmpinventory`
-  MODIFY `tmp_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tmp_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `userId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
@@ -942,7 +1012,8 @@ ALTER TABLE `tech_sections`
 -- Constraints for table `tmpinventory`
 --
 ALTER TABLE `tmpinventory`
-  ADD CONSTRAINT `item_id` FOREIGN KEY (`Item_id`) REFERENCES `inventory` (`Item_id`);
+  ADD CONSTRAINT `item_id` FOREIGN KEY (`Item_id`) REFERENCES `inventory` (`Item_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `techcdcdc` FOREIGN KEY (`tecnician_id`) REFERENCES `user` (`userId`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
