@@ -21,10 +21,22 @@ class TmpInventory extends Framework
         }
     }
         
-    public function AddItems($tech,$items)
-    {
+    // public function AddItems($tech,$items)
+    // {
+    //     $tmpmodel = new \models\TmpInventory();
+    //     foreach ($items as $item) {
+    //         $tmpmodel->updateQuantity($tech,$item[0],$item[1],'-');
+    //     }
         
-    }
+    // }
+    // public function check($tech,$items)
+    // {
+    //     $tmpmodel = new \models\TmpInventory();
+    //     foreach ($items as $item) {
+    //         $tmpmodel->checkAvailability($tech,$item[0],$item[1]);
+    //     }
+        
+    // }
 
 
 

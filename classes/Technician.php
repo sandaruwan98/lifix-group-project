@@ -24,7 +24,7 @@ class Technician extends Framework
         if (!isset($_GET["id"])) 
             header('location: ./index.php');
         
-        $invmodel = $this->loadModel('Inventory');
+        $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $data['ItemData']= $item_names->fetch_all();
 
@@ -199,7 +199,7 @@ class Technician extends Framework
     
             if ($quantity!=0 && $quantity!=null) {
     
-                $used_item = array($item[0], $quantity);
+                $used_item = array($item[0], $quantity, $item[1]);
                 $used_items[] = $used_item;
             }
             
@@ -215,10 +215,31 @@ class Technician extends Framework
         }
     
         if (!empty($used_items)) {
-            $repairmodel = $this->loadModel('Repair');
-            $r_id = $_GET["id"];
-            $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
-            $this->session->sendMessage("Repair marked as completed",'success');
+
+            $tmpmodel = new \models\TmpInventory();
+            $errmsg = '';
+            foreach ($used_items as $item) {
+                if (!$tmpmodel->checkAvailability($this->session->getuserID(),$item[0],$item[1])) {
+                    $errmsg = $errmsg.$item[2]." ,";
+                }
+
+            }
+
+
+            if ($errmsg == '') {
+                $repairmodel = new \models\Repair();
+                $r_id = $_GET["id"];
+                $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
+
+                foreach ($used_items as $item) {
+                    $tmpmodel->updateQuantity($this->session->getuserID(),$item[0],$item[1],'-');
+                }
+
+
+                $this->session->sendMessage("Repair marked as completed",'success');
+            }else {
+                $this->session->sendMessage("Insuficient ".$errmsg ,'danger');
+            }
             // header("location: ./index.php");
         }
     }
