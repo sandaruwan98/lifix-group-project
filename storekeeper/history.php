@@ -37,14 +37,12 @@ $session = new classes\Session(StorekeeperFL);
                 </div>
 
                 <!-- request list -->
-
-               
                
                 <?php 
                     
 
                     $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->RequesthistoryList();
+                    $request_list = $itemrequest->details();
 
 
                     while ($row = $request_list->fetch_assoc()) {
@@ -69,21 +67,31 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
-    
+                        <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
                         <table class="content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td>Bla Bla</td>
+                                    <td><?= $row['username'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td>2020-10-14</td>
+                                    <td><?= $row['added_date'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td>2020-10-15</td>
+                                    <td><?= $row['supplied_date'] ?></td>
                                 </tr>
                                
     
@@ -91,6 +99,7 @@ $session = new classes\Session(StorekeeperFL);
     
     
                         </table>
+                        <?php } ?>
                     </div>
 
                     <!-- supply items -->
