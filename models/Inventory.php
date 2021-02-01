@@ -20,6 +20,13 @@ class Inventory extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    public function getItemIDs()
+    {
+        $q = "SELECT Item_id FROM inventory";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
     public function getAllInventory()
     {
     
@@ -30,4 +37,28 @@ class Inventory extends Database
     }
    
    
+
+
+
+    public function updateQuantity($itemid,$quantity,$operator)
+    {
+        $q = " UPDATE inventory SET total=total $operator '$quantity' WHERE Item_id='$itemid' ";
+        return $this->conn->query($q);
+    }
+
+    public function checkAvailability($itemid,$quantity)
+    {
+        $q = "SELECT total FROM inventory WHERE Item_id='$itemid'  ";
+        $result = $this->conn->query($q);
+        $result = $result->fetch_assoc();
+        if ($result['total'] < $quantity ){
+            return false;
+        }else {
+            return true;
+        }
+
+        
+    }
+    
 }
+

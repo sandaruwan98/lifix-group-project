@@ -16,7 +16,7 @@ class Repair extends Database
         return $this->conn->insert_id;
     }
 
-    public function getRepairs($status)
+    public function getRepairs($status,$paginationfilter)
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
@@ -24,10 +24,25 @@ class Repair extends Database
         if ($status== "ce") {
             $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ORDER BY repair.date DESC " ;
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ORDER BY repair.date DESC " . $paginationfilter ;
         }
         $list =   $this->conn->query($q);
         return $list;
+    }
+    
+    public function getRepairsCount($status)
+    {
+        $q = "SELECT COUNT(repair.repair_id) AS count
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' " ;
+        if ($status== "ce") {
+            $q = "SELECT COUNT(repair.repair_id) AS count
+        FROM lamppost INNER JOIN repair 
+        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ";
+        }
+        $count =   $this->conn->query($q);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
     }
 
 

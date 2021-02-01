@@ -1,19 +1,10 @@
 <?php 
 
 include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$requestlist = $tech->PendingRequestListPage();
 
-$session = new classes\Session(TechnicianFL);
 ?>
-
-
-<?php 
-
-
-$itemrequest = new models\ItemRequest();
-// user id eka danna one.danata is eka 4 
-$requestlist = $itemrequest->getPendingRequestList_by_userid($session->getuserID());
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +22,7 @@ $requestlist = $itemrequest->getPendingRequestList_by_userid($session->getuserID
 
 <body>
    
-<?php include './nav.html' ?>
+<?php include './nav.php' ?>
 
 
 
@@ -41,11 +32,11 @@ $requestlist = $itemrequest->getPendingRequestList_by_userid($session->getuserID
 
             <?php
             
-            if(isset($_GET["id"])){
-                include './views/requestpage.php';
-            }else{
+            if($tech->CheckPendingRequestList())
                 include './views/pendingRequestList.php';
-            }
+            else
+                include './views/requestpage.php';
+            
 
             ?>
                 

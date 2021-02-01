@@ -14,9 +14,10 @@
 
 
 ## Item request status
-#### completed -> c
-#### open -> o
-#### denied -> d
+#### justCreatedBytechnician -> a
+#### suppliedByStorekeeper -> b
+#### deniedByTechnician -> c
+#### confirmedByTechnician -> d
 
 ## Stock Addition status
 #### completed -> 1

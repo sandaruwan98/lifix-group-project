@@ -5,7 +5,6 @@ $data =  $storekeeper->Inventory();
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +30,9 @@ $data =  $storekeeper->Inventory();
 
 <?php  $storekeeper->getSession()->showMessage() ?>
     
-    <div class="frow">
-        <h1>Inventory Details</h1>
-    </div>
+        <header>
+          <h1>Inventory Details</h1>
+        </header>
     <div class="con">
         
         <h1 class="heading" style="margin-left: 2.5%;margin-right: 2.5%;">Inventory Balance</h1>
@@ -51,12 +50,7 @@ $data =  $storekeeper->Inventory();
         </thead>
 
         <?php
-
-
-        $inventory = new models\Inventory();
-        $result = $inventory->getAllInventory();
-
-
+        $result = $data['inventory'];
         while($row=mysqli_fetch_assoc($result)){
             echo"<tr>";
             echo "<td>".$row['Item_id']."</td>";

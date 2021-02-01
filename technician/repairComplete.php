@@ -1,7 +1,7 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
-$data =  $tech->CompleteRepair();
+$data =  $tech->CompleteRepairPage();
 ?>
 
 
@@ -27,7 +27,7 @@ $data =  $tech->CompleteRepair();
 <body>
 
 
-<?php include './nav.html' ?>
+<?php include './nav.php' ?>
 
 <?php  $tech->getSession()->showMessage() ?>
 

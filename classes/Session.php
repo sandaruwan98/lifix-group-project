@@ -4,13 +4,16 @@ namespace classes;
 
 class Session
 {
-    public function __construct($occuFlag) {
+    public function __construct($role) {
         session_start();
-        if (!isset($_SESSION["user"])) {
-            header('location: ./../login');
-        }
-        else if($occuFlag != $_SESSION["occuFlag"]){
-            header('location: ./../login');
+        if($role != "login"){
+
+            if (!isset($_SESSION["user"])) {
+                header('location: ./../login');
+            }
+            else if($role != $_SESSION["role"]){
+                header('location: ./../login');
+            }
         }
     }
     

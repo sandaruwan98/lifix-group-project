@@ -111,3 +111,45 @@ header {
     margin-bottom: 10px;
     font-size: small;
 }
+
+
+
+
+
+
+
+
+
+
+
+.radio input:checked ~ .tech-item {
+    background-color: #4e4e4e;
+    color: aliceblue
+}
+.radio input[type="radio"]{
+    width: 0;
+	height: 0;
+	visibility: hidden;
+	position: absolute;
+}
+
+.tech-section{
+    width: 100%;
+}
+.tech-item{
+    /* display: block; */
+    padding: 20px;
+    background-color: #e8edee;
+/*     border-radius: 10px; */
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    transition: all .2s ease;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+}
+
+.radio input[type="color"]{
+    border:none;
+    background-color: transparent
+}

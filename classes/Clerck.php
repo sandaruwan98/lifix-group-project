@@ -12,11 +12,11 @@ class Clerck extends Framework
     public function DailyRepair()
     {
 
-        $usermodel = $this->loadModel('User');
+        $usermodel = new \models\User();
         $technicians = $usermodel->getUsers(TechnicianFL);
         $data['technicians'] = $technicians;
 
-        $repairmodel = $this->loadModel('Repair');
+        $repairmodel = new \models\Repair();
 
         $availablerepairs = $repairmodel->getUnassignedRepairs();
         $data['availablerepairs'] = $availablerepairs;
@@ -25,6 +25,32 @@ class Clerck extends Framework
 
         $assignedrepairs = $repairmodel->getAssignedRepairs($_SESSION["tid"]);
         $data['assignedrepairs'] = $assignedrepairs;
+        
+        
+       
+
+        return $data;
+    }
+    public function SectionAssign()
+    {
+
+        $usermodel = new \models\User();
+        $technicians = $usermodel->getUsers(TechnicianFL);
+        $data['technicians'] = $technicians;
+
+        $mapmodel = new \models\Map();
+        $sections= $mapmodel->getAllSections();
+        
+        foreach ($technicians as $tech) {
+            $data["color"][$tech["userId"]] = "#e8edee";
+        }
+        while ($section=$sections->fetch_assoc()) {
+            $data["color"][$section["tech_id"]] = $section["color"];
+        }
+
+
+        //  $data['technicians'] =
+        
         
         
        

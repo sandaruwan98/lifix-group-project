@@ -9,7 +9,7 @@ class Technician extends Framework
         $this->session = new Session(TechnicianFL);
     }
     
-    public function AvalableRepairs()
+    public function AvalableRepairsPage()
     {
         $repairmodel = $this->loadModel('Repair');
         $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID() );
@@ -19,7 +19,7 @@ class Technician extends Framework
 
 
 
-    public function CompleteRepair()
+    public function CompleteRepairPage()
     {
         if (!isset($_GET["id"])) 
             header('location: ./index.php');
@@ -37,7 +37,7 @@ class Technician extends Framework
 
 
     
-    public function EmgRepair()
+    public function EmgRepairPage()
     {
         
         
@@ -51,6 +51,56 @@ class Technician extends Framework
 
         return $data;
     }
+
+    public function TmpInventoryPage()
+    {
+        $tmpinvmodel = new \models\TmpInventory();
+        return $tmpinvmodel->getAllInventory($this->session->getuserID());
+       
+    }
+
+
+
+    public function PendingRequestListPage()
+    {
+        $itemrequest = new \models\ItemRequest();
+        $requestlist = $itemrequest->getPendingRequestList_by_userid($this->session->getuserID());
+        return $requestlist;
+    }
+
+    public function PendingRequestListDetails()
+    {
+
+        $itemrequest = new \models\ItemRequest();
+        $itemlist = $itemrequest->getItemsfor_ItemRequest_byId($_GET["id"]);
+        $requestdetails = $itemrequest->getItemRequest_byid($_GET["id"]);
+        $data['itemlist'] = $itemlist;
+        $data['requestdetails'] = $requestdetails;
+        return $data;
+    }
+        
+
+    public function CheckPendingRequestList()
+    {
+        if (isset($_GET["id"])) {
+            $itemrequest = new \models\ItemRequest();
+            return $itemrequest->checkItemRequestAvailability($_GET["id"]);
+        }
+        return true;
+    }
+        
+    public function AddTmpInventoryfortech($tech)
+    {
+        $inv = new \models\Inventory();
+        $tmpinv = new \models\TmpInventory();
+        $items = $inv->getItemIDs();
+        foreach ($items->fetch_all() as $item) {
+            $tmpinv->addTmpInventoryItem($tech,$item[0]);
+        }
+    }
+        
+
+
     public function AddRequestpage()
     {
         
@@ -89,7 +139,7 @@ class Technician extends Framework
     }
 
 
-    public function Lamppost()
+    public function LamppostPage()
     {
         
         
