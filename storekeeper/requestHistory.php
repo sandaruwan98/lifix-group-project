@@ -55,6 +55,7 @@ $session = new classes\Session(StorekeeperFL);
                 </div>
                 <?php 
                 }
+                
                 $result->free();
              } 
                 ?>
