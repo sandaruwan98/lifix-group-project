@@ -1,6 +1,5 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
-
 $session = new classes\Session(StorekeeperFL);
 ?>
 
@@ -35,45 +34,32 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="xx">
                     <h2>Request List</h2>
                 </div>
+            <?php
+             $servername = "localhost";
+             $username = "root";
+             $password = "";
+             $dbname = "lifix";
+             $port = "3306";
+            
+             $mysqli = new mysqli($servername, $username, $password, $dbname, $port);
 
-                <!-- request list -->
-
+               $query = "SELECT supplied_date,username FROM itemrequest INNER JOIN user ON itemrequest.created_by=user.userid WHERE itemrequest.status='c'";
+               if($result = $mysqli->query($query)){
+                while ($row = $result->fetch_assoc()) { ?>
                 <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Uditha Ishan</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
+                <div class="row">
+                                <span>Supplied Date: <?= $row['supplied_date'] ?></span>
+                                <span>Technician: <?= $row['username'] ?></span>
+                                <i class="s fas fa-check"></i>
                 </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Udi Ishan</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
                 </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: itha han</span>
-                        <i class="s fas fa-check"></i>
-                    </div>
-                </div>
-               
-                <div id="" class="repair-item">
-                    <div class="row">
-                        <span>Date: 2020-06-22</span>
-                        <span>Technician: Ishan</span>
-                        <i class="s fas fa-times"></i>
-                    </div>
-                </div>
-               
-
-                </div>
-
-                <div class="table-section sc-bar">
+                <?php 
+                }
+                 $result->free();
+            } 
+            ?>
+            </div>
+            <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
     
@@ -163,25 +149,7 @@ $session = new classes\Session(StorekeeperFL);
             </div>
         </div>
 
-        <script>
-            const btnAdd = document.querySelector('#btnAdd');
-            const table_section = document.querySelector('.content-table');
-            const addnew_section = document.querySelector('.add-new');
-            const list_items = document.querySelectorAll('.repair-item');
+                         
 
-            btnAdd.addEventListener('click', () => {
-                table_section.style.display = 'none';
-                addnew_section.style.display = 'block';
-
-            })
-
-            list_items.forEach(item => {
-                item.addEventListener('click', () => {
-                    addnew_section.style.display = 'none';
-                    table_section.style.display = 'table ';
-
-                })
-            })
-        </script>
 </body>
 </html>
