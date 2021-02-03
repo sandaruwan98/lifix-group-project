@@ -54,10 +54,8 @@ $session = new classes\Session(StorekeeperFL);
                 </div>
                 </div>
                 <?php 
-                }
-                 $result->free();
-            } 
-            ?>
+                }$result->free() } 
+                ?>
             </div>
             <div class="table-section sc-bar">
                     <div class="details">
