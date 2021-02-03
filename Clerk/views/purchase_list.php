@@ -25,10 +25,5 @@
 <?php endwhile ?>
 
 
-<<<<<<< HEAD
-<?php include "../pagination.php" ?>
-</div>
-=======
 <?php include "../components/pagination.php" ?>
 </div>
->>>>>>> 08a157d0598b7cdb56ae21fb1bb910afb177cd79

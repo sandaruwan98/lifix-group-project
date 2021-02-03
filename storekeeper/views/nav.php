@@ -21,17 +21,5 @@
 
     <script src="../js/slider.js"></script>
 
-<<<<<<< HEAD
-
-    <div class="toast-message">
-      <span class="close"></span>
-      <div class="message">
-          
-      </div>
-    </div>
-    <script src="../js/slider.js"></script>
-    <script src="../js/toast.js"></script>
-=======
     <?php include "../components/toast.php" ?>
     <?php include "../components/userfeild.php" ?>
->>>>>>> 08a157d0598b7cdb56ae21fb1bb910afb177cd79

@@ -75,7 +75,7 @@ class ItemRequest extends Database
     public function details()
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username , itemrequest.added_date ,itemrequest.supplied_date
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
          WHERE itemrequest.status='c' ";
@@ -110,7 +110,7 @@ class ItemRequest extends Database
     }
 
 
-
+ 
 
 
 
