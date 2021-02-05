@@ -11,7 +11,7 @@ class Technician extends Framework
     
     public function AvalableRepairsPage()
     {
-        $repairmodel = $this->loadModel('Repair');
+        $repairmodel = new \models\Repair();
         $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID() );
         $data['repairs'] = $repairs;
         return $data;

@@ -90,9 +90,9 @@ class ItemRequest extends Database
         $this->conn->query($q);
     }
 
-    public function SupplyItemRequest($ir_id){
+    public function SupplyItemRequest($ir_id,$storekeeper_id){
         $date = date("yy-m-d");
-        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date WHERE `Itemrequest_id`=$ir_id";
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date, `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
         
         return $this->conn->query($qurey);
     }
