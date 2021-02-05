@@ -216,24 +216,15 @@ class Technician extends Framework
     
         if (!empty($used_items)) {
 
-            $tmpmodel = new \models\TmpInventory();
-            $errmsg = '';
-            foreach ($used_items as $item) {
-                if (!$tmpmodel->checkAvailability($this->session->getuserID(),$item[0],$item[1])) {
-                    $errmsg = $errmsg.$item[2]." ,";
-                }
-
-            }
-
-
+            $invmanger = new InventoryManager();
+            $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items,$this->session->getuserID());
+           
             if ($errmsg == '') {
                 $repairmodel = new \models\Repair();
                 $r_id = $_GET["id"];
                 $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
 
-                foreach ($used_items as $item) {
-                    $tmpmodel->updateQuantity($this->session->getuserID(),$item[0],$item[1],'-');
-                }
+                $invmanger ->DecreasetmpInventory($used_items,$this->session->getuserID());
 
 
                 $this->session->sendMessage("Repair marked as completed",'success');
@@ -288,7 +279,7 @@ class Technician extends Framework
     }
   
 
-
+  
 
 
 }

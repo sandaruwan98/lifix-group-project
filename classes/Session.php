@@ -6,7 +6,7 @@ class Session
 {
     public function __construct($role) {
         session_start();
-        if($role != "login"){
+        if($role != "nodirect"){
 
             if (!isset($_SESSION["user"])) {
                 header('location: ./../login');
