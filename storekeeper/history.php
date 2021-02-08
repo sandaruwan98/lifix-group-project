@@ -51,7 +51,7 @@ $session = new classes\Session(StorekeeperFL);
                 ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
-                                <span>Date: <?= $row['added_date'] ?></span>
+                                <span>Supplied Date: <?= $row['supplied_date'] ?></span>
                                 <span>Technician: <?= $row['username'] ?></span>
                                 <i class="s fas fa-check"></i>
                             </div>
@@ -78,20 +78,20 @@ $session = new classes\Session(StorekeeperFL);
                         
                     
                 ?>
-                        <table class="content-table">
+                        <table class="tbl1 content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td><?= $row['username'] ?></td>
+                                    <td id="name"><?= $row['username'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td><?= $row['added_date'] ?></td>
+                                    <td id="reqdate"><?= $row['supplied_date'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td><?= $row['supplied_date'] ?></td>
+                                    <td id="supdate"><?= $row['supplied_date'] ?></td>
                                 </tr>
                                
     
@@ -105,57 +105,15 @@ $session = new classes\Session(StorekeeperFL);
                     <!-- supply items -->
                     <div class="details">
                         <h2 style="margin-bottom: 8px;"> Supplied Items</h2>
-                    <table class="content-table">
+                    <table class="tbl2 content-table">
                         <thead>
                             <tr>
                                 <th>ITEM ID</th>
                                 <th>ITEM NAME</th>
                                 <th>QUANTITY</th>
-
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>SUNBOXES</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>WIRES</td>
-                                <td>50m</td>
-
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>FUSE</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                        
-
-                        </tbody>
-
-
+                        <tbody></tbody>
                     </table>
 
                     </div>
@@ -165,25 +123,7 @@ $session = new classes\Session(StorekeeperFL);
             </div>
         </div>
 
-        <script>
-            const btnAdd = document.querySelector('#btnAdd');
-            const table_section = document.querySelector('.content-table');
-            const addnew_section = document.querySelector('.add-new');
-            const list_items = document.querySelectorAll('.repair-item');
-
-            btnAdd.addEventListener('click', () => {
-                table_section.style.display = 'none';
-                addnew_section.style.display = 'block';
-
-            })
-
-            list_items.forEach(item => {
-                item.addEventListener('click', () => {
-                    addnew_section.style.display = 'none';
-                    table_section.style.display = 'table ';
-
-                })
-            })
-        </script>
+        <script src="requestHistory.js"></script>
+      
 </body>
 </html>

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 08a157d0598b7cdb56ae21fb1bb910afb177cd79
 var reItemId=0;
 
 $(document).ready(function(){
