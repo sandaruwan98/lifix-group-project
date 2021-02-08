@@ -28,7 +28,7 @@ $(document).ready(function(){
     })
 
     $("#supplybtn").click(()=>{
-        $.get("./ajax/sendToTechnician.php?id="+reItemId,function(data, success){
+        $.get("./ajax/sendToTechnician.php?id="+reItemId ,function(data, success){
             // console.log("in the nethod");
             if(success == "success"){
                 location.reload();
