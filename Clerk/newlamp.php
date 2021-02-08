@@ -34,11 +34,8 @@ $clerck = new classes\Clerck();
             <header>
                 <h1>Notifications</h1>
             </header>
-
-
             <input name="email" placeholder="hello@barrel.im" type="email" value=""><br>
             <input class="go-ani" name="submit" type="submit"> <input name="uri" type="hidden" value="barreldotim">
-
         </div>
         <div class="notification-fab">
             <div class="wrap">

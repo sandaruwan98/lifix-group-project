@@ -71,7 +71,18 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    
+    public function details()
+    {
+        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date
+        FROM itemrequest INNER JOIN user 
+        ON itemrequest.created_by=user.userId
+         WHERE itemrequest.status='c' ";
 
+        $list =   $this->conn->query($q);
+        return $list;
+    }
 
 
 
@@ -91,12 +102,15 @@ class ItemRequest extends Database
     }
 
     public function SupplyItemRequest($ir_id,$storekeeper_id){
+
         $date = date("yy-m-d");
         $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date, `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
         
         return $this->conn->query($qurey);
     }
 
+
+ 
 
 
 

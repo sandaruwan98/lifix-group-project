@@ -26,7 +26,7 @@ class StoreKeeper extends Framework
 
         return $data;
     }
-
+    
     public function Inventory()
     {
         $inventory = new \models\Inventory();

@@ -12,9 +12,7 @@
         <li class="nav-item"><a class="nav-link" href="./newlamp.php"><i class="fas fa-plus-square"></i><span class="link-text">LampPost</span></a></li>
         <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i><span class="link-text">Settings</span></a></li> -->
         <li class="nav-item"><a class="nav-link" href="./../login/Logout.php"><i class="fas fa-sign-out-alt"></i><span class="link-text">LogOut</span></a></li>
-
     </ul>
-
 </nav>
 
 

@@ -1,5 +1,6 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+
 $session = new classes\Session(StorekeeperFL);
 ?>
 
@@ -34,49 +35,63 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="xx">
                     <h2>Request List</h2>
                 </div>
-            <?php
-             $servername = "localhost";
-             $username = "root";
-             $password = "";
-             $dbname = "lifix";
-             $port = "3306";
-            
-             $mysqli = new mysqli($servername, $username, $password, $dbname, $port);
 
-               $query = "SELECT supplied_date,username FROM itemrequest INNER JOIN user ON itemrequest.created_by=user.userid WHERE itemrequest.status='c'";
-               if($result = $mysqli->query($query)){
-                while ($row = $result->fetch_assoc()) { ?>
-                <div id="" class="repair-item">
-                <div class="row">
-                                <span>Supplied Date: <?= $row['supplied_date'] ?></span>
+                <!-- request list -->
+               
+                <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
+                            <div class="row">
+                                <span>Date: <?= $row['added_date'] ?></span>
                                 <span>Technician: <?= $row['username'] ?></span>
                                 <i class="s fas fa-check"></i>
+                            </div>
+                        </div>
+                    
+                    <?php } ?>
+
                 </div>
-                </div>
-                <?php 
-                }
-                $result->free();
-             } 
-                ?>
-            </div>
-            <div class="table-section sc-bar">
+               
+
+                
+
+                <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
-    
+                        <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
                         <table class="content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td>Bla Bla</td>
+                                    <td><?= $row['username'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td>2020-10-14</td>
+                                    <td><?= $row['added_date'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td>2020-10-15</td>
+                                    <td><?= $row['supplied_date'] ?></td>
                                 </tr>
                                
     
@@ -84,6 +99,7 @@ $session = new classes\Session(StorekeeperFL);
     
     
                         </table>
+                        <?php } ?>
                     </div>
 
                     <!-- supply items -->
@@ -149,7 +165,25 @@ $session = new classes\Session(StorekeeperFL);
             </div>
         </div>
 
-                         
+        <script>
+            const btnAdd = document.querySelector('#btnAdd');
+            const table_section = document.querySelector('.content-table');
+            const addnew_section = document.querySelector('.add-new');
+            const list_items = document.querySelectorAll('.repair-item');
 
+            btnAdd.addEventListener('click', () => {
+                table_section.style.display = 'none';
+                addnew_section.style.display = 'block';
+
+            })
+
+            list_items.forEach(item => {
+                item.addEventListener('click', () => {
+                    addnew_section.style.display = 'none';
+                    table_section.style.display = 'table ';
+
+                })
+            })
+        </script>
 </body>
 </html>

@@ -7,11 +7,11 @@ include_once  __DIR__ . '/classloader.php';
  $obj = new models\Database();
  if($_POST["view"] != '')
  {
-  $update_query = "UPDATE notification SET status=1 WHERE status=0";
+  $update_query = "UPDATE notification SET status=1 WHERE id={$_POST["view"]}";
   $obj->conn->query($update_query);
  }
  
- $query = "SELECT * FROM notification ORDER BY id DESC";
+ $query = "SELECT * FROM notification WHERE status=0 ORDER BY id DESC";
  $result = $obj->conn->query($query);
  $output = '
     <h1>Notifications</h1>
@@ -23,8 +23,7 @@ include_once  __DIR__ . '/classloader.php';
   while($row = mysqli_fetch_array($result))
   {
    $output .= '
-   <li class="notification">
-    <a href="#">
+   <li class="notification" id='.$row["id"].'>
      <strong>'.$row["subject"].'</strong>
      <small><em>'.$row["body"].'</em></small>
     </a>

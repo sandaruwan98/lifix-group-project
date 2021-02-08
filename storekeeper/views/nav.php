@@ -1,4 +1,3 @@
-
 <nav class="sidebar">
         <!-- <h2 class="link-text">MENU</h2> -->
         <ul>
@@ -16,9 +15,7 @@
             <li class="nav-item"><a class="nav-link" href="./returnitem.php"><i class="fas fa-file-invoice"></i><span
                 class="link-text">Return Item</span></a></li>  	
             <li class="nav-item"><a class="nav-link" href="./../login/Logout.php"><i class="fas fa-sign-out-alt"></i><span class="link-text">LogOut</span></a></li>
-
         </ul>
-
     </nav>
 
 

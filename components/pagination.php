@@ -1,5 +1,4 @@
 <?php
-
 $p = $data['pagination'];
 $maxpages = $p->getMax();
 $page_no = $p->getPageNo();
