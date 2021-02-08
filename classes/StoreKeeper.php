@@ -16,6 +16,10 @@ class StoreKeeper extends Framework
         $item_names = $inv->getItemNames();
         $data['item_names']= $item_names->fetch_all();
         
+        $usermodel = new \models\User();
+        $technicians = $usermodel->getUsers(TechnicianFL);
+        $data['technicians'] = $technicians;
+
         $itemrequest= new \models\ItemRequest();
         $totalpages = $itemrequest->getPendingRequestListCount();
         $p = new Pagination(5,$totalpages);

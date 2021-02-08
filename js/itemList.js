@@ -113,16 +113,17 @@ var itemList = {
   view.setUpEventListeners();
   view.displayItemsList();
 
+  const techSelect = document.querySelector('#techSelect');
 
 
   function SendAjax(dir){
-
+    console.log(techSelect.value);
     const filtereList = itemList.items.map( (item) => {
       return Object.fromEntries(Object.entries(item).filter(([key, value]) => (key === 'Quantity') || (key === 'itemNo')))
     }) 
     // console.log( JSON.stringify( filtereList));
     if (filtereList.length != 0) {
-        $.post( "./" + dir + ".php", JSON.stringify( filtereList))
+        $.post( "./" + dir + ".php?tid=" + techSelect.value, JSON.stringify( filtereList))
         .done(function( data ) {
           // console.log( data );
           location.reload();
