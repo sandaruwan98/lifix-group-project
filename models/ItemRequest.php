@@ -83,6 +83,17 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    public function getItemReqWithTechName($ir_id)
+    {
+        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date
+        FROM itemrequest INNER JOIN user 
+        ON itemrequest.created_by=user.userId
+         WHERE itemrequest.Itemrequest_id='$ir_id' ";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
 
 
 

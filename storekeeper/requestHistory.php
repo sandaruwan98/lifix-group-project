@@ -1,5 +1,6 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+
 $session = new classes\Session(StorekeeperFL);
 ?>
 
@@ -14,6 +15,8 @@ $session = new classes\Session(StorekeeperFL);
     <link rel="stylesheet" href="./store.css">
     <!-- <link rel="stylesheet" href="../Clerk/css/repairpage.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Item Requests</title>
 
 </head>
@@ -34,49 +37,63 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="xx">
                     <h2>Request List</h2>
                 </div>
-            <?php
-             $servername = "localhost";
-             $username = "root";
-             $password = "";
-             $dbname = "lifix";
-             $port = "3306";
-            
-             $mysqli = new mysqli($servername, $username, $password, $dbname, $port);
 
-               $query = "SELECT supplied_date,username FROM itemrequest INNER JOIN user ON itemrequest.created_by=user.userid WHERE itemrequest.status='c'";
-               if($result = $mysqli->query($query)){
-                while ($row = $result->fetch_assoc()) { ?>
-                <div id="" class="repair-item">
-                <div class="row">
+                <!-- request list -->
+               
+                <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
+                            <div class="row">
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
                                 <span>Technician: <?= $row['username'] ?></span>
                                 <i class="s fas fa-check"></i>
+                            </div>
+                        </div>
+                    
+                    <?php } ?>
+
                 </div>
-                </div>
-                <?php 
-                }
-                $result->free();
-             } 
-                ?>
-            </div>
-            <div class="table-section sc-bar">
+               
+
+                
+
+                <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
-    
-                        <table class="content-table">
+                        <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <table class="tbl1 content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td>Bla Bla</td>
+                                    <td id="name"><?= $row['username'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td>2020-10-14</td>
+                                    <td id="reqdate"><?= $row['supplied_date'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td>2020-10-15</td>
+                                    <td id="supdate"><?= $row['supplied_date'] ?></td>
                                 </tr>
                                
     
@@ -84,62 +101,21 @@ $session = new classes\Session(StorekeeperFL);
     
     
                         </table>
+                        <?php } ?>
                     </div>
 
                     <!-- supply items -->
                     <div class="details">
                         <h2 style="margin-bottom: 8px;"> Supplied Items</h2>
-                    <table class="content-table">
+                    <table class="tbl2 content-table">
                         <thead>
                             <tr>
                                 <th>ITEM ID</th>
                                 <th>ITEM NAME</th>
                                 <th>QUANTITY</th>
-
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>SUNBOXES</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>WIRES</td>
-                                <td>50m</td>
-
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>FUSE</td>
-                                <td>20</td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>BULB</td>
-                                <td>80</td>
-
-                            </tr>
-                        
-
-                        </tbody>
-
-
+                        <tbody></tbody>
                     </table>
 
                     </div>
@@ -149,7 +125,7 @@ $session = new classes\Session(StorekeeperFL);
             </div>
         </div>
 
-                         
-
+        <script src="requestHistory.js"></script>
+      
 </body>
 </html>
