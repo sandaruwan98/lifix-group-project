@@ -51,7 +51,24 @@ class StoreKeeper extends Framework
         return $data;
     }
 
+   
 
+
+      
+   /* public function Details()
+    {
+
+     # $requestmodel =  $this->loadModel('ItemRequest');
+      # if (!isset($_GET["userId"]))
+          #header('location: ./requestHistory.php');
+
+     # $user_id = $_GET["userId"]; 
+      #$data['user_details'] = $trequestmodel->SuppliedDetail($user_id);
+        #$data['used_items'] = $repairmodel->getRepairItemsByid($repair_id,USED_ITEM);
+       
+       
+     #return $data;
+    }*/
 
 
 }

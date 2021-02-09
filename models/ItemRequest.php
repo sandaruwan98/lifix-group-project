@@ -108,13 +108,15 @@ class ItemRequest extends Database
         
         return $this->conn->query($qurey);
     }
-
-
- 
-
-
-
-
+     
+    /*public function  SuppliedDetail($u_id)
+    {
+        $query = "SELECT itemrequest.supplied_date,user.username,itemrequest.Itemrequest_id,itemrequest.added_date FROM itemrequest INNER JOIN user ON itemrequest.created_by='$u_id' WHERE itemrequest.status='c'";
+       
+        
+        return $this->conn->query($qurey);
+    }
+*/
 ////////////////////////////////////
     
     public function CreateItemRequest($created_user_id,$request_items){
