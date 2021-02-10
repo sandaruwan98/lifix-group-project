@@ -28,6 +28,7 @@
         });
 
         $(document).ready(function(){
+            load_unseen_notification();
         
             function load_unseen_notification(view = '',)
             {
@@ -84,11 +85,12 @@
                 "color": ""
             });
             load_unseen_notification($(this).attr('id'));
+
         });
         
         
         setInterval(function(){ 
-        load_unseen_notification();; 
+        load_unseen_notification(); 
         }, 5000);
         
         }); 
