@@ -3,7 +3,7 @@ if(isset($_POST["view"]))
 {
 
 include_once  __DIR__ . '/classloader.php';
-
+session_start();
  $notificationmodel = new models\Notification();
  if($_POST["view"] != '')
  {
@@ -23,7 +23,7 @@ include_once  __DIR__ . '/classloader.php';
   while($row = mysqli_fetch_array($result))
   {
    $output .= '
-   <li class="notification type" id='.$row["id"].'>
+   <li data-type="'.$row["type"].'" class="notification type" id='.$row["id"].'>
      <strong>'.$row["subject"].'</strong>
      <small><em>'.$row["body"].'</em></small>
     </a>

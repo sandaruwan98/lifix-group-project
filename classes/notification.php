@@ -5,7 +5,7 @@
 <body style="background-color: rgb(72, 127, 149);">
 
     <div class="notification-container-wrap">
-        <div class="notification-container  popup-ani">
+        <div  class="notification-container  popup-ani">
             <header>
                 <h1>Notifications</h1>
             </header>
@@ -84,8 +84,10 @@
                 "background": "",
                 "color": ""
             });
-            load_unseen_notification($(this).attr('id'));
 
+           // load_unseen_notification($(this).attr('id'));
+
+           
         });
         
         

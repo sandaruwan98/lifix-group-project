@@ -42,3 +42,10 @@
 #### suspended ->2
 
 
+
+## notification types
+#### c-lp  -> to clck when tech added lamp post
+#### c-supply  ->  to tech when st suplly items
+#### norm  -> other notifictions
+
+
