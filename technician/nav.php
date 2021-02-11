@@ -30,3 +30,4 @@
 
 
 <?php include "../components/toast.php" ?>
+<?php include '../components/noti_modals/modal_supply.php'; ?>

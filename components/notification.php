@@ -16,16 +16,22 @@
             </div>
         </div>
     </div>
-
+    
     <script>
 
         const fab = document.querySelector('.notification-fab');
         fab.addEventListener('click', () => {
 
+            toggleNotificationWidow();
+        });
+
+
+        const toggleNotificationWidow = () => {
+           
             document.querySelector('.notification-fab .wrap').classList.toggle("ani");
             document.querySelector('.notification-container').classList.toggle("open");
             document.querySelector('.img-fab.img').classList.toggle("close");
-        });
+        }
 
         $(document).ready(function(){
             load_unseen_notification();
@@ -35,7 +41,7 @@
                
                 $.post( "../utils/fetch.php", {view:view})
                 .done(function( data ) {
-                    console.log(data);
+                    
                     data = JSON.parse(data);
                     $('.notification-container').html(data.notification);
                     $('.notification-container').css({
@@ -72,7 +78,7 @@
             }
         
             // load_unseen_notification();
-        
+        const modal = document.querySelector('.modal-launcher');
         $(document).on('click', '.notification', function(){
             $('.count').html('');
             $('.count').css({
@@ -86,7 +92,8 @@
             });
 
            // load_unseen_notification($(this).attr('id'));
-
+            toggleNotificationWidow();
+           modal.checked = true;
            
         });
         
@@ -106,3 +113,5 @@
 
 
 </body>
+
+
