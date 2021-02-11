@@ -91,10 +91,12 @@
                 "color": ""
             });
 
-           // load_unseen_notification($(this).attr('id'));
-            toggleNotificationWidow();
-           modal.checked = true;
-           
+           // load_unseen_notification();
+
+           if ($(this).attr('data-type') === 'c-lp') {
+                toggleNotificationWidow();
+                modal.checked = true;
+           }
         });
         
         

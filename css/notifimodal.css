@@ -30,7 +30,7 @@ input.modal-launcher:checked {
 	box-sizing: border-box;
 	margin-top: 0;
 	display: none;
-	text-align: justify;
+	text-align: center;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
@@ -45,6 +45,10 @@ input.modal-launcher:checked {
 .modal-window p {
 	margin: 0;
 }
+.modal-window .val {
+	background-color: #149ceb8a;
+	padding: 3px 0;
+}
 .modal-overlay {
 	background: #ffffff80;
 	position: fixed;
@@ -57,7 +61,10 @@ input.modal-launcher:checked {
 	display: none;text-align: center;
 }
 
-
+.modal-window button {
+	color: #ffffff;
+	margin-bottom: 8px;
+}
 .modal-overlay:before,
 .modal-overlay:after {
 	background: #fff;
