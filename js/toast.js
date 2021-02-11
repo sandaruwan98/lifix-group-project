@@ -47,6 +47,6 @@ var notification = new Notif({
     notifi.close.on('click', this.hide);
     
     }
-    
+
     
     

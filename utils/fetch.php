@@ -36,7 +36,7 @@ include_once  __DIR__ . '/classloader.php';
  }
  else
  {
-  $output .= '<li><a href="#" class="text-bold text-italic">No Notification Found</a></li>';
+  $output .= '<li><a href="#" class="text-bold text-italic">No notifications</a></li>';
  }
  
  $query_1 = "SELECT COUNT(*) AS count FROM notification WHERE status=0";
