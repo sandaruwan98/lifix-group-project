@@ -3,7 +3,7 @@
 	$msg = 'Your complaint was recorded successfully.';
 	$btnText = 'Submit another complaint';
 	$page = 'index.php';
-	include "DbAccess.php";	
+	include "dbAccess.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +12,7 @@
 	<title>Li - Fix</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="../js/jquery.color-2.1.2.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
@@ -54,7 +55,7 @@
 			</div>
 		</div>	
 	</div>
-	<!-- <script src="index.js"></script> -->
+	<script src="index.js"></script>
 	<script src="textBiz.js" defer></script>
 </body>
 </html>

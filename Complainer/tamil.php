@@ -3,7 +3,7 @@
 	$msg = 'உங்கள் புகார் வெற்றிகரமாக பதிவு செய்யப்பட்டது.';
 	$btnText = 'மற்றொரு புகாரைச் சமர்ப்பிக்கவும்';
 	$page = 'tamil.php';
-	include "DbAccess.php"; 
+	include "dbAccess.php"; 
 ?>
 
 <!DOCTYPE html>
@@ -54,5 +54,6 @@
 		
 	</div>
 	<script src="index.js"></script>
+	<script src="textBiz.js" defer></script>
 </body>
 </html>
