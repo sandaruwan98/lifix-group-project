@@ -23,8 +23,8 @@ session_start();
   while($row = mysqli_fetch_array($result))
   {
    $output .= '
-   <li data-type="'.$row["type"].'" class="notification type" id='.$row["id"].'>
-     <strong>'.$row["subject"].'</strong>
+   <li data-type="'.$row["type"].'" data-ref_id="'.$row["ref_id"].'" class="notification type" id='.$row["id"].'>
+     <strong>'.$row["id"].' - '.$row["subject"].'</strong>
      <small><em>'.$row["body"].'</em></small>
     </a>
    </li>

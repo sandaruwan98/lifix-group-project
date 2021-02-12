@@ -8,7 +8,7 @@
 
             <div class="modal-window sup-madal">
                 <h2>Confirm Supplied Items</h2>
-                <p>Cr</p>
+
                 <table class="content-table">
                         <thead>
                             <tr>
@@ -17,26 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>Bulb</th>
-                                <th>34</th>
-                            </tr>
-                            <tr>
-                                <th>Bulb</th>
-                                <th>34</th>
-                            </tr>
-                            <tr>
-                                <th>Bulb</th>
-                                <th>34</th>
-                            </tr>
-                            <tr>
-                                <th>Bulb</th>
-                                <th>34</th>
-                            </tr>
-                            <tr>
-                                <th>Bulb</th>
-                                <th>34</th>
-                            </tr>
+                          
                         </tbody>
                 </table>
                 <br>
@@ -49,7 +30,7 @@
             <div class="modal-overlay"></div>
     
             <script>
-                
+
 
 
             </script>

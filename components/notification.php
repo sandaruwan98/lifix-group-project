@@ -98,22 +98,26 @@
                     if (status == "success") {
                         var tabledata = JSON.parse(data)
                         generateTable(tabledata);
-                        console.log(data);
                     }
                })
                 toggleNotificationWidow();
                 modal.checked = true;
            }
+
            if ($(this).attr('data-type') === 'c-lp') {
-            //    $get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-id'),(data,status)=>{
-            //         if (status == "success") {
-            //             var tabledata = JSON.parse(data)
+               var ids = $(this).attr('data-ref_id');
+               ids = ids.split('-')
+                console.log(ids);
+               $.get('../ddd.php?lpid='+ ids[0]+ '&tech=' +ids[1] ,(data,status)=>{
+                    if (status == "success") {
+                        var tabledata = JSON.parse(data)
                       
-            //         }
-            //    })
+                    }
+               })
                 toggleNotificationWidow();
                 modal.checked = true;
            }
+
         });
 
         function generateTable(data) {
