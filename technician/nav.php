@@ -28,5 +28,7 @@
 
 <script src="../js/slider.js"></script>
 
+<?php include "../components/notification.php" ?>
 
 <?php include "../components/toast.php" ?>
+<?php include '../components/noti_modals/modal_supply.php'; ?>
