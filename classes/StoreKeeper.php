@@ -33,9 +33,12 @@ class StoreKeeper extends Framework
     
     public function Inventory()
     {
-        $inventory = new \models\Inventory();
-        $data['inventory'] = $inventory->getAllInventory();
 
+        $inventory = new \models\Inventory();
+        $abc=$inventory->updateItem();
+      
+         $data['inventory'] = $inventory->getAllInventory();
+       
         $samodel = $this->loadModel('StockAddition');
         $result = $samodel->get_SA_List('0');
         $result= $result->fetch_all(MYSQLI_ASSOC);
@@ -46,12 +49,12 @@ class StoreKeeper extends Framework
             
             $data[$sa_id] = $samodel->getItemsfor_SA_byId($sa_id);
         }
-
         if (isset($_POST["confirm"])) {
             $samodel->setStatus('1', $_POST["sa_id"]);
             $this->session->sendMessage("New stock confirmed",'success');
 
         }
+    
         return $data;
     }
 

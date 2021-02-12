@@ -57,8 +57,8 @@ $session = new classes\Session(StorekeeperFL);
                 ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
+                                <span>ID: <?= $row['Itemrequest_id'] ?></span>
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
-                                <span>Technician: <?= $row['username'] ?></span>
                                 <i class="s fas fa-check"></i>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ $session = new classes\Session(StorekeeperFL);
 
                 
 
-                <div class="table-section sc-bar">
+                <div class="table-section sc-bar" >
                     <div class="details">
                         <h2>Request Details</h2>
                         <?php 
@@ -84,7 +84,7 @@ $session = new classes\Session(StorekeeperFL);
                         
                     
                 ?>
-                        <table class="tbl1 content-table">
+                        <table class="tbl1 content-table" >
     
                             <tbody>
                                 <tr>
@@ -93,7 +93,7 @@ $session = new classes\Session(StorekeeperFL);
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td id="reqdate"><?= $row['supplied_date'] ?></td>
+                                    <td id="reqdate"><?= $row['added_date'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
