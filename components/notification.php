@@ -118,7 +118,8 @@
                $.get('../clerk/ajax/getlpModelData.php?lpid='+ ids[0]+ '&tech=' + ids[1] ,(data,status)=>{
                     if (status == "success") {
                         var lpdata = JSON.parse(data)
-                        console.log(lpdata);
+                        $('.declinelp').attr("id",lpdata.lp.lp_id); 
+
                         $('#lpid').html(lpdata.lp.lp_id); 
                         $('#adr').html(lpdata.lp.division); 
                         $('#date').html(lpdata.lp.date); 

@@ -21,10 +21,26 @@
                 <p>Added technician : </p>
                 <p id="tech" class="val"></p>
                 <br>
-                <button class="field danger">Confirm</button>
+                <button onclick="confirmlp()" class="field danger">Confirm</button>
                 
-                <button class="field success">Decline</button>
+                <button id="0" onclick="declinelp(this.id)" class="field success declinelp">Decline</button>
             </div>
             
             <div class="modal-overlay"></div>
     
+            <script>
+
+                function confirmlp() {
+                    
+                }
+
+                function declinelp(id) {
+                    // send ajax to delete lp
+                    $.get("x.php?id=" + id , (status)=>{
+                        if (status == "success") {
+                            location.reload();
+                        }
+                    })
+                }
+
+            </script>

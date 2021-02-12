@@ -31,6 +31,14 @@ class LampPost extends Database
         $this->conn->query($q);
     }
 
+
+    public function DeleteLampost( $lp_id)
+    {
+        $q = "DELETE FROM `lamppost` WHERE lp_id='$lp_id'";
+        $this->conn->query($q);
+    }
+
+    
     private function AddUsedItemforLP($lp_id,$item_id,$quantity){
         $q = "INSERT INTO `inventory_lamppost_asc`( `lamppost_id`, `item_id`, `quantity`) VALUES 
         ('$lp_id','$item_id' , '$quantity')";
