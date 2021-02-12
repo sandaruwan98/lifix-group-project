@@ -13,6 +13,14 @@ class LampPost extends Database
         $result = $this->conn->query($q);
         return $result->fetch_assoc();
     }
+    public function getLampPost_byid( $lp_id)
+    {
+
+        $q = "SELECT * FROM `lamppost` WHERE  lp_id='$lp_id'";
+        
+        $result = $this->conn->query($q);
+        return $result->fetch_assoc();
+    }
     
     public function addLampost( $lp_id,$address,$lat,$lng,$technician_id)
     {

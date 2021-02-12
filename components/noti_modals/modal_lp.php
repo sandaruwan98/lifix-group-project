@@ -10,10 +10,16 @@
                 <h2>Confirm new lamp post</h2>
                 <br>
                 <p >Lamp post id : </p>
-                <p class="val">#2314</p>
+                <p id="lpid" class="val">#2314</p>
                 <br>
                 <p>Address : </p>
-                <p class="val">sefesf,fewfew,dfddd</p>
+                <p id="adr" class="val">sefesf,fewfew,dfddd</p>
+                <br>
+                <p>Date : </p>
+                <p id="date" class="val">23-02-32</p>
+                <br>
+                <p>Added technician : </p>
+                <p id="tech" class="val"></p>
                 <br>
                 <button class="field danger">Confirm</button>
                 
