@@ -3,7 +3,7 @@
     include_once  __DIR__ . '/../utils/classloader.php';
 
     $errors = array('name'=>'', 'nic'=>'', 'lampid'=>'', 'phone'=>'', 'otp'=>'');
-    $name = $nic = $lampId = $phoneNo = $otpCode = $note = "";
+    $name = $nic = $lampId = $phoneNo = $otpCode = $otp = $note = "";
     $redirect= "";
 
     class DbAccess {
@@ -44,6 +44,9 @@
     }
 
 	if(isset($_POST['submit'])) {
+        if (session_id() == ""){
+            session_start();
+        }
         $name = $_POST['name'];
         $nic = $_POST['nic'];
         $lampId = $_POST['lampid'];
@@ -70,8 +73,9 @@
             $phoneNo = "";
             $errors['phone'] = 'Enter valid number';
         }
-        if(empty($otpCode)) {
-            $errors['otp'] = 'OTP must be a valid number';
+        if(empty($otpCode)|| isset($_SESSION['otp']) != true || $_SESSION['otp'] != $otpCode) {
+            $otpCode = "";
+            $errors['otp'] = 'OTP must be valid';
         }
 
         if(!array_filter($errors)) {

@@ -36,7 +36,7 @@ session_start();
  }
  else
  {
-  $output .= '<li><a href="#" class="text-bold text-italic">No Notification Found</a></li>';
+  $output .= '<li><a href="#" class="text-bold text-italic">No notifications</a></li>';
  }
  
 

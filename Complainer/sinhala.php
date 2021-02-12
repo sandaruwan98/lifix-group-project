@@ -3,7 +3,7 @@
 	$msg = 'ඔබගේ පැමිණිල්ල බාරගන්නා ලදී.';
 	$btnText = 'වෙනත් පැමිණිල්ලක් කරන්න';
 	$page = 'sinhala.php';
-	include "DbAccess.php";
+	include "dbAccess.php";
 ?>
 
 <!DOCTYPE html>
@@ -54,5 +54,6 @@
 	</div>
 	
 	<script src="index.js"></script>
+	<script src="textBiz.js" defer></script>
 </body>
 </html>
