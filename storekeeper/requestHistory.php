@@ -1,5 +1,6 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+
 $session = new classes\Session(StorekeeperFL);
 ?>
 
@@ -15,6 +16,8 @@ $session = new classes\Session(StorekeeperFL);
    
     <!-- <link rel="stylesheet" href="../Clerk/css/repairpage.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Item Requests</title>
 
 </head>
@@ -34,41 +37,98 @@ $session = new classes\Session(StorekeeperFL);
         <div class="p-list-section sc-bar">
 
 
-<div class="xx">
-    <h2>Request List</h2>
-</div>
 
-<!-- repair list -->
-<?php
-             $servername = "localhost";
-             $username = "root";
-             $password = "";
-             $dbname = "lifix";
-             $port = "3306";
-            
-             $mysqli = new mysqli($servername, $username, $password, $dbname, $port);
-
-               $query = "SELECT supplied_date,userId,username,itemrequest_id,added_date FROM itemrequest INNER JOIN user ON itemrequest.created_by=user.userId WHERE itemrequest.status='c'";
-               if($result = $mysqli->query($query)){
-                while ($row = $result->fetch_assoc()) { ?>
-                <div id="" class="repair-item">
-               
-                <div id="<?= $row['userId'] ?>" class="repair-item" onclick="location.href='<?= "./request.php?id=" . $row['userId']  ?>' ;">
-
-                <div class="row1"><span>#<?= $row["itemrequest_id"] ?></span>
-               <span><?= $row["supplied_date"] ?></span>
+                <div class="xx">
+                    <h2>Request List</h2>
                 </div>
-                </div>
-            </div>                            
+
+                <!-- request list -->
                
-             <?php }
+                <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
+
+
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
+                            <div class="row">
+                                <span>Supplied Date: <?= $row['supplied_date'] ?></span>
+                                <span>Technician: <?= $row['username'] ?></span>
+                                <i class="s fas fa-check"></i>
+                            </div>
+                        </div>
+                    
+                    <?php } ?>
+
+                </div>
+               
+
                 
-                $result->free();
-             } ?>
+
+                <div class="table-section sc-bar">
+                    <div class="details">
+                        <h2>Request Details</h2>
+                        <?php 
+                    
+
+                    $itemrequest= new models\ItemRequest();
+                    $request_list = $itemrequest->details();
 
 
-</div>
-                         
+                    while ($row = $request_list->fetch_assoc()) {
+                        
+                    
+                ?>
+                        <table class="tbl1 content-table">
+    
+                            <tbody>
+                                <tr>
+                                    <td>Technician Name</td>
+                                    <td id="name"><?= $row['username'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Requested Date</td>
+                                    <td id="reqdate"><?= $row['supplied_date'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Supplied Date</td>
+                                    <td id="supdate"><?= $row['supplied_date'] ?></td>
+                                </tr>
+                               
+    
+                            </tbody>
+    
+    
+                        </table>
+                        <?php } ?>
+                    </div>
+
+                    <!-- supply items -->
+                    <div class="details">
+                        <h2 style="margin-bottom: 8px;"> Supplied Items</h2>
+                    <table class="tbl2 content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+                    </div>
+                </div>
+     
+
+
+        <script src="requestHistory.js"></script>
+      
 
 </body>
 </html>

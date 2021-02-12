@@ -11,7 +11,7 @@ class Technician extends Framework
     
     public function AvalableRepairsPage()
     {
-        $repairmodel = $this->loadModel('Repair');
+        $repairmodel = new \models\Repair();
         $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID() );
         $data['repairs'] = $repairs;
         return $data;
@@ -24,7 +24,7 @@ class Technician extends Framework
         if (!isset($_GET["id"])) 
             header('location: ./index.php');
         
-        $invmodel = $this->loadModel('Inventory');
+        $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $data['ItemData']= $item_names->fetch_all();
 
@@ -199,7 +199,7 @@ class Technician extends Framework
     
             if ($quantity!=0 && $quantity!=null) {
     
-                $used_item = array($item[0], $quantity);
+                $used_item = array($item[0], $quantity, $item[1]);
                 $used_items[] = $used_item;
             }
             
@@ -215,10 +215,22 @@ class Technician extends Framework
         }
     
         if (!empty($used_items)) {
-            $repairmodel = $this->loadModel('Repair');
-            $r_id = $_GET["id"];
-            $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
-            $this->session->sendMessage("Repair marked as completed",'success');
+
+            $invmanger = new InventoryManager();
+            $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items,$this->session->getuserID());
+           
+            if ($errmsg == '') {
+                $repairmodel = new \models\Repair();
+                $r_id = $_GET["id"];
+                $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
+
+                $invmanger ->DecreasetmpInventory($used_items,$this->session->getuserID());
+
+
+                $this->session->sendMessage("Repair marked as completed",'success');
+            }else {
+                $this->session->sendMessage("Insuficient ".$errmsg ,'danger');
+            }
             // header("location: ./index.php");
         }
     }
@@ -267,7 +279,7 @@ class Technician extends Framework
     }
   
 
-
+  
 
 
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 08a157d0598b7cdb56ae21fb1bb910afb177cd79
 var reItemId=0;
 
 $(document).ready(function(){
@@ -28,7 +24,7 @@ $(document).ready(function(){
     })
 
     $("#supplybtn").click(()=>{
-        $.get("./ajax/sendToTechnician.php?id="+reItemId,function(data, success){
+        $.get("./ajax/sendToTechnician.php?id="+reItemId ,function(data, success){
             // console.log("in the nethod");
             if(success == "success"){
                 location.reload();

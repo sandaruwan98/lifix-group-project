@@ -16,7 +16,7 @@ class Authentication extends Framework{
         
 
     public function __construct() {
-        $this->session = new Session('login');
+        $this->session = new Session('nodirect');
     }
 
     public function Loginuser()

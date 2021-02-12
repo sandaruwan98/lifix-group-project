@@ -32,7 +32,7 @@ class ItemRequest extends Database
  
     public function getItemRequest_byid($ir_id)
     {
-        $q = "SELECT Itemrequest_id,added_date FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
+        $q = "SELECT Itemrequest_id,added_date,supplied_date FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
 
         $list =   $this->conn->query($q);
         return $list->fetch_assoc();
@@ -83,6 +83,17 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    public function getItemReqWithTechName($ir_id)
+    {
+        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date
+        FROM itemrequest INNER JOIN user 
+        ON itemrequest.created_by=user.userId
+         WHERE itemrequest.Itemrequest_id='$ir_id' ";
+
+        $list =   $this->conn->query($q);
+        return $list;
+    }
 
 
 
@@ -101,22 +112,15 @@ class ItemRequest extends Database
         $this->conn->query($q);
     }
 
+    public function SupplyItemRequest($ir_id,$storekeeper_id){
 
-    public function SupplyItemRequest($ir_id){
         $date = date("yy-m-d");
-        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date WHERE `Itemrequest_id`=$ir_id";
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date, `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
         
         return $this->conn->query($qurey);
     }
      
-    /*public function  SuppliedDetail($u_id)
-    {
-        $query = "SELECT itemrequest.supplied_date,user.username,itemrequest.Itemrequest_id,itemrequest.added_date FROM itemrequest INNER JOIN user ON itemrequest.created_by='$u_id' WHERE itemrequest.status='c'";
-       
-        
-        return $this->conn->query($qurey);
-    }
-*/
+    
 ////////////////////////////////////
     
     public function CreateItemRequest($created_user_id,$request_items){

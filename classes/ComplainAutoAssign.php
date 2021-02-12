@@ -6,7 +6,7 @@ include_once  __DIR__ . '/../utils/classloader.php';
 
 class ComplainAutoAssign extends Framework{
     public function __construct() {
-        $this->session = new Session('login');
+        $this->session = new Session('nodirect');
     }
 
    
