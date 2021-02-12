@@ -93,11 +93,46 @@
 
            // load_unseen_notification();
 
+           if ($(this).attr('data-type') === 'c-supply') {
+               $.get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-ref_id'),(data,status)=>{
+                    if (status == "success") {
+                        var tabledata = JSON.parse(data)
+                        generateTable(tabledata);
+                        console.log(data);
+                    }
+               })
+                toggleNotificationWidow();
+                modal.checked = true;
+           }
            if ($(this).attr('data-type') === 'c-lp') {
+            //    $get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-id'),(data,status)=>{
+            //         if (status == "success") {
+            //             var tabledata = JSON.parse(data)
+                      
+            //         }
+            //    })
                 toggleNotificationWidow();
                 modal.checked = true;
            }
         });
+
+        function generateTable(data) {
+            var table = document.querySelector(".modal-window .content-table");
+            table.tBodies[0].remove();
+
+            var tbody = table.createTBody();
+
+            data.forEach( item => {
+                var row = tbody.insertRow(-1);
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = item.name;
+                cell2.innerHTML = item.quantity;
+            });
+            
+            
+        } 
         
         
         setInterval(function(){ 
