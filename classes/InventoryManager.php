@@ -27,6 +27,8 @@ class InventoryManager
         $invmodel = new \models\Inventory();
         foreach ($items as $item) {
             $invmodel->updateQuantity($item[0],$item[1],'-');
+            // $invmodel->updateQuantity($item['item_id'],$item['quantity'],'-');
+
         }
     }
 
@@ -36,7 +38,7 @@ class InventoryManager
     {
         $invmodel = new \models\Inventory();
         foreach ($items as $item) {
-            $invmodel->updateQuantity($item[0],$item[1],'+');
+            $invmodel->updateQuantity($item['item_id'],$item['quantity'],'+');
         }
     }
      
