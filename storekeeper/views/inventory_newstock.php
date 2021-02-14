@@ -27,7 +27,7 @@ foreach($newstocks as $newstock):
                     </div>
                     </div>
                 </thead>
-
+                
                 <?php
                 $sa_id = $newstock['sa_id'];
                 foreach($data[$sa_id] as $item){
@@ -46,7 +46,7 @@ foreach($newstocks as $newstock):
                     
                     <button id="confirm" name="confirm" class="btn">Confirm</button>
                     <input name="sa_id" type="text" hidden value="<?= $sa_id ?>" >
-                    <button id="decline" class="btn danger">Decline</button>
+                    <button id="decline" name="decline" class="btn danger">Decline</button>
 
                
             </div>

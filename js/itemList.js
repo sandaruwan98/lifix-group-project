@@ -135,3 +135,24 @@ var itemList = {
     }
   
 };
+
+
+function SendAjax2(){
+
+  const filtereList = itemList.items.map( (item) => {
+    return Object.fromEntries(Object.entries(item).filter(([key, value]) => (key === 'Quantity') || (key === 'itemNo')))
+  }) 
+  // console.log( JSON.stringify( filtereList));
+  if (filtereList.length != 0) {
+      $.post( "./ajax/save_itemlist.php", JSON.stringify( filtereList))
+      .done(function( data ) {
+        // console.log( data );
+        location.reload();
+      });
+      
+      
+      itemList.items = []
+      view.displayItemsList();
+  }
+
+};
