@@ -5,7 +5,7 @@ var notification = new Notif({
     topPos: 10,
     classNames: 'success danger',
     autoClose: true,
-    autoCloseTimeout: 3000
+    autoCloseTimeout: 10000
 });
     
     
