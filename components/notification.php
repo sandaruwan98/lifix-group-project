@@ -102,6 +102,8 @@
            if ($(this).attr('data-type') === 'c-supply') {
                $.get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-ref_id'),(data,status)=>{
                     if (status == "success") {
+                        $('.dec-sup').attr("id", $(this).attr('data-ref_id') ); 
+                        $('.con-sup').attr("id", $(this).attr('data-ref_id') ); 
                         var tabledata = JSON.parse(data)
                         generateTable(tabledata);
                     }

@@ -22,15 +22,33 @@
                 </table>
                 <br>
 
-                <button name="decline" class="field danger">Confirm</button>
+                <button name="decline" onclick="confirmSupp(this.id)" class="field success con-sup">Confirm</button>
                 
-                <button name="accept" class="field success">Decline</button>
+                <button name="accept" onclick="declineSupp(this.id)" class="field danger dec-sup">Decline</button>
             </div>
             
             <div class="modal-overlay"></div>
     
             <script>
 
+function confirmSupp(id) {
+    // send ajax to 
+    $.get("../components/noti_ajax/supplyconfirm.php?id=" + id , (data,status)=>{
+        
+        if (status == "success") {
+            location.reload();
+        }
+    })
+}
 
+function declineSupp(id) {
+    // send ajax to 
+    $.get("../components/noti_ajax/supplydecline.php?id=" + id , (data,status)=>{
+        
+        if (status == "success") {
+            location.reload();
+        }
+    })
+}
 
-            </script>
+</script>

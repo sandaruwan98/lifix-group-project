@@ -31,12 +31,14 @@
             <script>
 
                 function confirmlp() {
-                    
+                    // delete relevant notification
                 }
 
                 function declinelp(id) {
+                    console.log("sscsc");
                     // send ajax to delete lp
-                    $.get("x.php?id=" + id , (status)=>{
+                    $.get("../components/noti_ajax/deletelamppost.php?id=" + id , (data,status)=>{
+                        
                         if (status == "success") {
                             location.reload();
                         }
