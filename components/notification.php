@@ -27,9 +27,13 @@
 
 
         const toggleNotificationWidow = () => {
-           
+            const container = document.querySelector('.notification-container');
+            container.classList.toggle("open");
+            if (container.classList.contains("open"))
+                container.style.height =  "400px";
+            else
+                container.style.height =  "50px";
             document.querySelector('.notification-fab .wrap').classList.toggle("ani");
-            document.querySelector('.notification-container').classList.toggle("open");
             document.querySelector('.img-fab.img').classList.toggle("close");
         }
 
@@ -53,7 +57,6 @@
                     });
                     $('.notification').css({
                         "text-decoration": "none",
-                        "color" : "black",
                         "display" : "flex",
                         "flex-direction": "column",
                         "align-items": "start",
@@ -79,6 +82,7 @@
         
             // load_unseen_notification();
         const modal = document.querySelector('.modal-launcher');
+
         $(document).on('click', '.notification', function(){
             $('.count').html('');
             $('.count').css({
@@ -93,9 +97,13 @@
 
            // load_unseen_notification();
 
+
+        // if supply confirm notification show confirm modal with table data
            if ($(this).attr('data-type') === 'c-supply') {
                $.get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-ref_id'),(data,status)=>{
                     if (status == "success") {
+                        $('.dec-sup').attr("id", $(this).attr('data-ref_id') ); 
+                        $('.con-sup').attr("id", $(this).attr('data-ref_id') ); 
                         var tabledata = JSON.parse(data)
                         generateTable(tabledata);
                     }
@@ -104,14 +112,20 @@
                 modal.checked = true;
            }
 
+           
+            // if lamp post confirm notification show confirm modal with lamp post details
            if ($(this).attr('data-type') === 'c-lp') {
                var ids = $(this).attr('data-ref_id');
                ids = ids.split('-')
-                console.log(ids);
-               $.get('../ddd.php?lpid='+ ids[0]+ '&tech=' +ids[1] ,(data,status)=>{
+               $.get('../clerk/ajax/getlpModelData.php?lpid='+ ids[0]+ '&tech=' + ids[1] ,(data,status)=>{
                     if (status == "success") {
-                        var tabledata = JSON.parse(data)
-                      
+                        var lpdata = JSON.parse(data)
+                        $('.declinelp').attr("id",lpdata.lp.lp_id); 
+
+                        $('#lpid').html(lpdata.lp.lp_id); 
+                        $('#adr').html(lpdata.lp.division); 
+                        $('#date').html(lpdata.lp.date); 
+                        $('#tech').html(lpdata.tech); 
                     }
                })
                 toggleNotificationWidow();

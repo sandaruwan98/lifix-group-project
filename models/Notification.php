@@ -11,6 +11,14 @@ class Notification extends Database
         $update_query = "UPDATE notification SET status=1 WHERE id='$nt_id'";
         $this->conn->query($update_query);
     }
+
+    public function AddNotification($subject,$body,$from,$to,$type,$ref)
+    {
+        $query = "INSERT INTO `notification`(`subject`, `body`, `status`, `from_user`, `to_user`, `type`, `ref_id`) 
+        VALUES ('$subject','$body',0,'$from','$to','$type','$ref')";
+        echo $query;
+        $this->conn->query($query);
+    }
     
     
     public function getunReadNotifications($user_id)

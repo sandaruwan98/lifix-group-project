@@ -10,15 +10,39 @@
                 <h2>Confirm new lamp post</h2>
                 <br>
                 <p >Lamp post id : </p>
-                <p class="val">#2314</p>
+                <p id="lpid" class="val">#2314</p>
                 <br>
                 <p>Address : </p>
-                <p class="val">sefesf,fewfew,dfddd</p>
+                <p id="adr" class="val">sefesf,fewfew,dfddd</p>
                 <br>
-                <button class="field danger">Confirm</button>
+                <p>Date : </p>
+                <p id="date" class="val">23-02-32</p>
+                <br>
+                <p>Added technician : </p>
+                <p id="tech" class="val"></p>
+                <br>
+                <button onclick="confirmlp()" class="field danger">Confirm</button>
                 
-                <button class="field success">Decline</button>
+                <button id="0" onclick="declinelp(this.id)" class="field success declinelp">Decline</button>
             </div>
             
             <div class="modal-overlay"></div>
     
+            <script>
+
+                function confirmlp() {
+                    // delete relevant notification
+                }
+
+                function declinelp(id) {
+                    console.log("sscsc");
+                    // send ajax to delete lp
+                    $.get("../components/noti_ajax/deletelamppost.php?id=" + id , (data,status)=>{
+                        
+                        if (status == "success") {
+                            location.reload();
+                        }
+                    })
+                }
+
+            </script>

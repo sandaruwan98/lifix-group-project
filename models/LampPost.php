@@ -13,6 +13,14 @@ class LampPost extends Database
         $result = $this->conn->query($q);
         return $result->fetch_assoc();
     }
+    public function getLampPost_byid( $lp_id)
+    {
+
+        $q = "SELECT * FROM `lamppost` WHERE  lp_id='$lp_id'";
+        
+        $result = $this->conn->query($q);
+        return $result->fetch_assoc();
+    }
     
     public function addLampost( $lp_id,$address,$lat,$lng,$technician_id)
     {
@@ -23,6 +31,14 @@ class LampPost extends Database
         $this->conn->query($q);
     }
 
+
+    public function DeleteLampost( $lp_id)
+    {
+        $q = "DELETE FROM `lamppost` WHERE lp_id='$lp_id'";
+        $this->conn->query($q);
+    }
+
+    
     private function AddUsedItemforLP($lp_id,$item_id,$quantity){
         $q = "INSERT INTO `inventory_lamppost_asc`( `lamppost_id`, `item_id`, `quantity`) VALUES 
         ('$lp_id','$item_id' , '$quantity')";

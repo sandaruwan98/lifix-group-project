@@ -49,8 +49,32 @@ class StoreKeeper extends Framework
 
         if (isset($_POST["confirm"])) {
             $samodel->setStatus('1', $_POST["sa_id"]);
-            $this->session->sendMessage("New stock confirmed",'success');
+            
+            // increase the inventory
+            $invmanager = new InventoryManager();
+            $invmanager->IncreaseInventory($data[$_POST["sa_id"]]);
+            
 
+            $this->session->sendMessage("New stock confirmed and Inventory updated",'success');
+            header("Location: ./inventory.php");
+            exit();
+
+        }
+
+        if (isset($_POST["decline"])) {
+            $samodel->setStatus('2', $_POST["sa_id"]);
+            $sa = $samodel->get_SA_byid($_POST["sa_id"]);
+
+            // add notification to inform clerck
+            $notimodel = new \models\Notification();
+            $subject = 'Stock Addition Rejection';
+            $body = 'Storekeeper declined stock addition.  ID - '.$_POST["sa_id"].'   Date - '.$sa['date'] ;
+            $notimodel->AddNotification($subject,$body,$this->session->getuserID(),$sa['clerk_id'],'norm', $_POST["sa_id"]);
+
+
+            $this->session->sendMessage("New stock declined",'success');
+            header("Location: ./inventory.php");
+            exit();
         }
         return $data;
     }
