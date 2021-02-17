@@ -36,7 +36,8 @@ function confirmSupp(id) {
     $.get("../components/noti_ajax/supplyconfirm.php?id=" + id , (data,status)=>{
         
         if (status == "success") {
-            location.reload();
+            console.log(data);
+            // location.reload();
         }
     })
 }

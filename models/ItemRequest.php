@@ -32,7 +32,7 @@ class ItemRequest extends Database
  
     public function getItemRequest_byid($ir_id)
     {
-        $q = "SELECT Itemrequest_id,added_date,supplied_date FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
+        $q = "SELECT * FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
 
         $list =   $this->conn->query($q);
         return $list->fetch_assoc();
