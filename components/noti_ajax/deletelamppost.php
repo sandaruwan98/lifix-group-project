@@ -5,11 +5,31 @@ require_once __DIR__ . '/../../utils/classloader.php';
 
 $session = new classes\Session(CleckFL);
 if (isset($_GET['id'])) {
+    $lpid = $_GET['id'];
+    $noti_id = $_GET['noti_id'];
 
     $lp = new models\LampPost();
-    // $lp->DeleteLampost($_GET['id']);
-    $session->sendMessage("Lampost declined and deleted","success");
+    // get name of the added tech
+    $lamp = $lp->getLampPost_byid($lpid);
+    $techid = $lamp['added_by'];
+
+    // delete the added lamppost
+    $lp->DeleteLampost($lpid);
     
-    // add notification to added tech that lp deleted
+    // mark current notifi as read
+    $noti = new models\Notification();
+    $noti->MarkasRead($noti_id);
+    
+    // add notification to added tech saying lp deleted
+    $subject = 'LampPost Denied - #'.$lpid;
+    $user = new models\User();
+    $clerkname = $user->getNameById($sesion->getuserID());
+    $body = $clerkname.'(Clerck) denied your lamppost adding - LPID : #'.$lpid ;
+    $noti->AddNotification($subject,$body, $sesion->getuserID()  , $techid   ,'norm',$id);
+
+
+    // send toast message
+    $session->sendMessage("Lampost declined and deleted","success");
+
 }
 
