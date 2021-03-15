@@ -8,17 +8,25 @@ if (isset($_GET['id'])) {
     $ir_id = $_GET['id'];
     $noti_id = $_GET['noti_id'];
 
-    $lp = new models\ItemRequest();
+    $irmodel = new models\ItemRequest();
+   
     // mark ir as declined
-    $ir = $irmodel->setStatus($ir_id,IR_DENY);
+    $irmodel->setStatus($ir_id,IR_DENY);
     
     // mark notification as complete
     $noti = new models\Notification();
     $noti->MarkasRead($noti_id);
-    
-    // add notification to supplied st 
-    
-    $session->sendMessage("Supply declined","success");
+
+    // add notification to  Storekeeper 
+    $ir = $irmodel->getItemRequest_byid($ir_id);
+    $subject = 'Item Supply Cancelled';
+    $user = new models\User();
+    $techname = $user->getNameById($sesion->getuserID());
+
+    $body = $techname.' cancelled your Item Supply - ID : '.$id ;
+    $noti->AddNotification($subject,$body, $sesion->getuserID()  ,  $ir['completed_by']  ,'norm',$id);
+
+    $session->sendMessage("Supply declined successfully","success");
     exit;
 }
 
