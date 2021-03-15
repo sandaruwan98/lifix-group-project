@@ -124,6 +124,9 @@
                     if (status == "success") {
                         var lpdata = JSON.parse(data)
                         $('.declinelp').attr("id",lpdata.lp.lp_id); 
+                        $('.declinelp').attr("data-noti-id", $(this).attr('id') ); 
+                        
+                        $('.confirmlp').attr("data-noti-id", $(this).attr('id') ); 
 
                         $('#lpid').html(lpdata.lp.lp_id); 
                         $('#adr').html(lpdata.lp.division); 

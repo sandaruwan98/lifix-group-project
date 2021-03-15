@@ -104,8 +104,7 @@ class Technician extends Framework
     public function AddRequestpage()
     {
         
-        
-        $invmodel = $this->loadModel('Inventory');
+        $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $item_names = $item_names->fetch_all();
         $data['ItemData'] = $item_names;
@@ -126,7 +125,7 @@ class Technician extends Framework
             }
         
             if (!empty($request_items)) {
-                $itemrequest = $this->loadModel('ItemRequest');
+                $itemrequest = new \models\ItemRequest();
                 // var_dump($request_items);
                 $itemrequest->CreateItemRequest($this->session->getuserID(),$request_items );
         
@@ -143,7 +142,7 @@ class Technician extends Framework
     {
         
         
-        $invmodel = $this->loadModel('Inventory');
+        $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $item_names = $item_names->fetch_all();
         $data['ItemData'] = $item_names;
@@ -155,7 +154,7 @@ class Technician extends Framework
             $lng = $_POST["lng"];
         
             $lp = $this->loadModel('LampPost');
-              // danata tecnician_id eka 1 authentication nathi nisa
+              // add lampost to database
             $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
         
         
