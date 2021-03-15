@@ -35,7 +35,6 @@
                 }
 
                 function declinelp(id) {
-                    console.log("sscsc");
                     // send ajax to delete lp
                     $.get("../components/noti_ajax/deletelamppost.php?id=" + id , (data,status)=>{
                         

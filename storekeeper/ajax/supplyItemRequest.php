@@ -17,7 +17,8 @@ if ($errors == '') {
 
     $bool=$itemReq->SupplyItemRequest($id, $sesion->getuserID() );
     if($bool){
-         // add notification to inform clerck
+         // add notification to inform tech
+
          $notimodel = new models\Notification();
          $subject = 'Item Supply Confirmation';
          $body = 'Storekeeper('.$sesion->getuserID().') supplied items,confirm it - itemrequest id : '.$id ;
