@@ -23,9 +23,9 @@ if (isset($_GET['id'])) {
     // add notification to added tech saying lp deleted
     $subject = 'LampPost Denied - #'.$lpid;
     $user = new models\User();
-    $clerkname = $user->getNameById($sesion->getuserID());
+    $clerkname = $user->getNameById($session->getuserID());
     $body = $clerkname.'(Clerck) denied your lamppost adding - LPID : #'.$lpid ;
-    $noti->AddNotification($subject,$body, $sesion->getuserID()  , $techid   ,'norm',$id);
+    $noti->AddNotification($subject,$body, $session->getuserID()  , $techid   ,'norm','');
 
 
     // send toast message

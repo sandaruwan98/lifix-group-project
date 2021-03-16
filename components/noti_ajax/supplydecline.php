@@ -21,10 +21,10 @@ if (isset($_GET['id'])) {
     $ir = $irmodel->getItemRequest_byid($ir_id);
     $subject = 'Item Supply Cancelled';
     $user = new models\User();
-    $techname = $user->getNameById($sesion->getuserID());
+    $techname = $user->getNameById($session->getuserID());
 
-    $body = $techname.' cancelled your Item Supply - ID : '.$id ;
-    $noti->AddNotification($subject,$body, $sesion->getuserID()  ,  $ir['completed_by']  ,'norm',$id);
+    $body = $techname.' cancelled your Item Supply - ID : '.$ir_id ;
+    $noti->AddNotification($subject,$body, $session->getuserID()  ,  $ir['completed_by']  ,'norm','');
 
     $session->sendMessage("Supply declined successfully","success");
     exit;

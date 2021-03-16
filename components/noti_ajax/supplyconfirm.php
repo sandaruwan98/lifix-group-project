@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $items = $irmodel->getItemsfor_ItemRequest_byId($ir_id);
 
     // mark ir as complete
-    $ir = $irmodel->setStatus($ir_id,IR_COMPLETE);
+    $irmodel->setStatus($ir_id,IR_COMPLETE);
 
 
     $invmanger = new classes\InventoryManager();
