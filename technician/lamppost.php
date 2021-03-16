@@ -69,7 +69,7 @@ $data =  $tech->LamppostPage();
                     ?>
                     <div class="collapsible"><?= $item[1] ?></div>
                     <div class="content">
-                        <input class="field" type="text" placeholder="Enter Used Amount" name="<?= $item[0] ?>_u" id="">
+                        <input class="field" type="text" placeholder="Enter Used Amount" name="<?= $item[0] ?>_u" >
                     </div>
                     <?php endforeach ?>
 

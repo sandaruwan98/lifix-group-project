@@ -33,7 +33,6 @@
                 function confirmlp(noti_id) {
                     // delete relevant notification
                     $.get("../components/noti_ajax/acceptlamppost.php?noti_id=" + noti_id , (data,status)=>{
-                        
                         if (status == "success") {
                             location.reload();
                         }
@@ -46,6 +45,8 @@
                         
                         if (status == "success") {
                             location.reload();
+                        // console.log(data);
+
                         }
                     })
                 }

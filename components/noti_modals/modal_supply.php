@@ -37,8 +37,8 @@ function confirmSupp(id,noti_id) {
     $.get("../components/noti_ajax/supplyconfirm.php?id=" + id + '&noti_id='+ noti_id , (data,status)=>{
         
         if (status == "success") {
-            console.log(data);
-            // location.reload();
+            // console.log(data);
+            location.reload();
         }
     })
 }
@@ -48,6 +48,8 @@ function declineSupp(id,noti_id) {
     $.get("../components/noti_ajax/supplydecline.php?id=" + id + '&noti_id='+ noti_id , (data,status)=>{
         
         if (status == "success") {
+            // console.log(data);
+
             location.reload();
         }
     })
