@@ -159,9 +159,9 @@
         } 
         
         
-        setInterval(function(){ 
-        load_unseen_notification(); 
-        }, 5000);
+        // setInterval(function(){ 
+        // load_unseen_notification(); 
+        // }, 5000);
         
         }); 
 

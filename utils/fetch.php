@@ -14,8 +14,8 @@ session_start();
  $result = $notificationmodel->getunReadNotifications($_SESSION["id"]);
  
  $output = '
-    <h1>Notifications</h1>
-    <hr>
+    <h1 class="notification-header" >Notifications</h1>
+    
  ';
  
  if(mysqli_num_rows($result) > 0)
@@ -24,13 +24,11 @@ session_start();
   {
    $output .= '
    <li data-type="'.$row["type"].'" data-ref_id="'.$row["ref_id"].'" class="notification type" id='.$row["id"].'>
-     <strong>'.$row["id"].' - '.$row["subject"].'</strong>
-     <small><em>'.$row["body"].'</em></small>
+     <h4>'.$row["id"].' - '.$row["subject"].'</h4>
+     <h6>'.$row["body"].'</h6>
     </a>
    </li>
-   <li>
-    <hr>
-   </li>
+   
    ';
   }
  }
