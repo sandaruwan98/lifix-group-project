@@ -98,12 +98,15 @@
            // load_unseen_notification();
 
 
-        // if supply confirm notification show confirm modal with table data
+        // if supply confirm notification show confirm modal with table data  (tech)
            if ($(this).attr('data-type') === 'c-supply') {
                $.get('../storekeeper/ajax/getTableData.php?id=' + $(this).attr('data-ref_id'),(data,status)=>{
                     if (status == "success") {
                         $('.dec-sup').attr("id", $(this).attr('data-ref_id') ); 
                         $('.con-sup').attr("id", $(this).attr('data-ref_id') ); 
+
+                        $('.dec-sup').attr("data-noti-id", $(this).attr('id') ); 
+                        $('.con-sup').attr("data-noti-id", $(this).attr('id') ); 
                         var tabledata = JSON.parse(data)
                         generateTable(tabledata);
                     }
@@ -113,7 +116,7 @@
            }
 
            
-            // if lamp post confirm notification show confirm modal with lamp post details
+            // if lamp post confirm notification show confirm modal with lamp post details (clerk)
            if ($(this).attr('data-type') === 'c-lp') {
                var ids = $(this).attr('data-ref_id');
                ids = ids.split('-')
@@ -121,6 +124,9 @@
                     if (status == "success") {
                         var lpdata = JSON.parse(data)
                         $('.declinelp').attr("id",lpdata.lp.lp_id); 
+                        $('.declinelp').attr("data-noti-id", $(this).attr('id') ); 
+                        
+                        $('.confirmlp').attr("data-noti-id", $(this).attr('id') ); 
 
                         $('#lpid').html(lpdata.lp.lp_id); 
                         $('#adr').html(lpdata.lp.division); 
@@ -153,9 +159,9 @@
         } 
         
         
-        setInterval(function(){ 
-        load_unseen_notification(); 
-        }, 5000);
+        // setInterval(function(){ 
+        // load_unseen_notification(); 
+        // }, 5000);
         
         }); 
 

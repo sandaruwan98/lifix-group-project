@@ -3,7 +3,7 @@
 .notification-container {
     width: 290px;
     height: 50px;
-    background-color: #203437ba;
+    background-color: #ffffffb0;
     border-radius: 15px;
     box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.15);
     font-family: "Roboto", sans-serif;
@@ -26,9 +26,9 @@
 }
 
 .notification-container h1 {
-    font-size: 20px;
-    color: white;
-    padding: 25px 0;
+    font-size: 25px;
+    color: black;
+    padding: 20px 0;
     margin: 0;
     font-weight: 400;
     font-family: "Roboto", sans-serif;
@@ -94,11 +94,26 @@
     
 }
 
+
 .notification{
-    color: white;
-    background-color: #203437ba;
+    text-align:center;
+    color: black;
+    background-color: #ffffff;
+    margin:7px;
+    padding:3px;
+    border-radius: 13px;
     transition: background-color .1s ease;
 }
+
 .notification:hover{
-    background-color: #48839b;
+    background-color: #eaeaea;
+    border: black 1px solid;
 }
+
+.notification h4{
+    width:100%;
+    background-color:#00c9ff;
+    padding:3px;
+    border-radius: 5px;
+}
+

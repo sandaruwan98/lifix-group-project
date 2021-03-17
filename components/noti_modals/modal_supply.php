@@ -22,31 +22,34 @@
                 </table>
                 <br>
 
-                <button name="decline" onclick="confirmSupp(this.id)" class="field success con-sup">Confirm</button>
+                <button name="decline" onclick="confirmSupp(this.id,this.getAttribute('data-noti-id'))" class="field success con-sup">Confirm</button>
                 
-                <button name="accept" onclick="declineSupp(this.id)" class="field danger dec-sup">Decline</button>
+                <button name="accept" onclick="declineSupp(this.id,this.getAttribute('data-noti-id'))" class="field danger dec-sup">Decline</button>
             </div>
             
             <div class="modal-overlay"></div>
     
             <script>
 
-function confirmSupp(id) {
+function confirmSupp(id,noti_id) {
+    console.log(noti_id);
     // send ajax to 
-    $.get("../components/noti_ajax/supplyconfirm.php?id=" + id , (data,status)=>{
+    $.get("../components/noti_ajax/supplyconfirm.php?id=" + id + '&noti_id='+ noti_id , (data,status)=>{
         
         if (status == "success") {
-            console.log(data);
-            // location.reload();
+            // console.log(data);
+            location.reload();
         }
     })
 }
 
-function declineSupp(id) {
+function declineSupp(id,noti_id) {
     // send ajax to 
-    $.get("../components/noti_ajax/supplydecline.php?id=" + id , (data,status)=>{
+    $.get("../components/noti_ajax/supplydecline.php?id=" + id + '&noti_id='+ noti_id , (data,status)=>{
         
         if (status == "success") {
+            // console.log(data);
+
             location.reload();
         }
     })

@@ -21,26 +21,32 @@
                 <p>Added technician : </p>
                 <p id="tech" class="val"></p>
                 <br>
-                <button onclick="confirmlp()" class="field danger">Confirm</button>
+                <button onclick="confirmlp( this.getAttribute('data-noti-id') )" class="field danger confirmlp">Confirm</button>
                 
-                <button id="0" onclick="declinelp(this.id)" class="field success declinelp">Decline</button>
+                <button id="0" onclick="declinelp(this.id,this.getAttribute('data-noti-id') )" class="field success declinelp">Decline</button>
             </div>
             
             <div class="modal-overlay"></div>
     
             <script>
 
-                function confirmlp() {
+                function confirmlp(noti_id) {
                     // delete relevant notification
+                    $.get("../components/noti_ajax/acceptlamppost.php?noti_id=" + noti_id , (data,status)=>{
+                        if (status == "success") {
+                            location.reload();
+                        }
+                    })
                 }
 
-                function declinelp(id) {
-                    console.log("sscsc");
+                function declinelp(id,noti_id) {
                     // send ajax to delete lp
-                    $.get("../components/noti_ajax/deletelamppost.php?id=" + id , (data,status)=>{
+                    $.get("../components/noti_ajax/deletelamppost.php?id=" + id  + '&noti_id='+ noti_id , (data,status)=>{
                         
                         if (status == "success") {
                             location.reload();
+                        // console.log(data);
+
                         }
                     })
                 }
