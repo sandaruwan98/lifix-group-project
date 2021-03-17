@@ -63,13 +63,4 @@ else {
     echo "No Data on this period";
 }
 }
-elseif(isset($_POST["function"])) {
-    $inventry = $inventryModel->getInventory();
-    $rows = array();
-    while($r = mysqli_fetch_assoc($inventry)) {
-        $rows[] = $r;
-    }
-    echo json_encode($rows);
-}
-
 ?>
