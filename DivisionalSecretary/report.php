@@ -56,10 +56,6 @@ $firstDate = date("Y-m-d", $d);
         </div>
         <div class="chart-column-data">
 
-          <!-- <?php
-            // $list = $fetchObj->getComplaints($firstDate, $secondDate);
-          ?> -->
-
             <p class="chart-column-data-p">
             
 </p>
@@ -82,8 +78,14 @@ $firstDate = date("Y-m-d", $d);
         <div class="chart-title">
           <h2>Inventory</h2>
         </div>
-
-        <div id="myfirstchart" style="height:max-content;"></div>
+          <?php 
+            $inventry = $inventryModel->getInventory();
+            $data = "";
+            while($row = mysqli_fetch_array($inventry)) {
+                $data .= "{ name:'".$row["name"]."',total:".$row["total"]."},";
+            }
+          ?>
+        <div id="myfirstchart" style="height:auto; width:auto"></div>
       </div>
       <div class="chart-column-middle"></div>
       <div class="chart-column">
@@ -120,28 +122,13 @@ $firstDate = date("Y-m-d", $d);
   );
 
 
-  let data;
-
-  $(document).ready(function() {
-    $.ajax({
-        type: "POST",
-        url: "../utils/reportFetch.php",
-        data: {function: 2},
-        success: function(data) {
-          if(data != undefined) {
-            new Morris.Bar({
+  new Morris.Bar({
             element: 'myfirstchart',
-            data: data,
+            data: [<?php echo $data; ?>],
             xkey: 'name',
             ykeys: ['total'],
-            labels: ['Value']
+            labels: ['Count']
           });
-          }
-          
-          
-        }
-    });
-  });
 
   
 </script>
