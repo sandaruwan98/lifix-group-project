@@ -1,19 +1,106 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  /* Create two equal columns that floats next to each other */
+  box-sizing: border-box;
+}
+
+.chart-column {
+  float: left;
+  width: 700px;
+  height: 500px;
+  background-color: rgb(230, 230, 230);
+}
+
+.chart-column-data {
+  display: flex;
+  width: 700px;
+  justify-content: center;
+  overflow: auto;
+  height: 450px;
+  background-color: rgb(230, 230, 230);
+}
+
+.chart-column-data-p {
+  font-size: 15px;
+  color: black;
+}
+
+.chart-column-middle {
+  float: left;
+  width: 25px;
+  height: 300px;
+}
+
+.chart-row:after {
+  padding-top: 25px;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.chart-title {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 0px 0px 10px;
+  background-color: aquamarine;
+}
+
+.chart-container {
+  padding-top: 50px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+table {
+  font-family: "Arial";
+  width: 700px;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #0cc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05),
+    0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+}
+table tr:hover {
+  background: #f4f4f4;
+}
+table tr:hover td {
+  color: #555;
+}
+table th,
+table td {
+  /* color: #999; */
+  border: 1px solid #eee;
+  padding: 12px 14px;
+  border-collapse: collapse;
+}
+table th {
+  background: #0cc;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+table th.last {
+  border-right: none;
+}
+
+@media only screen and (max-width: 1400px) {
   .chart-column {
     float: left;
-    width: 700px;
-    height: 500px; /* Should be removed. Only for demonstration */
+    width: 600px;
+    height: 500px;
     background-color: rgb(230, 230, 230);
   }
 
   .chart-column-data {
-    width: 700px;
-    overflow:auto;
-    height: 450px; /* Should be removed. Only for demonstration */
+    display: flex;
+    width: 600px;
+    justify-content: center;
+    overflow: auto;
+    height: 450px;
     background-color: rgb(230, 230, 230);
   }
 
@@ -24,109 +111,32 @@
 
   .chart-column-middle {
     float: left;
-    width: 25px;
+    width: 30px;
     height: 300px;
   }
-  
-  /* Clear floats after the columns */
+
   .chart-row:after {
-    padding-top: 25px;
+    padding-top: 30px;
     content: "";
     display: table;
     clear: both;
   }
 
   .chart-title {
-      display: flex;
-      align-items: flex-end;
-      padding: 10px 0px 0px 10px;
-      background-color: aquamarine;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 0px 0px 10px;
+    background-color: aquamarine;
   }
 
-  /* body {
-    background: #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
-    color: #444;
-    font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
-    text-shadow: 0 1px 0 #fff;
-  } */
-  
-  strong {
-    font-weight: bold; 
-  }
-  
-  em {
-    font-style: italic; 
-  }
-  
   table {
-    font-family: 'Arial';
-    width: auto;
+    font-family: "Arial";
+    width: 600px;
     border-collapse: collapse;
     border: 1px solid #eee;
     border-bottom: 2px solid #0cc;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.10), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
- }
-  table tr:hover {
-    background: #f4f4f4;
- }
-  table tr:hover td {
-    color: #555;
- }
-  table th, table td {
-    color: #999;
-    border: 1px solid #eee;
-    padding: 12px 14px;
-    border-collapse: collapse;
- }
-  table th {
-    background: #0cc;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 11px;
- }
-  table th.last {
-    border-right: none;
- }
-  
-
-  @media only screen and (max-width: 1400px) {
-    .chart-column {
-      float: left;
-      width: 600px;
-      height: 500px; /* Should be removed. Only for demonstration */
-      background-color: rgb(230, 230, 230);
-    }
-  
-    .chart-column-data {
-      width: 600px;
-      overflow:auto;
-      height: 450px; /* Should be removed. Only for demonstration */
-      background-color: rgb(230, 230, 230);
-    }
-  
-    .chart-column-data-p {
-      font-size: 15px;
-      color: black;
-    }
-  
-    .chart-column-middle {
-      float: left;
-      width: 30px;
-      height: 300px;
-    }
-    
-    /* Clear floats after the columns */
-    .chart-row:after {
-      padding-top: 30px;
-      content: "";
-      display: table;
-      clear: both;
-    }
-  
-    .chart-title {
-        display: flex;
-        align-items: flex-end;
-        padding: 10px 0px 0px 10px;
-        background-color: aquamarine;
-    }
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1),
+      0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
+      0px 30px 20px rgba(0, 0, 0, 0.05);
   }
+}
