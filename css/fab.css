@@ -71,6 +71,8 @@
     transition: all 0.15s cubic-bezier(0.15, 0.87, 0.45, 1.23);
 }
 
+
+
 .notification-fab .ani {
     transform: rotate(45deg);
     -webkit-transition: all 0.15s cubic-bezier(0.15, 0.87, 0.45, 1.23);
@@ -94,15 +96,30 @@
     
 }
 
+.notification-fab .wrap .count-wrap .count {
+    position: absolute;
+    top: -22px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background : red;
+    color: white;
+    
+}
+.notification-fab .wrap .count-wrap .count-o {
+    top: -22px;
+    right: -27px;
+}
 
 .notification{
+    position: relative;
     text-align:center;
     color: black;
     background-color: #ffffff;
     margin:7px;
     padding:3px;
     border-radius: 13px;
-    transition: background-color .1s ease;
+    transition: all .2s ease;
 }
 
 .notification:hover{
@@ -128,4 +145,21 @@ background: #c6d7de;
 .notification-container::-webkit-scrollbar-thumb {
 background: #00c9ff;
 }
-  
+
+.clear{
+    
+    text-align:center;
+    font-size:1.3em;
+    color:white;
+    position:absolute;
+    top:0;
+    right:-50px;
+    width: 45px;
+    height: 100%;
+    border-radius: 15px;
+    background-color: #ff0000;
+    display: none;
+    align-items:center;
+    justify-content:center;
+
+}
