@@ -21,15 +21,30 @@ class Notification extends Database
     }
     
     
-    public function getunReadNotifications($user_id)
+    public function getunReadNotifications($user_id,$role)
     {
+        // if user is a clerck
+        if ($role == 2) {
+            $query = "SELECT * FROM notification WHERE status=0 AND to_user IN('$user_id','$role') ORDER BY id DESC";
+            $result = $this->conn->query($query);
+            return $result;
+        }
+        // if user isn't a clerck
         $query = "SELECT * FROM notification WHERE status=0 AND to_user='$user_id' ORDER BY id DESC";
         $result = $this->conn->query($query);
         return $result;
     }
 
-    public function getunReadNotificationCount($user_id)
+    public function getunReadNotificationCount($user_id,$role)
     {
+         // if user is a clerck
+         if ($role == 2) {
+            $query_1 = "SELECT COUNT(*) AS count FROM notification WHERE status=0 AND to_user IN('$user_id','$role') ";
+            $count = $this->conn->query($query_1);
+            $count= $count->fetch_assoc();
+            return  $count["count"];
+        }
+        // if user isn't a clerck
         
         $query_1 = "SELECT COUNT(*) AS count FROM notification WHERE status=0 AND to_user='$user_id'";
         $count = $this->conn->query($query_1);

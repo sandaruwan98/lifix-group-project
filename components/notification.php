@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    
+    <span class="clear"></span>
     <script>
 
         const fab = document.querySelector('.notification-fab');
@@ -35,6 +35,7 @@
                 container.style.height =  "50px";
             document.querySelector('.notification-fab .wrap').classList.toggle("ani");
             document.querySelector('.img-fab.img').classList.toggle("close");
+            document.querySelector('.notification-fab .wrap .count-wrap .count').classList.toggle("count-o");
         }
 
         $(document).ready(function(){
@@ -64,16 +65,16 @@
                     if(data.unseen_notification > 0)
                     {
                         $('.count').html(data.unseen_notification);
-                        $('.count').css({
-                            "position": "absolute",
-                            "top": "-10px",
-                            "right": "-10px",
-                            "padding": "5px 10px",
-                            "border-radius": "50%",
-                            "background": "red",
-                            "color": "white",
+                        // $('.count').css({
+                        //     "position": "absolute",
+                        //     "top": "-10px",
+                        //     "right": "-10px",
+                        //     "padding": "5px 10px",
+                        //     "border-radius": "50%",
+                        //     "background": "red",
+                        //     "color": "white",
                             
-                        });
+                        // });
                     }
                 });
 
@@ -84,18 +85,24 @@
         const modal = document.querySelector('.modal-launcher');
 
         $(document).on('click', '.notification', function(){
-            $('.count').html('');
-            $('.count').css({
-                "position": "",
-                "top": "",
-                "right": "",
-                "padding": "",
-                "border-radius": "",
-                "background": "",
-                "color": ""
-            });
+        
+            if ($(this).attr('data-type') === 'norm') {
 
-           // load_unseen_notification();
+                var classname = '.cl-'+ $(this).attr('id');
+
+                if( $(this).css('margin-right') == '57px' ){
+                    $(this).css('margin-right', '7px');
+                    $(this).css('margin-left', '7px');
+                    $(classname).css('display', 'none');
+
+                }else{
+                    
+                    $(classname).css('display', 'flex');
+                    $(this).css('margin-right', '57px');
+                    $(this).css('margin-left', '-43px');
+                }
+            }
+
 
 
         // if supply confirm notification show confirm modal with table data  (tech)
@@ -140,6 +147,13 @@
 
         });
 
+
+        $(document).on('click', '.notification .clear',function(){
+            var id = $(this).attr("id");
+            load_unseen_notification(id);
+            // console.log($(this).attr("id"));
+        })
+
         function generateTable(data) {
             var table = document.querySelector(".modal-window .content-table");
             table.tBodies[0].remove();
@@ -159,9 +173,9 @@
         } 
         
         
-        // setInterval(function(){ 
-        // load_unseen_notification(); 
-        // }, 5000);
+        setInterval(function(){ 
+        load_unseen_notification(); 
+        }, 5000);
         
         }); 
 

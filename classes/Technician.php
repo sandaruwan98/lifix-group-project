@@ -153,11 +153,23 @@ class Technician extends Framework
             $lat = $_POST["lat"];
             $lng = $_POST["lng"];
         
-            $lp = $this->loadModel('LampPost');
+            $lp = new \models\LampPost();
               // add lampost to database
             $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
         
+            // send notification to clerck to confirm
+            $noti = new \models\Notification();
+            
+            $user = new \models\User();
+            $techname = $user->getNameById($this->session->getuserID());
+            
+            $subject = 'New Lamppost cofirmation';
+            $body = $techname.' has added new lamp post. - LPID : #'.$lp_id;
+            $noti->AddNotification($subject,$body, $this->session->getuserID()  , 2 ,'c-lp',$lp_id.'-'.$this->session->getuserID());
         
+
+
+
             //if checbox checked we have add used items for new lamppost
            if (isset($_POST["is_new"])) {
             $used_items = array();
