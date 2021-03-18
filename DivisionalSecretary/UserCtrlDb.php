@@ -6,11 +6,9 @@
 
 
         function addNewUser($userroll, $name) {
-            // echo "in AddNewUser();'$userroll'  '$name'";
             $query="INSERT INTO user(`username`, `Name`, `occuFlag`, `statusFlag`) VALUES ('$name','$name','$userroll',0)";
             if ($this->conn->query($query) === TRUE) {
                 header("location: index.php");
-                // echo "inoshcisuvsdfvohfsdviudsfjbvdfpviodhfvoip";
             }
         }
 
@@ -51,7 +49,5 @@
             $obj = new DbAccess();
             $obj->revoke($_POST['useracc']); 
             unset($obj);
-        
     }
-
 ?>

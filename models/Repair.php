@@ -45,6 +45,15 @@ class Repair extends Database
         return $count["count"];
     }
 
+    public function getRepairsCountById($id)
+    {
+        $q = "SELECT COUNT(repair.repair_id) AS count
+        FROM repair 
+        WHERE repair.status='c' AND repair.technician_id = $id" ;
+        $count =   $this->conn->query($q);
+        return $count;
+    }
+
 
     public function getUnassignedRepairs()
     {

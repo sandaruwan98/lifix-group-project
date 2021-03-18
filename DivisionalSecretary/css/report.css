@@ -2,22 +2,26 @@
     justify-content: start;
   }
 
+.top-bar {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
 .range {
     display: flex;
     flex-direction: row;
-    margin-left: 50px;
     justify-content: center;
 }
 
 .field {
-    width: 300px;
+    width: 250px;
     margin: 20px;
     background-color: rgb(230, 230, 230);
 }
 
 p {
     align-self: center;
-    font-size: 30px;
+    font-size: 20px;
     color: azure;
 }
 

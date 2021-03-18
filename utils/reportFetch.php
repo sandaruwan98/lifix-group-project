@@ -1,17 +1,16 @@
 <?php
 
 include_once  __DIR__ . '/classloader.php';
+
 session_start();
- $reportmodel = new models\ReportGenerate();
- $inventryModel = new models\Inventory();
 
-if(isset($_POST["firstDate"]))
-{
+$reportmodel = new models\ReportGenerate();
 
- $result = $reportmodel->getComplaints($_POST["firstDate"], $_POST["secondDate"]);
- $row = mysqli_fetch_array($result);
+if (isset($_POST["firstDate"])) {
 
-if (!empty($row['lp_id'])) {
+  $result = $reportmodel->getComplaints($_POST["firstDate"], $_POST["secondDate"]);
+
+  if (mysqli_num_rows($result) > 0) {
 
     echo "<table>
     <tr>
@@ -22,45 +21,27 @@ if (!empty($row['lp_id'])) {
       <th>Status</th>
     </tr> ";
 
-  while($row = mysqli_fetch_array($result))
-
-      {
-
+    while ($row = mysqli_fetch_array($result)) {
       echo "<tr>";
-
       echo "<td>" . $row['lp_id'] . "</td>";
-
       echo "<td>" . $row['Name'] . "</td>";
       echo "<td>" . $row['phone_no'] . "</td>";
       echo "<td>" . $row['recorded_on'] . "</td>";
       if ($row['status'] == "a") {
         echo "<td>" . "Pending"  . "</td>";
-      }
-      elseif ($row['status'] == "c") {
+      } elseif ($row['status'] == "c") {
         echo "<td>" . "Completed"  . "</td>";
-      }
-      elseif ($row['status'] == "x") {
+      } elseif ($row['status'] == "x") {
         echo "<td>" . "Ongoing"  . "</td>";
-      }
-      elseif ($row['status'] == "e") {
+      } elseif ($row['status'] == "e") {
         echo "<td>" . "Emergency"  . "</td>";
-      }
-      elseif ($row['status'] == "s") {
+      } elseif ($row['status'] == "s") {
         echo "<td>" . "Suggested"  . "</td>";
       }
-      
-
-      // echo "<td>" . $row['technician_id'] . "</td>";
-
       echo "</tr>";
-
-      }
-
+    }
     echo "</table>";
-
+  } else {
+    echo "No data on this period";
+  }
 }
-else {
-    echo "No Data on this period";
-}
-}
-?>
