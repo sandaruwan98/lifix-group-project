@@ -11,16 +11,16 @@ session_start();
  }
  
 
- $result = $notificationmodel->getunReadNotifications($_SESSION["id"]);
+ $result = $notificationmodel->getunReadNotifications($_SESSION["id"],$_SESSION["role"] );
  
  $output = '
     <h1 class="notification-header" >Notifications</h1>
     
  ';
  
- if(mysqli_num_rows($result) > 0)
+ if($result->num_rows > 0)
  {
-  while($row = mysqli_fetch_array($result))
+  while($row = $result->fetch_array())
   {
    $output .= '
    <li data-type="'.$row["type"].'" data-ref_id="'.$row["ref_id"].'" class="notification type" id='.$row["id"].'>
@@ -38,7 +38,7 @@ session_start();
  }
  
 
- $count= $notificationmodel->getunReadNotificationCount($_SESSION["id"]);
+ $count= $notificationmodel->getunReadNotificationCount($_SESSION["id"],$_SESSION["role"]);
 
 
  $data = array(

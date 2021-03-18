@@ -157,13 +157,15 @@ class Technician extends Framework
               // add lampost to database
             $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
         
-            // send notification to clerck
-            $subject = 'Item Supply Cancelled';
+            // send notification to clerck to confirm
+            $noti = new \models\Notification();
+            
             $user = new \models\User();
-            $techname = $user->getNameById($sesion->getuserID());
-        
-            $body = $techname.' cancelled your Item Supply - ID : '.$id ;
-            $noti->AddNotification($subject,$body, $sesion->getuserID()  ,  $ir['completed_by']  ,'norm',$id);
+            $techname = $user->getNameById($this->session->getuserID());
+            
+            $subject = 'New Lamppost cofirmation';
+            $body = $techname.' has added new lamp post. - LPID : #'.$lp_id;
+            $noti->AddNotification($subject,$body, $this->session->getuserID()  , 2 ,'c-lp',$lp_id.'-'.$this->session->getuserID());
         
 
 
