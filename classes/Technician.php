@@ -153,11 +153,21 @@ class Technician extends Framework
             $lat = $_POST["lat"];
             $lng = $_POST["lng"];
         
-            $lp = $this->loadModel('LampPost');
+            $lp = new \models\LampPost();
               // add lampost to database
             $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
         
+            // send notification to clerck
+            $subject = 'Item Supply Cancelled';
+            $user = new \models\User();
+            $techname = $user->getNameById($sesion->getuserID());
         
+            $body = $techname.' cancelled your Item Supply - ID : '.$id ;
+            $noti->AddNotification($subject,$body, $sesion->getuserID()  ,  $ir['completed_by']  ,'norm',$id);
+        
+
+
+
             //if checbox checked we have add used items for new lamppost
            if (isset($_POST["is_new"])) {
             $used_items = array();
