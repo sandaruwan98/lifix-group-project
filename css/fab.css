@@ -117,3 +117,15 @@
     border-radius: 5px;
 }
 
+.notification-container::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+.notification-container::-webkit-scrollbar-track {
+background: #c6d7de;
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+background: #00c9ff;
+}
+  
