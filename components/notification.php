@@ -65,16 +65,16 @@
                     if(data.unseen_notification > 0)
                     {
                         $('.count').html(data.unseen_notification);
-                        // $('.count').css({
-                        //     "position": "absolute",
-                        //     "top": "-10px",
-                        //     "right": "-10px",
-                        //     "padding": "5px 10px",
-                        //     "border-radius": "50%",
-                        //     "background": "red",
-                        //     "color": "white",
+                        $('.count').css({
+                            "position": "absolute",
+                            "top": "-10px",
+                            "right": "-10px",
+                            "padding": "5px 10px",
+                            "border-radius": "50%",
+                            "background": "red",
+                            "color": "white",
                             
-                        // });
+                        });
                     }
                 });
 
