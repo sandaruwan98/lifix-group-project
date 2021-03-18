@@ -27,8 +27,8 @@ session_start();
      <h4>'.$row["id"].' - '.$row["subject"].'</h4>
      <h6>'.$row["body"].'</h6>
     </a>
+    <span id="'.$row["id"].'"  class="clear cl-'.$row["id"].'"><i class="fas fa-times"></i></span>
    </li>
-   
    ';
   }
  }
