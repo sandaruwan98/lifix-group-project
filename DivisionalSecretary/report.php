@@ -8,11 +8,6 @@ $inventryModel = new models\Inventory();
 
 $session = new classes\Session(DSFL);
 
-$fetchObj = new ReportGenerate();
-$secondDate = date("Y-m-d");
-$d = strtotime("-1 Months");
-$firstDate = date("Y-m-d", $d);
-
 ?>
 
 
@@ -28,37 +23,41 @@ $firstDate = date("Y-m-d", $d);
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/report.css">
   <link rel="stylesheet" href="./css/charts.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <link rel="stylesheet" href="../css/morris.css">
   <script src="../js/jquery-3.5.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <script src="../js/morris.min.js"></script>
 </head>
 
 <body>
+
   <?php include "../components/userfeild.php" ?>
   <?php include "./nav.html" ?>
+
   <div class="container">
+
     <h1>Report Generate</h1>
+
     <div class="top-bar">
-        <div class="range">
-          <p>From</p>
-          <input type="date" id="firstDate" class="field" required>
-          <p>To</p>
-          <input type="date" id="secondDate" class="field" required>
-          <button class="btn">Generate</button>
-        </div>
+      <div class="range">
+        <p>From</p>
+        <input type="date" id="firstDate" class="field" required>
+        <p>To</p>
+        <input type="date" id="secondDate" class="field" required>
+        <button class="btn">Generate</button>
+      </div>
     </div>
 
     <div class="chart-row">
+
       <div class="chart-column">
         <div class="chart-title">
           <h2>Recieved Complaints</h2>
         </div>
         <div class="chart-column-data">
-
-            <p class="chart-column-data-p">
-            
-</p>
+          <p class="chart-column-data-p">
+            No data to show
+          </p>
         </div>
       </div>
 
@@ -66,72 +65,62 @@ $firstDate = date("Y-m-d", $d);
 
       <div class="chart-column">
         <div class="chart-title">
-          <h2>Completed Repairs</h2>
+          <h2>Current Inventory</h2>
         </div>
 
-        <p>Some text..</p>
+        <?php
+        $inventry = $inventryModel->getInventory();
+        $data = "";
+        while ($row = mysqli_fetch_array($inventry)) {
+          $data .= "{ name:'" . $row["name"] . "',total:" . $row["total"] . "},";
+        }
+        ?>
+
+        <div class="chart-container">
+          <div id="myfirstchart" style="height:auto; width:auto">
+          </div>
+        </div>
       </div>
+
     </div>
-
-    <div class="chart-row">
-      <div class="chart-column">
-        <div class="chart-title">
-          <h2>Inventory</h2>
-        </div>
-          <?php 
-            $inventry = $inventryModel->getInventory();
-            $data = "";
-            while($row = mysqli_fetch_array($inventry)) {
-                $data .= "{ name:'".$row["name"]."',total:".$row["total"]."},";
-            }
-          ?>
-        <div id="myfirstchart" style="height:auto; width:auto"></div>
-      </div>
-      <div class="chart-column-middle"></div>
-      <div class="chart-column">
-        <div class="chart-title">
-          <h2>Used Items</h2>
-        </div>
-
-        <p>Some text..</p>
-      </div>
-    </div>
-
   </div>
 
-<script>
-  $(document).ready(function() {
-    $('.btn').click(function(){
 
-      let date1 = $("#firstDate").val();
-      let date2 = $("#secondDate").val();
+  <script>
+    $(document).ready(function() {
+      $('.btn').click(function() {
 
-      console.log(date1);
+        let date1 = $("#firstDate").val();
+        let date2 = $("#secondDate").val();
 
-    $.ajax({
-        type: "POST",
-        url: "../utils/reportFetch.php",
-        data: {firstDate: date1, secondDate: date2},
-              success: function(data) {
-                // console.log(data);
-                $(".chart-column-data-p").html(data);
-        }
+        $.ajax({
+          type: "POST",
+          url: "../utils/reportFetch.php",
+          data: {
+            firstDate: date1,
+            secondDate: date2
+          },
+          success: function(data) {
+            if (data != "No data on this period") {
+              $(".chart-column-data").css({
+                "display": "block"
+              });
+              $(".chart-column-data-p").html(data);
+            } else
+              $(".chart-column-data-p").html(data);
+          }
+        });
+      })
     });
 
-  })}
-  );
-
-
-  new Morris.Bar({
-            element: 'myfirstchart',
-            data: [<?php echo $data; ?>],
-            xkey: 'name',
-            ykeys: ['total'],
-            labels: ['Count']
-          });
-
-  
-</script>
+    new Morris.Bar({
+      element: 'myfirstchart',
+      data: [<?php echo $data; ?>],
+      xkey: 'name',
+      ykeys: ['total'],
+      labels: ['Count']
+    });
+  </script>
 
 </body>
 

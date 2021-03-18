@@ -17,12 +17,6 @@ class ReportGenerate extends Database {
         return $result;
     }
 
-    public function getInven() {
-        
-    }
-
-
-
 }
 
 ?>
