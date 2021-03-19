@@ -14,8 +14,8 @@
     }
 
     function call($recipient, $otp) {
-        $user = "94718808180";
-        $password = "4742";
+        $user = "94701549225";
+        $password = "9221";
         $text = urlencode("Your Li-Fix OTP is $otp");
         $to = $recipient;
         

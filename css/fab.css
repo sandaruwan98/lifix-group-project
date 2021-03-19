@@ -3,7 +3,7 @@
 .notification-container {
     width: 290px;
     height: 50px;
-    background-color: rgb(115, 192, 243);
+    background-color: #ffffffb0;
     border-radius: 15px;
     box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.15);
     font-family: "Roboto", sans-serif;
@@ -16,7 +16,7 @@
 
 .notification-container.open {
     /* height: max-content; */
-    height: 570px;
+    
     opacity: 1;
 }
 
@@ -26,9 +26,9 @@
 }
 
 .notification-container h1 {
-    font-size: 20px;
-    color: white;
-    padding: 25px 0;
+    font-size: 25px;
+    color: black;
+    padding: 20px 0;
     margin: 0;
     font-weight: 400;
     font-family: "Roboto", sans-serif;
@@ -71,6 +71,8 @@
     transition: all 0.15s cubic-bezier(0.15, 0.87, 0.45, 1.23);
 }
 
+
+
 .notification-fab .ani {
     transform: rotate(45deg);
     -webkit-transition: all 0.15s cubic-bezier(0.15, 0.87, 0.45, 1.23);
@@ -92,4 +94,72 @@
     bottom: 25px;
     z-index: 1000;
     
+}
+
+.notification-fab .wrap .count-wrap .count {
+    position: absolute;
+    top: -22px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background : red;
+    color: white;
+    
+}
+.notification-fab .wrap .count-wrap .count-o {
+    top: -22px;
+    right: -27px;
+}
+
+.notification{
+    position: relative;
+    text-align:center;
+    color: black;
+    background-color: #ffffff;
+    margin:7px;
+    padding:3px;
+    border-radius: 13px;
+    transition: all .2s ease;
+}
+
+.notification:hover{
+    background-color: #eaeaea;
+    border: black 1px solid;
+}
+
+.notification h4{
+    width:100%;
+    background-color:#00c9ff;
+    padding:3px;
+    border-radius: 5px;
+}
+
+.notification-container::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+.notification-container::-webkit-scrollbar-track {
+background: #c6d7de;
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+background: #00c9ff;
+}
+
+.clear{
+    
+    text-align:center;
+    font-size:1.3em;
+    color:white;
+    position:absolute;
+    top:0;
+    right:-50px;
+    width: 45px;
+    height: 100%;
+    border-radius: 15px;
+    background-color: #ff0000;
+    display: none;
+    align-items:center;
+    justify-content:center;
+
 }

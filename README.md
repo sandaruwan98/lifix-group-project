@@ -21,6 +21,7 @@
 
 ## Stock Addition status
 #### completed -> 1
+#### declined -> 2
 #### not completed -> 0
 
 

@@ -32,6 +32,14 @@ class StockAddition extends Database
         return $list;
     }
 
+    public function get_SA_byid($id)
+    {
+        $q = "SELECT `sa_id`, `date`, `clerk_id` FROM `stock_addition` WHERE sa_id='$id' ";
+
+        $list =   $this->conn->query($q);
+        return $list->fetch_assoc();
+    }
+
 
 
     

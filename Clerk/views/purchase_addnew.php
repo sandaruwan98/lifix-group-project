@@ -36,7 +36,7 @@
         </div>
 
     <div class="feild-row">
-        <button id="addpurchase" onclick="SendAjax('ajax/save_itemlist')" class="btn" >SUBMIT</button>
+        <button id="addpurchase" onclick="SendAjax2()" class="btn" >SUBMIT</button>
     </div>
 </div>
 <script src="../js/itemList.js"></script>

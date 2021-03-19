@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../classes/Session.php';
 include_once  __DIR__ . '/../utils/classloader.php';
+include "../components/notification.php";
 
 
 $session = new classes\Session(DSFL);
@@ -103,7 +104,6 @@ $session = new classes\Session(DSFL);
                     $fetchObj = new DbAccess();
                     $list = $fetchObj->fetchData();
                 ?>
-
 
                 <form action="index.php" method="POST">
 

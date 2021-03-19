@@ -5,7 +5,6 @@ class ItemRequest extends Database
 {
 
 
-    
 
     public function getItemsfor_ItemRequest_byId($ir_id)
     {
@@ -32,7 +31,7 @@ class ItemRequest extends Database
  
     public function getItemRequest_byid($ir_id)
     {
-        $q = "SELECT Itemrequest_id,added_date,supplied_date FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
+        $q = "SELECT * FROM `itemrequest` WHERE `Itemrequest_id`='$ir_id' ";
 
         $list =   $this->conn->query($q);
         return $list->fetch_assoc();
@@ -78,7 +77,8 @@ class ItemRequest extends Database
         $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-        WHERE itemrequest.status='b' ";
+        WHERE itemrequest.status='d' ";
+
 
         $list =   $this->conn->query($q);
         return $list;
@@ -119,9 +119,14 @@ class ItemRequest extends Database
         
         return $this->conn->query($qurey);
     }
-     
-    
-////////////////////////////////////
+
+    public function setStatus($ir_id,$status){
+        $qurey= "UPDATE `itemrequest` SET `status`='$status' WHERE `Itemrequest_id`=$ir_id ";
+        return $this->conn->query($qurey);
+    }
+
+
+
     
     public function CreateItemRequest($created_user_id,$request_items){
         // 

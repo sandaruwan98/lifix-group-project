@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 05:04 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Mar 18, 2021 at 06:56 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,21 +58,22 @@ CREATE TABLE `complaint` (
   `Notes` varchar(500) NOT NULL,
   `lp_id` int(255) NOT NULL,
   `repair_id` int(255) NOT NULL,
-  `complainer_id` int(255) NOT NULL
+  `complainer_id` int(255) NOT NULL,
+  `recorded_on` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `complaint`
 --
 
-INSERT INTO `complaint` (`complaint_id`, `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`) VALUES
-(29, 0, 'bla bla', 1000, 40, 4),
-(30, 0, '', 1002, 41, 4),
-(31, 0, 'bla bla', 1004, 42, 4),
-(32, 1, '', 1005, 44, 5),
-(33, 0, '', 1002, 48, 4),
-(34, 1, '', 1003, 49, 4),
-(40, 0, 'sdvvx', 1002, 56, 6);
+INSERT INTO `complaint` (`complaint_id`, `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`, `recorded_on`) VALUES
+(29, 0, 'bla bla', 1000, 40, 4, '2021-03-18'),
+(30, 0, '', 1002, 41, 4, '2021-03-18'),
+(31, 0, 'bla bla', 1004, 42, 4, '2021-03-18'),
+(32, 1, '', 1005, 44, 5, '2021-03-18'),
+(33, 0, '', 1002, 48, 4, '2021-03-18'),
+(34, 1, '', 1003, 49, 4, '2021-03-18'),
+(40, 0, 'sdvvx', 1002, 56, 6, '2021-03-18');
 
 -- --------------------------------------------------------
 
@@ -131,16 +131,16 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`Item_id`, `name`, `total`) VALUES
-(1, 'Bulb', 100),
-(2, 'Sunbox', 50),
-(3, 'Wire(m)', 100),
-(4, 'Switch', 30),
-(5, 'Holder', 50),
-(6, 'Screw Holder', 30),
-(7, '3 Pin Holder', 30),
-(8, 'Lamp Shade', 50),
+(1, 'Bulb', 264),
+(2, 'Sunbox', 23),
+(3, 'Wire(m)', 183),
+(4, 'Switch', 9),
+(5, 'Holder', 77),
+(6, 'Screw Holder', 40),
+(7, '3 Pin Holder', 34),
+(8, 'Lamp Shade', 54),
 (9, 'Chalk box', 10),
-(10, 'CFL', 50);
+(10, 'CFL', 65);
 
 -- --------------------------------------------------------
 
@@ -174,15 +174,19 @@ CREATE TABLE `itemrequest` (
 --
 
 INSERT INTO `itemrequest` (`Itemrequest_id`, `status`, `completed_by`, `created_by`, `added_date`, `supplied_date`) VALUES
-(56, 'a', 0, 32, '2020-12-26', '0000-00-00'),
-(57, 'b', 0, 32, '2020-12-26', '0000-00-00'),
+(56, 'a', 0, 33, '2020-12-26', '0000-00-00'),
+(57, 'a', 0, 36, '2020-12-26', '0000-00-00'),
 (58, 'a', 0, 33, '2020-12-26', '0000-00-00'),
 (59, 'b', 0, 32, '2020-12-31', '0000-00-00'),
-(60, 'a', 0, 32, '2020-12-31', '0000-00-00'),
-(61, 'a', 0, 32, '2020-12-31', '0000-00-00'),
-(62, 'a', 0, 32, '2121-01-07', '0000-00-00'),
-(63, 'a', 0, 32, '2121-01-08', '0000-00-00'),
-(64, 'a', 0, 33, '2121-01-24', '0000-00-00');
+(60, 'c', 0, 33, '2020-12-31', '0000-00-00'),
+(61, 'a', 0, 33, '2020-12-31', '0000-00-00'),
+(62, 'a', 32, 33, '2121-01-07', '0000-00-00'),
+(63, 'c', 32, 36, '2121-01-08', '0000-00-00'),
+(64, 'a', 0, 33, '2121-01-24', '0000-00-00'),
+(65, 'b', 32, 36, '2121-02-08', '0000-00-00'),
+(66, 'a', 32, 33, '2121-02-17', '0000-00-00'),
+(67, 'd', 32, 33, '2121-03-16', '0000-00-00'),
+(68, 'a', 0, 33, '2121-03-16', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -221,7 +225,20 @@ INSERT INTO `itemrequest_inventory_asc` (`Itemrequest_id`, `Item_id`, `quantity`
 (63, 10, 5),
 (64, 1, 30),
 (64, 2, 10),
-(64, 5, 3);
+(64, 5, 3),
+(65, 1, 23),
+(66, 1, 10000),
+(66, 3, 7),
+(67, 1, 10),
+(67, 2, 9),
+(67, 3, 8),
+(67, 4, 7),
+(67, 5, 6),
+(68, 1, 10),
+(68, 2, 9),
+(68, 3, 8),
+(68, 4, 7),
+(68, 5, 6);
 
 -- --------------------------------------------------------
 
@@ -246,22 +263,24 @@ CREATE TABLE `lamppost` (
   `division` varchar(100) NOT NULL,
   `lattitude` double NOT NULL,
   `longitude` double NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `added_by` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lamppost`
 --
 
-INSERT INTO `lamppost` (`lp_id`, `division`, `lattitude`, `longitude`, `date`) VALUES
-(1000, 'Udugama Road,Baddegama', 6.887286, 79.86136, '0000-00-00'),
-(1001, ' NM Perera Rd ,Gonaduwa', 6.890779, 79.858037, '0000-00-00'),
-(1002, 'Gilagiriya avenue,colombo 4', 6.891551, 79.85477, '0000-00-00'),
-(1003, 'Peterson Rd,Pamankada', 6.881167433870161, 79.864157036964, '0000-00-00'),
-(1004, 'Castle Lane,MIlagiriya', 6.881570466305064, 79.85680047538261, '0000-00-00'),
-(1005, 'Amarasekara Rd, Havlock Town', 6.883686767848502, 79.86359102010118, '0000-00-00'),
-(1236, 'Hospital Bus Stop, Waskaduwa - Bandaragama Rd, Maha Gonaduwa, Sri Lanka', 6.6709491532289045, 79.97143849211528, '0000-00-00'),
-(1400, 'Hospital Bus Stop, Waskaduwa - Bandaragama Rd, Maha Gonaduwa, Sri Lanka', 6.6709491532289045, 79.97143849211528, '0000-00-00');
+INSERT INTO `lamppost` (`lp_id`, `division`, `lattitude`, `longitude`, `date`, `added_by`) VALUES
+(1000, 'Udugama Road,Baddegama', 6.887286, 79.86136, '0000-00-00', 33),
+(1001, ' NM Perera Rd ,Gonaduwa', 6.890779, 79.858037, '0000-00-00', 33),
+(1002, 'Gilagiriya avenue,colombo 4', 6.891551, 79.85477, '0000-00-00', 33),
+(1003, 'Peterson Rd,Pamankada', 6.881167433870161, 79.864157036964, '0000-00-00', 33),
+(1004, 'Castle Lane,MIlagiriya', 6.881570466305064, 79.85680047538261, '0000-00-00', 33),
+(1005, 'Amarasekara Rd, Havlock Town', 6.883686767848502, 79.86359102010118, '0000-00-00', 33),
+(1223, 'Sunethradevi Rd, Nugegoda, Sri Lanka', 6.8602, 79.8924, '0000-00-00', 33),
+(1236, 'Sunethradevi Rd, Nugegoda, Sri Lanka', 6.8602, 79.8924, '0000-00-00', 33),
+(1400, 'Hospital Bus Stop, Waskaduwa - Bandaragama Rd, Maha Gonaduwa, Sri Lanka', 6.6709491532289045, 79.97143849211528, '0000-00-00', 33);
 
 -- --------------------------------------------------------
 
@@ -287,19 +306,31 @@ CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
   `subject` text NOT NULL,
   `body` text NOT NULL,
-  `status` int(1) NOT NULL
+  `status` int(1) NOT NULL,
+  `from_user` int(255) NOT NULL,
+  `to_user` int(255) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `ref_id` varchar(20) NOT NULL DEFAULT '''0'''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notification`
 --
 
-INSERT INTO `notification` (`id`, `subject`, `body`, `status`) VALUES
-(1, 'test 1', 'this is body', 1),
-(2, 'wq', 'z', 1),
-(3, 'wq', 'l', 1),
-(4, 'qqqqqqqqq', 'o', 1),
-(5, '12', '12', 1);
+INSERT INTO `notification` (`id`, `subject`, `body`, `status`, `from_user`, `to_user`, `type`, `ref_id`) VALUES
+(2, 'Confirmation', 'confirm lamp post', 1, 0, 31, 'c-lp', '1009-33'),
+(3, 'Confirmation', 'confirm this items', 0, 0, 33, 'c-supply', '64'),
+(4, 'Confirmation', 'confirm lamp post', 1, 0, 31, 'c-lp', '1002-33'),
+(5, '12', '453534', 1, 0, 31, 'norm', '0'),
+(6, 'Heloo', 'Hell yeah', 1, 0, 31, 'norm', '0'),
+(8, 'Stock Addition Rejection', 'Storekeeper declined stock addition.  ID - 41   Date - 2121-02-14', 1, 32, 31, 'norm', '41'),
+(9, 'Item Supply Confirmation', 'Storekeeper(32) supplied items,confirm it - itemrequest id : 63', 1, 32, 33, 'c-supply', '63'),
+(10, 'LampPost Denied - #1002', 'Lakshan Jayasinghe(Clerck) denied your lamppost adding - LPID : #1002', 0, 31, 33, 'norm', ''),
+(12, 'LampPost Denied - #1009', 'Lakshan Jayasinghe(Clerck) denied your lamppost adding - LPID : #1009', 0, 31, 33, 'norm', ''),
+(13, 'Item Supply Cancelled', 'Maldeniya cancelled your Item Supply - ID : 63', 0, 33, 32, 'norm', ''),
+(14, 'Item Supply Confirmation', 'Storekeeper(32) supplied items,confirm it - itemrequest id : 67', 1, 32, 33, 'c-supply', '67'),
+(16, 'New Lamppost cofirmation', 'Maldeniya has added new lamp post. - LPID : #1223', 1, 33, 2, 'c-lp', '1223-33'),
+(17, 'Stock Addition Rejection', 'Storekeeper declined stock addition.  ID - 43   Date - 2121-03-18', 1, 32, 31, 'norm', '43');
 
 -- --------------------------------------------------------
 
@@ -332,7 +363,7 @@ INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `
 (48, '2020-11-29', 'a', 1002, 0, 0),
 (49, '2020-12-01', 'a', 1003, 0, 0),
 (50, '2020-12-01', 'e', 1005, 0, 0),
-(56, '2121-01-23', 'a', 1002, 33, 0);
+(56, '2121-01-23', 'c', 1002, 33, 0);
 
 -- --------------------------------------------------------
 
@@ -442,14 +473,6 @@ INSERT INTO `section_points` (`point_id`, `section_id`, `lng`, `lat`) VALUES
 (255, 55, 79.85780813255269, 6.874229652918288),
 (256, 55, 79.87669088401759, 6.878532924038836),
 (257, 55, 79.87600423851075, 6.8975350210569815),
-(258, 56, 79.87603137715644, 6.89767032030521),
-(259, 56, 79.87642446460643, 6.878157800114906),
-(260, 56, 79.85787073692143, 6.874255199812083),
-(261, 56, 79.85975755668608, 6.860283628128101),
-(262, 56, 79.89065423033117, 6.867854865948402),
-(263, 56, 79.88758814821358, 6.906099480519174),
-(264, 56, 79.87453764484172, 6.906489715782158),
-(265, 56, 79.87603137715644, 6.89767032030521),
 (266, 57, 79.84627944927757, 6.917902351918542),
 (267, 57, 79.88734280340316, 6.92185237443573),
 (268, 57, 79.88710406297213, 6.905578069391879),
@@ -464,7 +487,14 @@ INSERT INTO `section_points` (`point_id`, `section_id`, `lng`, `lat`) VALUES
 (277, 58, 79.9069861011734, 6.933341568669576),
 (278, 58, 79.86897070444496, 6.937445169559211),
 (279, 58, 79.86914839944973, 6.919893636513947),
-(280, 58, 79.8867769448537, 6.921961588669603);
+(280, 58, 79.8867769448537, 6.921961588669603),
+(281, 59, 79.88730708051213, 6.905906825278279),
+(282, 59, 79.8759760824667, 6.896786095953814),
+(283, 59, 79.87691347261125, 6.8781735853387005),
+(284, 59, 79.8577395832815, 6.8744509956294735),
+(285, 59, 79.85998614281885, 6.860864119566173),
+(286, 59, 79.88951325342504, 6.868536518760763),
+(287, 59, 79.88730708051213, 6.905906825278279);
 
 -- --------------------------------------------------------
 
@@ -490,7 +520,18 @@ INSERT INTO `stock_addition` (`sa_id`, `date`, `status`, `clerk_id`) VALUES
 (29, '2020-12-31', '1', 31),
 (30, '2020-12-31', '1', 31),
 (31, '2020-12-31', '1', 31),
-(32, '2020-12-31', '1', 31);
+(32, '2020-12-31', '1', 31),
+(33, '2121-02-14', '1', 31),
+(34, '2121-02-14', '1', 31),
+(35, '2121-02-14', '1', 31),
+(36, '2121-02-14', '1', 31),
+(37, '2121-02-14', '1', 31),
+(38, '2121-02-14', '1', 31),
+(39, '2121-02-14', '1', 31),
+(40, '2121-02-14', '1', 31),
+(41, '2121-02-14', '2', 31),
+(42, '2121-02-14', '1', 31),
+(43, '2121-03-18', '2', 31);
 
 -- --------------------------------------------------------
 
@@ -525,7 +566,30 @@ INSERT INTO `stock_addition_inventory_asc` (`sa_id`, `item_id`, `quantity`) VALU
 (31, 8, 5),
 (31, 10, 10),
 (32, 2, 50),
-(32, 1, 5);
+(32, 1, 5),
+(33, 1, 34),
+(33, 2, 23),
+(33, 7, 12),
+(33, 9, 12),
+(34, 3, 34),
+(34, 4, 5),
+(35, 7, 30),
+(35, 6, 50),
+(36, 5, 32),
+(36, 9, 3),
+(36, 2, 8),
+(37, 3, 56),
+(38, 4, 5),
+(39, 3, 4),
+(40, 8, 4),
+(41, 5, 45),
+(41, 7, 4),
+(42, 1, 100),
+(42, 3, 60),
+(42, 6, 5),
+(42, 10, 10),
+(43, 1, 100),
+(43, 4, 50);
 
 -- --------------------------------------------------------
 
@@ -545,9 +609,9 @@ CREATE TABLE `tech_sections` (
 
 INSERT INTO `tech_sections` (`section_id`, `tech_id`, `color`) VALUES
 (55, 33, '#fa0000'),
-(56, 35, '#2bff00'),
 (57, 36, '#000000'),
-(58, 37, '#3f3da9');
+(58, 37, '#3f3da9'),
+(59, 35, '#00ff62');
 
 -- --------------------------------------------------------
 
@@ -567,11 +631,11 @@ CREATE TABLE `tmpinventory` (
 --
 
 INSERT INTO `tmpinventory` (`tmp_id`, `quantity`, `tecnician_id`, `Item_id`) VALUES
-(8, 30, 33, 1),
-(9, 0, 33, 2),
-(10, 0, 33, 3),
-(11, 0, 33, 4),
-(12, 0, 33, 5),
+(8, 37, 33, 1),
+(9, 9, 33, 2),
+(10, 8, 33, 3),
+(11, 7, 33, 4),
+(12, 6, 33, 5),
 (13, 0, 33, 6),
 (14, 0, 33, 7),
 (15, 0, 33, 8),
@@ -587,16 +651,16 @@ INSERT INTO `tmpinventory` (`tmp_id`, `quantity`, `tecnician_id`, `Item_id`) VAL
 (25, 0, 35, 8),
 (26, 0, 35, 9),
 (27, 0, 35, 10),
-(28, 0, 36, 1),
+(28, 6, 36, 1),
 (29, 0, 36, 2),
-(30, 0, 36, 3),
+(30, 13, 36, 3),
 (31, 0, 36, 4),
 (32, 0, 36, 5),
 (33, 0, 36, 6),
 (34, 0, 36, 7),
-(35, 0, 36, 8),
+(35, 4, 36, 8),
 (36, 0, 36, 9),
-(37, 0, 36, 10),
+(37, 5, 36, 10),
 (38, 0, 37, 1),
 (39, 0, 37, 2),
 (40, 0, 37, 3),
@@ -630,6 +694,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userId`, `username`, `password`, `Name`, `phone`, `occuFlag`, `statusFlag`) VALUES
 (0, 'default', 'default', 'default', '', 1, 0),
+(2, 'defaultck', 'default', 'default', '', 2, 0),
 (30, 'DS', '81dc9bdb52d04dc20036dbd8313ed055', 'Bappa', '+947015492', 1, 1),
 (31, 'Clerck', '81dc9bdb52d04dc20036dbd8313ed055', 'Lakshan Jayasinghe', '+947015492', 2, 1),
 (32, 'Storekeeper', '81dc9bdb52d04dc20036dbd8313ed055', 'xxxxx', '+947015492', 3, 1),
@@ -718,7 +783,8 @@ ALTER TABLE `itemrequest_tmpinventory_asc`
 -- Indexes for table `lamppost`
 --
 ALTER TABLE `lamppost`
-  ADD PRIMARY KEY (`lp_id`);
+  ADD PRIMARY KEY (`lp_id`),
+  ADD KEY `lptech` (`added_by`);
 
 --
 -- Indexes for table `newlamppostrecord`
@@ -731,7 +797,9 @@ ALTER TABLE `newlamppostrecord`
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `from_user` (`from_user`),
+  ADD KEY `to_user` (`to_user`);
 
 --
 -- Indexes for table `repair`
@@ -837,7 +905,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `itemrequest`
 --
 ALTER TABLE `itemrequest`
-  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Itemrequest_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `newlamppostrecord`
@@ -849,7 +917,7 @@ ALTER TABLE `newlamppostrecord`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `repair`
@@ -861,7 +929,7 @@ ALTER TABLE `repair`
 -- AUTO_INCREMENT for table `repair_inventory_asc`
 --
 ALTER TABLE `repair_inventory_asc`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -873,19 +941,19 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `section_points`
 --
 ALTER TABLE `section_points`
-  MODIFY `point_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+  MODIFY `point_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
 
 --
 -- AUTO_INCREMENT for table `stock_addition`
 --
 ALTER TABLE `stock_addition`
-  MODIFY `sa_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `sa_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `tech_sections`
 --
 ALTER TABLE `tech_sections`
-  MODIFY `section_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `section_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tmpinventory`
@@ -957,10 +1025,23 @@ ALTER TABLE `itemrequest_tmpinventory_asc`
   ADD CONSTRAINT `itemrequest_tmpinventory_asc_ibfk_2` FOREIGN KEY (`tmp_inventory_id`) REFERENCES `tmpinventory` (`tmp_id`);
 
 --
+-- Constraints for table `lamppost`
+--
+ALTER TABLE `lamppost`
+  ADD CONSTRAINT `lptech` FOREIGN KEY (`added_by`) REFERENCES `user` (`userId`) ON DELETE NO ACTION;
+
+--
 -- Constraints for table `newlamppostrecord`
 --
 ALTER TABLE `newlamppostrecord`
   ADD CONSTRAINT `newlamppostrecord_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `lamppost` (`lp_id`);
+
+--
+-- Constraints for table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `notification_ibfk_1` FOREIGN KEY (`from_user`) REFERENCES `user` (`userId`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `notification_ibfk_2` FOREIGN KEY (`to_user`) REFERENCES `user` (`userId`) ON DELETE NO ACTION;
 
 --
 -- Constraints for table `repair`

@@ -34,21 +34,19 @@ class Inventory extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
-    public function updateItem()
-    {
-        
-         $q=" UPDATE inventory SET total=total-SELECT quantity FROM itemrequest 
-         inner join  itemrequest_inventory_asc 
-         ON itemrequest.Itemrequest_id=itemrequest_inventory_asc.Itemrequest_id 
-         WHERE itemrequest.status='b'FROM inventory,itemrequest_inventory_asc
-         WHERE inventory.Item_id=SELECT Item_id FROM itemrequest 
-         inner join  itemrequest_inventory_asc 
-         ON itemrequest.Itemrequest_id=itemrequest_inventory_asc.Itemrequest_id 
-         WHERE itemrequest.status='b'";
 
-      
-        return $this->conn->query($q);
+
+    public function getInventory()
+    {
+    
+    $q = "SELECT name,total FROM inventory";
+
+        $list =   $this->conn->query($q);
+        return $list;
     }
+   
+   
+
    
 
 
