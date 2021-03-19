@@ -53,7 +53,7 @@
 		</div>
 		
 	</div>
-	<script src="index.js"></script>
-	<script src="textBiz.js" defer></script>
+	<script src="./js/index.js"></script>
+	<script src="./js/textBiz.js" defer></script>
 </body>
 </html>
