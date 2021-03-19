@@ -29,12 +29,12 @@ class Inventory extends Database
     }
     public function getAllInventory()
     {
-        $q = "SELECT Item_id,name,total FROM inventory";
+    
+    $q = "SELECT Item_id,name,total FROM inventory";
 
         $list =   $this->conn->query($q);
         return $list;
     }
-
 
     public function getInventory()
     {
@@ -47,13 +47,10 @@ class Inventory extends Database
    
    
 
-   
-
 
 
     public function updateQuantity($itemid,$quantity,$operator)
     {
-       
         $q = " UPDATE inventory SET total=total $operator '$quantity' WHERE Item_id='$itemid' ";
         return $this->conn->query($q);
     }
@@ -73,4 +70,3 @@ class Inventory extends Database
     }
     
 }
-
