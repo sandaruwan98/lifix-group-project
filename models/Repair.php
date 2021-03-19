@@ -5,6 +5,16 @@ require_once "Database.php";
 class Repair extends Database
 {
 
+    public function getTotal_damageitems_forday($tech_id,$item_id)
+    {
+        $date = date("yy-m-d");
+
+        $q = "SELECT repair_id FROM repair WHERE technician_id='$tech_id' AND date=$date";
+        
+        $result = $this->conn->query($q);
+        return $result->fetch_all();
+    }
+
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
     {
         $date = date("yy-m-d");
@@ -69,7 +79,7 @@ class Repair extends Database
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id='$tech_id' ORDER BY repair.date DESC " ;
+        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id='$tech_id' AND repair.status='a' ORDER BY repair.date DESC " ;
 
         $list =   $this->conn->query($q);
         return $list;
