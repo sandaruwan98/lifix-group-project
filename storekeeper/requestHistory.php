@@ -82,7 +82,6 @@ $session = new classes\Session(StorekeeperFL);
 
                      $row = $request_list->fetch_assoc();
                                         
-                    
                 ?>
                 
                         <table class="tbl1 content-table" >
