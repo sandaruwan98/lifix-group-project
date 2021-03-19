@@ -78,7 +78,7 @@ class ItemRequest extends Database
         $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-         WHERE itemrequest.status='b' ";
+        WHERE itemrequest.status='b' ";
 
         $list =   $this->conn->query($q);
         return $list;
