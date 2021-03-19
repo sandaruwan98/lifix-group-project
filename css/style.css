@@ -46,22 +46,11 @@ body::-webkit-scrollbar-thumb {
 .btn:focus {
   background-color: #005040;
 }
+
 .btn.disable {
   background-color: #485855;
 }
 
-.danger{
-  background-color: #b60000da;
-}
-
-
-.danger:focus{
-  background-color: #560000ed;
-}
-
-.danger:hover{
-  background-color: #780000da;
-}
 
 .content-table {
   display: table;
@@ -128,6 +117,31 @@ body::-webkit-scrollbar-thumb {
 
 
 
+.success {
+  background-color: #009879;
+}
+
+.success:hover {
+  background-color: #006a54;
+}
+
+.success:focus {
+  background-color: #005040;
+}
+
+
+.danger{
+  background-color: #b60000da;
+}
+
+
+.danger:focus{
+  background-color: #560000ed;
+}
+
+.danger:hover{
+  background-color: #780000da;
+}
 
 
 .col-12{width: 100%;}
