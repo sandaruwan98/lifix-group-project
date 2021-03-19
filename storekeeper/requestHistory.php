@@ -80,10 +80,11 @@ $session = new classes\Session(StorekeeperFL);
                     $request_list = $itemrequest->details();
 
 
-                    while ($row = $request_list->fetch_assoc()) {
-                        
+                     $row = $request_list->fetch_assoc();
+                                        
                     
                 ?>
+                
                         <table class="tbl1 content-table" >
     
                             <tbody>
@@ -105,7 +106,7 @@ $session = new classes\Session(StorekeeperFL);
     
     
                         </table>
-                        <?php } ?>
+                       
                     </div>
 
                     <!-- supply items -->
