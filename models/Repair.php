@@ -9,10 +9,13 @@ class Repair extends Database
     {
         $date = date("yy-m-d");
 
-        $q = "SELECT repair_id FROM repair WHERE technician_id='$tech_id' AND date=$date";
+        $q0 = "SELECT repair_id FROM repair WHERE technician_id='$tech_id' AND date='$date'";
+
+        $q = "SELECT SUM(quantity) as total FROM repair_inventory_asc WHERE repair_id IN ($q0) AND damage_used_flag=1 AND item_id=$item_id";
         
         $result = $this->conn->query($q);
-        return $result->fetch_all();
+        $result = $result->fetch_array();
+        return $result[0];
     }
 
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)

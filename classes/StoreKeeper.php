@@ -10,7 +10,7 @@ class StoreKeeper extends Framework
     }
 
     
-    public function ItemRequest()
+    public function Index()
     {
         $inv = new \models\Inventory();
         $item_names = $inv->getItemNames();
@@ -80,6 +80,28 @@ class StoreKeeper extends Framework
     }
 
 
+
+    public function ReturnItem()
+    {
+         
+        $invmodel = new \models\Inventory();
+        $items = $invmodel->getItemNames();
+        $items = $items->fetch_all();
+    
+        
+        $repairmodel = new \models\Repair();
+        
+        for ($i=0; $i < count($items); $i++) { 
+            $tmp = $repairmodel->getTotal_damageitems_forday(33,$items[$i][0]);
+            if($tmp == NULL)
+                $items[$i][2] = '0';
+            else
+                $items[$i][2] = $tmp;
+        }
+        
+
+        return $items;
+    }
 
 
 }

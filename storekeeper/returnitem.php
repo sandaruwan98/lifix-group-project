@@ -1,8 +1,10 @@
 <?php 
-
 include_once  __DIR__ . '/../utils/classloader.php';
-$session = new classes\Session(StorekeeperFL);
+$storekeeper = new classes\StoreKeeper();
+$data =  $storekeeper->ReturnItem();
+// echo( $data['QData'] );
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,44 +78,25 @@ $session = new classes\Session(StorekeeperFL);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>LED BULB</td>
-                                <td>1</td>
-                                <td><button  class="bttn confirm" id="1" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
-                                <td><button class="bttn button1 decline" id="emo"  >Decline</button></td>
+                            
+                        <?php 
+                         
+                          foreach ($data as $item): ?>
+                              <tr>
+                                <td><?= $item[0] ?></td>
+                                <td><?= $item[1] ?></td>
+                                <td><?= $item[2] ?></td>
+                                <td><button  class="bttn confirm" id="con-<?= $item[0] ?>" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
+                                <td><button id="dec-<?= $item[0] ?>" class="bttn button1 decline" id="emo"  >Decline</button></td>
 
                             </tr>
-                            
-                            <tr>
-                                <td>2</td>
-                                <td>SUNBOXES</td>
-                                <td>2</td>
-                                <td><button  class="bttn confirm" id="demo1" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
-                                <td><button class="bttn button1 decline" id="emo1"  >Decline</button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>WIRES</td>
-                                <td>3m</td>
-                                <td><button  class="bttn confirm"  id="demo3" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
-                                <td><button class="bttn button1 decline" id="emo3" >Decline</button></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>FUSE</td>
-                                <td>4</td>
-                                <td><button  class="bttn confirm" id="demo4" >confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
-                                <td><button class="bttn button1 decline" id="emo4" >Decline</button></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>BULB</td>
-                                <td>3</td>
-                                <td><button  class="bttn confirm">confirm</button><input class="field declineInput" type="text" placeholder="Enter difference" ></td>
-                                <td><button class="bttn button1 decline">Decline</button></td>
-                            </tr>
-                            
+                          <?php endforeach ?>
+
+
+
+
+                          
+                          
                             
 
                         </tbody>
