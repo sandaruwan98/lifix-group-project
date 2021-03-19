@@ -54,26 +54,7 @@ $data =  $tech->LamppostPage();
                     <input hidden type="text" placeholder=""  name="lng" id="lng">
 
                 </div>
-                <!-- <div class="feild-row"> -->
-                    <label for="is_new">Is it new : </label>
-                    <input type="checkbox" name="is_new" value="is_new" id="newcheck" onclick="toggleCollapse()">
-                <!-- </div> -->
-              
-
-                <!-- collapse -->
-                <div class="collapse" style="display: none;margin-top: 5px;">
-                        
-                    <?php 
-                    $item_names=$data['ItemData'];
-                    foreach ($item_names as $item):
-                    ?>
-                    <div class="collapsible"><?= $item[1] ?></div>
-                    <div class="content">
-                        <input class="field" type="text" placeholder="Enter Used Amount" name="<?= $item[0] ?>_u" >
-                    </div>
-                    <?php endforeach ?>
-
-                </div>
+             
                 <button type="submit" name="addlp" id="addlp" disabled class="btn disable">Add Lamp Post</button>
 
 

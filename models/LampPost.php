@@ -39,22 +39,6 @@ class LampPost extends Database
     }
 
     
-    private function AddUsedItemforLP($lp_id,$item_id,$quantity){
-        $q = "INSERT INTO `inventory_lamppost_asc`( `lamppost_id`, `item_id`, `quantity`) VALUES 
-        ('$lp_id','$item_id' , '$quantity')";
-
-       if( $this->conn->query($q) !== TRUE)
-            echo (' <h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0;">Process failed '.$this->conn->error .'</h4> ');
-       
-    }
-
-    public function Add_All_Used_Items_forNewLP($lp_id,$used_items){
-        // add ussed items to database
-        foreach ($used_items as $item){
-            $this->AddUsedItemforLP($lp_id, $item[0],$item[1]);
-        }
-        
-    }
 
 }
 

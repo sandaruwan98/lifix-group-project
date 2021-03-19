@@ -166,30 +166,8 @@ class Technician extends Framework
             $subject = 'New Lamppost cofirmation';
             $body = $techname.' has added new lamp post. - LPID : #'.$lp_id;
             $noti->AddNotification($subject,$body, $this->session->getuserID()  , 2 ,'c-lp',$lp_id.'-'.$this->session->getuserID());
-        
-
-
-
-            //if checbox checked we have add used items for new lamppost
-           if (isset($_POST["is_new"])) {
-            $used_items = array();
-            foreach ($item_names as $item){
-                //for collect used items quantities
-                $item_name = $item[0]."_u";
-                $quantity = $_POST["$item_name"];
-        
-                if ($quantity!=0 && $quantity!=null) {
-        
-                    $used_item = array($item[0], $quantity);
-                    $used_items[] = $used_item;
-                }
-                
-            }
-        
-            if (!empty($used_item)) {
-                $lp->Add_All_Used_Items_forNewLP($lp_id,$used_items);
-            }
-           }
+            
+            // show a toast
            $this->session->sendMessage("New Lamppost addded successfully",'success');
 
         }

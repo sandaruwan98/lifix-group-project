@@ -16,7 +16,7 @@ class Notification extends Database
     {
         $query = "INSERT INTO `notification`(`subject`, `body`, `status`, `from_user`, `to_user`, `type`, `ref_id`) 
         VALUES ('$subject','$body',0,'$from','$to','$type','$ref')";
-        echo $query;
+      
         $this->conn->query($query);
     }
     
