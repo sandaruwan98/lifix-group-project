@@ -1,0 +1,60 @@
+
+
+.field{
+    margin-bottom: 15px;
+}
+
+.btn{
+    margin-bottom: 12px;
+}
+
+.role-select{
+    display: flex;
+    flex-direction: column;
+}
+.role-btn{
+    text-decoration: none;
+    margin: 4px 0;
+    padding: 4px 20px;
+    border-radius:20px;
+    background-color: #455664;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.role-btn:hover{
+    background-color: #f39c0f;
+}
+.btn-log{
+    text-decoration: none;
+    padding: 0.1rem 1rem;
+    border-radius:20px;
+    background-color: #455664;
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .3s;
+}
+    
+    
+.btn-log:hover{
+    background-color: #f39c0f;
+}
+
+
+    
+h2:after{
+	background-color: #455664;
+}
+.btn{
+	background-color: #455664;
+}
+.btn:hover{
+	background-color: #f39c0f;
+}

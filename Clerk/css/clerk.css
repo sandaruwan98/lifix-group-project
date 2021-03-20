@@ -54,7 +54,7 @@ header {
     display: flex;
     flex: 1;
     width: 100%;
-    /* overflow-x: scroll; */
+    overflow: overlay;
 }
 
 .lists .list {
@@ -71,7 +71,9 @@ header {
     padding: 8px;
     transition: all 0.2s linear;
     border-radius: 5px;
+    overflow-y:auto;
 }
+
 
 
 .lists .list .list-item {
@@ -108,4 +110,46 @@ header {
 .lists .list .list-item .address {
     margin-bottom: 10px;
     font-size: small;
+}
+
+
+
+
+
+
+
+
+
+
+
+.radio input:checked ~ .tech-item {
+    background-color: #4e4e4e;
+    color: aliceblue
+}
+.radio input[type="radio"]{
+    width: 0;
+	height: 0;
+	visibility: hidden;
+	position: absolute;
+}
+
+.tech-section{
+    width: 100%;
+}
+.tech-item{
+    /* display: block; */
+    padding: 20px;
+    background-color: #e8edee;
+/*     border-radius: 10px; */
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    transition: all .2s ease;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+}
+
+.radio input[type="color"]{
+    border:none;
+    background-color: transparent
 }

@@ -1,11 +1,8 @@
 <?php 
-
-require_once __DIR__ . '/../classes/Repair.php';
-
-$repair = new Repair();
-$list_assign = $repair->getRepairs('x');
+include_once  __DIR__ . '/../utils/classloader.php';
+$tech = new classes\Technician();
+$data =  $tech->AvalableRepairsPage();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,55 +14,46 @@ $list_assign = $repair->getRepairs('x');
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="./css/tech.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Avalable Repairs</title>
 </head>
 
 <body>
-    <nav class="sidebar">
-        <!-- <h2 class="link-text">MENU</h2> -->
-        <ul>
-            <li class="nav-logo"><span class="nav-link" href="#"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span></span></li>
-            <li class="nav-item"><a class="nav-link active" href="./index.php"><i class="fas fa-home"></i><span
-                        class="link-text">Home</span> </a></li>
-            <li class="nav-item"><a class="nav-link " href="./map.html"><i class="fas fa-map"></i><span
-                        class="link-text">ViewMap</span> </a></li>
-            <li class="nav-item"><a class="nav-link" href="./request.php"><i class="fas fa-plus-square"></i><span
-                        class="link-text">Request</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="./EmgRepair.php"><i class="fas fa-exclamation-circle"></i><span
-                        class="link-text">EmgRepair</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shower"></i><span
-                        class="link-text">Lamppost</span></a></li>
-
-        </ul>
-
-    </nav>
-
-    <script src="../js/slider.js"></script>
+    
+<?php include './nav.php' ?>
+<?php  $tech->getSession()->showMessage() ?>
 
 
     <div class="main">
-        <div class="list">
-            <?php while ($row = $list_assign->fetch_assoc()) :
-             ?>
+        <div class="con">
+            <h2 class="title-r">Pending Repairs</h2>
+            <div class="list">
+                <?php
+                
+                $list_assign = $data['repairs'];
+                while ($row = $list_assign->fetch_assoc()) :
+                ?>
 
-            <div class="list-item" id="<?= $row["repair_id"] ?>">
-                <div class="content">
-                    <div class="row">
-                        <div class="id"># <?= $row['lp_id'] ?> </div>
-                        <div class="id"><?= $row["date"] ?></div>
+                <div class="list-item" id="<?= $row["repair_id"] ?>">
+                    <div class="content">
+                        <div class="row">
+                            <div class="id"># <?= $row['lp_id'] ?> </div>
+                            <div class="id"><?= $row["date"] ?></div>
+                        </div>
+
+                        <div class="address"><?= $row["division"] ?></div>
                     </div>
-
-                    <div class="address"><?= $row["division"] ?></div>
+                    <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
                 </div>
-                <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
+
+                <?php endwhile ?>
+
+
             </div>
-
-            <?php endwhile ?>
-
 
         </div>
     </div>
+    
 </body>
 
 </html>

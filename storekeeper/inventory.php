@@ -1,3 +1,10 @@
+<?php 
+include_once  __DIR__ . '/../utils/classloader.php';
+$storekeeper = new classes\StoreKeeper();
+$data =  $storekeeper->Inventory();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,74 +14,60 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./store.css">
     <link rel="stylesheet" href="./display.css">
-    <link rel="stylesheet" href="./clerk/css/repairHistory.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Inventory Records</title>
 
 </head> 
 <body>
-<nav class="sidebar">
-        <!-- <h2 class="link-text">MENU</h2> -->
-        <ul>
-            <li class="nav-logo"><span class="nav-link"><i class="fas fa-lightbulb"></i><span class="link-text"
-                        style="margin-left: 5px;">LiFix</span> </span>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="./index.php"><i class="fas fa-home"></i><span
-                        class="link-text">Home</span> </a></li>
-            <li class="nav-item"><a class="nav-link " href="./Requestitem.html"><i class='far fa-list-alt'></i><span
-                            class="link-text">Request Items</span></a></li>
-            <li class="nav-item"><a class="nav-link " href="./issueitems.html"><i class="fas fa-file-invoice"></i><span
-                                class="link-text">Issue Items Form</span></a></li>  	
-            <li class="nav-item"><a class="nav-link " href="./display.php"><i class="fas fa-history"></i><span
-                        class="link-text">Issued ItemHistory</span></a></li>
-            <li class="nav-item"><a class="nav-link active" href="./inventory.php"><i class='far fa-file-alt'></i><span
-                        class="link-text">Inventory Details</span></a></li>
-           
 
-        </ul>
 
-</nav>     
-<div class="frow">
-     <h1>Inventory  Details</h1>
-  </div>
-            
-<table class="ctable">
-<thead>                 
-<div id="" class="repair-item">
-     <div class="row">
+    <?php include "./views/nav.php" ?>
 
-<tr>
-<th>Item Id</th>
-<th><span>Date</span></th>
-<th><span>Name</span></th>
-<th><span>Total</span></th>
 
-</tr>
-</div>
- </div>
-</thead>
-<?php
-//include "../connection.php";
-$conn = new mysqli("localhost", "root", "", "lifix","3306");
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql="select *from inventory";
-$result=mysqli_query($conn,$sql);
-$resultcheck=mysqli_num_rows($result);
-if($resultcheck >0)
-{
-while($row=mysqli_fetch_assoc($result)){
-    echo"<tr>";
-    echo "<td>".$row['Item_id']."</td>";
-    echo "<td>".$row['date']."</td>";
-    echo "<td>".$row['name']."</td>";
-    echo "<td>".$row['total']."</td>";
-    echo"</tr>";
-}
-}
-?>
-</table>
+<div class="main_content sc-bar">
+
+<?php  $storekeeper->getSession()->showMessage() ?>
+    
+        <header>
+          <h1>Inventory Details</h1>
+        </header>
+    <div class="con">
+        
+        <h1 class="heading" style="margin-left: 2.5%;margin-right: 2.5%;">Inventory Balance</h1>
+        <table class="content-table ctable">
+        <thead> 
+            <tr>
+            <th>Item Id</th>
+            <!-- <th><span>Date</span></th> -->
+            <th><span>Name</span></th>
+            <th><span>Current Balance</span></th>
+
+            </tr>
+            </div>
+            </div>
+        </thead>
+
+        <?php
+        $result = $data['inventory'];
+        while($row=mysqli_fetch_assoc($result)){
+            echo"<tr>";
+            echo "<td>".$row['Item_id']."</td>";
+            // echo "<td>".$row['date']."</td>";
+            echo "<td>".$row['name']."</td>";
+            echo "<td>".$row['total']."</td>";
+            echo"</tr>";
+        }
+
+        ?>
+        </table>
+    </div>
+
+
+        <?php include "./views/inventory_newstock.php" ?>
+    
+</div>  
 </body>
 </html>
 

@@ -1,15 +1,8 @@
-<?php
-if (!isset($_GET["id"]))
-    header('location: ./repairHistory.php');
+<?php 
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->RepairPage();
 
-require __DIR__ . '/../classes/Repair.php';
-require __DIR__ . '/../classes/Complaint.php';
-
-$repair = new Repair();
-$complaint = new Complaint();
-$repair_id = $_GET["id"];
-$rp = $repair->getRepairByid($repair_id);
-$cp = $complaint->getCompliant_by_repair_id($repair_id);
 
 ?>
 
@@ -33,8 +26,15 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 
 <body>
 
-    <?php include "./components/nav.php" ?>
 
+<?php
+    include "./views/nav.php";
+
+    
+    $rp = $data['repair_details'];
+    $cp = $data['complaint_details'];
+    
+?>
 
     <div class="main_content">
         <header>
@@ -42,7 +42,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
         </header>
         <div class="main">
 
-            <div class="list-section">
+            <div class="list-section sc-bar">
                 <div class="details repair-details">
                     <H2> Repair Details</H2>
 
@@ -55,7 +55,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
                             </tr>
                             <tr>
                                 <td>Status</td>
-                                <td>Completed</td>
+                                <td><?php if($rp['status'] == 'a') echo 'Pending'; elseif($rp['status'] == 'e') echo "Emergency Repair"; elseif($rp['status'] == 'x') echo "Assigned but not complted";else echo "Completed";  ?></td>
                             </tr>
                             <tr>
                                 <td>Date</td>
@@ -72,14 +72,14 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 
                             <tr>
                                 <td>Completed by</td>
-                                <td>Technitian</td>
+                                <td><?= $rp['completed_by'] ?></td>
                             </tr>
                             <tr>
                                 <td>Lamppost ID</td>
                                 <td>#<?= $rp['lp_id'] ?></td>
                             </tr>
                             <tr>
-                                <td>Lamppost Divisoin</td>
+                                <td>Lamp post Divisoin</td>
                                 <td><?= $rp['division'] ?>
                                 </td>
                             </tr>
@@ -116,6 +116,69 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
 
                     </table>
                 </div>
+
+                <div class="details complainer-details">
+                    <H2> Used Item List</H2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $used_items= $data['used_items'];
+                            foreach ($used_items as $used_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $used_item["item_id"]  ?></td>
+                                    <td><?=  $used_item["name"] ?></td>
+                                    <td><?=  $used_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+                <div class="details complainer-details">
+                    <H2> Damaged return item List</H2>
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>ITEM ID</th>
+                                <th>ITEM NAME</th>
+                                <th>QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $return_items= $data['return_items'];
+                            foreach ($return_items as $return_item):
+                        ?>
+
+                                <tr>
+                                    <td><?=  $return_item["item_id"]  ?></td>
+                                    <td><?=  $return_item["name"] ?></td>
+                                    <td><?=  $return_item["quantity"] ?></td>
+                                </tr>
+
+                            <?php endforeach ?>
+
+                           
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
             </div>
 
             <div id="map" class="map-section"></div>
@@ -145,7 +208,7 @@ $cp = $complaint->getCompliant_by_repair_id($repair_id);
             .setLngLat([<?= $rp['longitude'] . ' , ' . $rp['lattitude']  ?>])
             .addTo(map);
     </script>
-    <script src="app.js"></script>
+    <script src="./../js/clerck/app.js"></script>
 </body>
 
 </html>

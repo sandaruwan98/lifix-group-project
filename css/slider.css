@@ -71,6 +71,11 @@
   margin-right: 4px;
 }
 
+.sidebar ul .nav-item .nav-link .far {
+  width: 25px;
+  margin-right: 4px;
+}
+
 .sidebar ul .nav-item:hover {
   background-color: #142e35;
   /* color: rgb(240, 218, 20); */

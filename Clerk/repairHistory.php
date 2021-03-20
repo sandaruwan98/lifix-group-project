@@ -1,3 +1,10 @@
+<?php 
+include_once  __DIR__ . '/../utils/classloader.php';
+$clerck = new classes\Clerck();
+$data =  $clerck->RepairHistory();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +23,8 @@
 <body>
 
 
-    <?php include "./components/nav.php" ?>
+    <?php include "./views/nav.php" ?>
+
 
 
     <div class="main_content">
@@ -33,9 +41,8 @@
 
             <!-- repair list -->
             <?php
-            require __DIR__ . '/../classes/Repair.php';
-            $repair = new Repair();
-            $list = $repair->getRepairs('a');
+          
+            $list = $data['repairs'];
 
             while ($row = $list->fetch_assoc()) :
             ?>
@@ -50,6 +57,8 @@
             <?php endwhile ?>
 
         </div>
+
+        <?php include "../components/pagination.php" ?>
     </div>
 
 </body>
