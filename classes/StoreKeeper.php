@@ -83,24 +83,67 @@ class StoreKeeper extends Framework
 
     public function ReturnItem()
     {
-         
-        $invmodel = new \models\Inventory();
-        $items = $invmodel->getItemNames();
-        $items = $items->fetch_all();
-    
-        
-        $repairmodel = new \models\Repair();
-        
-        for ($i=0; $i < count($items); $i++) { 
-            $tmp = $repairmodel->getTotal_damageitems_forday(33,$items[$i][0]);
-            if($tmp == NULL)
-                $items[$i][2] = '0';
-            else
-                $items[$i][2] = $tmp;
-        }
-        
+        // get technician list to show in select.
+        $usermodel = new \models\User();
+        $technicians = $usermodel->getUsers(TechnicianFL);
+        $data['technicians'] = $technicians;
 
-        return $items;
+        // GET TECH ID FROM SELECT
+        if(isset($_POST["techselect"]) ){
+            if ($_POST["techSelectoption"] != '' && isset($_POST["techSelectoption"])) {
+                $_SESSION["techid"] = $_POST["techSelectoption"];
+            }
+        }
+        // if tech was selected only process data
+        if (isset($_SESSION["techid"])) {
+            
+            $data['techname'] = $usermodel->getNameById($_SESSION["techid"]);
+
+            $invmodel = new \models\Inventory();
+            $items = $invmodel->getItemNames();
+            $items = $items->fetch_all();
+            
+            $repairmodel = new \models\Repair();
+            
+            for ($i=0; $i < count($items); $i++) { 
+                $tmp = $repairmodel->getTotal_damageitems_forday($_SESSION["techid"],$items[$i][0]);
+                if($tmp == NULL)
+                $items[$i][2] = '0';
+                else
+                $items[$i][2] = $tmp;
+            }
+            $data['items'] = $items;
+
+            $rdata = [];
+            // if all differnce data submitted
+            if(isset($_POST["done"]) ){
+            
+                foreach ($_POST as $key => $value) {
+                    if ($key != 'done') {
+                        [$type,$item_id] = explode("_",$key);
+                        
+                        if ($type == 'diff') {
+                            $rdata[$item_id][0] = $value;    
+                        }
+                        elseif($type == 'notes') {
+                            $rdata[$item_id][1] = $value;    
+                        }
+                    }
+                }
+                unset($_POST["done"]);
+                print_r($rdata);
+                
+                // header('location: returnitem.php');
+                
+            }
+
+
+        }
+
+        
+      
+
+        return $data;
     }
 
 
