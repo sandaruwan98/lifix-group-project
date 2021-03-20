@@ -27,6 +27,12 @@ body::-webkit-scrollbar-thumb {
   background: #c8d1d3;
 }
 
+/* 
+body{
+  background: url("./img/1.jpg") no-repeat center;
+	background-size: cover;
+} */
+
 .btn {
   width: 100%;
   padding: 0.5rem 1rem;
@@ -107,6 +113,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 .field:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.field:disabled {
   background-color: rgba(0, 0, 0, 0.1);
 }
 

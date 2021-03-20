@@ -2,7 +2,7 @@
 <script src="../js/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="../css/fab.css">
 
-<body style="background-color: rgb(72, 127, 149);">
+<div>
 
     <div class="notification-container-wrap">
         <div  class="notification-container  popup-ani">
@@ -185,6 +185,6 @@
 
 
 
-</body>
+</div>
 
 
