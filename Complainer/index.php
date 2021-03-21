@@ -14,11 +14,9 @@
 	<script src="../js/jquery-3.5.1.min.js"></script>
 	<script src="../js/jquery.color-2.1.2.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 </head>
 <body>
-	<div><?php ?></div>
 	<div class="container">
 		<section>
 			<a id="lan" class="floating-btn">En</a>
@@ -31,7 +29,6 @@
 				<form action="index.php" method="POST">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field <?php if($errors['name']) echo "err";?>" placeholder="<?php if($errors['name']) echo $errors['name']; else echo 'Your Name'; ?>" id="f1">
 					<input type="text" name="nic" value="<?php echo htmlspecialchars($nic) ?>" class="field <?php if($errors['nic']) echo "err";?>" placeholder="<?php if($errors['nic']) echo $errors['nic']; else echo 'Your NIC'; ?>" id="f2">
-					<!-- <input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field" placeholder="<?php if($errors['lampid']) echo $errors['lampid']; else echo 'Lamppost ID'; ?>" id="f3"> -->
 					<div class="box">
 						<div class="p-left">
 							<input type="text" name="lampid" value="<?php echo htmlspecialchars($lampId) ?>" class="field <?php if($errors['lampid']) echo "err";?>" placeholder="<?php if($errors['lampid']) echo $errors['lampid']; else echo 'Lamppost ID'; ?>" >					
@@ -55,7 +52,7 @@
 			</div>
 		</div>	
 	</div>
-	<script src="index.js"></script>
-	<script src="textBiz.js" defer></script>
+	<script src="./js/index.js"></script>
+	<script src="./js/textBiz.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-
-
 <div class="add-new" style="display: none;">
 
     <div class="feild-row">

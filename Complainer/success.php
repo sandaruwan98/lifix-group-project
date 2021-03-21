@@ -31,22 +31,13 @@ $data = $caa->coordinates();
 
     <script>
 
-        
-
         var point = turf.point(<?= $caa->getLampPostLngLat() ?>); 
-
         var sectionarr = <?=json_encode($data['techarr']) ?>;
         var dataarr = <?=json_encode($data['coords']) ?>;
             
         dataarr.every((data,index) => {
             var polygon = turf.polygon([data], { name: 'poly1'});
-
-            
-
-
-            var inside = turf.inside(point, polygon)
-            // console.log(inside);
-            // console.log(sectionarr[index]);
+            var inside = turf.inside(point, polygon);
             
             if (inside) {
                 // send section index to php
@@ -56,17 +47,9 @@ $data = $caa->coordinates();
                 // };
                 xmlhttp.open("GET", "./ajax/assignTechnition.php?id=" + sectionarr[index] , true);
                 xmlhttp.send();
-                
             }
             return !inside;
-
         });
-       
-        
-
-        
-
     </script>
-
     </body>
 </html>
