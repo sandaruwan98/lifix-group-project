@@ -69,31 +69,23 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="table-section sc-bar">
                     <div class="details">
                         <h2>Request Details</h2>
-                        <?php 
+                   
                     
 
-                    $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->details();
-
-
-                    while ($row = $request_list->fetch_assoc()) {
-                        
-                    
-                ?>
                         <table class="tbl1 content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td id="name"><?= $row['username'] ?></td>
+                                    <td id="name">Not selected</td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td id="reqdate"><?= $row['supplied_date'] ?></td>
+                                    <td id="reqdate">Not selected</td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td id="supdate"><?= $row['supplied_date'] ?></td>
+                                    <td id="supdate">Not selected</td>
                                 </tr>
                                
     
@@ -101,7 +93,7 @@ $session = new classes\Session(StorekeeperFL);
     
     
                         </table>
-                        <?php } ?>
+                       
                     </div>
 
                     <!-- supply items -->
@@ -115,7 +107,13 @@ $session = new classes\Session(StorekeeperFL);
                                 <th>QUANTITY</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr> 
+                            <td>Not selected</td> 
+                            <td>Not selected</td> 
+                            <td>Not selected</td> 
+                            </tr>
+                        </tbody>
                     </table>
 
                     </div>

@@ -27,8 +27,8 @@ function showOtherdetails(data) {
     const name = table.querySelector('#name');
 
     supdate.innerHTML = data.supplied_date;
-    name.innerHTML = data.username;
-    supdate.innerHTML = data.added_date;
+    name.innerHTML = data.Name;
+    reqdate.innerHTML = data.added_date;
 }
 
 function generateTable(data) {
