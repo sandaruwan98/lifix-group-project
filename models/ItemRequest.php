@@ -74,7 +74,7 @@ class ItemRequest extends Database
     public function details()
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
         WHERE itemrequest.status='d' ";
@@ -83,10 +83,11 @@ class ItemRequest extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+    
     public function getItemReqWithTechName($ir_id)
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
+        $q = "SELECT itemrequest.Itemrequest_id,user.Name ,itemrequest.supplied_date,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
          WHERE itemrequest.Itemrequest_id='$ir_id' ";
@@ -115,7 +116,7 @@ class ItemRequest extends Database
     public function SupplyItemRequest($ir_id,$storekeeper_id){
 
         $date = date("yy-m-d");
-        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date, `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`='$date', `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
         
         return $this->conn->query($qurey);
     }
@@ -136,6 +137,8 @@ class ItemRequest extends Database
         foreach ($request_items as $item){
             $this->AddRequestedItemAsc($last_id, $item["itemNo"],$item["Quantity"]);
         }
-        
+        return $last_id;
     }
+
+  
 }
