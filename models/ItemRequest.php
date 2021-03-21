@@ -77,7 +77,8 @@ class ItemRequest extends Database
         $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-         WHERE itemrequest.status='d' ";
+        WHERE itemrequest.status='d' ";
+
 
         $list =   $this->conn->query($q);
         return $list;
@@ -119,19 +120,14 @@ class ItemRequest extends Database
         
         return $this->conn->query($qurey);
     }
-   
+
     public function setStatus($ir_id,$status){
         $qurey= "UPDATE `itemrequest` SET `status`='$status' WHERE `Itemrequest_id`=$ir_id ";
         return $this->conn->query($qurey);
     }
 
 
- 
 
-
-
-
-////////////////////////////////////
     
     public function CreateItemRequest($created_user_id,$request_items){
         // 

@@ -90,7 +90,7 @@ $data =  $clerck->Purchase();
             })
 
 
-     </script>
+     </script> 
            <script src="./../js/clerck/purchase.js"></script>
 
 </html>

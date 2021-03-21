@@ -13,6 +13,7 @@ $session = new classes\Session(StorekeeperFL);
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./store.css">
+   
     <!-- <link rel="stylesheet" href="../Clerk/css/repairpage.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +23,8 @@ $session = new classes\Session(StorekeeperFL);
 </head>
 <body>
    
-    <?php include "./views/nav.php" ?>
+    <?php 
+    include "./views/nav.php" ?>
 
 
     
@@ -31,7 +33,9 @@ $session = new classes\Session(StorekeeperFL);
             <h1>Item Request History</h1>
         </header>
         <div class="container">
-            <div class="p-list-section sc-bar">
+           
+        <div class="p-list-section sc-bar">
+
 
 
                 <div class="xx">
@@ -53,8 +57,8 @@ $session = new classes\Session(StorekeeperFL);
                 ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
+                                <span>ID: <?= $row['Itemrequest_id'] ?></span>
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
-                                <span>Technician: <?= $row['username'] ?></span>
                                 <i class="s fas fa-check"></i>
                             </div>
                         </div>
@@ -66,7 +70,7 @@ $session = new classes\Session(StorekeeperFL);
 
                 
 
-                <div class="table-section sc-bar">
+                <div class="table-section sc-bar" >
                     <div class="details">
                         <h2>Request Details</h2>
                    
@@ -118,12 +122,11 @@ $session = new classes\Session(StorekeeperFL);
 
                     </div>
                 </div>
+     
 
-
-            </div>
-        </div>
 
         <script src="requestHistory.js"></script>
       
+
 </body>
 </html>

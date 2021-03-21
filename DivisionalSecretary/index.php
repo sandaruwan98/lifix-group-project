@@ -105,7 +105,6 @@ $session = new classes\Session(DSFL);
                     $list = $fetchObj->fetchData();
                 ?>
 
-
                 <form action="index.php" method="POST">
 
                     <select name="useracc" id="useracc" class="field" required>

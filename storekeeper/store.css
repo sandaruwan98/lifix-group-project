@@ -294,8 +294,36 @@ button:focus {
 	color:#FFFFFF;
 }
 
-
-
+.searchbox-sm {
+    border-radius: 20px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.616);
+    margin: 0 0;
+    display: flex;
+  }
+  
+  .searchbox-sm > .search {
+    border: none;
+    width: 100%;
+  }
+  
+  .searchbox-sm > .btn-search {
+    border-radius: 10px;
+    font-size: medium;
+    padding: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .searchbox-sm > .btn-search:hover {
+    background: rgba(255, 255, 255, 0.644);
+  }
+  
+  .s {
+    margin-top: 6px;
+  }
+  
 
 
 
