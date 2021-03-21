@@ -44,22 +44,24 @@ $session = new classes\Session(StorekeeperFL);
 
                 <!-- request list -->
                
-                <?php 
-                    
-
+                    <?php 
                     $itemrequest= new models\ItemRequest();
                     $request_list = $itemrequest->details();
 
-
                     while ($row = $request_list->fetch_assoc()) {
-                        
-                    
-                ?>
+                    ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
                                 <span>ID: <?= $row['Itemrequest_id'] ?></span>
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
-                                <i class="s fas fa-check"></i>
+                                <?php 
+                                
+                                if ($row['status'] == 'd')
+                                    echo '<i class="s fas fa-check"></i>';
+                                else
+                                    echo '<i class="s fas fa-times"></i>';
+                                
+                                ?>
                             </div>
                         </div>
                     

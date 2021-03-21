@@ -74,10 +74,10 @@ class ItemRequest extends Database
     public function details()
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date ,itemrequest.status
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-        WHERE itemrequest.status='d' ";
+        WHERE itemrequest.status IN('d','c') ";
 
 
         $list =   $this->conn->query($q);
