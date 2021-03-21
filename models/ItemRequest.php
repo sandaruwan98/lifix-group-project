@@ -140,6 +140,8 @@ class ItemRequest extends Database
         foreach ($request_items as $item){
             $this->AddRequestedItemAsc($last_id, $item["itemNo"],$item["Quantity"]);
         }
-        
+        return $last_id;
     }
+
+  
 }
