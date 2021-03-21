@@ -58,11 +58,21 @@ $data =  $storekeeper->ReturnItem();
 .content-table th, .content-table td {
     padding: 6px 15px;
 }
+
+.main-btn{
+  box-sizing:border-box;
+  height:60px;
+  width: 90%;
+  margin: 0 5% 20px 5%; 
+  font-size:1.7em ;
+  background-color:#009879;
+}
+
 </style>
 <body>
     <?php include "./views/nav.php" ?>
 
-    
+    <?php  $storekeeper->getSession()->showMessage() ?>
     <div class="main_content">
         <header>
             <h1>Return Item Checking</h1>
@@ -119,7 +129,9 @@ $data =  $storekeeper->ReturnItem();
         
           <!-- supply items -->
           <div class="details">
-              <h2 style="margin-bottom: 8px;"> Returned Items</h2>
+          <button type="submit" name="done" class="btn main-btn" id="emo"  >Complete Damage Check</button>
+
+          <h2 style="margin-bottom: 8px;"> Returned Items</h2>
           <table class="content-table">
               <thead>
                   <tr>
@@ -160,7 +172,6 @@ $data =  $storekeeper->ReturnItem();
 
 
           </table>
-          <td><button type="submit" name="done" class="bttn button1 decline" id="emo"  >Decline</button></td>
         
           </div>
           </form>
