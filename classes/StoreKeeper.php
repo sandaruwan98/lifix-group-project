@@ -87,13 +87,29 @@ class StoreKeeper extends Framework
         $usermodel = new \models\User();
         $technicians = $usermodel->getUsers(TechnicianFL);
         $data['technicians'] = $technicians;
+        
 
+
+        $ritemcheck = new \models\ReturnItem();
         // GET TECH ID FROM SELECT
         if(isset($_POST["techselect"]) ){
             if ($_POST["techSelectoption"] != '' && isset($_POST["techSelectoption"])) {
-                $_SESSION["techid"] = $_POST["techSelectoption"];
+                // check whether alredy done today or not
+                if ($ritemcheck->checkAlredyDoneorNot($_POST["techSelectoption"])) {
+                    unset($_SESSION["techid"]);
+                    $this->session->sendMessage("Damage Items Check for this technician is already done",'danger');
+                    header("Location: ./returnitem.php");
+                    exit;
+                }else{
+
+                    $_SESSION["techid"] = $_POST["techSelectoption"];
+                }
+                
+
             }
         }
+
+
         // if tech was selected only process data
         if (isset($_SESSION["techid"])) {
             
@@ -114,10 +130,10 @@ class StoreKeeper extends Framework
             }
             $data['items'] = $items;
 
-            $rdata = [];
+            $rdata = NULL;
             // if all differnce data submitted
             if(isset($_POST["done"]) ){
-            
+
                 foreach ($_POST as $key => $value) {
                     if ($key != 'done') {
                         [$type,$item_id] = explode("_",$key);
@@ -131,13 +147,30 @@ class StoreKeeper extends Framework
                     }
                 }
                 unset($_POST["done"]);
-                print_r($rdata);
+
+                // add a fraud
+                if ($rdata != NULL) {
                 
-                // header('location: returnitem.php');
+                    $f = new \models\Fraud();
+                    $discription = 'There is a mismatch in damaged repair items of '.$data['techname'] . '(technician) on '.date('yy-m-d').'. Added by - '. $this->session->getuserName()." (Storekeeper)";
+                    $f->addFraud($_SESSION["techid"],$this->session->getuserID(), $discription,'a',$rdata);
+
+                    $this->session->sendMessage("Damage Item count success,fraud added",'success');
+                    
+                }else{
+                    $this->session->sendMessage("Damage Item count success,No frauds",'success');
+                }
+
+
+                // mark as done to prevent doing this multiple times
+                $ritemcheck->addRecord($_SESSION["techid"]);
+                unset($_SESSION["techid"]);
                 
+                header("Location: ./returnitem.php");
+                exit();
             }
 
-
+            
         }
 
         
