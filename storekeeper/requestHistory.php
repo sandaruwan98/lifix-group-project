@@ -1,7 +1,8 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+$storekeeper = new classes\StoreKeeper();
+$data = $storekeeper->ReqHistory();
 
-$session = new classes\Session(StorekeeperFL);
 ?>
 
 
@@ -44,28 +45,32 @@ $session = new classes\Session(StorekeeperFL);
 
                 <!-- request list -->
                
-                <?php 
-                    
-
-                    $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->details();
-
-
+                    <?php 
+            
+                    $request_list = $data['reqlist'];
                     while ($row = $request_list->fetch_assoc()) {
-                        
-                    
-                ?>
+                    ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
                                 <span>ID: <?= $row['Itemrequest_id'] ?></span>
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
-                                <i class="s fas fa-check"></i>
+                                <?php 
+                                
+                                if ($row['status'] == 'd')
+                                    echo '<i class="s fas fa-check"></i>';
+                                else
+                                    echo '<i class="s fas fa-times"></i>';
+                                
+                                ?>
                             </div>
                         </div>
                     
                     <?php } ?>
 
-                </div>
+            <?php include "../components/pagination.php" ?>
+
+
+        </div>
                
 
                 
@@ -73,31 +78,23 @@ $session = new classes\Session(StorekeeperFL);
                 <div class="table-section sc-bar" >
                     <div class="details">
                         <h2>Request Details</h2>
-                        <?php 
+                   
                     
 
-                    $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->details();
-
-
-                     $row = $request_list->fetch_assoc();
-                                        
-                ?>
-                
-                        <table class="tbl1 content-table" >
+                        <table class="tbl1 content-table">
     
                             <tbody>
                                 <tr>
                                     <td>Technician Name</td>
-                                    <td id="name"><?= $row['username'] ?></td>
+                                    <td id="name">Not selected</td>
                                 </tr>
                                 <tr>
                                     <td>Requested Date</td>
-                                    <td id="reqdate"><?= $row['added_date'] ?></td>
+                                    <td id="reqdate">Not selected</td>
                                 </tr>
                                 <tr>
                                     <td>Supplied Date</td>
-                                    <td id="supdate"><?= $row['supplied_date'] ?></td>
+                                    <td id="supdate">Not selected</td>
                                 </tr>
                                
     
@@ -119,7 +116,13 @@ $session = new classes\Session(StorekeeperFL);
                                 <th>QUANTITY</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr> 
+                            <td>Not selected</td> 
+                            <td>Not selected</td> 
+                            <td>Not selected</td> 
+                            </tr>
+                        </tbody>
                     </table>
 
                     </div>

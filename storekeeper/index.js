@@ -27,8 +27,8 @@ $(document).ready(function(){
         $.get("./ajax/supplyItemRequest.php?id="+reItemId ,function(data, success){
             // console.log("in the nethod");
             if(success == "success"){
-                console.log(data);
-                // location.reload();
+                // console.log(data);
+                location.reload();
             }
            
         })

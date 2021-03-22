@@ -55,15 +55,14 @@ class ItemRequest extends Database
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
         $q = "SELECT count(*) as count
-        FROM itemrequest INNER JOIN user 
-        ON itemrequest.created_by=user.userId
-         WHERE itemrequest.status='a' " ;
+        FROM itemrequest WHERE status='a' " ;
 
         $count =   $this->conn->query($q);
         $count =   $count->fetch_assoc();
         return $count["count"];
     }
 
+ 
     public function getPendingRequestList_by_userid($id)
     {
         $q = "SELECT Itemrequest_id , added_date FROM itemrequest WHERE status='a' AND  created_by='$id' ";
@@ -71,22 +70,38 @@ class ItemRequest extends Database
         return $list;
     }
     
-    public function details()
+
+
+
+    public function getItemReqHistorytCount()
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
+        $q = "SELECT count(*) as count
+        FROM itemrequest WHERE status IN('d','c') " ;
+
+        $count =   $this->conn->query($q);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+
+
+    public function getItemReqHistory($paginationfilter)
+    {
+        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
+        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date ,itemrequest.status
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
-        WHERE itemrequest.status='d' ";
+        WHERE itemrequest.status IN('d','c') ORDER BY itemrequest.added_date DESC ".$paginationfilter;
 
 
         $list =   $this->conn->query($q);
         return $list;
     }
+    
     public function getItemReqWithTechName($ir_id)
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date,itemrequest.added_date
+        $q = "SELECT itemrequest.Itemrequest_id,user.Name ,itemrequest.supplied_date,itemrequest.added_date
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
          WHERE itemrequest.Itemrequest_id='$ir_id' ";
@@ -115,7 +130,7 @@ class ItemRequest extends Database
     public function SupplyItemRequest($ir_id,$storekeeper_id){
 
         $date = date("yy-m-d");
-        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`=$date, `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
+        $qurey= "UPDATE `itemrequest` SET `status`='b',`supplied_date`='$date', `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
         
         return $this->conn->query($qurey);
     }
@@ -136,6 +151,8 @@ class ItemRequest extends Database
         foreach ($request_items as $item){
             $this->AddRequestedItemAsc($last_id, $item["itemNo"],$item["Quantity"]);
         }
-        
+        return $last_id;
     }
+
+  
 }
