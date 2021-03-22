@@ -30,6 +30,12 @@ class LampPost extends Database
         
         $this->conn->query($q);
     }
+    public function addNewLampostRecord( $lp_id,$req,$auth,$notes,$date)
+    {
+        $q = "INSERT INTO `newlamppostrecord`( `date`, `auth_by`, `requested_by`, `notes`, `lp_id`) VALUES ('$date','$auth','$req','$notes','$lp_id')";
+        
+        return $this->conn->query($q);
+    }
 
 
     public function DeleteLampost( $lp_id)
