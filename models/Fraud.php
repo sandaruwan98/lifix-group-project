@@ -18,10 +18,13 @@ class Fraud extends Database
 
 
         //then add fraud items for the fraud
-        foreach ($arr as $item_id => $values) {
-            $q = " INSERT INTO `fraud_item`(`item_id`, `difference`, `fraud_id`, `notes`) VALUES ( '$item_id' , '$values[0]', '$fraud_id' , '$values[1]'  ) ";
-            $this->conn->query($q);
-        } 
+        if ($arr != NULL) {
+        
+            foreach ($arr as $item_id => $values) {
+                $q = " INSERT INTO `fraud_item`(`item_id`, `difference`, `fraud_id`, `notes`) VALUES ( '$item_id' , '$values[0]', '$fraud_id' , '$values[1]'  ) ";
+                $this->conn->query($q);
+            } 
+        }
     }
 
     public function getFraudsByUserID($id, $firstDate, $secondDate)

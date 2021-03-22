@@ -70,4 +70,19 @@ class Complaint extends Database
         // echo $list;
         return $list->fetch_assoc();
     }
+
+
+    public function getIsBulbThere($r_id)
+    {
+        $q = "SELECT is_bulb_there FROM complaint WHERE repair_id='$r_id'";
+
+        $list =   $this->conn->query($q);
+        if ($list->num_rows != 0) {
+            $list = $list->fetch_assoc();
+            return $list['is_bulb_there']; 
+        }else{
+            die('<h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0;">Process failed - Invalid repair id</h4> ');
+
+        }
+    }
 }
