@@ -179,20 +179,24 @@ class Technician extends Framework
     private function CompleteRepair_addUsedReturnedData($item_names)
     {
         
+
+
+
         $used_items = array();
         $return_items = array();
         foreach ($item_names as $item){
-            //for collect used items quantities
+            //for collect used items quantities from text inputs
             $item_name = $item[0]."_u";
             $quantity = $_POST["$item_name"];
-    
+            
             if ($quantity!=0 && $quantity!=null) {
     
                 $used_item = array($item[0], $quantity, $item[1]);
                 $used_items[] = $used_item;
             }
             
-            //for collect return items quantities
+            //for collect return items quantities from text inputs
+            $item_name = $item[0]."_u";
             $item_name = $item[0]."_r";
             $quantity = $_POST["$item_name"];
     
@@ -209,6 +213,24 @@ class Technician extends Framework
             $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items,$this->session->getuserID());
            
             if ($errmsg == '') {
+                // ---------------------------------------------------------
+                // get bulb return/used count for fraud check
+                $bulb_usedcount = $_POST["1_u"];
+                $bulb_damagecount = $_POST["1_r"];
+
+                // if bulbs are used for the repair
+                if ($bulb_usedcount!=0 && $bulb_usedcount!=null) {
+                    $comp = new \models\Complaint();
+                    $complainer_said_value = $comp->getIsBulbThere($_GET["id"]);
+                    if (($bulb_usedcount != $bulb_damagecount) && $complainer_said_value == '1') {
+                        // mark this scnario as a fraud
+                        $discription = 'There is a suspicious activity from '.$this->session->getuserName().' (technician). Complainer claims that damaged bulb is on the lamppost but technician did not return the damaged bulb';
+                        $f = new \models\Fraud();
+                        $f->addFraud(  $this->session->getuserID() , 0 ,$discription,'b',NULL);
+                    }
+                }
+
+                // complte repair ---------------------------------------------------------------
                 $repairmodel = new \models\Repair();
                 $r_id = $_GET["id"];
                 $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
@@ -220,7 +242,7 @@ class Technician extends Framework
             }else {
                 $this->session->sendMessage("Insuficient ".$errmsg ,'danger');
             }
-            // header("location: ./index.php");
+            header("location: ./index.php");exit;
         }
     }
 
