@@ -30,6 +30,20 @@ class StoreKeeper extends Framework
 
         return $data;
     }
+    public function ReqHistory()
+    {
+        $itemrequest= new \models\ItemRequest();
+
+        $totalpages = $itemrequest->getItemReqHistorytCount();
+
+        $p = new Pagination(5,$totalpages);
+        
+        $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText());
+       
+        $data['pagination'] = $p;
+
+        return $data;
+    }
     
     public function Inventory()
     {

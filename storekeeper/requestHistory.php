@@ -1,7 +1,8 @@
 <?php 
 include_once  __DIR__ . '/../utils/classloader.php';
+$storekeeper = new classes\StoreKeeper();
+$data = $storekeeper->ReqHistory();
 
-$session = new classes\Session(StorekeeperFL);
 ?>
 
 
@@ -44,28 +45,32 @@ $session = new classes\Session(StorekeeperFL);
 
                 <!-- request list -->
                
-                <?php 
-                    
-
-                    $itemrequest= new models\ItemRequest();
-                    $request_list = $itemrequest->details();
-
-
+                    <?php 
+            
+                    $request_list = $data['reqlist'];
                     while ($row = $request_list->fetch_assoc()) {
-                        
-                    
-                ?>
+                    ?>
                         <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                             <div class="row">
                                 <span>ID: <?= $row['Itemrequest_id'] ?></span>
                                 <span>Supplied Date: <?= $row['supplied_date'] ?></span>
-                                <i class="s fas fa-check"></i>
+                                <?php 
+                                
+                                if ($row['status'] == 'd')
+                                    echo '<i class="s fas fa-check"></i>';
+                                else
+                                    echo '<i class="s fas fa-times"></i>';
+                                
+                                ?>
                             </div>
                         </div>
                     
                     <?php } ?>
 
-                </div>
+            <?php include "../components/pagination.php" ?>
+
+
+        </div>
                
 
                 

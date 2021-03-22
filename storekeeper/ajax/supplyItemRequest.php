@@ -38,3 +38,5 @@ if ($errors == '') {
 }else{
     $sesion->sendMessage("Cannot supply the request. ".$errors." items are not enough"  ,'danger');
 }
+// header("Location: ./index.php");
+// exit();
