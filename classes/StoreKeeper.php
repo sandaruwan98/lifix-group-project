@@ -35,7 +35,7 @@ class StoreKeeper extends Framework
     {
 
         $inventory = new \models\Inventory();
-       
+     
       
          $data['inventory'] = $inventory->getAllInventory();
        

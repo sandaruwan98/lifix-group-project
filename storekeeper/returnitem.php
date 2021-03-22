@@ -62,6 +62,7 @@ $session = new classes\Session(StorekeeperFL);
                     </div>
 
                     <!-- supply items -->
+                    
                     <div class="details">
                         <h2 style="margin-bottom: 8px;"> Returned Items</h2>
                     <table class="content-table">
@@ -121,7 +122,7 @@ $session = new classes\Session(StorekeeperFL);
 
                     </table>
                  
-                    </div>
+                    </div> 
                     
     
                 </div>
