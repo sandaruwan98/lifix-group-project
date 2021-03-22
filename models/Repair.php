@@ -127,7 +127,7 @@ class Repair extends Database
         ('$r_id','$item_id' , '$quantity', '$returnflag')";
 
        if( $this->conn->query($q) !== TRUE)
-            echo (' <h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0;">Process failed '.$this->conn->error .'</h4> ');
+            die('<h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0; position: absolute;">Process failed - Invalid request</h4> ');
        
     }
 
