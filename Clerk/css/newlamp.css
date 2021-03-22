@@ -3,7 +3,7 @@
 }
 
 .field {
-    width: 500px;
+    width: 400px;
     min-width: 200px;
 }
 
@@ -13,4 +13,13 @@
     min-width: 350px;
 
 
+}
+
+.lp-field{
+    width: 305px;
+    min-width: 100px;
+}
+
+.c{
+    width: 90px;
 }

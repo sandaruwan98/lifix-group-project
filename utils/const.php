@@ -1,5 +1,8 @@
 <?php
 
+define ('BASE','http://localhost:8080/group-project-demo/web/');
+
+
 define ('DSFL',1);
 define ('CleckFL',2);
 define ('StorekeeperFL',3);
