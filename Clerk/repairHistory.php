@@ -14,13 +14,13 @@ $data =  $clerck->RepairHistory();
 
     <!-- <link rel="stylesheet" href="<?= BASE ?>css/slider.css">
     <link rel="stylesheet" href="<?= BASE ?>css/style.css">
-    <link rel="stylesheet" href="<?= BASE ?>clerk/css/clerk.css">
-    <link rel="stylesheet" href="<?= BASE ?>clerk/css/repairHistory.css"> -->
+    <link rel="stylesheet" href="<?= BASE ?>clerk/css/clerk.css">-->
     
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./css/clerk.css">
-    <link rel="stylesheet" href="./css/repairHistory.css">
+
+    <link rel="stylesheet" href="../css/clerk/clerk.css">
+    <link rel="stylesheet" href="../css/clerk/repairHistory.css">
 
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Repair History</title>

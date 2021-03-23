@@ -15,8 +15,9 @@ $data = $tech->TmpInventoryPage();
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
 
-    <link rel="stylesheet" href="./css/tech.css">
-    <link rel="stylesheet" href="./css/request.css">
+    <link rel="stylesheet" href="../css/tech/tech.css">
+    <link rel="stylesheet" href="../css/tech/request.css">
+
     <!-- <link rel="stylesheet" href="./css/complete.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Temporary Inventory</title>

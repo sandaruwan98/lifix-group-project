@@ -14,8 +14,8 @@ $requestlist = $tech->PendingRequestListPage();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
-    <link rel="stylesheet" href="./css/tech.css">
-    <link rel="stylesheet" href="./css/reqlist.css">
+    <link rel="stylesheet" href="../css/tech/tech.css">
+    <link rel="stylesheet" href="../css/tech/reqlist.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Pending Item Requsts</title>
 </head>
