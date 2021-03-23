@@ -130,7 +130,7 @@ $data = $storekeeper->ReqHistory();
      
 
 
-        <script src="requestHistory.js"></script>
+        <script src="../js/st/requestHistory.js"></script>
       
 
 </body>

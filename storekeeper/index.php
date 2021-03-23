@@ -115,6 +115,6 @@ $data = $storekeeper->Index();
                 })
             })
         </script>
-        <script src="index.js"></script>
+        <script src="../js/st/index.js"></script>
 </body>
 </html>

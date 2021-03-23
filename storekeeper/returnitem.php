@@ -17,7 +17,7 @@ $data =  $storekeeper->ReturnItem();
     
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script src="https://www.google.com/jsapi"></script>	
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <title>Return item Checking</title>
