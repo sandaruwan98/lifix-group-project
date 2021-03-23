@@ -142,17 +142,6 @@ class Repair extends Database
        
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public function CompleteRepair($r_id,$used_items,$return_items){
         // add used items to database
         foreach ($used_items as $item){
@@ -171,7 +160,7 @@ class Repair extends Database
 
     public function CreateEmergencyRepair($lp_id,$technician_id,$used_items,$return_items){
         // hence this is emgrepair status is e, clerkid is 0 (defalt one) because he did not assign that to technician
-        $r_id = $this->createRepair('e',$lp_id,$technician_id,0);
+        $r_id = $this->createRepair('e', $lp_id, $technician_id, 0, 0);
         
         // add used items to database
         foreach ($used_items as $item){
