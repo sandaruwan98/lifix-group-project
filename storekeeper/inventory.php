@@ -12,8 +12,8 @@ $data =  $storekeeper->Inventory();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./store.css">
-    <link rel="stylesheet" href="./display.css">
+    <link rel="stylesheet" href="../css/st/store.css">
+    <link rel="stylesheet" href="../css/st/display.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

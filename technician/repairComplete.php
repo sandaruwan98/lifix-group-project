@@ -15,9 +15,10 @@ $data =  $tech->CompleteRepairPage();
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
 
-    <link rel="stylesheet" href="./css/tech.css">
-    <link rel="stylesheet" href="./css/request.css">
-    <link rel="stylesheet" href="./css/complete.css">
+
+    <link rel="stylesheet" href="../css/tech/tech.css">
+    <link rel="stylesheet" href="../css/tech/request.css">
+    <link rel="stylesheet" href="../css/tech/complete.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
