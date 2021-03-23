@@ -12,7 +12,7 @@ class Role extends Database
         $date = date("yy-m-d");
 
         if ($this->checkRole($userid,$role)) {
-          $query="UPDATE `roles` SET `is_active`='1',`startdate`='$date' WHERE role='$role' AND user_id='$userid' ";
+          $query="UPDATE `roles` SET `is_active`='1',`enddate`='0000-00-00' WHERE role='$role' AND user_id='$userid' ";
           return $this->conn->query($query);
         }
 
