@@ -109,7 +109,6 @@ class Authentication extends Framework{
             // }
 
         
-            // $usermodel = $this->loadModel('User');
             $usermodel = new \models\User();
             
             if(!$usermodel->isUsernameAvailable($username))
