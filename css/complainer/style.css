@@ -191,12 +191,12 @@ h2:after{
 }
 
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 600px){
 
 	.container:after{
 		background: none;
 		background-color:#161616;
-		padding: 20px;
+		/* padding: 20px; */
 		background: #606c88;  /* fallback for old browsers */
 		background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to right, #3f4c6b, #606c88); 
@@ -216,7 +216,7 @@ h2:after{
 
 	.right{
 		padding:0px 15px 25px 15px;
-		margin: 5px;
+		/* margin: 5px; */
 	}
 	
 	.field {

@@ -40,7 +40,7 @@
   display: flex;
   align-items: flex-end;
   padding: 10px 0px 0px 10px;
-  background-color: aquamarine;
+  background-color: #a8ccc0;
 }
 
 .chart-container {
@@ -126,7 +126,7 @@ table th.last {
     display: flex;
     align-items: flex-end;
     padding: 10px 0px 0px 10px;
-    background-color: aquamarine;
+    background-color: #a8ccc0;
   }
 
   table {
