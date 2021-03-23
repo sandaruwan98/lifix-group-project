@@ -10,7 +10,7 @@
 <html>
 <head>
 	<title>Li - Fix</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/complainer/style.css">
 	<script src="../js/jquery-3.5.1.min.js"></script>
 	<script src="../js/jquery.color-2.1.2.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">

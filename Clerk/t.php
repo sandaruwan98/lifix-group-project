@@ -18,7 +18,7 @@ $data =  $clerck->SectionAssign();
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet" />
 <link rel="stylesheet" href="../css/slider.css">
 <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="./css/clerk.css">
+<link rel="stylesheet" href="../css/clerk/clerk.css">
 
 </head>
 <body>
