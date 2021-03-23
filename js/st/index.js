@@ -1,28 +1,46 @@
 
-
-
+var reItemId=0;
 
 $(document).ready(function(){
 
+    
     $(".repair-item").click( function(){
 
-        // console.log(this.id);
+        
+
+        reItemId=this.id;
+        console.log(reItemId);
+        
         $.get("./ajax/getTableData.php?id=" + this.id ,function (data,status) {
+            // alert("done");
             if (status == "success") {
                 var tabledata = JSON.parse(data)
                 generateTable(tabledata);
+                // console.log("in the nethod");
             }
            
         })
         
     })
+
+    $("#supplybtn").click(()=>{
+        $.get("./ajax/supplyItemRequest.php?id="+reItemId ,function(data, success){
+            // console.log("in the nethod");
+            if(success == "success"){
+                // console.log(data);
+                location.reload();
+            }
+           
+        })
+    }
+    )
     
 
 });
   
 
 function generateTable(data) {
-    var table = document.getElementById("p-table");
+    var table = document.querySelector(".content-table");
     table.tBodies[0].remove();
 
     var tbody = table.createTBody();
@@ -33,10 +51,12 @@ function generateTable(data) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        cell1.innerHTML = item.item_id;
+        cell1.innerHTML = item.Item_id;
         cell2.innerHTML = item.name;
         cell3.innerHTML = item.quantity;
+        
     });
     
     
 } 
+

@@ -55,7 +55,7 @@
 		
 	</div>
 	
-	<script src="./js/index.js"></script>
-	<script src="./js/textBiz.js" defer></script>
+	<script src="../js/complainer/index.js"></script>
+	<script src="../js/complainer/textBiz.js" defer></script>
 </body>
 </html>
