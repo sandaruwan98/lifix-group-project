@@ -6,6 +6,8 @@
     $name = $nic = $lampId = $phoneNo = $otpCode = $otp = $note = "";
     $redirect= "";
 
+    $lampObj = new models\LampPost();
+
     class DbAccess {
         public $repairObj;
         public $complaintObj;
@@ -22,9 +24,10 @@
             
             array_search('yes', $_POST)?($bulb = 1):($bulb = 0);
 
-            $repairId = $repairObj->createRepair('a', $lp_id, 0, 0);
+            
             $complainerCheck = $complaintObj->checkComplainerExists($nic);
             $complainer_id = $complaintObj->addComplainer($complainerCheck, $nic, $name, $phoneno);
+            $repairId = $repairObj->createRepair('a', $lp_id, 0, 0, $complainer_id);
             $complaintObj->addComplaint($bulb, $note, $lp_id, $repairId, $complainer_id);
 
             if ($complainer_id &&  $repairId) {
@@ -56,11 +59,11 @@
             $name = "";
             $errors['name'] = 'Name must be a valid name';
         }
-        if(empty($nic) || !preg_match("/^[1-9]([0-9]{8}(x|v|X|V)|[0-9]{11})$/", $nic)) {
+        if(empty($nic) || !preg_match("/^[1-9]([0-9]{8}(x|v|X|V))|([1-9][0-9]{10}(x|v|X|V))$/", $nic)) {
             $nic = "";
             $errors['nic'] = 'NIC must be a valid NIC number';
         }
-        if(empty($lampId) || !preg_match("/^[1-9][0-9]{3}$/", $lampId)) {
+        if(empty($lampId) || $lampObj->getLampPost_byid($lampId) == null) {
             $lampId = "";
             $errors['lampid'] = 'ID must be a valid ID';
         }
