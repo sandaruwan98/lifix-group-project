@@ -80,7 +80,7 @@ $auth->Loginuser();
                         
                         
                         <a  href="./register.php" class="btn-log">Register</a>
-                        <a  href="./forgotpassword.php" class="btn-log">fogot password</a>
+                        <a  href="./forgotpassword.php" class="btn-log">Forgot password?</a>
                         <br>
                         <br>
                     </form>	
