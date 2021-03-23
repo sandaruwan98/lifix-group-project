@@ -20,9 +20,9 @@ $session = new classes\Session(DSFL);
   <title>Report Generate</title>
   <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/slider.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/report.css">
-  <link rel="stylesheet" href="./css/charts.css">
+  <link rel="stylesheet" href="../css/ds/style.css">
+  <link rel="stylesheet" href="../css/ds/report.css">
+  <link rel="stylesheet" href="../css/ds/charts.css">
   <link rel="stylesheet" href="../css/morris.css">
   <script src="../js/jquery-3.5.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
