@@ -109,6 +109,28 @@ class Clerck extends Framework
         return $data;
     }
     
+    
+    public function LampPostPage()
+    {
+
+        if (isset( $_POST["addlampdetail"])) {
+            $lp_id = $_POST['lp'];
+            $reqby = $_POST["reqby"];
+            $authby = $_POST["authby"];
+            $notes = $_POST["notes"];
+            $date = $_POST["date"];
+
+            $lp = new \models\LampPost();
+            
+            if($lp->addNewLampostRecord($lp_id,$reqby,$authby,$notes,$date))
+                $this->session->sendMessage("Lamppost record added successfully",'success');
+            else
+                $this->session->sendMessage("Process failed,error occured",'danger');
+            header('location: ./newlamp.php');exit;
+
+        }
+    }
+    
 
 
 

@@ -50,3 +50,12 @@
 #### norm  -> other notifictions
 
 
+
+
+## fraud types
+#### a  -> return item mismatch
+#### b  ->  bulb tick
+#### c  -> retru chck not done
+#### d  -> inventory mismatch
+
+

@@ -35,6 +35,7 @@ $data =  $clerck->RepairPage();
     $cp = $data['complaint_details'];
     
 ?>
+<?php  $clerck->getSession()->showMessage() ?>
 
     <div class="main_content">
         <header>

@@ -5,6 +5,19 @@ require_once "Database.php";
 class Repair extends Database
 {
 
+    public function getTotal_damageitems_forday($tech_id,$item_id)
+    {
+        $date = date("yy-m-d");
+
+        $q0 = "SELECT repair_id FROM repair WHERE technician_id='$tech_id' AND date='$date'";
+
+        $q = "SELECT SUM(quantity) as total FROM repair_inventory_asc WHERE repair_id IN ($q0) AND damage_used_flag=1 AND item_id=$item_id";
+        
+        $result = $this->conn->query($q);
+        $result = $result->fetch_array();
+        return $result[0];
+    }
+
     public function createRepair( $status,$lp_id,$technician_id,$clerk_id)
     {
         $date = date("yy-m-d");
@@ -69,7 +82,7 @@ class Repair extends Database
     {
         $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
         FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id='$tech_id' ORDER BY repair.date DESC " ;
+        ON lamppost.lp_id=repair.lp_id WHERE repair.technician_id='$tech_id' AND repair.status='a' ORDER BY repair.date DESC " ;
 
         $list =   $this->conn->query($q);
         return $list;
@@ -114,7 +127,7 @@ class Repair extends Database
         ('$r_id','$item_id' , '$quantity', '$returnflag')";
 
        if( $this->conn->query($q) !== TRUE)
-            echo (' <h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0;">Process failed '.$this->conn->error .'</h4> ');
+            die('<h4 style="background-color: red;color: #fff;padding: 5px;border-radius: 5px;margin: 5px 0; position: absolute;">Process failed - Invalid request</h4> ');
        
     }
 
