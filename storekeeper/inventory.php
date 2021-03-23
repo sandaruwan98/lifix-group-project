@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $storekeeper = new classes\StoreKeeper();
 $data =  $storekeeper->Inventory();
@@ -7,8 +7,9 @@ $data =  $storekeeper->Inventory();
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -19,55 +20,56 @@ $data =  $storekeeper->Inventory();
 
     <title>Inventory Records</title>
 
-</head> 
+</head>
+
 <body>
 
 
     <?php include "./views/nav.php" ?>
 
 
-<div class="main_content sc-bar">
+    <div class="main_content sc-bar">
 
-<?php  $storekeeper->getSession()->showMessage() ?>
-    
+        <?php $storekeeper->getSession()->showMessage() ?>
+
         <header>
-          <h1>Inventory Details</h1>
+            <h1>Inventory Details</h1>
         </header>
-    <div class="con">
-        
-        <h1 class="heading" style="margin-left: 2.5%;margin-right: 2.5%;">Inventory Balance</h1>
-        <table class="content-table ctable">
-        <thead> 
-            <tr>
-            <th>Item Id</th>
-            <!-- <th><span>Date</span></th> -->
-            <th><span>Name</span></th>
-            <th><span>Current Balance</span></th>
+        <div class="con">
 
-            </tr>
-            </div>
-            </div>
-        </thead>
+            <h1 class="heading" style="margin-left: 2.5%;margin-right: 2.5%;">Inventory Balance</h1>
+            <table class="content-table ctable">
+                <thead>
+                    <tr>
+                        <th>Item Id</th>
+                        <!-- <th><span>Date</span></th> -->
+                        <th><span>Name</span></th>
+                        <th><span>Current Balance</span></th>
 
-        <?php
-        $result = $data['inventory'];
-        while($row=mysqli_fetch_assoc($result)){
-            echo"<tr>";
-            echo "<td>".$row['Item_id']."</td>";
-            // echo "<td>".$row['date']."</td>";
-            echo "<td>".$row['name']."</td>";
-            echo "<td>".$row['total']."</td>";
-            echo"</tr>";
-        }
+                    </tr>
+        </div>
+    </div>
+    </thead>
 
-        ?>
-        </table>
+    <?php
+    $result = $data['inventory'];
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['Item_id'] . "</td>";
+        // echo "<td>".$row['date']."</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['total'] . "</td>";
+        echo "</tr>";
+    }
+
+    ?>
+    </table>
     </div>
 
 
-        <?php include "./views/inventory_newstock.php" ?>
-    
-</div>  
-</body>
-</html>
+    <?php include "./views/inventory_newstock.php" ?>
 
+    </div>
+</body>
+
+</html>

@@ -50,4 +50,3 @@
             $obj->revoke($_POST['useracc']); 
             unset($obj);
     }
-?>

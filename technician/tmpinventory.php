@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
 $data = $tech->TmpInventoryPage();
@@ -24,7 +24,7 @@ $data = $tech->TmpInventoryPage();
 </head>
 
 <body>
-    
+
     <?php include './nav.php' ?>
 
     <div class="main">
@@ -40,10 +40,10 @@ $data = $tech->TmpInventoryPage();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row=$data->fetch_assoc()) { ?>
+                        <?php while ($row = $data->fetch_assoc()) { ?>
                             <tr>
-                                <td><?=$row['name'] ?></td>
-                                <td><?=$row['quantity'] ?></td>
+                                <td><?= $row['name'] ?></td>
+                                <td><?= $row['quantity'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -52,7 +52,7 @@ $data = $tech->TmpInventoryPage();
             </form>
         </div>
     </div>
-   
+
 </body>
 
 </html>

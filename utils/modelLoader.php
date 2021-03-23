@@ -7,5 +7,3 @@ function loadmodels($class) {
 } 
      
 spl_autoload_register("loadmodels");
-
-?>

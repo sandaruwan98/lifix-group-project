@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
@@ -21,8 +21,8 @@ $requestlist = $tech->PendingRequestListPage();
 </head>
 
 <body>
-   
-<?php include './nav.php' ?>
+
+    <?php include './nav.php' ?>
 
 
 
@@ -31,20 +31,20 @@ $requestlist = $tech->PendingRequestListPage();
 
 
             <?php
-            
-            if($tech->CheckPendingRequestList())
+
+            if ($tech->CheckPendingRequestList())
                 include './views/pendingRequestList.php';
             else
                 include './views/requestpage.php';
-            
+
 
             ?>
-                
-                   
 
 
 
-            
+
+
+
         </div>
     </div>
 </body>

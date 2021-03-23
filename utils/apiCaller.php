@@ -34,5 +34,3 @@
         echo "Not Sent";
         }
     }
-   
-?>

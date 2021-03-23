@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
@@ -25,11 +25,11 @@ $data =  $tech->AddRequestpage();
 <body>
 
 
-<?php include './nav.php' ?>
+    <?php include './nav.php' ?>
 
 
-<?php  $tech->getSession()->showMessage() ?>
-    
+    <?php $tech->getSession()->showMessage() ?>
+
     <div class="main">
         <div class="con">
 
@@ -38,20 +38,20 @@ $data =  $tech->AddRequestpage();
                 <h2>Add Item Request</h2>
 
 
-                <?php 
-                
+                <?php
 
-                $item_names=  $data['ItemData'];
-                foreach ($item_names as $item):
-                 ?>
-                <div class="collapsible"><?= $item[1] ?></div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter Amount" name="<?= $item[0] ?>_u" id="">
-                </div>
+
+                $item_names =  $data['ItemData'];
+                foreach ($item_names as $item) :
+                ?>
+                    <div class="collapsible"><?= $item[1] ?></div>
+                    <div class="content">
+                        <input class="field" type="text" placeholder="Enter Amount" name="<?= $item[0] ?>_u" id="">
+                    </div>
                 <?php endforeach ?>
 
 
-               
+
 
                 <button type="submit" name="addrequest" class="btn">ADD REQUEST</button>
 
@@ -66,7 +66,7 @@ $data =  $tech->AddRequestpage();
         var i;
 
         for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
+            coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
                 if (content.style.maxHeight) {

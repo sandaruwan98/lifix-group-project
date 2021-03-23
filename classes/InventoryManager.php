@@ -1,5 +1,7 @@
 <?php
+
 namespace classes;
+
 include_once  __DIR__ . '/../utils/classloader.php';
 
 class InventoryManager
@@ -8,27 +10,27 @@ class InventoryManager
     //--------------------------------- Inventory --------------------------------
 
 
-     // check is there inventory have enough items to reduce
-     public function CheckInventoryBeforeReduce($items)
-     {
-         $err = '';
-         $invmodel = new \models\Inventory();
-         foreach ($items as $item) {
-             if (!$invmodel->checkAvailability($item['Item_id'],$item['quantity'])) {
-                 $err = $err.$item['name']." ,";
-             }
-         }
-         return $err;
-     }
+    // check is there inventory have enough items to reduce
+    public function CheckInventoryBeforeReduce($items)
+    {
+        $err = '';
+        $invmodel = new \models\Inventory();
+        foreach ($items as $item) {
+            if (!$invmodel->checkAvailability($item['Item_id'], $item['quantity'])) {
+                $err = $err . $item['name'] . " ,";
+            }
+        }
+        return $err;
+    }
 
     // decrease quntities from inv when tech confirm the supplied itemrequst
     public function DecreaseInventory($items)
     {
-        
+
         $invmodel = new \models\Inventory();
         foreach ($items as $item) {
             // $invmodel->updateQuantity($item[0],$item[1],'-');
-            $invmodel->updateQuantity($item['Item_id'],$item['quantity'],'-');
+            $invmodel->updateQuantity($item['Item_id'], $item['quantity'], '-');
         }
     }
 
@@ -38,10 +40,10 @@ class InventoryManager
     {
         $invmodel = new \models\Inventory();
         foreach ($items as $item) {
-            $invmodel->updateQuantity($item['item_id'],$item['quantity'],'+');
+            $invmodel->updateQuantity($item['item_id'], $item['quantity'], '+');
         }
     }
-     
+
 
 
 
@@ -60,43 +62,38 @@ class InventoryManager
         $tmpinv = new \models\TmpInventory();
         $items = $inv->getItemIDs();
         foreach ($items->fetch_all() as $item) {
-            $tmpinv->addTmpInventoryItem($tech,$item[0]);
+            $tmpinv->addTmpInventoryItem($tech, $item[0]);
         }
     }
 
     // check is there tmpinventory have enough items to reduce
-    public function CheckTmpInventoryBeforeReduce($items,$tech_id)
+    public function CheckTmpInventoryBeforeReduce($items, $tech_id)
     {
         $err = '';
         $tmpmodel = new \models\TmpInventory();
         foreach ($items as $item) {
-            if (!$tmpmodel->checkAvailability($tech_id,$item[0],$item[1])) {
-                $err = $err.$item[2]." ,";
+            if (!$tmpmodel->checkAvailability($tech_id, $item[0], $item[1])) {
+                $err = $err . $item[2] . " ,";
             }
         }
         return $err;
     }
 
     // reduce quntities from tmpinv when repair complete 
-    public function DecreasetmpInventory($items,$tech_id)
+    public function DecreasetmpInventory($items, $tech_id)
     {
         $tmpmodel = new \models\TmpInventory();
         foreach ($items as $item) {
-            $tmpmodel->updateQuantity($tech_id,$item[0],$item[1],'-');
+            $tmpmodel->updateQuantity($tech_id, $item[0], $item[1], '-');
         }
     }
 
     // increase quntities from inv when tech confim the supplied itemrequst
-    public function IncreasetmpInventory($items,$tech_id)
+    public function IncreasetmpInventory($items, $tech_id)
     {
         $tmpmodel = new \models\TmpInventory();
         foreach ($items as $item) {
-            $tmpmodel->updateQuantity($tech_id,$item['Item_id'],$item['quantity'],'+');
+            $tmpmodel->updateQuantity($tech_id, $item['Item_id'], $item['quantity'], '+');
         }
     }
-
-
-
-
-
 }

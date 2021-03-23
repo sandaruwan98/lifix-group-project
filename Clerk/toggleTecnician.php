@@ -1,6 +1,6 @@
 <title>Repairs</title>
 
-<?php 
+<?php
 session_start();
 
 $id = $_GET["tid"];

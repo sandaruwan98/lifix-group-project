@@ -1,21 +1,18 @@
-
 .content {
-    height: 30vh;
+  height: 30vh;
 }
 
 .field {
-  
-    margin: 2.5px 0;
-    font-size: .8rem;
+  margin: 2.5px 0;
+  font-size: 0.8rem;
 }
-
 
 /* for emgrepair */
 
-.feild-row label{
-    margin-bottom: 5px;
+.feild-row label {
+  margin-bottom: 5px;
 }
 
-.feild-row .field{
-    margin-bottom: 10px;
+.feild-row .field {
+  margin-bottom: 10px;
 }

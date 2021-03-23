@@ -1,21 +1,21 @@
 <div id="x" class="list sc-bar">
     <h2>Assigned</h2>
-    <select name="techSelect" id="techSelect" class="field" >
-        <option value="" disabled="" >Select the technician</option>
+    <select name="techSelect" id="techSelect" class="field">
+        <option value="" disabled="">Select the technician</option>
         <?php
-              $technicians = $data['technicians'];
+        $technicians = $data['technicians'];
 
-              while($tech = $technicians->fetch_assoc()) :?>
-              
-                <option <?php  if($_SESSION["tid"]==$tech['userId']) echo 'selected'; ?> value= "<?= $tech['userId'] ?>" ><?= $tech['Name'] ?></option>
+        while ($tech = $technicians->fetch_assoc()) : ?>
+
+            <option <?php if ($_SESSION["tid"] == $tech['userId']) echo 'selected'; ?> value="<?= $tech['userId'] ?>"><?= $tech['Name'] ?></option>
 
         <?php endwhile ?>
     </select>
 
     <?php
-   
-    
-   $list_assign = $data['assignedrepairs'];
+
+
+    $list_assign = $data['assignedrepairs'];
 
     if ($list_assign->num_rows > 0) {
         while ($row = $list_assign->fetch_assoc()) { ?>
@@ -26,7 +26,7 @@
                     <span><?= $row["date"] ?></span>
                 </div>
             </div>
-           
+
 
     <?php
         }

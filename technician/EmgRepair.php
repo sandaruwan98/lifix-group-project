@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
 $data =  $tech->EmgRepairPage();
@@ -27,8 +27,8 @@ $data =  $tech->EmgRepairPage();
 
     <?php include './nav.php' ?>
 
-    <?php  $tech->getSession()->showMessage() ?>
-    
+    <?php $tech->getSession()->showMessage() ?>
+
     <div class="main">
         <div class="con">
 
@@ -41,15 +41,15 @@ $data =  $tech->EmgRepairPage();
 
                 </div>
 
-                <?php 
-                $item_names= $data['ItemData'];
-                foreach ($item_names as $item):
-                 ?>
-                <div class="collapsible"><?= $item[1] ?></div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="<?= $item[0] ?>_u" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="<?= $item[0] ?>_r" id="">
-                </div>
+                <?php
+                $item_names = $data['ItemData'];
+                foreach ($item_names as $item) :
+                ?>
+                    <div class="collapsible"><?= $item[1] ?></div>
+                    <div class="content">
+                        <input class="field" type="text" placeholder="Enter used Amount" name="<?= $item[0] ?>_u" id="">
+                        <input class="field" type="text" placeholder="Enter returned Amount" name="<?= $item[0] ?>_r" id="">
+                    </div>
                 <?php endforeach ?>
 
                 <button type="submit" name="addrepair" class="btn">ADD REPAIR</button>
@@ -65,7 +65,7 @@ $data =  $tech->EmgRepairPage();
         var i;
 
         for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
+            coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
                 if (content.style.maxHeight) {

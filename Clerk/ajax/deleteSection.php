@@ -7,4 +7,3 @@ if(isset($_GET["id"])){
     $map = new models\Map();
     $section_id = $map->DeleteSection($id);
 }
-?>

@@ -8,9 +8,7 @@ $(".btn2").click(function (event) {
       else if (langCheck == "කේතය ගන්න") $(".btn2").text("යවන ලදී");
       else if (langCheck == "குறியீடு") $(".btn2").text("முடிந்தது");
       $(".btn2").animate({ backgroundColor: "#F33552" }, "300");
-    }
-    else if(data == "Not Sent")
-    {
+    } else if (data == "Not Sent") {
       if (langCheck == "Get Code") $(".btn2").text("Retry");
       else if (langCheck == "කේතය ගන්න") $(".btn2").text("නැවත යවන්න");
       else if (langCheck == "குறியீடு") $(".btn2").text("தவறு");

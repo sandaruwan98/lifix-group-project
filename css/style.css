@@ -1,5 +1,5 @@
 * {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   box-sizing: border-box;
 }
 
@@ -56,7 +56,6 @@ body{
 .btn.disable {
   background-color: #485855;
 }
-
 
 .content-table {
   display: table;
@@ -125,8 +124,6 @@ body{
   background-color: #fff;
 }
 
-
-
 .success {
   background-color: #009879;
 }
@@ -139,49 +136,85 @@ body{
   background-color: #005040;
 }
 
-
-.danger{
+.danger {
   background-color: #b60000da;
 }
 
-
-.danger:focus{
+.danger:focus {
   background-color: #560000ed;
 }
 
-.danger:hover{
+.danger:hover {
   background-color: #780000da;
 }
 
+.col-12 {
+  width: 100%;
+}
+.col-11 {
+  width: 91.6666%;
+}
+.col-l0 {
+  width: 83.3333%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-8 {
+  width: 66.6666%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-5 {
+  width: 41.6666%;
+}
+.col-4 {
+  width: 33.3333%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-2 {
+  width: 16.6666%;
+}
+.col-1 {
+  width: 8.33333%;
+}
 
-.col-12{width: 100%;}
-.col-11{width: 91.6666%;}
-.col-l0{width: 83.3333%;}
-.col-9{width: 75%;}
-.col-8{width: 66.6666%;}
-.col-6{width: 50%;}
-.col-5{width: 41.6666%;}
-.col-4{width: 33.3333%;}
-.col-3{width: 25%;}
-.col-2{width: 16.6666%;}
-.col-1{width: 8.33333%;}
-
-
-
-
-.row-12{width: 100%;}
-.row-11{width: 91.6666%;}
-.row-l0{width: 83.3333%;}
-.row-9{width: 75%;}
-.row-8{width: 66.6666%;}
-.row-6{width: 50%;}
-.row-5{width: 41.6666%;}
-.row-4{width: 33.3333%;}
-.row-3{width: 25%;}
-.row-2{width: 16.6666%;}
-.row-1{width: 8.33333%;}
-
-
+.row-12 {
+  width: 100%;
+}
+.row-11 {
+  width: 91.6666%;
+}
+.row-l0 {
+  width: 83.3333%;
+}
+.row-9 {
+  width: 75%;
+}
+.row-8 {
+  width: 66.6666%;
+}
+.row-6 {
+  width: 50%;
+}
+.row-5 {
+  width: 41.6666%;
+}
+.row-4 {
+  width: 33.3333%;
+}
+.row-3 {
+  width: 25%;
+}
+.row-2 {
+  width: 16.6666%;
+}
+.row-1 {
+  width: 8.33333%;
+}
 
 /* noti css for now */
 
@@ -196,10 +229,9 @@ body{
   border-radius: 10px;
   width: 400px;
   font-size: 16px;
-  transition: all .5s;
+  transition: all 0.5s;
   z-index: 9999;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
-  
 }
 @media (max-width: 424px) {
   .toast-message {
@@ -208,10 +240,9 @@ body{
 }
 .toast-message.success {
   background: rgb(0 152 121);
-  
 }
 .toast-message.danger {
-  background: #F44336;
+  background: #f44336;
 }
 .toast-message .message {
   color: #ffffff;
@@ -232,48 +263,48 @@ body{
   text-shadow: #1c1c1c 0px 1px 0px;
   opacity: 1;
   cursor: pointer;
- 
 }
 .toast-message .close::after {
   content: "×";
- 
 }
 .toast-message .close:hover {
   opacity: 0.6;
 }
 
-
 /* pagination css */
 
-.pagination{
+.pagination {
   padding-top: 30px;
-  
+
   display: flex;
   flex-direction: row;
   justify-content: center;
-
- }
+}
 
 .pagination .link {
   padding: 10px 15px;
   margin: 0 2px;
   background: transparent;
-  border:#bccfd8 1px solid;
-  cursor:pointer;
-  color:#bccfd8;
+  border: #bccfd8 1px solid;
+  cursor: pointer;
+  color: #bccfd8;
   height: 45px;
 }
 .pagination .disabled {
-  cursor:not-allowed;
+  cursor: not-allowed;
   color: #bccfd8;
 }
-.pagination .current {background: #bccfd8;color: #0e7d8b;}
-.pagination .first{border-left:#bccfd8 1px solid;}
-
+.pagination .current {
+  background: #bccfd8;
+  color: #0e7d8b;
+}
+.pagination .first {
+  border-left: #bccfd8 1px solid;
+}
 
 .pagination .dot {
-  padding: 10px 15px; 
-  color: #bccfd8; 
+  padding: 10px 15px;
+  color: #bccfd8;
   font-size: x-large;
   background: transparent;
 }

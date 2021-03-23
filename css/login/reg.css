@@ -1,27 +1,24 @@
-
-h2:after{
-	background-color: #455664;
+h2:after {
+  background-color: #455664;
 }
-.btn{
-	background-color: #455664;
+.btn {
+  background-color: #455664;
 }
-.btn:hover{
-	background-color: #f39c0f;
-}
-
-.back{
-	margin-top: 7px;
-	width: 75%;
-    padding: 0.3rem 0.8rem;
-	font-size: 0.6em;
-	background-color: #726f68;
+.btn:hover {
+  background-color: #f39c0f;
 }
 
-.disabled{
-	background-color: #7b7e80;
-
+.back {
+  margin-top: 7px;
+  width: 75%;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.6em;
+  background-color: #726f68;
 }
-.disabled:hover{
-	background-color: #7b7e80;
 
+.disabled {
+  background-color: #7b7e80;
+}
+.disabled:hover {
+  background-color: #7b7e80;
 }

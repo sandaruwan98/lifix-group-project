@@ -1,25 +1,22 @@
 .container-lp {
-    margin: 3%;
+  margin: 3%;
 }
 
 .field {
-    width: 400px;
-    min-width: 200px;
+  width: 400px;
+  min-width: 200px;
 }
-
 
 .feild-row {
-    width: 60%;
-    min-width: 350px;
-
-
+  width: 60%;
+  min-width: 350px;
 }
 
-.lp-field{
-    width: 305px;
-    min-width: 100px;
+.lp-field {
+  width: 305px;
+  min-width: 100px;
 }
 
-.c{
-    width: 90px;
+.c {
+  width: 90px;
 }

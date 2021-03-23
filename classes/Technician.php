@@ -1,18 +1,20 @@
 <?php
+
 namespace classes;
 // include_once '../utils/modelLoader.php';
 include_once  __DIR__ . '/../utils/classloader.php';
 
 class Technician extends Framework
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->session = new Session(TechnicianFL);
     }
-    
+
     public function AvalableRepairsPage()
     {
         $repairmodel = new \models\Repair();
-        $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID() );
+        $repairs = $repairmodel->getAssignedRepairs($this->session->getuserID());
         $data['repairs'] = $repairs;
         return $data;
     }
@@ -21,32 +23,32 @@ class Technician extends Framework
 
     public function CompleteRepairPage()
     {
-        if (!isset($_GET["id"])) 
+        if (!isset($_GET["id"]))
             header('location: ./index.php');
-        
+
         $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
-        $data['ItemData']= $item_names->fetch_all();
+        $data['ItemData'] = $item_names->fetch_all();
 
-        if (isset($_POST["complete"]) ) {
-          $this->CompleteRepair_addUsedReturnedData($data['ItemData']);
+        if (isset($_POST["complete"])) {
+            $this->CompleteRepair_addUsedReturnedData($data['ItemData']);
         }
 
         return $data;
     }
 
 
-    
+
     public function EmgRepairPage()
     {
-        
-        
+
+
         $invmodel = $this->loadModel('Inventory');
         $item_names = $invmodel->getItemNames();
-        $data['ItemData']= $item_names->fetch_all();
+        $data['ItemData'] = $item_names->fetch_all();
 
-        if (isset($_POST["addrepair"]) ) {
-          $this->EmgRepair_addUsedReturnedData($data['ItemData']);
+        if (isset($_POST["addrepair"])) {
+            $this->EmgRepair_addUsedReturnedData($data['ItemData']);
         }
 
         return $data;
@@ -56,7 +58,6 @@ class Technician extends Framework
     {
         $tmpinvmodel = new \models\TmpInventory();
         return $tmpinvmodel->getAllInventory($this->session->getuserID());
-       
     }
 
 
@@ -78,7 +79,7 @@ class Technician extends Framework
         $data['requestdetails'] = $requestdetails;
         return $data;
     }
-        
+
 
     public function CheckPendingRequestList()
     {
@@ -88,48 +89,47 @@ class Technician extends Framework
         }
         return true;
     }
-        
+
     public function AddTmpInventoryfortech($tech)
     {
         $inv = new \models\Inventory();
         $tmpinv = new \models\TmpInventory();
         $items = $inv->getItemIDs();
         foreach ($items->fetch_all() as $item) {
-            $tmpinv->addTmpInventoryItem($tech,$item[0]);
+            $tmpinv->addTmpInventoryItem($tech, $item[0]);
         }
     }
-        
+
 
 
     public function AddRequestpage()
     {
-        
+
         $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $item_names = $item_names->fetch_all();
         $data['ItemData'] = $item_names;
-        if (isset($_POST["addrequest"]) ) {
+        if (isset($_POST["addrequest"])) {
             $request_items = array(); // item eke id eka ekka quantity eka me array ekata dagannawa
 
-            foreach ($item_names as $item){
+            foreach ($item_names as $item) {
                 //for collect used items quantities
-                $item_name = $item[0]."_u";
+                $item_name = $item[0] . "_u";
                 $quantity = $_POST["$item_name"];
-        
-                if ($quantity!=0 && $quantity!=null) {
-        
-                    $request_item = array("itemNo"=>$item[0],"Quantity"=>$quantity);
+
+                if ($quantity != 0 && $quantity != null) {
+
+                    $request_item = array("itemNo" => $item[0], "Quantity" => $quantity);
                     $request_items[] = $request_item;
                 }
-                
             }
-        
+
             if (!empty($request_items)) {
                 $itemrequest = new \models\ItemRequest();
                 // var_dump($request_items);
-                $itemrequest->CreateItemRequest($this->session->getuserID(),$request_items );
-        
-                 $this->session->sendMessage("New item request added succesfully",'success');
+                $itemrequest->CreateItemRequest($this->session->getuserID(), $request_items);
+
+                $this->session->sendMessage("New item request added succesfully", 'success');
                 // header("location: ./index.php");
             }
         }
@@ -140,8 +140,8 @@ class Technician extends Framework
 
     public function LamppostPage()
     {
-        
-        
+
+
         $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $item_names = $item_names->fetch_all();
@@ -152,66 +152,65 @@ class Technician extends Framework
             $adr = $_POST["adr"];
             $lat = $_POST["lat"];
             $lng = $_POST["lng"];
-        
+
             $lp = new \models\LampPost();
-              // add lampost to database
-            $lp->addLampost($lp_id,$adr,$lat,$lng, $this->session->getuserID() );
-        
+            // add lampost to database
+            $lp->addLampost($lp_id, $adr, $lat, $lng, $this->session->getuserID());
+
             // send notification to clerck to confirm
             $noti = new \models\Notification();
-            
+
             $user = new \models\User();
             $techname = $user->getNameById($this->session->getuserID());
-            
-            $subject = 'New Lamppost cofirmation';
-            $body = $techname.' has added new lamp post. - LPID : #'.$lp_id;
-            $noti->AddNotification($subject,$body, $this->session->getuserID()  , 2 ,'c-lp',$lp_id.'-'.$this->session->getuserID());
-            
-            // show a toast
-           $this->session->sendMessage("New Lamppost addded successfully",'success');
 
+            $subject = 'New Lamppost cofirmation';
+            $body = $techname . ' has added new lamp post. - LPID : #' . $lp_id;
+            $noti->AddNotification($subject, $body, $this->session->getuserID(), 2, 'c-lp', $lp_id . '-' . $this->session->getuserID());
+
+            // show a toast
+            $this->session->sendMessage("New Lamppost addded successfully", 'success');
         }
-       
+
         return $data;
     }
 
 
     private function CompleteRepair_addUsedReturnedData($item_names)
     {
-        
+
 
 
 
         $used_items = array();
         $return_items = array();
-        foreach ($item_names as $item){
+        foreach ($item_names as $item) {
             //for collect used items quantities from text inputs
-            $item_name = $item[0]."_u";
+            $item_name = $item[0] . "_u";
             $quantity = $_POST["$item_name"];
-            
-            if ($quantity!=0 && $quantity!=null) {
-    
+
+            if ($quantity != 0 && $quantity != null) {
+
                 $used_item = array($item[0], $quantity, $item[1]);
                 $used_items[] = $used_item;
             }
-            
+
             //for collect return items quantities from text inputs
-            $item_name = $item[0]."_u";
-            $item_name = $item[0]."_r";
+            $item_name = $item[0] . "_u";
+            $item_name = $item[0] . "_r";
             $quantity = $_POST["$item_name"];
-    
-            if ($quantity!=0 && $quantity!=null) {
-    
+
+            if ($quantity != 0 && $quantity != null) {
+
                 $return_item = array($item[0], $quantity);
                 $return_items[] = $return_item;
             }
         }
-    
+
         if (!empty($used_items)) {
 
             $invmanger = new InventoryManager();
-            $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items,$this->session->getuserID());
-           
+            $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items, $this->session->getuserID());
+
             if ($errmsg == '') {
                 // ---------------------------------------------------------
                 // get bulb return/used count for fraud check
@@ -219,30 +218,31 @@ class Technician extends Framework
                 $bulb_damagecount = $_POST["1_r"];
 
                 // if bulbs are used for the repair
-                if ($bulb_usedcount!=0 && $bulb_usedcount!=null) {
+                if ($bulb_usedcount != 0 && $bulb_usedcount != null) {
                     $comp = new \models\Complaint();
                     $complainer_said_value = $comp->getIsBulbThere($_GET["id"]);
                     if (($bulb_usedcount != $bulb_damagecount) && $complainer_said_value == '1') {
                         // mark this scnario as a fraud
-                        $discription = 'There is a suspicious activity from '.$this->session->getuserName().' (technician). Complainer claims that damaged bulb is on the lamppost but technician did not return the damaged bulb';
+                        $discription = 'There is a suspicious activity from ' . $this->session->getuserName() . ' (technician). Complainer claims that damaged bulb is on the lamppost but technician did not return the damaged bulb';
                         $f = new \models\Fraud();
-                        $f->addFraud(  $this->session->getuserID() , 0 ,$discription,'b',NULL);
+                        $f->addFraud($this->session->getuserID(), 0, $discription, 'b', NULL);
                     }
                 }
 
                 // complte repair ---------------------------------------------------------------
                 $repairmodel = new \models\Repair();
                 $r_id = $_GET["id"];
-                $repairmodel->CompleteRepair($r_id,$used_items,$return_items);
+                $repairmodel->CompleteRepair($r_id, $used_items, $return_items);
 
-                $invmanger ->DecreasetmpInventory($used_items,$this->session->getuserID());
+                $invmanger->DecreasetmpInventory($used_items, $this->session->getuserID());
 
 
-                $this->session->sendMessage("Repair marked as completed",'success');
-            }else {
-                $this->session->sendMessage("Insuficient ".$errmsg ,'danger');
+                $this->session->sendMessage("Repair marked as completed", 'success');
+            } else {
+                $this->session->sendMessage("Insuficient " . $errmsg, 'danger');
             }
-            header("location: ./index.php");exit;
+            header("location: ./index.php");
+            exit;
         }
     }
 
@@ -252,45 +252,40 @@ class Technician extends Framework
     {
         $used_items = array();
         $return_items = array();
-        foreach ($item_names as $item){
+        foreach ($item_names as $item) {
             //for collect used items quantities
-            $item_name = $item[0]."_u";
+            $item_name = $item[0] . "_u";
             $quantity = $_POST["$item_name"];
-    
-            if ($quantity!=0 && $quantity!=null) {
-    
+
+            if ($quantity != 0 && $quantity != null) {
+
                 $used_item = array($item[0], $quantity);
                 $used_items[] = $used_item;
             }
-            
+
             //for collect return items quantities
-            $item_name = $item[0]."_r";
+            $item_name = $item[0] . "_r";
             $quantity = $_POST["$item_name"];
-    
-            if ($quantity!=0 && $quantity!=null) {
-    
+
+            if ($quantity != 0 && $quantity != null) {
+
                 $return_item = array($item[0], $quantity);
                 $return_items[] = $return_item;
             }
         }
-    
+
         // get lamppost id
         $lp_id = $_POST["lp_id"];
 
-        if (!empty($used_items) && $lp_id!=null && $lp_id!=0) {
-        
+        if (!empty($used_items) && $lp_id != null && $lp_id != 0) {
+
             $repairmodel = $this->loadModel('Repair');
-           
-            $repairmodel->CreateEmergencyRepair($lp_id,$this->session->getuserID() ,$used_items,$return_items);
-            
-            $this->session->sendMessage("Emergency repir added added succesfully",'success');
+
+            $repairmodel->CreateEmergencyRepair($lp_id, $this->session->getuserID(), $used_items, $return_items);
+
+            $this->session->sendMessage("Emergency repir added added succesfully", 'success');
             // echo ("<script>alert('repair completed succesfully') </script>");
             // header("location: ./index.php");
         }
     }
-  
-
-  
-
-
 }

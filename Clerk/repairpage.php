@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $clerck = new classes\Clerck();
 $data =  $clerck->RepairPage();
@@ -27,15 +27,15 @@ $data =  $clerck->RepairPage();
 <body>
 
 
-<?php
+    <?php
     include "./views/nav.php";
 
-    
+
     $rp = $data['repair_details'];
     $cp = $data['complaint_details'];
-    
-?>
-<?php  $clerck->getSession()->showMessage() ?>
+
+    ?>
+    <?php $clerck->getSession()->showMessage() ?>
 
     <div class="main_content">
         <header>
@@ -56,7 +56,10 @@ $data =  $clerck->RepairPage();
                             </tr>
                             <tr>
                                 <td>Status</td>
-                                <td><?php if($rp['status'] == 'a') echo 'Pending'; elseif($rp['status'] == 'e') echo "Emergency Repair"; elseif($rp['status'] == 'x') echo "Assigned but not complted";else echo "Completed";  ?></td>
+                                <td><?php if ($rp['status'] == 'a') echo 'Pending';
+                                    elseif ($rp['status'] == 'e') echo "Emergency Repair";
+                                    elseif ($rp['status'] == 'x') echo "Assigned but not complted";
+                                    else echo "Completed";  ?></td>
                             </tr>
                             <tr>
                                 <td>Date</td>
@@ -129,15 +132,15 @@ $data =  $clerck->RepairPage();
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
-                            $used_items= $data['used_items'];
-                            foreach ($used_items as $used_item):
-                        ?>
+                            <?php
+                            $used_items = $data['used_items'];
+                            foreach ($used_items as $used_item) :
+                            ?>
 
                                 <tr>
-                                    <td><?=  $used_item["item_id"]  ?></td>
-                                    <td><?=  $used_item["name"] ?></td>
-                                    <td><?=  $used_item["quantity"] ?></td>
+                                    <td><?= $used_item["item_id"]  ?></td>
+                                    <td><?= $used_item["name"] ?></td>
+                                    <td><?= $used_item["quantity"] ?></td>
                                 </tr>
 
                             <?php endforeach ?>
@@ -159,20 +162,20 @@ $data =  $clerck->RepairPage();
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
-                            $return_items= $data['return_items'];
-                            foreach ($return_items as $return_item):
-                        ?>
+                            <?php
+                            $return_items = $data['return_items'];
+                            foreach ($return_items as $return_item) :
+                            ?>
 
                                 <tr>
-                                    <td><?=  $return_item["item_id"]  ?></td>
-                                    <td><?=  $return_item["name"] ?></td>
-                                    <td><?=  $return_item["quantity"] ?></td>
+                                    <td><?= $return_item["item_id"]  ?></td>
+                                    <td><?= $return_item["name"] ?></td>
+                                    <td><?= $return_item["quantity"] ?></td>
                                 </tr>
 
                             <?php endforeach ?>
 
-                           
+
 
 
                         </tbody>

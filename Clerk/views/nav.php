@@ -22,4 +22,3 @@
 <?php include '../components/noti_modals/modal_lp.php'; ?>
 
 <script src="../js/slider.js"></script>
-
