@@ -11,8 +11,8 @@ $auth->Loginuser();
 <head>
     <title>Li - Fix</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../complainer/css/style.css">
-    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" type="text/css" href="../css/complainer/style.css">
+    <link rel="stylesheet" href="../css/login/auth.css">
     
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

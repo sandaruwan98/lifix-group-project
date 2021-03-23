@@ -15,8 +15,8 @@ $data =  $clerck->RepairPage();
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="./css/clerk.css">
-    <link rel="stylesheet" href="./css/repairpage.css">
+    <link rel="stylesheet" href="../css/clerk/clerk.css">
+    <link rel="stylesheet" href="../css/clerk/repairpage.css">
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />

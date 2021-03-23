@@ -17,9 +17,9 @@ $data =  $clerck->LampPostPage();
     <link rel="stylesheet" href="../css/fab.css">
     <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="./css/clerk.css">
-    <link rel="stylesheet" href="./css/purchase.css">
-    <link rel="stylesheet" href="./css/newlamp.css">
+    <link rel="stylesheet" href="../css/clerk/clerk.css">
+    <link rel="stylesheet" href="../css/clerk/purchase.css">
+    <link rel="stylesheet" href="../css/clerk/newlamp.css">
     
     <!-- <link rel="stylesheet" href="<?= BASE ?>css/slider.css">
     <link rel="stylesheet" href="<?= BASE ?>css/fab.css">

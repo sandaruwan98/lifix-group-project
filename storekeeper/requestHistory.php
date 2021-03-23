@@ -13,7 +13,7 @@ $data = $storekeeper->ReqHistory();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./store.css">
+    <link rel="stylesheet" href="../css/st/store.css">
    
     <!-- <link rel="stylesheet" href="../Clerk/css/repairpage.css"> -->
     <script src="https://kit.fontawesome.com/2b554022ef.js" crossorigin="anonymous"></script>
@@ -130,7 +130,7 @@ $data = $storekeeper->ReqHistory();
      
 
 
-        <script src="requestHistory.js"></script>
+        <script src="../js/st/requestHistory.js"></script>
       
 
 </body>
