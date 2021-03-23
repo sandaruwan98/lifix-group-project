@@ -1,86 +1,80 @@
 .container1 {
-    padding: 0 15px;
+  padding: 0 15px;
 }
 
 .repair-item {
-    background-color: rgba(240, 248, 255, 0.178);
-    border-radius: 3px;
-    padding: 12px 10px;
-    text-align: center;
-    margin: 10px 0;
-    color: aliceblue;
-    cursor: pointer;
+  background-color: rgba(240, 248, 255, 0.178);
+  border-radius: 3px;
+  padding: 12px 10px;
+  text-align: center;
+  margin: 10px 0;
+  color: aliceblue;
+  cursor: pointer;
 
-    /* transition: all 0.5s linear; */
+  /* transition: all 0.5s linear; */
 }
 
 .repair-item:hover {
-    background-color: rgba(240, 248, 255, 0.363);
+  background-color: rgba(240, 248, 255, 0.363);
 }
 
-
 .repair-item .row1 {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .repair-item .row1 span {
-    background-color: #08ccfdc9;
-    padding: 5px;
-    margin: 0 40px;
-    border-radius: 10px;
+  background-color: #08ccfdc9;
+  padding: 5px;
+  margin: 0 40px;
+  border-radius: 10px;
 }
 
 .repair-item .address {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 
-    font-size: large;
+  font-size: large;
 }
 
-
 input {
-    margin-left: 20px;
-    background: transparent;
-    font-size: large;
-    font-family: 'Lexend Deca', sans-serif;
+  margin-left: 20px;
+  background: transparent;
+  font-size: large;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 input::placeholder {
-    font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 input:focus,
 button:focus {
-    outline: none;
-    background: transparent;
+  outline: none;
+  background: transparent;
 }
 
 .searchbox {
-
-    border-radius: 10px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.616);
-    margin: 0 0;
-    display: flex;
+  border-radius: 10px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.616);
+  margin: 0 0;
+  display: flex;
 }
 
-
-.searchbox>.search {
-    border: none;
-    width: 100%;
+.searchbox > .search {
+  border: none;
+  width: 100%;
 }
 
-.searchbox>.btn-search {
-    border-radius: 10px;
-    font-size: larger;
-    padding: 16px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+.searchbox > .btn-search {
+  border-radius: 10px;
+  font-size: larger;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.searchbox>.btn-search:hover {
-
-    background: rgba(255, 255, 255, 0.644);
-
+.searchbox > .btn-search:hover {
+  background: rgba(255, 255, 255, 0.644);
 }

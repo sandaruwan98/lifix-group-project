@@ -18,5 +18,3 @@ class ReportGenerate extends Database {
     }
 
 }
-
-?>

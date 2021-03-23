@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
 $data =  $tech->CompleteRepairPage();
@@ -28,26 +28,26 @@ $data =  $tech->CompleteRepairPage();
 <body>
 
 
-<?php include './nav.php' ?>
+    <?php include './nav.php' ?>
 
-<?php  $tech->getSession()->showMessage() ?>
+    <?php $tech->getSession()->showMessage() ?>
 
-<div class="main">
+    <div class="main">
         <div class="con">
 
 
             <form method="POST" action="repairComplete.php?id=<?= $_GET["id"] ?>">
                 <h2>Complete Repair</h2>
-                <?php 
+                <?php
 
-                $item_names= $data['ItemData'];
-                foreach ($item_names as $item):
-                 ?>
-                <div class="collapsible"><?= $item[1] ?></div>
-                <div class="content">
-                    <input class="field" type="text" placeholder="Enter used Amount" name="<?= $item[0] ?>_u" id="">
-                    <input class="field" type="text" placeholder="Enter returned Amount" name="<?= $item[0] ?>_r" id="">
-                </div>
+                $item_names = $data['ItemData'];
+                foreach ($item_names as $item) :
+                ?>
+                    <div class="collapsible"><?= $item[1] ?></div>
+                    <div class="content">
+                        <input class="field" type="text" placeholder="Enter used Amount" name="<?= $item[0] ?>_u" id="">
+                        <input class="field" type="text" placeholder="Enter returned Amount" name="<?= $item[0] ?>_r" id="">
+                    </div>
                 <?php endforeach ?>
 
                 <button type="submit" id="" name="complete" class="btn">COMPLETE REPAIR</button>
@@ -63,7 +63,7 @@ $data =  $tech->CompleteRepairPage();
         var i;
 
         for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
+            coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
                 if (content.style.maxHeight) {

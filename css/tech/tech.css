@@ -1,96 +1,90 @@
 body {
-    background-color: #417785;
-
+  background-color: #417785;
 }
 
 .main {
-    display: flex;
-    width: 100%;
-    padding: 5px;
-    padding-left: 55px;
-    height: 100vh;
-    flex-direction: row;
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  padding-left: 55px;
+  height: 100vh;
+  flex-direction: row;
 }
 
 .list {
-    width: 100%;
-
+  width: 100%;
 }
 
 .list-item {
-    background-color: aliceblue;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    padding-left: 5px;
-    margin-bottom: 5px;
-    flex-direction: row;
-    justify-content: space-between;
+  background-color: aliceblue;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .content {
-    display: flex;
-    width: 85%;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  width: 85%;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .id {
-    background-color: #12bfeb;
-    padding: 2px;
-    border-radius: 5px;
-
+  background-color: #12bfeb;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 .address {
-    font-size: .8rem;
-
+  font-size: 0.8rem;
 }
 
 .btn {
-    width: auto;
-    height: 100%;
-    padding: 0.2rem .4rem;
-    background-color: #12bfeb;
-    color: #fff;
-    font-size: 1.4rem;
+  width: auto;
+  height: 100%;
+  padding: 0.2rem 0.4rem;
+  background-color: #12bfeb;
+  color: #fff;
+  font-size: 1.4rem;
 }
-
-
 
 .map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .con {
-    /* display: none; */
-    background-color: #ffffff9d;
-    padding: .4em;
-    padding-bottom: .1em;
-    font-size: small;
-    width: 100%;
-    height: fit-content;
+  /* display: none; */
+  background-color: #ffffff9d;
+  padding: 0.4em;
+  padding-bottom: 0.1em;
+  font-size: small;
+  width: 100%;
+  height: fit-content;
 }
 
-.title-r{
-    margin: auto;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding: 5px 20px;
-    border-radius: 20px;
-    background-color: #D3DBDD;
-    text-align: center;
-    border: 2px solid #009879;
+.title-r {
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #d3dbdd;
+  text-align: center;
+  border: 2px solid #009879;
 }
 
-.content-table{
-    min-width: 50px;
-    font-size: 1em;
+.content-table {
+  min-width: 50px;
+  font-size: 1em;
 }

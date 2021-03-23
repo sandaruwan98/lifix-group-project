@@ -1,5 +1,7 @@
 <?php
+
 namespace models;
+
 require_once "Database.php";
 
 class StockAddition extends Database
@@ -42,7 +44,7 @@ class StockAddition extends Database
 
 
 
-    
+
 
     public function getItemsfor_SA_byId($sa_id)
     {
@@ -55,9 +57,10 @@ class StockAddition extends Database
         $list =   $this->conn->query($q);
         return $list->fetch_all(MYSQLI_ASSOC);
     }
- 
 
-    public function setStatus($st,$id){
+
+    public function setStatus($st, $id)
+    {
         $q = "UPDATE `stock_addition` SET `status` = '$st' WHERE `stock_addition`.`sa_id` = '$id' ";
         $this->conn->query($q);
     }
@@ -65,15 +68,17 @@ class StockAddition extends Database
 
 
 
-    public function Add_SA_Record($created_user_id){
+    public function Add_SA_Record($created_user_id)
+    {
         $date = date("yy-m-d");
         $q = "INSERT INTO `stock_addition`( `date`, `status`, `clerk_id`) VALUES 
         ('$date','0','$created_user_id')";
 
         $this->conn->query($q);
     }
-   
-    private function Add_SA_Asc($sa_id,$item_id,$quantity){
+
+    private function Add_SA_Asc($sa_id, $item_id, $quantity)
+    {
         $q = "INSERT INTO `stock_addition_inventory_asc`(`sa_id`, `item_id`, `quantity`) VALUES 
         ('$sa_id','$item_id' , '$quantity')";
 
@@ -85,15 +90,15 @@ class StockAddition extends Database
 
 
 
-    
-    public function Create_SA($created_user_id,$added_items){
+
+    public function Create_SA($created_user_id, $added_items)
+    {
         // 
         $this->Add_SA_Record($created_user_id);
         $last_id = $this->conn->insert_id;
         // add added items to database
-        foreach ($added_items as $item){
-            $this->Add_SA_Asc($last_id, $item["itemNo"],$item["Quantity"]);
+        foreach ($added_items as $item) {
+            $this->Add_SA_Asc($last_id, $item["itemNo"], $item["Quantity"]);
         }
-        
     }
 }

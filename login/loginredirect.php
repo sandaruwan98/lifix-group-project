@@ -15,6 +15,3 @@ if(isset($_GET["role"]) && isset($_SESSION["role"])){
 }else{
     header('location: ./index.php');
 }
-
-
-?>

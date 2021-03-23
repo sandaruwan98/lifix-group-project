@@ -20,5 +20,3 @@ define ('IR_PENDING','a');
 define ('IR_SUPPLY','b');
 define ('IR_DENY','c');
 define ('IR_COMPLETE','d');
-
-?>

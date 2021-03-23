@@ -1,93 +1,91 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-
-    background-color: #417785;
-
+  background-color: #417785;
 }
 header {
-    background: rgb(0, 0, 0);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.40379901960784315) 0%, rgba(0, 0, 0, 0.5746673669467788) 48%, rgba(0, 0, 0, 0.3981967787114846) 100%);
-    margin-bottom: 10px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.40379901960784315) 0%,
+    rgba(0, 0, 0, 0.5746673669467788) 48%,
+    rgba(0, 0, 0, 0.3981967787114846) 100%
+  );
+  margin-bottom: 10px;
 }
 
-.frow h1{
-    color:#ffffff;
-    text-align:center;
-    margin-top:15px;
+.frow h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 15px;
 }
-.frow{
-    width: 100%;
-    border: 2px solid rgba(0, 0, 0, 0);
-    outline: none;
-    background-color: rgba(10, 47, 53, 0.6);
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 22px;
-    transition: .3s;
-
+.frow {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(10, 47, 53, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
 }
 .searchbox {
-
-    border-radius: 15px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.616);
-    margin: 30px 40px;
-    display: flex;
+  border-radius: 15px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.616);
+  margin: 30px 40px;
+  display: flex;
 }
 
-
-.searchbox>.search {
-    border: none;
-    width: 85%;
+.searchbox > .search {
+  border: none;
+  width: 85%;
 }
-.searchbox>.btn-search {
-    border-radius: 14px;
-    font-size: larger;
-    padding: 16px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+.searchbox > .btn-search {
+  border-radius: 14px;
+  font-size: larger;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.searchbox>.btn-search:hover {
-
-    background: rgba(255, 255, 255, 0.644);
-
+.searchbox > .btn-search:hover {
+  background: rgba(255, 255, 255, 0.644);
 }
-.ctable{
-    display: table;
-    font-family: 'Quicksand', sans-serif;
-    border-collapse: collapse;
-    width: 90%;
-    font-size: 1.2em;
-    min-width: 200px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:50px;
+.ctable {
+  display: table;
+  font-family: "Quicksand", sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  font-size: 1.2em;
+  min-width: 200px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
 }
 .ctable thead tr {
-    background-color: #1e8883;
-    color: white;
-    text-align: left;
-    font-weight: bold;
+  background-color: #1e8883;
+  color: white;
+  text-align: left;
+  font-weight: bold;
 }
 .ctable th,
 .ctable td {
-    padding: 20px 20px;
-    text-align:center;
+  padding: 20px 20px;
+  text-align: center;
 }
 .ctable tbody tr:nth-of-type(odd) {
-    background-color: #f3f3f38f;
+  background-color: #f3f3f38f;
 }
 
 .ctable tbody tr:last-of-type {
-    border-bottom: 2px solid #12a789;
+  border-bottom: 2px solid #12a789;
 }

@@ -1,10 +1,9 @@
+html {
+  box-sizing: border-box;
+}
 
-  html {
-    box-sizing: border-box;
-  }
-  
-body{
-  background-color:#417785;
+body {
+  background-color: #417785;
 }
 
 .item-list {
@@ -12,7 +11,7 @@ body{
   padding: 0;
 }
 
-.item-list li{
+.item-list li {
   text-align: center;
   background-color: rgba(240, 248, 255, 0.698);
   /* font-size: 1.3em; */
@@ -22,25 +21,23 @@ body{
   padding: 9px;
 }
 
-.item-list li .q-text{
+.item-list li .q-text {
   background-color: rgba(26, 129, 219, 0.698);
   padding: 5px;
   flex: 0.45;
 }
 
-.item-list li .i-text{
+.item-list li .i-text {
   background-color: rgba(240, 248, 255, 0.698);
   padding: 5px;
   flex: 0.45;
-
 }
 
-.item-list li .delete-button{
+.item-list li .delete-button {
   border: none;
   /* background: transparent; */
   font-size: 1.2em;
   color: rgb(223, 12, 12);
   padding: 5px;
   flex: 0.1;
-
 }

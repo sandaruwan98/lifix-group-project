@@ -84,51 +84,51 @@ $session = new classes\Session(DSFL);
                 </div>
             </div </div>
 
-<script>
-    $(document).ready(function() {
+            <script>
+                $(document).ready(function() {
 
-        $('.btn').click(function() {
+                    $('.btn').click(function() {
 
-            let name = $("#useracc").val();
-            let date1 = $("#firstDate").val();
-            let date2 = $("#secondDate").val();
+                        let name = $("#useracc").val();
+                        let date1 = $("#firstDate").val();
+                        let date2 = $("#secondDate").val();
 
-            console.log(name);
+                        console.log(name);
 
-            $.ajax({
-                type: "POST",
-                url: "../utils/tecReportFetch.php",
-                data: {
-                    name: name,
-                    firstDate: date1,
-                    secondDate: date2
-                },
-                success: function(data) {
-                    data = JSON.parse(data);
-                    if (data.bio != "No data on this period") {
-                        $(".chart-column-data").css({
-                            "display": "block"
+                        $.ajax({
+                            type: "POST",
+                            url: "../utils/tecReportFetch.php",
+                            data: {
+                                name: name,
+                                firstDate: date1,
+                                secondDate: date2
+                            },
+                            success: function(data) {
+                                data = JSON.parse(data);
+                                if (data.bio != "No data on this period") {
+                                    $(".chart-column-data").css({
+                                        "display": "block"
+                                    });
+                                    $("#chart-column-data").css({
+                                        "display": "flex"
+                                    });
+                                    console.log(data)
+                                    $(".chart-column-data-p").html(data.bio);
+                                    $(".fraud-data").html(data.fraud);
+
+                                } else {
+                                    $(".chart-column-data").css({
+                                        "display": "flex"
+                                    });
+                                    $(".chart-column-data-p").html(data.bio);
+                                    $(".fraud-data").html(data.fraud);
+                                }
+                            }
                         });
-                        $("#chart-column-data").css({
-                            "display": "flex"
-                        });
-                        console.log(data)
-                        $(".chart-column-data-p").html(data.bio);
-                        $(".fraud-data").html(data.fraud);
 
-                    } else {
-                        $(".chart-column-data").css({
-                            "display": "flex"
-                        });
-                        $(".chart-column-data-p").html(data.bio);
-                        $(".fraud-data").html(data.fraud);
-                    }
-                }
-            });
-
-        })
-    });
-</script>
+                    })
+                });
+            </script>
 </body>
 
 </html>

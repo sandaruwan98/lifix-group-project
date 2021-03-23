@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $clerck = new classes\Clerck();
 $data =  $clerck->DailyRepair();
@@ -25,14 +25,14 @@ $data =  $clerck->DailyRepair();
 </head>
 
 <body>
-   
 
 
 
-<?php include "./views/nav.php" ?>
-<?php  $clerck->getSession()->showMessage() ?>
 
-   
+    <?php include "./views/nav.php" ?>
+    <?php $clerck->getSession()->showMessage() ?>
+
+
     <div class="main_content">
         <header>
             <h1>Available Repairs</h1>
@@ -77,9 +77,11 @@ $data =  $clerck->DailyRepair();
                 // add markers to the map
                 mapdata.forEach(mk => {
                     //for popup to display lamppost id
-                    var popup = new mapboxgl.Popup({closeButton: false})
-                    .setHTML("<h2>#" + mk.lp_id + "</h2>")
-                    .addTo(map);
+                    var popup = new mapboxgl.Popup({
+                            closeButton: false
+                        })
+                        .setHTML("<h2>#" + mk.lp_id + "</h2>")
+                        .addTo(map);
 
                     var marker = new mapboxgl.Marker({
                             color: "black"

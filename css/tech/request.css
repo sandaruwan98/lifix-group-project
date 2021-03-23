@@ -1,61 +1,59 @@
 .con {
-    /* display: none; */
-    background-color: #ffffff9d;
-    padding: 1em;
-    font-size: small;
-    width: 100%;
-    height: fit-content;
+  /* display: none; */
+  background-color: #ffffff9d;
+  padding: 1em;
+  font-size: small;
+  width: 100%;
+  height: fit-content;
 }
 
 .collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
 }
 
 .active,
 .collapsible:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
 .content {
-    padding: 0 18px;
-    max-height: 0;
-    width: 100%;
+  padding: 0 18px;
+  max-height: 0;
+  width: 100%;
 
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
 }
 
-
-
 .field {
-    width: 100%;
-    margin: 30px 0;
-    /* background-color: rgba(230, 230, 230, 0.5); */
-    font-size: 1rem;
+  width: 100%;
+  margin: 30px 0;
+  /* background-color: rgba(230, 230, 230, 0.5); */
+  font-size: 1rem;
 }
 
 .btn {
-    width: 100%;
-    margin-top: 5px;
-    background-color: #009879;
-    font-size: medium;
+  width: 100%;
+  margin-top: 5px;
+  background-color: #009879;
+  font-size: medium;
 }
 
 form h2 {
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 5px 20px;
-    border-radius: 20px;
-    background-color: #D3DBDD;
-    text-align: center;
-    border: 2px solid #009879;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #d3dbdd;
+  text-align: center;
+  border: 2px solid #009879;
 }

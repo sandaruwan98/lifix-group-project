@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $tech = new classes\Technician();
 $data =  $tech->AvalableRepairsPage();
@@ -19,9 +19,9 @@ $data =  $tech->AvalableRepairsPage();
 </head>
 
 <body>
-    
-<?php include './nav.php' ?>
-<?php  $tech->getSession()->showMessage() ?>
+
+    <?php include './nav.php' ?>
+    <?php $tech->getSession()->showMessage() ?>
 
 
     <div class="main">
@@ -29,22 +29,22 @@ $data =  $tech->AvalableRepairsPage();
             <h2 class="title-r">Pending Repairs</h2>
             <div class="list">
                 <?php
-                
+
                 $list_assign = $data['repairs'];
                 while ($row = $list_assign->fetch_assoc()) :
                 ?>
 
-                <div class="list-item" id="<?= $row["repair_id"] ?>">
-                    <div class="content">
-                        <div class="row">
-                            <div class="id"># <?= $row['lp_id'] ?> </div>
-                            <div class="id"><?= $row["date"] ?></div>
-                        </div>
+                    <div class="list-item" id="<?= $row["repair_id"] ?>">
+                        <div class="content">
+                            <div class="row">
+                                <div class="id"># <?= $row['lp_id'] ?> </div>
+                                <div class="id"><?= $row["date"] ?></div>
+                            </div>
 
-                        <div class="address"><?= $row["division"] ?></div>
+                            <div class="address"><?= $row["division"] ?></div>
+                        </div>
+                        <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
                     </div>
-                    <button onclick="location.href='./repairComplete.php?id=<?= $row["repair_id"] ?> ';" id="btnComplete" class="btn"> <i class="s fas fa-check"></i></button>
-                </div>
 
                 <?php endwhile ?>
 
@@ -53,7 +53,7 @@ $data =  $tech->AvalableRepairsPage();
 
         </div>
     </div>
-    
+
 </body>
 
 </html>

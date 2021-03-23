@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once  __DIR__ . '/../utils/classloader.php';
 $clerck = new classes\Clerck();
 $data =  $clerck->RepairHistory();
@@ -15,7 +15,7 @@ $data =  $clerck->RepairHistory();
     <!-- <link rel="stylesheet" href="<?= BASE ?>css/slider.css">
     <link rel="stylesheet" href="<?= BASE ?>css/style.css">
     <link rel="stylesheet" href="<?= BASE ?>clerk/css/clerk.css">-->
-    
+
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/style.css">
 
@@ -31,7 +31,7 @@ $data =  $clerck->RepairHistory();
 
 
     <?php include "./views/nav.php" ?>
-    <?php  $clerck->getSession()->showMessage() ?>
+    <?php $clerck->getSession()->showMessage() ?>
 
 
 
@@ -49,7 +49,7 @@ $data =  $clerck->RepairHistory();
 
             <!-- repair list -->
             <?php
-          
+
             $list = $data['repairs'];
 
             while ($row = $list->fetch_assoc()) :

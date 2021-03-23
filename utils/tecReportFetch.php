@@ -26,7 +26,7 @@ if (isset($_POST["name"])) {
     }
 
     $fraudResult = $fraudMoedl->getFraudsByUserID($row['userId'], $_POST["firstDate"], $_POST["secondDate"]);
-    
+
     $output2 = "<table>
     <tr>
       <th>ID</th>
@@ -40,7 +40,6 @@ if (isset($_POST["name"])) {
 
         while ($rowFraud = mysqli_fetch_array($fraudResult)) {
             $output2 .= "<tr><td>" . $rowFraud['fraud_id'] . "</td><td>" . $rowFraud['description'] . "</td><td>" . $rowFraud['date'] . "</td><td>" . $rowFraud['difference'] . "</td><td>" . $rowFraud['item_id'] . "</td></tr>";
-            
         }
         $output2 .= "</table>";
     } else {
@@ -51,6 +50,6 @@ if (isset($_POST["name"])) {
         'bio'   => $output,
         'fraud' => $output2,
     );
-    
+
     echo json_encode($data);
 }

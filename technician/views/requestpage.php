@@ -1,4 +1,4 @@
-<?php 
+<?php
 $data = $tech->PendingRequestListDetails();
 $itemlist = $data['itemlist'];
 $details = $data['requestdetails'];
@@ -7,27 +7,27 @@ $details = $data['requestdetails'];
 <h4 class="title-date">Date : <?= $details['added_date']  ?></h2>
 
 
-<form method="POST" style="padding: 10px;" action="">
-    <table class="content-table" >
-        <thead>
+    <form method="POST" style="padding: 10px;" action="">
+        <table class="content-table">
+            <thead>
                 <tr>
                     <th>ITEM NAME</th>
                     <th>QUANTITY</th>
                 </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($itemlist as $item) :?>
-                <tr>
-                    <td><?= $item["name"]  ?></td>
-                    <td><?= $item["quantity"]  ?></td>
-                </tr>
-            <?php endforeach ?>  
-        </tbody>
+            </thead>
+            <tbody>
+                <?php foreach ($itemlist as $item) : ?>
+                    <tr>
+                        <td><?= $item["name"]  ?></td>
+                        <td><?= $item["quantity"]  ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
 
 
-    </table>
+        </table>
 
 
 
 
-</form>
+    </form>
