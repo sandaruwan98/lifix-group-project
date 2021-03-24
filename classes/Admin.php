@@ -6,7 +6,7 @@ include_once  __DIR__ . '/../utils/classloader.php';
 class Admin extends Framework
 {
     public function __construct() {
-        $this->session = new Session(DSFL);
+        $this->session = new Session(AdminFL);
     }
     
    

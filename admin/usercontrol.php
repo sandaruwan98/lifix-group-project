@@ -25,10 +25,8 @@ $data = $admin->UserControl();
     <body>
         
     <?php 
-        include "./nav.html";
-        include "../components/notification.php";
-        include "../components/userfeild.php" ;
-        include "../components/toast.php" ;
+        include "./views/nav.php";
+      
 
         
     ?>
