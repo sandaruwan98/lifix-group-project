@@ -4,8 +4,6 @@ $tech = new classes\Technician();
 $data =  $tech->CompleteRepairPage();
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +12,6 @@ $data =  $tech->CompleteRepairPage();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slider.css">
-
-
     <link rel="stylesheet" href="../css/tech/tech.css">
     <link rel="stylesheet" href="../css/tech/request.css">
     <link rel="stylesheet" href="../css/tech/complete.css">
@@ -35,7 +31,6 @@ $data =  $tech->CompleteRepairPage();
     <div class="main">
         <div class="con">
 
-
             <form method="POST" action="repairComplete.php?id=<?= $_GET["id"] ?>">
                 <h2>Complete Repair</h2>
                 <?php
@@ -51,7 +46,6 @@ $data =  $tech->CompleteRepairPage();
                 <?php endforeach ?>
 
                 <button type="submit" id="" name="complete" class="btn">COMPLETE REPAIR</button>
-
 
             </form>
 
