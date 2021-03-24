@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 06:56 PM
+-- Generation Time: Mar 24, 2021 at 03:56 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -39,12 +39,8 @@ CREATE TABLE `complainer` (
 --
 
 INSERT INTO `complainer` (`complainer_id`, `NIC`, `Name`, `phone_no`) VALUES
-(1, '982171750v', 'Lakshan Sandaruwan Jayasinghe', '0701549225'),
-(2, '862171670v', 'Mr. Perera', '0714570342'),
-(3, '22222222222', 'Lakshan Sandaruwan Jayasinghe', '0701549225'),
-(4, '982175745v', 'Lakshan Sandaruwan Jayasinghe', '+94701549225'),
-(5, '652175745v', 'Kumara perera', '+94701549225'),
-(6, '982171777v', 'Lakshan Sandaruwan Jayasinghe', '+94701549225');
+(10, '973481851v', 'Uditha Ishan', '0718808190'),
+(11, '19973481851v', 'P.A.U.Ishan', '0718808180');
 
 -- --------------------------------------------------------
 
@@ -67,13 +63,9 @@ CREATE TABLE `complaint` (
 --
 
 INSERT INTO `complaint` (`complaint_id`, `is_bulb_there`, `Notes`, `lp_id`, `repair_id`, `complainer_id`, `recorded_on`) VALUES
-(29, 0, 'bla bla', 1000, 40, 4, '2021-03-18'),
-(30, 0, '', 1002, 41, 4, '2021-03-18'),
-(31, 0, 'bla bla', 1004, 42, 4, '2021-03-18'),
-(32, 1, '', 1005, 44, 5, '2021-03-18'),
-(33, 0, '', 1002, 48, 4, '2021-03-18'),
-(34, 1, '', 1003, 49, 4, '2021-03-18'),
-(40, 0, 'sdvvx', 1002, 56, 6, '2021-03-18');
+(48, 0, '', 1005, 64, 10, '2121-03-01'),
+(49, 0, '', 1005, 65, 11, '2021-03-23'),
+(50, 0, '', 1400, 66, 10, '2021-03-23');
 
 -- --------------------------------------------------------
 
@@ -344,26 +336,18 @@ CREATE TABLE `repair` (
   `status` char(1) NOT NULL,
   `lp_id` int(255) NOT NULL,
   `technician_id` int(255) NOT NULL,
-  `clerk_id` int(255) NOT NULL
+  `clerk_id` int(255) NOT NULL,
+  `complainer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `repair`
 --
 
-INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `clerk_id`) VALUES
-(40, '2020-11-29', 'a', 1000, 35, 0),
-(41, '2020-11-29', 'c', 1002, 0, 0),
-(42, '2020-11-30', 'c', 1004, 0, 0),
-(43, '2020-11-30', 'c', 1001, 0, 0),
-(44, '2020-12-27', 'c', 1005, 0, 0),
-(45, '2020-11-29', 'a', 1004, 0, 0),
-(46, '2020-11-30', 'a', 1004, 0, 0),
-(47, '2020-11-17', 'c', 1005, 0, 0),
-(48, '2020-11-29', 'a', 1002, 0, 0),
-(49, '2020-12-01', 'a', 1003, 0, 0),
-(50, '2020-12-01', 'e', 1005, 0, 0),
-(56, '2121-01-23', 'c', 1002, 33, 0);
+INSERT INTO `repair` (`repair_id`, `date`, `status`, `lp_id`, `technician_id`, `clerk_id`, `complainer_id`) VALUES
+(64, '2121-03-01', 'a', 1005, 33, 0, 10),
+(65, '2121-03-23', 'a', 1005, 33, 0, 11),
+(66, '2021-03-23', 'a', 1400, 0, 0, 10);
 
 -- --------------------------------------------------------
 
@@ -378,47 +362,6 @@ CREATE TABLE `repair_inventory_asc` (
   `quantity` int(255) NOT NULL,
   `damage_used_flag` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `repair_inventory_asc`
---
-
-INSERT INTO `repair_inventory_asc` (`id`, `repair_id`, `item_id`, `quantity`, `damage_used_flag`) VALUES
-(87, 41, 1, 1, '0'),
-(88, 41, 4, 2, '0'),
-(89, 41, 1, 1, '1'),
-(90, 41, 4, 1, '1'),
-(91, 43, 1, 10, '0'),
-(92, 43, 4, 4, '0'),
-(93, 43, 1, 5, '1'),
-(94, 43, 4, 3, '1'),
-(95, 43, 1, 3, '0'),
-(96, 43, 2, 5, '0'),
-(97, 43, 3, 5, '0'),
-(98, 43, 4, 1, '0'),
-(99, 43, 5, 2, '0'),
-(100, 43, 7, 3, '0'),
-(101, 43, 1, 2, '1'),
-(102, 43, 2, 2, '1'),
-(103, 43, 3, 5, '1'),
-(104, 47, 1, 1, '0'),
-(105, 47, 2, 3, '0'),
-(106, 47, 7, 1, '0'),
-(107, 47, 9, 2, '0'),
-(108, 47, 10, 1, '0'),
-(109, 47, 1, 1, '1'),
-(110, 47, 2, 2, '1'),
-(111, 47, 7, 1, '1'),
-(112, 47, 9, 2, '1'),
-(113, 47, 10, 1, '1'),
-(114, 44, 1, 1, '0'),
-(115, 44, 2, 3, '0'),
-(116, 44, 4, 5, '0'),
-(117, 44, 1, 1, '1'),
-(118, 44, 4, 2, '1'),
-(119, 50, 1, 3, '0'),
-(120, 50, 4, 3, '0'),
-(121, 50, 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -808,7 +751,8 @@ ALTER TABLE `repair`
   ADD PRIMARY KEY (`repair_id`),
   ADD KEY `lp_id` (`lp_id`),
   ADD KEY `repair_tech` (`technician_id`),
-  ADD KEY `repair_clk` (`clerk_id`);
+  ADD KEY `repair_clk` (`clerk_id`),
+  ADD KEY `complainer_id` (`complainer_id`);
 
 --
 -- Indexes for table `repair_inventory_asc`
@@ -875,13 +819,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `complainer`
 --
 ALTER TABLE `complainer`
-  MODIFY `complainer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `complainer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `complaint_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `fraud`
@@ -923,7 +867,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `repair`
 --
 ALTER TABLE `repair`
-  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `repair_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `repair_inventory_asc`
@@ -1049,6 +993,7 @@ ALTER TABLE `notification`
 ALTER TABLE `repair`
   ADD CONSTRAINT `repair_clk` FOREIGN KEY (`clerk_id`) REFERENCES `user` (`userId`),
   ADD CONSTRAINT `repair_ibfk_1` FOREIGN KEY (`lp_id`) REFERENCES `lamppost` (`lp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `repair_ibfk_2` FOREIGN KEY (`complainer_id`) REFERENCES `complainer` (`complainer_id`),
   ADD CONSTRAINT `repair_tech` FOREIGN KEY (`technician_id`) REFERENCES `user` (`userId`);
 
 --
