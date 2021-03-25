@@ -94,8 +94,13 @@ class User extends Database
         return $this->conn->query($q);
         
     }
-    function ActivateUser($username) {
-        $q = "UPDATE user SET statusFlag = 1 WHERE username = '$username'";
+    function ActivateUser($id) {
+        $q = "UPDATE user SET statusFlag = 1 WHERE userId = '$id'";
+        return $this->conn->query($q);
+        
+    }
+    function DeleteUser($id) {
+        $q = "DELETE FROM user WHERE userId = '$id'";
         return $this->conn->query($q);
         
     }

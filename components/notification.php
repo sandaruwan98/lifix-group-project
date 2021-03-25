@@ -152,9 +152,9 @@
                             var user = JSON.parse(data)
                             console.log(user);
                             $('.declineacc').attr("data-noti-id", $(this).attr('id'));
+                            $('.declineacc').attr("id", id);
                             
                             $('.confirmacc').attr("data-noti-id", $(this).attr('id'));
-
                             $('.confirmacc').attr("id", id);
 
                             $('#username').html(user.username);

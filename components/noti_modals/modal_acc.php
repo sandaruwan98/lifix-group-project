@@ -24,7 +24,7 @@
                
                 <button onclick="confirmacc(this.id, this.getAttribute('data-noti-id') )" class="field danger confirmacc">Activate Account</button>
                 
-                <button id="0" onclick="declineacc(this.getAttribute('data-noti-id') )" class="field success declineacc">Decline Account</button>
+                <button id="0" onclick="declineacc(this.id, this.getAttribute('data-noti-id') )" class="field success declineacc">Decline Account</button>
             </div>
             
             <div class="modal-overlay"></div>
@@ -40,9 +40,9 @@
                     })
                 }
 
-                function declineacc( noti_id ) {
+                function declineacc( id,noti_id ) {
                     // send ajax to declne account
-                    $.get("../components/noti_ajax/decline_acc.php?noti_id=" + noti_id , (data,status)=>{
+                    $.get("../components/noti_ajax/decline_acc.php?id="+ id + "&noti_id=" + noti_id , (data,status)=>{
                         
                         if (status == "success") {
                             location.reload();
