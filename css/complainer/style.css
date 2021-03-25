@@ -28,7 +28,7 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  background: url("../img/2.jpg") no-repeat center;
+  background: url("../../assets/img/2.jpg") no-repeat center;
   background-size: cover;
   filter: blur(0px);
   z-index: -1;
@@ -46,7 +46,7 @@ body {
 }
 
 .left {
-  background: url("../img/1.jpg") no-repeat center;
+  background: url("../../assets/img/1.jpg") no-repeat center;
   background-size: cover;
   height: 100%;
   border-top-left-radius: 22.5px;
@@ -201,7 +201,7 @@ h2:after {
       #606c88
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #3f4c6b, #606c88);
-    background: url("../img/2.jpg") no-repeat;
+    background: url("../../assets/img/2.jpg") no-repeat;
     background-size: contain;
     background-color: #161616;
   }

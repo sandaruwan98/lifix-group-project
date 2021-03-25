@@ -18,7 +18,6 @@ if (isset($_POST["name"])) {
 
     $output = "<table><tbody><tr><td>Name</td>";
 
-
     if (!empty($row['Name'])) {
         $output .= "<td>" . $row['Name'] . "</td></tr><tr><td>Phone</td><td>" . $row['phone'] . "</td></tr><tr><td>Total completed repairs</td><td>" . $rowRepair['count'] . "</td></tr></tbody></table>";
     } else {
