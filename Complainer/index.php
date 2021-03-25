@@ -11,6 +11,10 @@ include "dbAccess.php";
 
 <head>
 	<title>Li - Fix</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/favicon/site.webmanifest">
 	<link rel="stylesheet" type="text/css" href="../css/complainer/style.css">
 	<script src="../js/jquery-3.5.1.min.js"></script>
 	<script src="../js/jquery.color-2.1.2.min.js"></script>
@@ -26,7 +30,7 @@ include "dbAccess.php";
 		<div class="contact-box">
 			<div class="left"></div>
 			<div class="right">
-				<img src="./img/" alt="" srcset="">
+				<!-- <img src="./img/" alt="" srcset=""> -->
 				<h2>Make a Complaint</h2>
 				<form action="index.php" method="POST">
 					<input type="text" name="name" value="<?php echo htmlspecialchars($name) ?>" class="field <?php if ($errors['name']) echo "err"; ?>" placeholder="<?php if ($errors['name']) echo $errors['name'];

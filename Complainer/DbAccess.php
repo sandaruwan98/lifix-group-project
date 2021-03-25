@@ -73,10 +73,10 @@ if (isset($_POST['submit'])) {
         $phoneNo = "";
         $errors['phone'] = 'Enter valid number';
     }
-    if (empty($otpCode) || isset($_SESSION['otp']) != true || $_SESSION['otp'] != $otpCode) {
-        $otpCode = "";
-        $errors['otp'] = 'OTP must be valid';
-    }
+    // if (empty($otpCode) || isset($_SESSION['otp']) != true || $_SESSION['otp'] != $otpCode) {
+    //     $otpCode = "";
+    //     $errors['otp'] = 'OTP must be valid';
+    // }
     if (!array_filter($errors)) {
         $obj = new DbAccess();
         $obj->sendData($page, $greeting, $msg, $btnText);
