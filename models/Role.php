@@ -1,7 +1,5 @@
 <?php
-
 namespace models;
-
 require_once "Database.php";
 
 class Role extends Database
@@ -52,7 +50,6 @@ class Role extends Database
     }
 
 
-  public function getActiveRoles($userid)
-  {
 
 }
+
