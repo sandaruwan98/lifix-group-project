@@ -58,7 +58,7 @@ class User extends Database
 
     public function getUserById($id)
     {
-        $q = "SELECT `userId`, `Name` FROM `user` WHERE userId='$id'";
+        $q = "SELECT `userId`, `Name`,`phone`,`username`,`occuFlag` FROM `user` WHERE userId='$id'";
         $list =   $this->conn->query($q);
         return $list->fetch_assoc();
     }
@@ -91,6 +91,11 @@ class User extends Database
 
     function revoke($username) {
         $q = "UPDATE user SET statusFlag = 2 WHERE username = '$username'";
+        return $this->conn->query($q);
+        
+    }
+    function ActivateUser($username) {
+        $q = "UPDATE user SET statusFlag = 1 WHERE username = '$username'";
         return $this->conn->query($q);
         
     }

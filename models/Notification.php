@@ -24,11 +24,12 @@ class Notification extends Database
     public function getunReadNotifications($user_id,$role)
     {
         // if user is a clerck
-        if ($role == 2) {
+        if ($role == 2 || $role == 5) {
             $query = "SELECT * FROM notification WHERE status=0 AND to_user IN('$user_id','$role') ORDER BY id DESC";
             $result = $this->conn->query($query);
             return $result;
         }
+        
         // if user isn't a clerck
         $query = "SELECT * FROM notification WHERE status=0 AND to_user='$user_id' ORDER BY id DESC";
         $result = $this->conn->query($query);
@@ -38,7 +39,7 @@ class Notification extends Database
     public function getunReadNotificationCount($user_id,$role)
     {
          // if user is a clerck
-         if ($role == 2) {
+         if ($role == 2 || $role == 5) {
             $query_1 = "SELECT COUNT(*) AS count FROM notification WHERE status=0 AND to_user IN('$user_id','$role') ";
             $count = $this->conn->query($query_1);
             $count= $count->fetch_assoc();
