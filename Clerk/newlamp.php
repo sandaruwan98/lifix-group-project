@@ -107,9 +107,11 @@ $data =  $clerck->LampPostPage();
                     var data = JSON.parse(data)
                     console.log(data);
                     if (data != null) {
-                        console.log("sfsdf");
                         $('#inputtech').val(data.tech);
                         $('#inputadr').val(data.adr);
+                    }else{
+                        $('#inputtech').val('Invalid ID');
+                        $('#inputadr').val('Invalid ID');
                     }
                 }
 

@@ -10,16 +10,16 @@
                 <h2>Activate new account</h2>
                 <br>
                 <p >Username : </p>
-                <p id="username" class="val">lakshan</p>
+                <p id="username" class="val">Loading ...</p>
                 <br>
                 <p >Full Name : </p>
-                <p id="name" class="val">lakshan sdvsd sfs</p>
+                <p id="name" class="val">Loading ...</p>
                 <br>
                 <p>Phone No : </p>
-                <p id="phone" class="val">0703242343</p>
+                <p id="phone" class="val">Loading ...</p>
                 <br>
                 <p>Role : </p>
-                <p id="role" class="val">Technician</p>
+                <p id="role" class="val">Loading ...</p>
                 <br>
                
                 <button onclick="confirmacc(this.id, this.getAttribute('data-noti-id') )" class="field danger confirmacc">Activate Account</button>

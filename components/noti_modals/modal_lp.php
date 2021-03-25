@@ -10,16 +10,16 @@
                 <h2>Confirm new lamp post</h2>
                 <br>
                 <p >Lamp post id : </p>
-                <p id="lpid" class="val">#2314</p>
+                <p id="lpid" class="val">Loading ...</p>
                 <br>
                 <p>Address : </p>
-                <p id="adr" class="val">sefesf,fewfew,dfddd</p>
+                <p id="adr" class="val">Loading ...</p>
                 <br>
                 <p>Date : </p>
-                <p id="date" class="val">23-02-32</p>
+                <p id="date" class="val">Loading ...</p>
                 <br>
                 <p>Added technician : </p>
-                <p id="tech" class="val"></p>
+                <p id="tech" class="val">Loading ...</p>
                 <br>
                 <button onclick="confirmlp( this.getAttribute('data-noti-id') )" class="field danger confirmlp">Confirm</button>
                 
