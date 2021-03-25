@@ -16,7 +16,7 @@
 <?php include "../components/notification.php" ?>
 <?php include "../components/toast.php" ?>
 <?php include "../components/userfeild.php" ?>
-<?php //include '../components/noti_modals/modal_lp.php'; ?>
+<?php include '../components/noti_modals/modal_acc.php'; ?>
 
 <script src="../js/slider.js"></script>
 
