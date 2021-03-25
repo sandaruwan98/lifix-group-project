@@ -58,7 +58,7 @@ class User extends Database
 
     public function getUserById($id)
     {
-        $q = "SELECT `userId`, `Name` FROM `user` WHERE userId='$id'";
+        $q = "SELECT `userId`, `Name`,`phone`,`username`,`occuFlag` FROM `user` WHERE userId='$id'";
         $list =   $this->conn->query($q);
         return $list->fetch_assoc();
     }
@@ -77,4 +77,36 @@ class User extends Database
         $list =   $this->conn->query($q);
         return $list;
     }
+
+
+
+
+
+    function getActiveUsers() {
+        $query = "SELECT userId,username FROM user WHERE NOT statusFlag = 2 AND NOT statusFlag = 0";
+        $list =   $this->conn->query($query);
+        return $list->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+    function revoke($username) {
+        $q = "UPDATE user SET statusFlag = 2 WHERE username = '$username'";
+        return $this->conn->query($q);
+        
+    }
+    function ActivateUser($id) {
+        $q = "UPDATE user SET statusFlag = 1 WHERE userId = '$id'";
+        return $this->conn->query($q);
+        
+    }
+    function DeleteUser($id) {
+        $q = "DELETE FROM user WHERE userId = '$id'";
+        return $this->conn->query($q);
+        
+    }
+
+  
+
+
+
 }

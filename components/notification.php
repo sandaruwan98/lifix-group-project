@@ -142,6 +142,30 @@
                     toggleNotificationWidow();
                     modal.checked = true;
                 }
+                
+                // if accont activation notification show activate acc modal with acc details (admin)
+                if ($(this).attr('data-type') === 'c-acc') {
+                    var id = $(this).attr('data-ref_id');
+                    
+                    $.get('../admin/ajax/getActivatingAccDetails.php?accid=' + id  , (data, status) => {
+                        if (status == "success") {
+                            var user = JSON.parse(data)
+                            console.log(user);
+                            $('.declineacc').attr("data-noti-id", $(this).attr('id'));
+                            $('.declineacc').attr("id", id);
+                            
+                            $('.confirmacc').attr("data-noti-id", $(this).attr('id'));
+                            $('.confirmacc').attr("id", id);
+
+                            $('#username').html(user.username);
+                            $('#name').html( user.Name );
+                            $('#phone').html(user.phone);
+                            $('#role').html( user.role );
+                        }
+                    })
+                    toggleNotificationWidow();
+                    modal.checked = true;
+                }
             });
 
 

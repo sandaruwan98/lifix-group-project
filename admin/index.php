@@ -1,7 +1,7 @@
 <?php
 include_once  __DIR__ . '/../utils/classloader.php';
-$clerck = new classes\Clerck();
-$data =  $clerck->SectionAssign();
+$admin = new classes\Admin();
+$data =  $admin->SectionAssign();
 ?>
 
 

@@ -102,12 +102,9 @@ class Authentication extends Framework
             $pass = $_POST["pass"];
             $confirmpass = $_POST["confirmpass"];
 
-            $this->regdata = [$username, $name, $phone, $pass, $confirmpass];
-
-            if (!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)) {
-                $this->session->sendMessage("Invalid  Name", "danger");
-                return;
-            }
+            // if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)){
+            //     $this->session->sendMessage("Invalid  Name","danger");return ;
+            // }
 
             if (preg_match("/[a-zA-Z]+/", $phone)) {
                 $this->session->sendMessage("Invalid phone number", "danger");
@@ -124,8 +121,7 @@ class Authentication extends Framework
             //     return ;
             // }
 
-
-            // $usermodel = $this->loadModel('User');
+        
             $usermodel = new \models\User();
 
             if (!$usermodel->isUsernameAvailable($username)) {
@@ -139,10 +135,16 @@ class Authentication extends Framework
 
             $rolemodel = new \models\Role();
 
+            if ($rolemodel->addRole($user_id,$role)) {
+            
 
-            if ($rolemodel->addRole($user_id, $role)) {
-
-                $this->session->sendMessage("Registration successful", "success");
+                 // send notification to clerck to confirm
+                $noti = new \models\Notification();
+                $subject = 'New accont activation';
+                $body = $username.' (' .$name.')' . 'have created a new account.Activate or reject it';
+                $noti->AddNotification($subject,$body, $user_id , AdminFL ,'c-acc',$user_id);
+                
+                $this->session->sendMessage("Registration successful","success");
                 echo "<script>setTimeout(() => {  location.href = './index.php' }, 2000);</script>";
             }
         }
