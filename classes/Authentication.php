@@ -91,9 +91,9 @@ class Authentication extends Framework{
            
             $this->regdata = [$username,$name,$phone,$pass,$confirmpass];
 
-            if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)){
-                $this->session->sendMessage("Invalid  Name","danger");return ;
-            }
+            // if(!preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)){
+            //     $this->session->sendMessage("Invalid  Name","danger");return ;
+            // }
 
             if(preg_match("/[a-zA-Z]+/", $phone)){
                 $this->session->sendMessage("Invalid phone number","danger");return ;
@@ -125,6 +125,13 @@ class Authentication extends Framework{
 
             if ($rolemodel->addRole($user_id,$role)) {
             
+
+                 // send notification to clerck to confirm
+                $noti = new \models\Notification();
+                $subject = 'New accont activation';
+                $body = $username.' (' .$name.')' . 'have created a new account.Activate or reject it';
+                $noti->AddNotification($subject,$body, $user_id , AdminFL ,'c-acc',$user_id);
+                
                 $this->session->sendMessage("Registration successful","success");
                 echo "<script>setTimeout(() => {  location.href = './index.php' }, 2000);</script>";
             }
