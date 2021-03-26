@@ -44,10 +44,19 @@ $data =  $clerck->RepairHistory();
         </header>
         <div class="container1">
             <!-- searchbox -->
-            <div class="searchbox">
-                <input id="search" type="text" placeholder="Search..." name="search" class="search">
-                <button class="btn-search"><i class="fas fa-search"></i></button>
-            </div>
+            <form action="repairHistory.php" method="post">
+                <div class="searchbox">
+                        <input name="searchbox" id="search" type="text" placeholder="Search..." name="search" class="search">
+                        <button name="search" type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+                </div>
+                <?php if( isset($_SESSION["search"]) ): ?>
+                <div class="sdisplay">
+                    <p>Search Results for "<?= $_SESSION["search"] ?>"</p>
+                    <button name="clearsearch" type="submit" class="btn btn-search "><i class="fas fa-times"> Clear Search</i></button>
+
+                </div>
+                <?php endif ?>
+            </form>
 
 
             <!-- repair list -->

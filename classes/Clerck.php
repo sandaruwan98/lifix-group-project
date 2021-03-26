@@ -64,12 +64,26 @@ class Clerck extends Framework
 
 
     public function RepairHistory()
-    {
+    { 
+        $searchfilter = '';
+        if( isset($_POST["search"]) ){
+            $_SESSION["search"] = $_POST["searchbox"];
+        }
+
+        if( isset($_POST["clearsearch"]) ){
+            unset($_SESSION["search"]);
+            header('location: ./purchase.php');
+        }
+
+        if(isset($_SESSION["search"]))
+            $searchfilter = $_SESSION["search"];
+
+
         $repairmodel = new \models\Repair();
-        $totalpages = $repairmodel->getRepairsCount('ce');
+        $totalpages = $repairmodel->getRepairHistoryCount($searchfilter);
 
         $p = new Pagination(5, $totalpages);
-        $repairs = $repairmodel->getRepairs('ce', $p->fiteringText());
+        $repairs = $repairmodel->getRepairHistory( $p->fiteringText(), $searchfilter);
         $data['repairs'] = $repairs;
         $data['pagination'] = $p;
 
@@ -78,8 +92,8 @@ class Clerck extends Framework
 
     public function RepairPage()
     {
+        $repairmodel = new \models\Repair();
 
-        $repairmodel = $this->loadModel('Repair');
         if (!isset($_GET["id"]))
             header('location: ./repairHistory.php');
 
@@ -98,16 +112,28 @@ class Clerck extends Framework
 
     public function Purchase()
     {
+        $searchfilter = '';
+        if( isset($_POST["search"]) ){
+            $_SESSION["psearch"] = $_POST["searchbox"];
+        }
 
-        $invmodel = $this->loadModel('Inventory');
+        if( isset($_POST["clearsearch"]) ){
+            unset($_SESSION["psearch"]);
+            header('location: ./purchase.php');
+        }
+
+        if(isset($_SESSION["psearch"]))
+            $searchfilter = $_SESSION["psearch"];
+
+        $invmodel = new \models\Inventory();
         $item_names = $invmodel->getItemNames();
         $data['ItemData'] = $item_names->fetch_all();
 
         $samodel = new \models\StockAddition();
 
-        $totalpages = $samodel->get_SA_ListAll_Count();
+        $totalpages = $samodel->get_SA_ListAll_Count($searchfilter);
         $p = new Pagination(5, $totalpages);
-        $data['StockAdditionList'] = $samodel->get_SA_ListAll($p->fiteringText());
+        $data['StockAdditionList'] = $samodel->get_SA_ListAll($p->fiteringText(), $searchfilter);
         // $this->session->sendMessage("helooo",'success');
         $data['pagination'] = $p;
         return $data;

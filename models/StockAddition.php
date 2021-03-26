@@ -7,18 +7,34 @@ require_once "Database.php";
 class StockAddition extends Database
 {
 
-    public function get_SA_ListAll($paginationFilter)
+    public function get_SA_ListAll($paginationFilter, $searchfilter)
     {
-        $q = "SELECT `sa_id`, `date`, `status`, `clerk_id` FROM `stock_addition`" . $paginationFilter;
+        $search_word = " WHERE sa_id LIKE '%$searchfilter%' OR Name LIKE '%$searchfilter%' OR date LIKE '%$searchfilter%' ";
+
+        if ($searchfilter == '') {
+        
+            $q = "SELECT * FROM stock_addition_view" . $paginationFilter;
+        }else{
+            
+            $q = "SELECT * FROM stock_addition_view" . $search_word . $paginationFilter;
+        }
+
 
         $list =   $this->conn->query($q);
         return $list;
     }
 
-    public function get_SA_ListAll_Count()
+    public function get_SA_ListAll_Count($searchfilter)
     {
-        $q = "SELECT count(sa_id) as count FROM `stock_addition`";
-
+        $search_word = " WHERE sa_id LIKE '%$searchfilter%' OR Name LIKE '%$searchfilter%' OR date LIKE '%$searchfilter%' ";
+        
+        if ($searchfilter == '') {
+        
+            $q = "SELECT COUNT(sa_id) AS count FROM stock_addition_view " ;
+        }else{
+            
+            $q = "SELECT COUNT(sa_id) AS count FROM stock_addition_view " . $search_word ;
+        }
         $count =   $this->conn->query($q);
         $count =   $count->fetch_assoc();
         return $count["count"];
