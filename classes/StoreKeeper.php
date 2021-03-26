@@ -34,13 +34,27 @@ class StoreKeeper extends Framework
     }
     public function ReqHistory()
     {
+        $searchfilter = '';
+        if( isset($_POST["search"]) ){
+            $_SESSION["search"] = $_POST["searchbox"];
+        }
+
+        if( isset($_POST["clearsearch"]) ){
+            unset($_SESSION["search"]);
+            header('location: ./requestHistory.php');
+        }
+
+        if(isset($_SESSION["search"]))
+            $searchfilter = $_SESSION["search"];
+
+            
         $itemrequest = new \models\ItemRequest();
 
-        $totalpages = $itemrequest->getItemReqHistorytCount();
+        $totalpages = $itemrequest->getItemReqHistorytCount($searchfilter);
 
         $p = new Pagination(5, $totalpages);
 
-        $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText());
+        $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText() , $searchfilter);
 
         $data['pagination'] = $p;
 
