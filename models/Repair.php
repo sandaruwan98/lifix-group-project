@@ -42,30 +42,33 @@ class Repair extends Database
         return $this->conn->insert_id;
     }
 
-    public function getRepairs($status, $paginationfilter)
+    public function getRepairHistory( $paginationfilter,$searchfilter)
     {
-        $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
-        FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' ORDER BY repair.date DESC ";
-        if ($status == "ce") {
-            $q = "SELECT repair.repair_id, repair.lp_id, lamppost.division , repair.date 
-        FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ORDER BY repair.date DESC " . $paginationfilter;
+        $search_word = " WHERE division LIKE '%$searchfilter%' OR lp_id LIKE '%$searchfilter%' OR date LIKE '%$searchfilter%' ";
+        if ($searchfilter == '') {
+        
+            $q = "SELECT * FROM repair_history" . $paginationfilter;
+        }else{
+            
+            $q = "SELECT * FROM repair_history" . $search_word . $paginationfilter;
         }
+        
         $list =   $this->conn->query($q);
         return $list;
     }
 
-    public function getRepairsCount($status)
+    public function getRepairHistoryCount($searchfilter)
     {
-        $q = "SELECT COUNT(repair.repair_id) AS count
-        FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='$status' ";
-        if ($status == "ce") {
-            $q = "SELECT COUNT(repair.repair_id) AS count
-        FROM lamppost INNER JOIN repair 
-        ON lamppost.lp_id=repair.lp_id WHERE repair.status='c' OR repair.status='e' ";
+        $search_word = " WHERE division LIKE '%$searchfilter%' OR lp_id LIKE '%$searchfilter%' OR date LIKE '%$searchfilter%' ";
+
+        if ($searchfilter == '') {
+        
+            $q = "SELECT COUNT(repair_id) AS count FROM repair_history " ;
+        }else{
+            
+            $q = "SELECT COUNT(repair_id) AS count FROM repair_history " . $search_word ;
         }
+        
         $count =   $this->conn->query($q);
         $count =   $count->fetch_assoc();
         return $count["count"];
