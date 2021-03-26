@@ -42,13 +42,34 @@ $data = $storekeeper->ReqHistory();
         <div class="container">
 
             <div class="p-list-section sc-bar">
-
+                
 
 
                 <div class="xx">
                     <h2>Request List</h2>
                 </div>
 
+
+
+        <!-- searchbox -->
+        <form action="requestHistory.php" method="post">
+
+            <div class="searchbox-sm">
+                <input name="searchbox" id="search" type="text" placeholder="Search..." name="search" class="search" style="font-size: small;">
+                <button name="search" class="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+            <?php if( isset($_SESSION["search"]) ): ?>
+                <div class="sdisplay">
+                    <p>Search Results for "<?= $_SESSION["search"] ?>"</p>
+                    <button name="clearsearch" type="submit" class="btn btn-search "><i class="fas fa-times"> Clear Search</i></button>
+
+                </div>
+            <?php endif ?>
+
+
+
+
+        </form>
                 <!-- request list -->
 
                 <?php

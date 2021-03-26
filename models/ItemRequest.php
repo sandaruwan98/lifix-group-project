@@ -73,11 +73,18 @@ class ItemRequest extends Database
 
 
 
-    public function getItemReqHistorytCount()
+    public function getItemReqHistorytCount($searchfilter)
     {
-        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT count(*) as count
-        FROM itemrequest WHERE status IN('d','c') ";
+
+        $search_word = " WHERE Itemrequest_id LIKE '%$searchfilter%' OR Name LIKE '%$searchfilter%' OR supplied_date LIKE '%$searchfilter%'  ";
+
+        if ($searchfilter == '') {
+
+            $q = "SELECT COUNT(*) AS count FROM reqhistory_view " ;
+        }else{
+            
+            $q = "SELECT COUNT(*) AS count FROM reqhistory_view " . $search_word ;
+        }
 
         $count =   $this->conn->query($q);
         $count =   $count->fetch_assoc();
@@ -85,13 +92,17 @@ class ItemRequest extends Database
     }
 
 
-    public function getItemReqHistory($paginationfilter)
+    public function getItemReqHistory($paginationfilter,$searchfilter)
     {
-        // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username ,itemrequest.supplied_date ,itemrequest.added_date ,itemrequest.status
-        FROM itemrequest INNER JOIN user 
-        ON itemrequest.created_by=user.userId
-        WHERE itemrequest.status IN('d','c') ORDER BY itemrequest.added_date DESC " . $paginationfilter;
+        
+        $search_word = " WHERE Itemrequest_id LIKE '%$searchfilter%' OR Name LIKE '%$searchfilter%' OR supplied_date LIKE '%$searchfilter%' ";
+        if ($searchfilter == '') {
+        
+            $q = "SELECT * FROM reqhistory_view" . $paginationfilter;
+        }else{
+            
+            $q = "SELECT * FROM reqhistory_view" . $search_word . $paginationfilter;
+        }
 
 
         $list =   $this->conn->query($q);
