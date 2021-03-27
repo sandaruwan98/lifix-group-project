@@ -5,7 +5,7 @@ if(isset($_GET["role"]) && isset($_SESSION["role"])){
     $_SESSION["role"]=$role;
     
     switch($role){
-        case '1': header('location:../divisionalsecretary/report.php');break;
+        case '1': header('location:../divisionalsecretary/index.php');break;
         case '2':header('location:../clerk/index.php');break;
         case '3':header('location:../storekeeper/index.php');break;
         case '4':header('location:../technician/index.php');break;

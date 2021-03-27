@@ -114,7 +114,7 @@ class ItemRequest extends Database
 
     public function AddRequestItemRecord($created_user_id, $storekeeper_id, $status)
     {
-        $date = date("yy-m-d");
+        $date = date("y-m-d");
         $q = "INSERT INTO `itemrequest`( `status`, `completed_by`, `created_by`,`added_date`) VALUES 
         ('$status', '$storekeeper_id' , '$created_user_id','$date')";
 
@@ -132,7 +132,7 @@ class ItemRequest extends Database
     public function SupplyItemRequest($ir_id, $storekeeper_id)
     {
 
-        $date = date("yy-m-d");
+        $date = date("y-m-d");
         $qurey = "UPDATE `itemrequest` SET `status`='b',`supplied_date`='$date', `completed_by`=$storekeeper_id WHERE `Itemrequest_id`=$ir_id ";
 
         return $this->conn->query($qurey);
