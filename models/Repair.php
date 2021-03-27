@@ -159,6 +159,7 @@ class Repair extends Database
         }
         // chansge repair status as completed
         $this->changeStatus($r_id, 'c');
+        
     }
 
     public function CreateEmergencyRepair($lp_id, $technician_id, $used_items, $return_items)

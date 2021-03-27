@@ -59,24 +59,24 @@ if (isset($_POST['submit'])) {
 
     if (empty($name) || !preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)) {
         $name = "";
-        $errors['name'] = 'Name must be a valid name';
+        $errors['name'] = 'Name is not valid';
     }
     if (empty($nic) || !preg_match("/^[1-9]([0-9]{8}(x|v|X|V))|([1-9][0-9]{10}(x|v|X|V))$/", $nic)) {
         $nic = "";
-        $errors['nic'] = 'NIC must be a valid NIC number';
+        $errors['nic'] = 'NIC is not valid';
     }
     if (empty($lampId) || $lampObj->getLampPost_byid($lampId) == null) {
         $lampId = "";
-        $errors['lampid'] = 'ID must be a valid ID';
+        $errors['lampid'] = 'ID is not in use';
     }
     if (empty($phoneNo) || preg_match("/[a-zA-Z]+/", $phoneNo)) {
         $phoneNo = "";
         $errors['phone'] = 'Enter valid number';
     }
-    // if (empty($otpCode) || isset($_SESSION['otp']) != true || $_SESSION['otp'] != $otpCode) {
-    //     $otpCode = "";
-    //     $errors['otp'] = 'OTP must be valid';
-    // }
+    if (empty($otpCode) || isset($_SESSION['otp']) != true || $_SESSION['otp'] != $otpCode) {
+        $otpCode = "";
+        $errors['otp'] = 'OTP is not valid';
+    }
     if (!array_filter($errors)) {
         $obj = new DbAccess();
         $obj->sendData($page, $greeting, $msg, $btnText);

@@ -11,7 +11,7 @@ class TmpInventory extends Database
         // $q1 = "SELECT quantity FROM tmpinventory WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
 
         $q = " UPDATE tmpinventory SET quantity=quantity $operator '$quantity' WHERE Item_id='$itemid' AND tecnician_id='$tech' ";
-        echo $q;
+        // echo $q;
         return $this->conn->query($q);
     }
 

@@ -73,6 +73,18 @@ class Complaint extends Database
         return $list->fetch_assoc();
     }
 
+    public function getComplainerPhoneNoandLampId_by_repair_id($r_id)
+    {
+        $q = "SELECT complainer.phone_no, complaint.lp_id
+        FROM complaint INNER JOIN complainer 
+        ON complaint.complainer_id=complainer.complainer_id WHERE complaint.repair_id='$r_id'";
+
+        $list =   $this->conn->query($q);
+        // echo $list;
+        $list = $list->fetch_assoc();
+        return $list;
+    }
+
 
     public function getIsBulbThere($r_id)
     {
