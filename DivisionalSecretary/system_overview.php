@@ -96,7 +96,7 @@ $session = new classes\Session(DSFL);
 
         let date1 = $("#firstDate").val();
         let date2 = $("#secondDate").val();
-
+        console.log(date1);
         $.ajax({
           type: "POST",
           url: "../utils/reportFetch.php",
