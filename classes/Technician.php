@@ -2,10 +2,7 @@
 
 namespace classes;
 
-
-// include_once '../utils/modelLoader.php';
 include_once  __DIR__ . '/../utils/classloader.php';
-// require_once "./Sms.php";
 
 class Technician extends Framework
 {
