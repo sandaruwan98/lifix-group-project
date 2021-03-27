@@ -10,9 +10,9 @@ if (isset($_POST["firstDate"])) {
 
   $result = $reportmodel->getComplaints($_POST["firstDate"], $_POST["secondDate"]);
 
-  if (mysqli_num_rows($result) > 0) {
+  if ($result->num_rows > 0) {
 
-    echo "<table>
+    echo "<table class='content-table' >
     <tr>
       <th>Lamppost</th>
       <th>Complainer</th>
@@ -42,6 +42,6 @@ if (isset($_POST["firstDate"])) {
     }
     echo "</table>";
   } else {
-    echo "No data on this period";
+    echo "<p>No data on this period</p>";
   }
 }

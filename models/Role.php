@@ -27,6 +27,7 @@ class Role extends Database
         $date = date("yy-m-d");
         // $query="DELETE FROM roles WHERE role='$role' AND user_id='$userid' ";
         $query="UPDATE `roles` SET `is_active`='0',`enddate`='$date' WHERE role='$role' AND user_id='$userid' ";
+        echo $query;
         return $this->conn->query($query);
     }
 
