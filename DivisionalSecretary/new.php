@@ -2,16 +2,20 @@
 
 use models\ReportGenerate;
 
+
+
 include_once  __DIR__ . '/../models/ReportGenerate.php';
 include_once  __DIR__ . '/../utils/classloader.php';
 $inventryModel = new models\Inventory();
 
 $session = new classes\Session(DSFL);
 $inventry = $inventryModel->getInventory();
-        $data = "";
-        while ($row = mysqli_fetch_array($inventry)) {
-          $data .= "{ name:'" . $row["name"] . "',total:" . $row["total"] . "},";
-  }
+$barlabel = "";
+$barval = "";
+while ($row = mysqli_fetch_array($inventry)) {
+  $barlabel .= '"'.$row["name"] . '" ,';
+  $barval .= $row["total"] . ",";
+}
 ?>
 
 
@@ -129,9 +133,9 @@ $inventry = $inventryModel->getInventory();
                               
                                 <div class="range">
                                   <p>From</p>
-                                  <input type="date" id="firstDate" class="field" value="<?= date('yy-m-d') ?>" required>
+                                  <input type="date" id="firstDate" class="field" value="<?=   date('Y-m-d',strtotime(date('Y-m-d')." -1 Months"))  ?>" required>
                                   <p>To</p>
-                                  <input type="date" id="secondDate" class="field" value="<?= date('yy-m-d') ?>" required>
+                                  <input type="date" id="secondDate" class="field" value="<?= date('Y-m-d') ?>" required>
                                   <button class="btn">Generate</button>
                                 </div>
                               
@@ -144,8 +148,8 @@ $inventry = $inventryModel->getInventory();
                       <h3>Recieved Complaints</h3> 
                     </div>
                     <div class="card__content">
-                        <div class="card__item">
-                            <div class="chart-column-data">
+                        <div class="card_item">
+                            <div class="chart-column-data1">
                               
                                 No data to show
                             
@@ -160,8 +164,8 @@ $inventry = $inventryModel->getInventory();
                         New LampPost Records
                     </div>
                     <div class="card__content">
-                        <div class="card__item">
-                        <div class="chart-column-data">
+                        <div class="card_item">
+                        <div class="chart-column-data2">
                               
                               No data to show
                           
@@ -187,6 +191,8 @@ $inventry = $inventryModel->getInventory();
  
     </div>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
+<script src='../js/ds/new.js'></script>
   <script>
     $(document).ready(function() {
       $('.btn').click(function() {
@@ -196,19 +202,37 @@ $inventry = $inventryModel->getInventory();
         console.log(date1);
         $.ajax({
           type: "POST",
-          url: "../utils/reportFetch.php",
+          url: "./ajax/reportComp.php",
           data: {
             firstDate: date1,
             secondDate: date2
           },
           success: function(data) {
             if (data != "No data on this period") {
-              $(".chart-column-data").css({
+              $(".chart-column-data1").css({
                 "display": "block"
               });
-              $(".chart-column-data").html(data);
+              $(".chart-column-data1").html(data);
             } else
-              $(".chart-column-data").html(data);
+              $(".chart-column-data1").html(data);
+          }
+        });
+
+        $.ajax({
+          type: "POST",
+          url: "./ajax/reportlp.php",
+          data: {
+            firstDate: date1,
+            secondDate: date2
+          },
+          success: function(data) {
+            if (data != "No data on this period") {
+              $(".chart-column-data2").css({
+                "display": "block"
+              });
+              $(".chart-column-data2").html(data);
+            } else
+              $(".chart-column-data2").html(data);
           }
         });
       })
@@ -219,10 +243,15 @@ $inventry = $inventryModel->getInventory();
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
-  data: [<?php echo $data; ?>],
-  xkey: 'name',
-  ykeys: ['total'],
-  labels: ['Count'],
+  data: {
+    labels: [ <?=$barlabel ?> ],
+    datasets: [{
+      label: "Toatal",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: [<?=$barval ?>],
+    }],
+  },
   options: {
     scales: {
       xAxes: [{
@@ -239,7 +268,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 250,
           maxTicksLimit: 5
         },
         gridLines: {
@@ -252,10 +281,10 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+
+
   </script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
-<script src='../js/ds/new.js'></script>
 
 </body>
 
