@@ -181,7 +181,7 @@ class StoreKeeper extends Framework
                 if ($rdata != NULL) {
 
                     $f = new \models\Fraud();
-                    $discription = 'There is a mismatch in damaged repair items of ' . $data['techname'] . '(technician) on ' . date('yy-m-d') . '. Added by - ' . $this->session->getuserName() . " (Storekeeper)";
+                    $discription = 'There is a mismatch in damaged repair items of ' . $data['techname'] . '(technician) on ' . date('Y-m-d') . '. Added by - ' . $this->session->getuserName() . " (Storekeeper)";
                     $f->addFraud($_SESSION["techid"], $this->session->getuserID(), $discription, 'a', $rdata);
 
                     $this->session->sendMessage("Damage Item count success,fraud added", 'success');

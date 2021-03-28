@@ -233,10 +233,10 @@ class Technician extends Framework
                 $repairmodel = new \models\Repair();
                 $r_id = $_GET["id"];
                 $repairmodel->CompleteRepair($r_id, $used_items, $return_items);
-
+                // deacrese tmp inventory
                 $invmanger->DecreasetmpInventory($used_items, $this->session->getuserID());
 
-
+                // send a toast message
                 $this->session->sendMessage("Repair marked as completed", 'success');
             } else {
                 $this->session->sendMessage("Insuficient " . $errmsg, 'danger');

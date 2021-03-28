@@ -123,7 +123,7 @@ $data =  $storekeeper->ReturnItem();
             </tr>
             <tr>
               <td>Returned Date</td>
-              <td><?= date('yy-m-d')  ?></td>
+              <td><?= date('Y-m-d')  ?></td>
             </tr>
 
 
