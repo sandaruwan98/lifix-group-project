@@ -1,21 +1,10 @@
 <?php
 
-use models\ReportGenerate;
 
-
-
-include_once  __DIR__ . '/../models/ReportGenerate.php';
 include_once  __DIR__ . '/../utils/classloader.php';
-$inventryModel = new models\Inventory();
+$admin = new classes\DS();
+$data =  $admin->SystemOverview();
 
-$session = new classes\Session(DSFL);
-$inventry = $inventryModel->getInventory();
-$barlabel = "";
-$barval = "";
-while ($row = mysqli_fetch_array($inventry)) {
-  $barlabel .= '"'.$row["name"] . '" ,';
-  $barval .= $row["total"] . ",";
-}
 ?>
 
 
@@ -238,18 +227,74 @@ while ($row = mysqli_fetch_array($inventry)) {
       })
     });
 
- 
+ // Chart.js scripts
+// -- Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+// -- Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [<?=$data['arealabel'] ?> ],
+    datasets: [{
+      label: "Sessions",
+      lineTension: 0.3,
+      backgroundColor: "rgba(2,117,216,0.2)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 20,
+      pointBorderWidth: 2,
+      data: [<?=$data['areaval'] ?> ],
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: <?=$data['areamax']+2 ?> ,
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+});
+
+
+
 // -- Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: [ <?=$barlabel ?> ],
+    labels: [ <?=$data['barlabel'] ?> ],
     datasets: [{
       label: "Toatal",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [<?=$barval ?>],
+      data: [<?= $data['barval'] ?>],
     }],
   },
   options: {
@@ -282,6 +327,22 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
+
+
+// -- Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+piedata =  [<?=$data['normcount'].','.$data['suscount'] ?> ];
+
+var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Normal Repairs", "Suspicious Repairs"],
+    datasets: [{
+      data: piedata,
+      backgroundColor: ['#007bff', '#dc3545'],
+    }],
+  },
+});
 
   </script>
 
