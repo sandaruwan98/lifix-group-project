@@ -1,6 +1,6 @@
 <?php
 
-include_once  __DIR__ . '/classloader.php';
+require_once __DIR__ . '/../../utils/classloader.php';
 
 session_start();
 
@@ -12,7 +12,7 @@ if (isset($_POST["firstDate"])) {
 
   if ($result->num_rows > 0) {
 
-    echo "<table class='content-table' >
+    echo "<table class='content-table font-sm' >
     <tr>
       <th>Lamppost</th>
       <th>Complainer</th>
