@@ -13,6 +13,7 @@ class DbAccess
     public $repairObj;
     public $complaintObj;
 
+    // redirects to success.php
     public function sendData($page, $greeting, $msg, $btnText)
     {
 
@@ -25,7 +26,6 @@ class DbAccess
         $note = $_POST['note'];
 
         array_search('yes', $_POST) ? ($bulb = 1) : ($bulb = 0);
-
 
         $complainerCheck = $complaintObj->checkComplainerExists($nic);
         $complainer_id = $complaintObj->addComplainer($complainerCheck, $nic, $name, $phoneno);
@@ -57,6 +57,7 @@ if (isset($_POST['submit'])) {
     $otpCode = $_POST['otp'];
     $note = $_POST['note'];
 
+    //validate user inputs
     if (empty($name) || !preg_match("/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/", $name)) {
         $name = "";
         $errors['name'] = 'Name is not valid';
@@ -82,5 +83,3 @@ if (isset($_POST['submit'])) {
         $obj->sendData($page, $greeting, $msg, $btnText);
     }
 }
-
-?>

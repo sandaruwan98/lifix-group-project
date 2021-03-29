@@ -52,13 +52,6 @@ class Clerck extends Framework
             $data["color"][$section["tech_id"]] = $section["color"];
         }
 
-
-        //  $data['technicians'] =
-
-
-
-
-
         return $data;
     }
 

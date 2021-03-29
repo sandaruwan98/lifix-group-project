@@ -77,12 +77,11 @@ class Complaint extends Database
     {
         $q = "SELECT complainer.phone_no, complaint.lp_id
         FROM complaint INNER JOIN complainer 
-        ON complaint.complainer_id=complainer.complainer_id WHERE complaint.repair_id='$r_id'";
+        ON complaint.complainer_id=complainer.complainer_id WHERE complaint.repair_id=$r_id";
 
         $list =   $this->conn->query($q);
         // echo $list;
-        $list = $list->fetch_assoc();
-        return $list;
+        return $list->fetch_assoc();
     }
 
 

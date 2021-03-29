@@ -4,38 +4,26 @@ namespace classes;
 
 class Sms
 {
-
     //textBiz credentials
-    public static $user = "94701549225";
-    public static $password = "9221";
+    public $user = "94701549225";
+    public $password = "9221";
+    public $recipient;
+    public $lamp_id;
 
-    public static function sendOtp($recipient, $otp)
+    public function __construct($recipient, $lamp_id) 
     {
-
-        $text = urlencode("Your Li-Fix OTP is $otp");
-        $to = $recipient;
-
-        $baseurl = "http://www.textit.biz/sendmsg";
-        $url = $baseurl . "/?id=" . self::$user . "&pw=" . self::$password . "&to=" . $to . "&text=" . $text;
-        $ret = file($url);
-
-        $res = explode(":", $ret[0]);
-
-        if (trim($res[0]) == "OK") {
-            echo "Sent";
-        } else {
-            echo "Not Sent";
-        }
+        $this->recipient = $recipient;
+        $this->lamp_id = $lamp_id;
     }
 
     // call this when need to send comfirmation msg
-    public static function sendConfirmation($recipient, $lamp_id)
+    public function sendConfirmation()
     {
-        $text = "Your complaint on lamppost:$lamp_id is now repaired";
-        $to = $recipient;
+        $text = urlencode("Your complaint on lamppost: ".$this->lamp_id." is now repaired");
+        // $to = $recipient;
 
         $baseurl = "http://www.textit.biz/sendmsg";
-        $url = $baseurl . "/?id=" . self::$user . "&pw=" . self::$password . "&to=" . $to . "&text=" . $text;
+        $url = $baseurl."/?id=".$this->user."&pw=".$this->password."&to=".$this->recipient."&text=".$text;
         $ret = file($url);
 
         $res = explode(":", $ret[0]);
@@ -46,4 +34,5 @@ class Sms
             echo "Not Sent";
         }
     }
+
 }
