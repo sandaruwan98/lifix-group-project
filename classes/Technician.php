@@ -209,6 +209,7 @@ class Technician extends Framework
 
             if ($errmsg == '') {
                 $comp = new \models\Complaint();
+                
                 // ---------------------------------------------------------
                 // get bulb return/used count for fraud check
                 $bulb_usedcount = $_POST["1_u"];
@@ -230,12 +231,15 @@ class Technician extends Framework
                 $r_id = $_GET["id"];
                 $repairmodel->CompleteRepair($r_id, $used_items, $return_items);
 
-
                 $invmanger->DecreasetmpInventory($used_items, $this->session->getuserID());
 
-                $complainer_phone = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id)['phone_no'];
-                $complaint_lamp_id = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id)['lp_id'];
-                Sms::sendConfirmation($complainer_phone, $complaint_lamp_id);
+                //get complainer phone and complaint lamppost id
+                $complainer_phone = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
+                $complaint_lamp_id = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
+
+                //send sms confirmation
+                $sms = new \classes\Sms($complainer_phone['phone_no'], $complaint_lamp_id['lp_id']);
+                $sms->sendConfirmation();
 
                 $this->session->sendMessage("Repair marked as completed", 'success');
             } else {
