@@ -57,8 +57,8 @@ $data = $storekeeper->Index();
                     <div id="<?= $row['Itemrequest_id'] ?>" class="repair-item">
                         <div class="row">
                             <span>Date: <?= $row['added_date'] ?></span>
-                            <span>Technician: <?= $row['username'] ?></span>
-                            <i class="s fas fa-check"></i>
+                            <span>Technician: <?= $row['Name'] ?></span>
+                            <!-- <i class="s fas fa-check"></i> -->
                         </div>
                     </div>
 

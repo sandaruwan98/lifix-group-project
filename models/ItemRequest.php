@@ -43,7 +43,7 @@ class ItemRequest extends Database
     public function getPendingRequestList($paginationfilter)
     {
         // $q = "SELECT `Itemrequest_id`, `created_by`, `added_date` FROM `itemrequest` WHERE `status`='o' ";
-        $q = "SELECT itemrequest.Itemrequest_id,user.username , itemrequest.added_date 
+        $q = "SELECT itemrequest.Itemrequest_id,user.Name , itemrequest.added_date 
         FROM itemrequest INNER JOIN user 
         ON itemrequest.created_by=user.userId
          WHERE itemrequest.status='a' ORDER BY itemrequest.added_date DESC" . $paginationfilter;
