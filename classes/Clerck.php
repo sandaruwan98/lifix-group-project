@@ -35,25 +35,6 @@ class Clerck extends Framework
 
         return $data;
     }
-    public function SectionAssign()
-    {
-
-        $usermodel = new \models\User();
-        $technicians = $usermodel->getUsers(TechnicianFL);
-        $data['technicians'] = $technicians;
-
-        $mapmodel = new \models\Map();
-        $sections = $mapmodel->getAllSections();
-
-        foreach ($technicians as $tech) {
-            $data["color"][$tech["userId"]] = "#e8edee";
-        }
-        while ($section = $sections->fetch_assoc()) {
-            $data["color"][$section["tech_id"]] = $section["color"];
-        }
-
-        return $data;
-    }
 
 
     public function RepairHistory()

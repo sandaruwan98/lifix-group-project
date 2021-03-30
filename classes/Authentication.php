@@ -141,7 +141,11 @@ class Authentication extends Framework
             $rolemodel = new \models\Role();
 
             if ($rolemodel->addRole($user_id,$role)) {
-            
+                if($role == TechnicianFL){
+                    $invmnager = new InventoryManager();
+                    $invmnager->AddTmpInventoryfortech($user_id);
+
+                }
 
                  // send notification to clerck to confirm
                 $noti = new \models\Notification();
