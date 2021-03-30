@@ -49,6 +49,40 @@ class DS extends Framework
     }
 
 
+    public function TechOverview()
+    {
+       
+       
+        
+       
+        $user = new \models\User();
+        $data['techs']  = $user->getUsers(TechnicianFL);
+                
+         
+        if (isset($_POST["generate"])) {
+            
+            $repairModel = new \models\Repair();
+            $fraudModel = new \models\Fraud();
+            $reportmodel = new \models\ReportGenerate();
+            $data['normcount'] =$reportmodel->getnormalRepairCount($_POST["firstDate"], $_POST["secondDate"]);
+            $data['suscount'] =$reportmodel->getsuspiRepairCount($_POST["firstDate"], $_POST["secondDate"]);
+
+            $techdetail = $user->getUserDetails($_POST["techid"]);
+            $data['techdetail'] = $techdetail;
+
+
+            $fraudResult = $fraudModel->getFraudsByUserID($techdetail['userId'], $_POST["firstDate"], $_POST["secondDate"]);
+            $data['fraudlist'] = $fraudResult;
+           
+
+           
+
+        }
+
+        return $data;
+    }
+
+
 
 
 
