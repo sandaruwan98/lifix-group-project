@@ -24,7 +24,7 @@ class StoreKeeper extends Framework
 
         $itemrequest = new \models\ItemRequest();
         $totalpages = $itemrequest->getPendingRequestListCount();
-        $p = new Pagination(5, $totalpages);
+        $p = new Pagination(9, $totalpages);
 
         $data['request_list'] = $itemrequest->getPendingRequestList($p->fiteringText());
 
@@ -52,7 +52,7 @@ class StoreKeeper extends Framework
 
         $totalpages = $itemrequest->getItemReqHistorytCount($searchfilter);
 
-        $p = new Pagination(5, $totalpages);
+        $p = new Pagination(9, $totalpages);
 
         $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText() , $searchfilter);
 

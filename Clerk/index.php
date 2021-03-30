@@ -67,7 +67,7 @@ $data =  $clerck->DailyRepair();
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [79.861489, 6.885039],
-            zoom: 14
+            zoom: 12
         });
 
 
