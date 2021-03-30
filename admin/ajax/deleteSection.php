@@ -1,5 +1,6 @@
 <?php 
-$session = new classes\Session(CleckFL);
+// $session = new classes\Session(AdminFL);
+
 if(isset($_GET["id"])){
 
     $id = $_GET["id"];

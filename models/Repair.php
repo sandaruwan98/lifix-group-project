@@ -106,7 +106,9 @@ class Repair extends Database
 
     public function changeStatus($id, $st)
     {
-        $q = "UPDATE `repair` SET `status`='$st' WHERE `repair_id`= '$id'";
+        $date = date("Y-m-d");
+        
+        $q = "UPDATE `repair` SET `status`='$st',`date`='$date'  WHERE `repair_id`= '$id'";
         $this->conn->query($q);
     }
 
