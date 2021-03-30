@@ -10,7 +10,7 @@ class Fraud extends Database
     public function addFraud($doneBy, $addedBy, $discription, $type, $arr)
     {
         // first add new fraud record 
-        $date = date("yy-m-d");
+        $date = date("Y-m-d");
 
         $q1 = " INSERT INTO `fraud`(`doneBy`, `added_by`, `description`, `date`, `type`) VALUES ('$doneBy','$addedBy','$discription', '$date' ,'$type' ) ";
 
@@ -28,13 +28,20 @@ class Fraud extends Database
         }
     }
 
-    public function getFraudsByUserID($id, $firstDate, $secondDate)
+    public function gettypeA_FraudsByUserID($id, $firstDate, $secondDate)
     {
         $query = "SELECT fraud.fraud_id, fraud.description, fraud.date, fraud_item.difference, fraud_item.item_id 
         FROM fraud
         join fraud_item
         ON fraud.fraud_id = fraud_item.fraud_id
         WHERE fraud.date BETWEEN '$firstDate' AND '$secondDate' AND (fraud.doneBy = $id)";
+        $result = $this->conn->query($query);
+        return $result;
+    }
+    public function gettypeB_FraudsByUserID($id, $firstDate, $secondDate)
+    {
+        $query = "SELECT fraud_id, description, date,type
+        FROM fraud WHERE date BETWEEN '$firstDate' AND '$secondDate' AND (doneBy = $id) AND type='b'";
         $result = $this->conn->query($query);
         return $result;
     }

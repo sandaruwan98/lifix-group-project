@@ -109,6 +109,7 @@
   }
   .card__item {
     padding: 20px 30px;
+    text-align: center;
   }
   .font-sm{
     font-size:0.5em
@@ -116,4 +117,23 @@
 
   .admin{
     width:100%
+  }
+
+  hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .text-muted{
+    color: #6c757d;
+  }
+
+  .card__item h3{
+    color: #007bff;
+    font-size: 1.5em;
+    font-family: inherit;
+    font-weight: 1000;
+    margin-bottom: 25px;
   }

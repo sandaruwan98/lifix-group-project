@@ -1,8 +1,8 @@
 <?php
 
 include_once  __DIR__ . '/../utils/classloader.php';
-$admin = new classes\DS();
-$data =  $admin->TechOverview();
+$ds = new classes\DS();
+$data =  $ds->TechOverview();
 
 ?>
 
@@ -79,15 +79,57 @@ $data =  $admin->TechOverview();
             </div>
 
 
-            <!-- area chart -->
-            <div class="dashboard__item">
+            <div class="dashboard__item dashboard__item--col">
                 <div class="card">
                     <div class="card__header">
                        Technician Details
                     </div>
                     <div class="card__content">
                         <div class="card__item">
-                            <canvas id="myAreaChart" width="100%" height="35"></canvas>
+                            <?php 
+                             if (isset($_POST["generate"])) {
+                                $techdetail = $data['techdetail'];
+                            ?>
+                                <div class="small text-muted">username</div>
+                                <h3 class="h4 mb-0 text-primary"><?= $techdetail['username'] ?></h3>
+                                <hr>
+                                <div class="small text-muted">Full Name</div>
+                                <h3 class="h4 mb-0 text-primary"><?= $techdetail['Name'] ?></h3>
+
+                                <hr>
+                                <div class="small text-muted">Phone Number</div>
+                                <h3 class="h4 mb-0 text-primary"><?= $techdetail['phone'] ?></h3>
+                            <?php } else{
+                                 echo "Select data";
+                            } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard__item dashboard__item--col">
+                <div class="card">
+                    <div class="card__header">
+                        Summary
+                    </div>
+                    <div class="card__content">
+                        <div class="card__item">
+                        <?php 
+                             if (isset($_POST["generate"])) {
+                                $techdetail = $data['techdetail'];
+                            ?>
+                                <div class="text-muted">Days worked</div>
+                                <h3 class="text-primary"><?= $data['daycount'] ?></h3>
+                                <hr>
+                                <div class="text-muted">No. of repairs done</div>
+                                <h3 class="text-primary"><?= $data['normcount'] ?></h3>
+
+                                <hr>
+                                <div class="text-muted">Suspicious activities</div>
+                                <h3 style="color: #dc3545;"><?= $data['suscount'] ?></h3>
+                            <?php } else{
+                                echo "Select data";
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -100,7 +142,7 @@ $data =  $admin->TechOverview();
                     </div>
                     <div class="card__content">
                         <div class="card__item">
-                              <canvas id="myPieChart" width="100%" height="70"></canvas>
+                              <canvas id="myPieChart" width="100%" height="60"></canvas>
                         </div>
                     </div>
                 </div>
@@ -116,7 +158,7 @@ $data =  $admin->TechOverview();
             <div class="dashboard__item dashboard__item--full">
                 <div class="card">
                     <div class="card__header">
-                      <h3>Frauds List</h3> 
+                      <h3>Damage item Mismatches</h3> 
                     </div>
                     <div class="card__content">
                         <div class="card_item">
@@ -124,22 +166,45 @@ $data =  $admin->TechOverview();
                                 <?php 
                                     if (isset($_POST["generate"])) {
 
-                                        $fraudResult=$data['fraudlist'];
+                                        $fraudaResult=$data['fraudAlist'];
                                         
                                         
                             
-                                        if ($fraudResult->num_rows > 0) {
+                                        if ($fraudaResult->num_rows > 0) {
                                           echo "<table class='content-table' >
                                           <tr>
                                           <th>ID</th>
-                                          <th>description</th>
-                                          <th>recorded date</th>
-                                          <th>difference</th>
-                                          <th>item</th>
+                                          <th>Description</th>
+                                          <th>Recorded date</th>
+                                          <th>Item</th>
+                                          <th>Difference</th>
+                                          </tr> ";
+                                            $names = $data['itemName'];
+                                            while ($rowFraud = $fraudaResult->fetch_array() ) {
+                                                echo "<tr><td>" . $rowFraud['fraud_id'] . "</td><td>" . $rowFraud['description'] . "</td><td>" . $rowFraud['date'] . "</td><td>" . $names[ $rowFraud['item_id'] -1 ]['name'] . "</td><td>" . $rowFraud['difference'] . "</td></tr>";
+                                            }
+                                            echo "</table>";
+                                        } else {
+                                          echo "No data on this period";
+                                        }
+
+
+                                        $fraudbResult=$data['fraudBlist'];
+                                        
+                                        echo '<div class="card__header">
+                                        <h3>Other Frauds</h3> 
+                                      </div>';
+                                        
+                                        if ($fraudbResult->num_rows > 0) {
+                                          echo "<table class='content-table' >
+                                          <tr>
+                                          <th>ID</th>
+                                          <th>Description</th>
+                                          <th>Recorded date</th>
                                           </tr> ";
                                           
-                                            while ($rowFraud = $fraudResult->fetch_array() ) {
-                                                echo "<tr><td>" . $rowFraud['fraud_id'] . "</td><td>" . $rowFraud['description'] . "</td><td>" . $rowFraud['date'] . "</td><td>" . $rowFraud['difference'] . "</td><td>" . $rowFraud['item_id'] . "</td></tr>";
+                                            while ($rowFraud = $fraudbResult->fetch_array() ) {
+                                                echo "<tr><td>" . $rowFraud['fraud_id'] . "</td><td>" . $rowFraud['description'] . "</td><td>" . $rowFraud['date']. "</td></tr>";
                                             }
                                             echo "</table>";
                                         } else {
@@ -156,22 +221,7 @@ $data =  $admin->TechOverview();
                     </div>
                 </div>
             </div>
-            <div class="dashboard__item dashboard__item--col">
-                <div class="card">
-                    <div class="card__header">
-                        Fraud details
-                    </div>
-                    <div class="card__content">
-                        <div class="card_item">
-                        <div class="chart-column-data2">
-                              
-                              No data to show
-                          
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+         
             
         </div>
      

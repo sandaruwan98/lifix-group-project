@@ -61,18 +61,30 @@ class DS extends Framework
          
         if (isset($_POST["generate"])) {
             
-            $repairModel = new \models\Repair();
+            // $repairModel = new \models\Repair();
             $fraudModel = new \models\Fraud();
             $reportmodel = new \models\ReportGenerate();
-            $data['normcount'] =$reportmodel->getnormalRepairCount($_POST["firstDate"], $_POST["secondDate"]);
-            $data['suscount'] =$reportmodel->getsuspiRepairCount($_POST["firstDate"], $_POST["secondDate"]);
+            $invmodel = new \models\Inventory();
+            $data['itemName'] = $invmodel->getItemNames()->fetch_all(MYSQLI_ASSOC);
+            $data['normcount'] =$reportmodel->getnormalRepairCountfortech($_POST["firstDate"], $_POST["secondDate"],$_POST["techid"]);
+            // $data['suscount'] =$reportmodel->getsuspiRepairCountfortech($_POST["firstDate"], $_POST["secondDate"],$_POST["techid"]);
+            
+            $data['allnormcount'] =$reportmodel->getAllnormalRepairCountfortech($_POST["techid"]);
+            $data['allsuscount'] =$reportmodel->getAllsuspiRepairCountfortech($_POST["techid"]);
+            $data['daycount'] =$reportmodel->getdayscountfortech($_POST["techid"]);
 
             $techdetail = $user->getUserDetails($_POST["techid"]);
             $data['techdetail'] = $techdetail;
 
 
-            $fraudResult = $fraudModel->getFraudsByUserID($techdetail['userId'], $_POST["firstDate"], $_POST["secondDate"]);
-            $data['fraudlist'] = $fraudResult;
+            $fraudAlist = $fraudModel->gettypeA_FraudsByUserID($techdetail['userId'], $_POST["firstDate"], $_POST["secondDate"]);
+            $fraudAcount = $fraudAlist->num_rows;
+            $fraudBlist = $fraudModel->gettypeB_FraudsByUserID($techdetail['userId'], $_POST["firstDate"], $_POST["secondDate"]);
+            $fraudBcount = $fraudBlist->num_rows;
+
+            $data['suscount'] = $fraudAcount + $fraudBcount;
+            $data['fraudAlist'] = $fraudAlist;
+            $data['fraudBlist'] = $fraudBlist;
            
 
            
