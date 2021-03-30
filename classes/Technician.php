@@ -1,7 +1,7 @@
 <?php
 
 namespace classes;
-// include_once '../utils/modelLoader.php';
+
 include_once  __DIR__ . '/../utils/classloader.php';
 
 class Technician extends Framework
@@ -178,9 +178,6 @@ class Technician extends Framework
     private function CompleteRepair_addUsedReturnedData($item_names)
     {
 
-
-
-
         $used_items = array();
         $return_items = array();
         foreach ($item_names as $item) {
@@ -200,18 +197,19 @@ class Technician extends Framework
             $quantity = $_POST["$item_name"];
 
             if ($quantity != 0 && $quantity != null) {
-
                 $return_item = array($item[0], $quantity);
                 $return_items[] = $return_item;
             }
         }
 
         if (!empty($used_items)) {
-
+            
             $invmanger = new InventoryManager();
             $errmsg = $invmanger->CheckTmpInventoryBeforeReduce($used_items, $this->session->getuserID());
 
             if ($errmsg == '') {
+                $comp = new \models\Complaint();
+                
                 // ---------------------------------------------------------
                 // get bulb return/used count for fraud check
                 $bulb_usedcount = $_POST["1_u"];
@@ -219,7 +217,6 @@ class Technician extends Framework
 
                 // if bulbs are used for the repair
                 if ($bulb_usedcount != 0 && $bulb_usedcount != null) {
-                    $comp = new \models\Complaint();
                     $complainer_said_value = $comp->getIsBulbThere($_GET["id"]);
                     if (($bulb_usedcount != $bulb_damagecount) && $complainer_said_value == '1') {
                         // mark this scnario as a fraud
@@ -236,7 +233,16 @@ class Technician extends Framework
                 // deacrese tmp inventory
                 $invmanger->DecreasetmpInventory($used_items, $this->session->getuserID());
 
-                // send a toast message
+
+                //get complainer phone and complaint lamppost id
+                $complainer_phone = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
+                $complaint_lamp_id = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
+
+                //send sms confirmation
+                $sms = new \classes\Sms($complainer_phone['phone_no']);
+                $sms->sendConfirmation($complaint_lamp_id['lp_id']);
+
+
                 $this->session->sendMessage("Repair marked as completed", 'success');
             } else {
                 $this->session->sendMessage("Insuficient " . $errmsg, 'danger');

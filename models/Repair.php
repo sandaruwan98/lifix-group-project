@@ -9,7 +9,7 @@ class Repair extends Database
 
     public function getTotal_damageitems_forday($tech_id, $item_id)
     {
-        $date = date("y-m-d");
+        $date = date("Y-m-d");
 
         $q0 = "SELECT repair_id FROM repair WHERE technician_id='$tech_id' AND date='$date'";
 
@@ -33,7 +33,7 @@ class Repair extends Database
 
     public function createRepair($status, $lp_id, $technician_id, $clerk_id, $complainer_id)
     {
-        $date = date("y-m-d");
+        $date = date("Y-m-d");
 
         $q = "INSERT INTO `repair`(`date`, `status`, `lp_id`, `technician_id`, `clerk_id`, `complainer_id`) VALUES 
         ('$date', '$status','$lp_id', '$technician_id' , '$clerk_id', '$complainer_id')";
@@ -159,6 +159,7 @@ class Repair extends Database
         }
         // chansge repair status as completed
         $this->changeStatus($r_id, 'c');
+        
     }
 
     public function CreateEmergencyRepair($lp_id, $technician_id, $used_items, $return_items)
