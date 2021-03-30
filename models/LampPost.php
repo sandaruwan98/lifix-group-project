@@ -26,7 +26,7 @@ class LampPost extends Database
 
     public function addLampost($lp_id, $address, $lat, $lng, $technician_id)
     {
-        $date = date("yy-m-d");
+        $date = date("y-m-d");
         $q = "INSERT INTO `lamppost`(`lp_id`, `division`, `lattitude`, `longitude`,`added_by`,`date`) VALUES
          ('$lp_id','$address','$lat','$lng' ,$technician_id ,$date)";
 
