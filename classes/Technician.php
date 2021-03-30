@@ -238,8 +238,8 @@ class Technician extends Framework
                 $complaint_lamp_id = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
 
                 //send sms confirmation
-                $sms = new \classes\Sms($complainer_phone['phone_no'], $complaint_lamp_id['lp_id']);
-                $sms->sendConfirmation();
+                $sms = new \classes\Sms($complainer_phone['phone_no']);
+                $sms->sendConfirmation($complaint_lamp_id['lp_id']);
 
                 $this->session->sendMessage("Repair marked as completed", 'success');
             } else {
