@@ -53,7 +53,7 @@ class Admin extends Framework
             
             }
             
-            header("location: index.php");exit;
+            header("location: usercontrol.php");exit;
          }
 
 
@@ -63,7 +63,7 @@ class Admin extends Framework
             $user_id = $_POST['useracc'];
             $user_role = $_POST['userroll'];
             if($user_id != '' && $user_role != ''){
-
+                
                 $role = new \models\Role();
                 if( $role->removeRole( $user_id, $user_role ) )
                     $this->session->sendMessage("Role removed from user successfully",'success');
@@ -71,7 +71,7 @@ class Admin extends Framework
                     $this->session->sendMessage("Something went wrong",'danger');
             }
             
-            header("location: index.php");exit;
+            header("location: usercontrol.php");exit;
          }
 
 
@@ -83,7 +83,7 @@ class Admin extends Framework
             else
                 $this->session->sendMessage("Something went wrong",'danger');
 
-            header("location: index.php");exit;
+            header("location: usercontrol.php");exit;
         }
 
         $data = $user->getActiveUsers();

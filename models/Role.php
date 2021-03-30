@@ -9,7 +9,9 @@ class Role extends Database
     public function addRole($userid,$role)
     {
 
-        $date = date("y-m-d");
+
+        $date = date("Y-m-d");
+
 
         if ($this->checkRole($userid,$role)) {
           $query="UPDATE `roles` SET `is_active`='1',`enddate`='0000-00-00' WHERE role='$role' AND user_id='$userid' ";
@@ -17,14 +19,16 @@ class Role extends Database
         }
 
         $query="INSERT INTO `roles`( `role`, `startdate`, `user_id`) VALUES ('$role', '$date','$userid')";
-        // echo $query;
+
         return $this->conn->query($query);
 
     }
 
     public function removeRole($userid,$role)
     {
-        $date = date("y-m-d");
+
+        $date = date("Y-m-d");
+
         // $query="DELETE FROM roles WHERE role='$role' AND user_id='$userid' ";
         $query="UPDATE `roles` SET `is_active`='0',`enddate`='$date' WHERE role='$role' AND user_id='$userid' ";
         return $this->conn->query($query);

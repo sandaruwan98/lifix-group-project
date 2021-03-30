@@ -230,8 +230,9 @@ class Technician extends Framework
                 $repairmodel = new \models\Repair();
                 $r_id = $_GET["id"];
                 $repairmodel->CompleteRepair($r_id, $used_items, $return_items);
-
+                // deacrese tmp inventory
                 $invmanger->DecreasetmpInventory($used_items, $this->session->getuserID());
+
 
                 //get complainer phone and complaint lamppost id
                 $complainer_phone = $comp->getComplainerPhoneNoandLampId_by_repair_id($r_id);
@@ -240,6 +241,7 @@ class Technician extends Framework
                 //send sms confirmation
                 $sms = new \classes\Sms($complainer_phone['phone_no']);
                 $sms->sendConfirmation($complaint_lamp_id['lp_id']);
+
 
                 $this->session->sendMessage("Repair marked as completed", 'success');
             } else {

@@ -34,13 +34,27 @@ class StoreKeeper extends Framework
     }
     public function ReqHistory()
     {
+        $searchfilter = '';
+        if( isset($_POST["search"]) ){
+            $_SESSION["search"] = $_POST["searchbox"];
+        }
+
+        if( isset($_POST["clearsearch"]) ){
+            unset($_SESSION["search"]);
+            header('location: ./requestHistory.php');
+        }
+
+        if(isset($_SESSION["search"]))
+            $searchfilter = $_SESSION["search"];
+
+            
         $itemrequest = new \models\ItemRequest();
 
-        $totalpages = $itemrequest->getItemReqHistorytCount();
+        $totalpages = $itemrequest->getItemReqHistorytCount($searchfilter);
 
         $p = new Pagination(5, $totalpages);
 
-        $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText());
+        $data['reqlist'] = $itemrequest->getItemReqHistory($p->fiteringText() , $searchfilter);
 
         $data['pagination'] = $p;
 
@@ -167,7 +181,7 @@ class StoreKeeper extends Framework
                 if ($rdata != NULL) {
 
                     $f = new \models\Fraud();
-                    $discription = 'There is a mismatch in damaged repair items of ' . $data['techname'] . '(technician) on ' . date('yy-m-d') . '. Added by - ' . $this->session->getuserName() . " (Storekeeper)";
+                    $discription = 'There is a mismatch in damaged repair items of ' . $data['techname'] . '(technician) on ' . date('Y-m-d') . '. Added by - ' . $this->session->getuserName() . " (Storekeeper)";
                     $f->addFraud($_SESSION["techid"], $this->session->getuserID(), $discription, 'a', $rdata);
 
                     $this->session->sendMessage("Damage Item count success,fraud added", 'success');

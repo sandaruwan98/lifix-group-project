@@ -43,12 +43,12 @@ $data = $admin->UserControl();
         <div class="column1">
             <div class="card">
                 <h2>Add Role</h2>
-                    <form action="index.php" method="POST" id="my-form">
-
+                    <form action="usercontrol.php" method="POST" id="my-form">
                     <select name="useracc" id="useracc" class="field" required>
                         <option value="" disabled selected>Select the user Account</option>
 
                         <?php foreach ($data as $row) : ?>
+                           
                         <option value="<?=$row['userId'] ?>"><?=$row['username'] ?></option>
                         <?php endforeach ?>
 
@@ -81,7 +81,7 @@ $data = $admin->UserControl();
         <div class="column2">
             <div class="card">
                 <h2>Remove Role</h2>
-                    <form action="index.php" method="POST" id="my-form">
+                    <form action="usercontrol.php" method="POST" id="my-form">
 
                     <select name="useracc" id="useracc" class="field" required>
                         <option value="" disabled selected>Select the user Account</option>
@@ -94,6 +94,7 @@ $data = $admin->UserControl();
 
                         <select name="userroll" id="userroll" class="field" required>
                             <option value="" disabled selected>Select the user roll</option>
+                            <option value="5">Admin</option>
                             <option value="1">Divisional Secretary</option>
                             <option value="2">Clerk</option>
                             <option value="3">Storekeeper</option>
@@ -118,7 +119,7 @@ $data = $admin->UserControl();
         <div class="column3">
             <div class="card">
                 <h2>Revoke Access</h2>
-                <form action="index.php" method="POST">
+                <form action="usercontrol.php" method="POST">
                     <select name="useracc" id="useracc" class="field" required>
                         <option value="" disabled selected>Select the user Account</option>
                         <?php foreach ($data as $row) : ?>

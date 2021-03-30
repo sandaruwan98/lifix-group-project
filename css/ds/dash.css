@@ -1,0 +1,115 @@
+:root {
+    --bg-color: #e5e5e5;
+    --bcn-orange: #f16a2d;
+    --bcn-orange-light: #f9ae56;
+    --bcn-orange-dark: #d96129;
+    --black: #333;
+    --white: #f5f5f5;
+    --text-color: #555;
+    --border-color: rgb(238,238,238);
+    --border-style: 1px solid var(--border-color);
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #555;
+  }
+  
+  
+  
+  .admin__main {
+    flex: 1;
+    grid-area: main;
+    padding: var(--spacing);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* background-color: var(--bg-color); */
+  }
+  @media screen and (min-width: 48rem) {
+    .admin {
+      --spacing: 0.8rem;
+    }
+  }
+  
+  .dashboard1 {
+    --column-count: 2;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(var(--spacing) * -0.5);
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+    grid-gap: var(--spacing);
+  }
+  
+  .dashboard2 {
+    --column-count: 2;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(var(--spacing) * -0.5);
+    margin-top: var(--spacing);
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), 1fr);
+    grid-gap: var(--spacing);
+  }
+  .dashboard__item {
+    flex: 1 1 50%;
+    grid-column-end: span 2;
+    padding: calc(var(--spacing) / 2);
+  }
+  
+  .dashboard__item--full {
+    flex-basis: 100%;
+    grid-column: 1/-1;
+  }
+  .dashboard__item--col {
+    flex-basis: calc(100% / var(--column-count));
+    grid-column-end: span 1;
+  }
+  @media screen and (min-width: 48rem) {
+    .dashboard1 {
+      --column-count: 3;
+    }
+    .dashboard2 {
+      --column-count: 2;
+    }
+  }
+  @supports (display: grid) {
+    .dashboard1 {
+      margin: 0;
+    }
+    .dashboard2 {
+      margin: var(--spacing) 0 0 0;
+    }
+    .dashboard__item {
+      padding: 0;
+    }
+  }
+  
+  
+  .card {
+    height: 100%;
+    font-weight: 300;
+    background-color: #fff;
+    border: 1px solid #e6eaee;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 5px;
+  }
+  .card__header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #e6eaee;
+    font-weight: 700;
+  }
+  .card__item {
+    padding: 20px 30px;
+  }
+  .font-sm{
+    font-size:0.5em
+  }

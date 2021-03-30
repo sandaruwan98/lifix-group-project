@@ -78,35 +78,3 @@ button:focus {
 .searchbox > .btn-search:hover {
   background: rgba(255, 255, 255, 0.644);
 }
-
-
-.sdisplay{
-  display:flex;
-  padding: 10px 20px;
-  width:100%;
-  margin-top:10px;
-  background-color:#ffffff3d;
-  justify-content:space-between
-}
-
-.sdisplay button {
-  padding:5px
-  
-}
-.sdisplay button {
-/*   padding:5px */
-  width:200px;
-  background-color:#ab3d3d;
-  border-radius:15px;
-}
-.sdisplay button:hover {
-
-  background-color:#621a1a;
-  
-}
-
-.sdisplay p {
-  color:white;
-font-size:1.2em;
-  
-}

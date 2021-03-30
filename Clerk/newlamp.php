@@ -76,7 +76,7 @@ $data =  $clerck->LampPostPage();
                     </div>
                     <div class="feild-row">
                         <label>Date</label>
-                        <input class="field" type="date" placeholder="DD/MM/YYYY" name="date" value="<?= date('yy-m-d') ?>">
+                        <input class="field" type="date" placeholder="DD/MM/YYYY" name="date" value="<?= date('Y-m-d') ?>">
                     </div>
                     <div class="feild-row">
                         <label>Requested By</label>

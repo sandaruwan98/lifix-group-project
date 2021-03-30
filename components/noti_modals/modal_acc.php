@@ -22,9 +22,9 @@
                 <p id="role" class="val">Loading ...</p>
                 <br>
                
-                <button onclick="confirmacc(this.id, this.getAttribute('data-noti-id') )" class="field danger confirmacc">Activate Account</button>
+                <button onclick="confirmacc(this.id, this.getAttribute('data-noti-id') )" class="field success confirmacc">Activate Account</button>
                 
-                <button id="0" onclick="declineacc(this.id, this.getAttribute('data-noti-id') )" class="field success declineacc">Decline Account</button>
+                <button id="0" onclick="declineacc(this.id, this.getAttribute('data-noti-id') )" class="field danger declineacc">Decline Account</button>
             </div>
             
             <div class="modal-overlay"></div>
