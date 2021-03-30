@@ -111,6 +111,11 @@ class Authentication extends Framework
                 return;
             }
 
+            if (strlen($pass) < 6) {
+                $this->session->sendMessage("Password is weak", "danger");
+                return;
+            }
+
             if ($pass != $confirmpass) {
                 $this->session->sendMessage("Passwords does not match", "danger");
                 return;
