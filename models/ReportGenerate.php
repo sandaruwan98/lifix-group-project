@@ -50,6 +50,50 @@ class ReportGenerate extends Database {
         $count =   $count->fetch_assoc();
         return $count["count"];
     }
+
+
+    public function getnormalRepairCountfortech($firstDate, $secondDate,$tech) {
+      
+        $query = "SELECT COUNT(*) AS count FROM repair WHERE date BETWEEN '$firstDate' AND '$secondDate' AND technician_id='$tech' ";
+        $count =   $this->conn->query($query);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+    
+    public function getsuspiRepairCountfortech($firstDate, $secondDate,$tech) {
+      
+        $query = "SELECT COUNT(*) AS count FROM fraud WHERE date BETWEEN '$firstDate' AND '$secondDate' AND doneBy='$tech'";
+        $count =   $this->conn->query($query);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+
+    public function getAllnormalRepairCountfortech($tech) {
+      
+        $query = "SELECT COUNT(*) AS count FROM repair WHERE technician_id='$tech' ";
+        $count =   $this->conn->query($query);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+    
+    public function getAllsuspiRepairCountfortech($tech) {
+      
+        $query = "SELECT COUNT(*) AS count FROM fraud WHERE  doneBy='$tech'";
+        $count =   $this->conn->query($query);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+
+    public function getdayscountfortech($tech) {
+      
+        $query = "SELECT COUNT(DISTINCT(date)) AS count FROM repair WHERE  technician_id='$tech'";
+        $count =   $this->conn->query($query);
+        $count =   $count->fetch_assoc();
+        return $count["count"];
+    }
+
+
+
     public function getRepairCountBydate($firstDate, $secondDate) {
       
         $query = "SELECT date,COUNT(*) AS count FROM repair GROUP BY date HAVING date BETWEEN '$firstDate' AND '$secondDate'";

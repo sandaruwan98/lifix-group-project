@@ -5,7 +5,8 @@ $data = $_POST["coords"];
 $color = $_POST["color"];
 
 require_once __DIR__ . '/../../utils/classloader.php';
-$session = new classes\Session(CleckFL);
+// $session = new classes\Session(AdminFL);
+
 $map = new models\Map();
 
 $section_id = $map->CreateSection($id,$color);

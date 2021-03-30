@@ -86,7 +86,7 @@ class StockAddition extends Database
 
     public function Add_SA_Record($created_user_id)
     {
-        $date = date("yy-m-d");
+        $date = date("Y-m-d");
         $q = "INSERT INTO `stock_addition`( `date`, `status`, `clerk_id`) VALUES 
         ('$date','0','$created_user_id')";
 
