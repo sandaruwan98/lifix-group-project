@@ -1,9 +1,8 @@
 <?php
 
-
 include_once  __DIR__ . '/../utils/classloader.php';
 $admin = new classes\DS();
-$data =  $admin->SystemOverview();
+$data =  $admin->TechOverview();
 
 ?>
 
@@ -54,15 +53,27 @@ $data =  $admin->SystemOverview();
                         Card full width
                     </div> -->
                     <div class="card__content">
-                              
-                                <div class="range">
-                                  <p>From</p>
-                                  <input type="date" id="firstDate" class="field" value="<?=   date('Y-m-d',strtotime(date('Y-m-d')." -1 Months"))  ?>" required>
-                                  <p>To</p>
-                                  <input type="date" id="secondDate" class="field" value="<?= date('Y-m-d') ?>" required>
-                                  <button class="btn">Generate</button>
-                                </div>
-                              
+                              <form action="techreport.php" method="post">
+                                  <div class="range">
+                                  <p>Check</p>
+                                  <?php
+                                     
+                                  ?>
+                                  <select name="techid" id="useracc" class="field" required>
+                                      <option value="" disabled selected>select account</option>
+                                      <?php 
+                                      $result = $data['techs'];
+                                            while ($row = $result->fetch_assoc()) : ?>
+                                              <option value="<?= $row['userId'] ?>"><?= $row['Name'] ?></option>
+                                      <?php endwhile ?>
+                                  </select>
+                                    <p>From</p>
+                                    <input type="date" name="firstDate" id="firstDate" class="field" value="<?=   date('Y-m-d',strtotime(date('Y-m-d')." -1 Months"))  ?>" required>
+                                    <p>To</p>
+                                    <input type="date" name="secondDate" id="secondDate" class="field" value="<?= date('Y-m-d') ?>" required>
+                                    <button name="generate" type="submit" class="btn">Generate</button>
+                                  </div>
+                              </form>
                     </div>
                 </div>
             </div>
@@ -72,7 +83,7 @@ $data =  $admin->SystemOverview();
             <div class="dashboard__item">
                 <div class="card">
                     <div class="card__header">
-                        <i class="fa fa-area-chart"></i> Complaints last month
+                       Technician Details
                     </div>
                     <div class="card__content">
                         <div class="card__item">
@@ -85,7 +96,7 @@ $data =  $admin->SystemOverview();
             <div class="dashboard__item dashboard__item--col">
                 <div class="card">
                     <div class="card__header">
-                        <i class="fa fa-pie-chart"></i>  Disk usage
+                        <i class="fa fa-pie-chart"></i>  Technician Accuracy
                     </div>
                     <div class="card__content">
                         <div class="card__item">
@@ -97,20 +108,48 @@ $data =  $admin->SystemOverview();
             <!-- bar -->
            
 
-            </div>
-            <div class="dashboard2">
+          </div>
+
+          <div class="dashboard2">
             
          
-            <div class="dashboard__item dashboard__item--col">
+            <div class="dashboard__item dashboard__item--full">
                 <div class="card">
                     <div class="card__header">
-                      <h3>Recieved Complaints</h3> 
+                      <h3>Frauds List</h3> 
                     </div>
                     <div class="card__content">
                         <div class="card_item">
                             <div class="chart-column-data1">
-                              
-                                No data to show
+                                <?php 
+                                    if (isset($_POST["generate"])) {
+
+                                        $fraudResult=$data['fraudlist'];
+                                        
+                                        
+                            
+                                        if ($fraudResult->num_rows > 0) {
+                                          echo "<table class='content-table' >
+                                          <tr>
+                                          <th>ID</th>
+                                          <th>description</th>
+                                          <th>recorded date</th>
+                                          <th>difference</th>
+                                          <th>item</th>
+                                          </tr> ";
+                                          
+                                            while ($rowFraud = $fraudResult->fetch_array() ) {
+                                                echo "<tr><td>" . $rowFraud['fraud_id'] . "</td><td>" . $rowFraud['description'] . "</td><td>" . $rowFraud['date'] . "</td><td>" . $rowFraud['difference'] . "</td><td>" . $rowFraud['item_id'] . "</td></tr>";
+                                            }
+                                            echo "</table>";
+                                        } else {
+                                          echo "No data on this period";
+                                        }
+                                    }else{
+                                        echo "No data to show";
+                                    }
+                                ?>
+                                
                             
                             </div>
                         </div>
@@ -120,7 +159,7 @@ $data =  $admin->SystemOverview();
             <div class="dashboard__item dashboard__item--col">
                 <div class="card">
                     <div class="card__header">
-                        New LampPost Records
+                        Fraud details
                     </div>
                     <div class="card__content">
                         <div class="card_item">
@@ -133,206 +172,66 @@ $data =  $admin->SystemOverview();
                     </div>
                 </div>
             </div>
-
-            <div class="dashboard__item dashboard__item--col">
-                <div class="card">
-                    <div class="card__header">
-                        <i class="fa fa-bar-chart"></i>  Current Invetory Balance
-                    </div>
-                    <div class="card__content">
-                        <div class="card__item">
-                            <canvas id="myBarChart" width="100%" height="40"></canvas>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard__item dashboard__item--col">
-                <div class="card">
-                    <div class="card__header">
-                        Card
-                    </div>
-                    <div class="card__content">
-                        <div class="card__item">
-                        <div class="h4 mb-0 text-primary">$34,693</div>
-                  <div class="small text-muted">YTD Revenue</div>
-                  <hr>
-                  <div class="h4 mb-0 text-warning">$18,474</div>
-                  <div class="small text-muted">YTD Expenses</div>
-                  <hr>
-                  <div class="h4 mb-0 text-success">$16,219</div>
-                  <div class="small text-muted">YTD Margin</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
-       
-            <div class="dashboard__item dashboard__item--full">
-                <div class="card">
-                    <div class="card__header">
-                        Card full width
-                    </div>
-                    <div class="card__content">
-                        <div class="card__item">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium labore id culpa sit nisi nostrum, excepturi cumque eos laborum ducimus alias, provident doloribus et facere explicabo ab repudiandae perferendis earum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima dolore laudantium est, vel illo labore nostrum cupiditate perspiciatis, doloremque sit enim sequi, quasi cumque dolorum voluptate! Aliquam corrupti laboriosam nostrum. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda cupiditate porro dolores optio dicta tempora quas, culpa itaque, unde recusandae tempore. Voluptas quia perferendis est veritatis nobis, iusto voluptate dolor?
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+     
     </main>
  
+    </div>
     </div>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
 <script src='../js/ds/new.js'></script>
   <script>
-    $(document).ready(function() {
-      $('.btn').click(function() {
+    // $(document).ready(function() {
+    //   $('.btn').click(function() {
 
-        let date1 = $("#firstDate").val();
-        let date2 = $("#secondDate").val();
-        console.log(date1);
-        $.ajax({
-          type: "POST",
-          url: "./ajax/reportComp.php",
-          data: {
-            firstDate: date1,
-            secondDate: date2
-          },
-          success: function(data) {
-            if (data != "No data on this period") {
-              $(".chart-column-data1").css({
-                "display": "block"
-              });
-              $(".chart-column-data1").html(data);
-            } else
-              $(".chart-column-data1").html(data);
-          }
-        });
+    //     let date1 = $("#firstDate").val();
+    //     let date2 = $("#secondDate").val();
+    //     console.log(date1);
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "./ajax/reportComp.php",
+    //       data: {
+    //         firstDate: date1,
+    //         secondDate: date2
+    //       },
+    //       success: function(data) {
+    //         if (data != "No data on this period") {
+    //           $(".chart-column-data1").css({
+    //             "display": "block"
+    //           });
+    //           $(".chart-column-data1").html(data);
+    //         } else
+    //           $(".chart-column-data1").html(data);
+    //       }
+    //     });
 
-        $.ajax({
-          type: "POST",
-          url: "./ajax/reportlp.php",
-          data: {
-            firstDate: date1,
-            secondDate: date2
-          },
-          success: function(data) {
-            if (data != "No data on this period") {
-              $(".chart-column-data2").css({
-                "display": "block"
-              });
-              $(".chart-column-data2").html(data);
-            } else
-              $(".chart-column-data2").html(data);
-          }
-        });
-      })
-    });
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "./ajax/reportlp.php",
+    //       data: {
+    //         firstDate: date1,
+    //         secondDate: date2
+    //       },
+    //       success: function(data) {
+    //         if (data != "No data on this period") {
+    //           $(".chart-column-data2").css({
+    //             "display": "block"
+    //           });
+    //           $(".chart-column-data2").html(data);
+    //         } else
+    //           $(".chart-column-data2").html(data);
+    //       }
+    //     });
+    //   })
+    // });
+
 
  // Chart.js scripts
 // -- Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
-// -- Area Chart Example
-var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [<?=$data['arealabel'] ?> ],
-    datasets: [{
-      label: "Sessions",
-      lineTension: 0.3,
-      backgroundColor: "rgba(2,117,216,0.2)",
-      borderColor: "rgba(2,117,216,1)",
-      pointRadius: 5,
-      pointBackgroundColor: "rgba(2,117,216,1)",
-      pointBorderColor: "rgba(255,255,255,0.8)",
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-      pointHitRadius: 20,
-      pointBorderWidth: 2,
-      data: [<?=$data['areaval'] ?> ],
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'date'
-        },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 7
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: <?=$data['areamax']+2 ?> ,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          color: "rgba(0, 0, 0, .125)",
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-
-
-
-// -- Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myLineChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: [ <?=$data['barlabel'] ?> ],
-    datasets: [{
-      label: "Toatal",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: [<?= $data['barval'] ?>],
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 250,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          display: true
-        }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-
-
 
 // -- Pie Chart Example
 var ctx = document.getElementById("myPieChart");
