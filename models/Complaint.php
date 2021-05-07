@@ -6,6 +6,9 @@ require_once "Database.php";
 class Complaint extends Database
 {
 
+    // start
+    // added for nic no check(if it exists on db)
+
     public function checkComplainerExists($nic)
     {
         $q = "SELECT `complainer_id` FROM `complainer` WHERE `NIC`='$nic'";
@@ -17,6 +20,8 @@ class Complaint extends Database
             return -1;
         }
     }
+
+    // end
 
     public function addComplainer($id, $nic, $name, $phone_no)
     {
