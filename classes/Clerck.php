@@ -56,7 +56,7 @@ class Clerck extends Framework
         $repairmodel = new \models\Repair();
         $totalpages = $repairmodel->getRepairHistoryCount($searchfilter);
 
-        $p = new Pagination(5, $totalpages);
+        $p = new Pagination(8, $totalpages);
         $repairs = $repairmodel->getRepairHistory( $p->fiteringText(), $searchfilter);
         $data['repairs'] = $repairs;
         $data['pagination'] = $p;
@@ -106,7 +106,7 @@ class Clerck extends Framework
         $samodel = new \models\StockAddition();
 
         $totalpages = $samodel->get_SA_ListAll_Count($searchfilter);
-        $p = new Pagination(5, $totalpages);
+        $p = new Pagination(10, $totalpages);
         $data['StockAdditionList'] = $samodel->get_SA_ListAll($p->fiteringText(), $searchfilter);
         // $this->session->sendMessage("helooo",'success');
         $data['pagination'] = $p;

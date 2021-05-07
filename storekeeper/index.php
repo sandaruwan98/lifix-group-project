@@ -58,7 +58,7 @@ $data = $storekeeper->Index();
                         <div class="row">
                             <span>Date: <?= $row['added_date'] ?></span>
                             <span>Technician: <?= $row['Name'] ?></span>
-                            <i class="s fas fa-check"></i>
+                            <!-- <i class="s fas fa-check"></i> -->
                         </div>
                     </div>
 

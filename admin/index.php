@@ -81,6 +81,7 @@ $data =  $admin->SectionAssign();
 
     <?php include "./views/nav.php" ?>
 
+    <?php  $admin->getSession()->showMessage() ?>
 
     <div class="main_content">
         <header>
@@ -143,7 +144,7 @@ $data =  $admin->SectionAssign();
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [79.861489, 6.885039],
-            zoom: 14
+            zoom: 12
         });
 
 
